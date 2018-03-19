@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Xuwy Blog">
 <meta property="og:description" content="Week 1啊，基础的事情都做完了，页面跳转这事情，很简单的，就是一个Navigation，上一篇博客的时候就做完啦。但是，导航到了新页面，怎么回到原来的页面呢？这次就学习一下后退键把。 返回事件 说到后退事件，先不要着急动手。假设，我们的程序有上百个页面，各自之间可以灵活的跳转。那每一个页面都有后退事件，额，又回到了无人车事件了吗？可恶。不过，怎么会有这么蠢的事情嘛。仔细看看自己的UWP项目架构">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-18T04:28:51.871Z">
+<meta property="og:updated_time" content="2018-03-19T11:48:25.390Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="backRequest">
 <meta name="twitter:description" content="Week 1啊，基础的事情都做完了，页面跳转这事情，很简单的，就是一个Navigation，上一篇博客的时候就做完啦。但是，导航到了新页面，怎么回到原来的页面呢？这次就学习一下后退键把。 返回事件 说到后退事件，先不要着急动手。假设，我们的程序有上百个页面，各自之间可以灵活的跳转。那每一个页面都有后退事件，额，又回到了无人车事件了吗？可恶。不过，怎么会有这么蠢的事情嘛。仔细看看自己的UWP项目架构">
@@ -347,11 +347,11 @@
 <p>说到后退事件，先不要着急动手。假设，我们的程序有上百个页面，各自之间可以灵活的跳转。那每一个页面都有后退事件，额，又回到了无人车事件了吗？可恶。不过，怎么会有这么蠢的事情嘛。仔细看看自己的UWP项目架构，我们可以发现app.xaml.cs文件。这个文件包含了重要的应用程序事件的事件处理程序，如启动、挂起和其他一些，且可被所有page共有。所以，这次回退事件的完成，我们要在app.xaml.cs文件中完成。</p>
 <p>我们需要在文件中的OnLaunched函数加入如下语句：</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">...</span><br><span class="line">///Add after rootFrame is defined</span><br><span class="line">rootFrame.Navigated += OnNavigated;</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">///Add at the trail of the function</span><br><span class="line">SystemNavigationManager.GetForCurrentView().BackRequested += BackRequested;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">...</span><br><span class="line"><span class="comment">//Add after rootFrame is defined</span></span><br><span class="line">rootFrame.Navigated += OnNavigated;</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="comment">//Add at the trail of the function</span></span><br><span class="line">SystemNavigationManager.GetForCurrentView().BackRequested += BackRequested;</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>第一个语句注册导航事件，第二个语句注册后退事件。注册了事件，那么我们就需要定义事件:</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">private void OnNavigated(object sender, NavigationEventArgs e)</span><br><span class="line">&#123;</span><br><span class="line">    ///根据页面是否可以返回，在窗口显示返回按钮</span><br><span class="line">    SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = ((Frame)sender).CanGoBack ? AppViewBackButtonVisibility.Visible : AppViewBackButtonVisibility.Collapsed;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">private void BackRequested(object sender, BackRequestedEventArgs e)</span><br><span class="line">&#123;</span><br><span class="line">    Frame rootFrame = Window.Current.Content as Frame;</span><br><span class="line">    if (rootFrame == null)  return;</span><br><span class="line"></span><br><span class="line">    /// Navigate back if possible, and if the event has not already been handled .</span><br><span class="line">    if (!e.Handled &amp;&amp; rootFrame.CanGoBack)</span><br><span class="line">    &#123;</span><br><span class="line">        e.Handled = true;</span><br><span class="line">        rootFrame.GoBack();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">OnNavigated</span>(<span class="params"><span class="keyword">object</span> sender, NavigationEventArgs e</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//根据页面是否可以返回，在窗口显示返回按钮</span></span><br><span class="line">    SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = ((Frame)sender).CanGoBack ? AppViewBackButtonVisibility.Visible : AppViewBackButtonVisibility.Collapsed;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">BackRequested</span>(<span class="params"><span class="keyword">object</span> sender, BackRequestedEventArgs e</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Frame rootFrame = Window.Current.Content <span class="keyword">as</span> Frame;</span><br><span class="line">    <span class="keyword">if</span> (rootFrame == <span class="literal">null</span>)  <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//Navigate back if possible, and if the event has not already been handled .</span></span><br><span class="line">    <span class="keyword">if</span> (!e.Handled &amp;&amp; rootFrame.CanGoBack)</span><br><span class="line">    &#123;</span><br><span class="line">        e.Handled = <span class="literal">true</span>;</span><br><span class="line">        rootFrame.GoBack();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>这样一来，程序就会在可以返回的时候，显示后退按钮并且返回上一个页面啦。</p>
 <p><em>题外话：程序怎么知道返回哪个界面？A:程序页面跳转信息在堆栈中存储</em></p>
@@ -397,6 +397,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/UWP/adaptiveUI/" rel="prev" title="adaptiveUI">
+                adaptiveUI <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -473,7 +477,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
