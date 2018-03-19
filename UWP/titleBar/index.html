@@ -79,18 +79,22 @@
 
 
 
-<meta name="description" content="Week 1啊，基础的事情都做完了，页面跳转这事情，很简单的，就是一个Navigation，上一篇博客的时候就做完啦。但是，导航到了新页面，怎么回到原来的页面呢？这次就学习一下后退键把。 返回事件 说到后退事件，先不要着急动手。假设，我们的程序有上百个页面，各自之间可以灵活的跳转。那每一个页面都有后退事件，额，又回到了无人车事件了吗？可恶。不过，怎么会有这么蠢的事情嘛。仔细看看自己的UWP项目架构">
+<meta name="description" content="Week 2标题栏透明化 看着自己做好的MyList，总觉得和正常的application差了点什么。这个可恶的标题栏，为什么不是透明的啊，这突然突出来的白色，真是让人不开心。那么，接下来就了解一下标题栏的透明化。 在MS 的Docs搜索之后，可以找到CoreApplicationViewTitleBar类。是的，这个就是我们想要的标题栏。文档很短，不过，它提供了我们需要的透明化功能(伪透明)。C">
 <meta name="keywords" content="MOSAD,UWP">
 <meta property="og:type" content="article">
-<meta property="og:title" content="backRequest">
-<meta property="og:url" content="http://yoursite.com/UWP/backRequest/index.html">
+<meta property="og:title" content="titleBar">
+<meta property="og:url" content="http://yoursite.com/UWP/titleBar/index.html">
 <meta property="og:site_name" content="Xuwy Blog">
-<meta property="og:description" content="Week 1啊，基础的事情都做完了，页面跳转这事情，很简单的，就是一个Navigation，上一篇博客的时候就做完啦。但是，导航到了新页面，怎么回到原来的页面呢？这次就学习一下后退键把。 返回事件 说到后退事件，先不要着急动手。假设，我们的程序有上百个页面，各自之间可以灵活的跳转。那每一个页面都有后退事件，额，又回到了无人车事件了吗？可恶。不过，怎么会有这么蠢的事情嘛。仔细看看自己的UWP项目架构">
+<meta property="og:description" content="Week 2标题栏透明化 看着自己做好的MyList，总觉得和正常的application差了点什么。这个可恶的标题栏，为什么不是透明的啊，这突然突出来的白色，真是让人不开心。那么，接下来就了解一下标题栏的透明化。 在MS 的Docs搜索之后，可以找到CoreApplicationViewTitleBar类。是的，这个就是我们想要的标题栏。文档很短，不过，它提供了我们需要的透明化功能(伪透明)。C">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-19T11:48:25.390Z">
+<meta property="og:image" content="http://yoursite.com/UWP/titleBar/titleBar.jpg">
+<meta property="og:image" content="http://yoursite.com/UWP/titleBar/titleBar_2.jpg">
+<meta property="og:image" content="http://yoursite.com/UWP/titleBar/titleBar_3.jpg">
+<meta property="og:updated_time" content="2018-03-19T15:44:17.403Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="backRequest">
-<meta name="twitter:description" content="Week 1啊，基础的事情都做完了，页面跳转这事情，很简单的，就是一个Navigation，上一篇博客的时候就做完啦。但是，导航到了新页面，怎么回到原来的页面呢？这次就学习一下后退键把。 返回事件 说到后退事件，先不要着急动手。假设，我们的程序有上百个页面，各自之间可以灵活的跳转。那每一个页面都有后退事件，额，又回到了无人车事件了吗？可恶。不过，怎么会有这么蠢的事情嘛。仔细看看自己的UWP项目架构">
+<meta name="twitter:title" content="titleBar">
+<meta name="twitter:description" content="Week 2标题栏透明化 看着自己做好的MyList，总觉得和正常的application差了点什么。这个可恶的标题栏，为什么不是透明的啊，这突然突出来的白色，真是让人不开心。那么，接下来就了解一下标题栏的透明化。 在MS 的Docs搜索之后，可以找到CoreApplicationViewTitleBar类。是的，这个就是我们想要的标题栏。文档很短，不过，它提供了我们需要的透明化功能(伪透明)。C">
+<meta name="twitter:image" content="http://yoursite.com/UWP/titleBar/titleBar.jpg">
 
 
 
@@ -120,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/UWP/backRequest/"/>
+  <link rel="canonical" href="http://yoursite.com/UWP/titleBar/"/>
 
 
 
 
 
-  <title>backRequest | Xuwy Blog</title>
+  <title>titleBar | Xuwy Blog</title>
   
 
 
@@ -253,7 +257,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/UWP/backRequest/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/UWP/titleBar/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Xu Weiyuan">
@@ -270,7 +274,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">backRequest</h1>
+          <h1 class="post-title" itemprop="name headline">titleBar</h1>
         
 
         <div class="post-meta">
@@ -282,8 +286,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-18T12:03:16+08:00">
-                2018-03-18
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-19T22:51:58+08:00">
+                2018-03-19
               </time>
             
 
@@ -342,19 +346,41 @@
       
 
       
-        <h1 id="Week-1"><a href="#Week-1" class="headerlink" title="Week 1"></a>Week 1</h1><p>啊，基础的事情都做完了，页面跳转这事情，很简单的，就是一个Navigation，上一篇博客的时候就做完啦。但是，导航到了新页面，怎么回到原来的页面呢？这次就学习一下<strong>后退键</strong>把。</p>
-<h2 id="返回事件"><a href="#返回事件" class="headerlink" title="返回事件"></a>返回事件</h2><blockquote>
-<p>说到后退事件，先不要着急动手。假设，我们的程序有上百个页面，各自之间可以灵活的跳转。那每一个页面都有后退事件，额，又回到了无人车事件了吗？可恶。不过，怎么会有这么蠢的事情嘛。仔细看看自己的UWP项目架构，我们可以发现app.xaml.cs文件。这个文件包含了重要的应用程序事件的事件处理程序，如启动、挂起和其他一些，且可被所有page共有。所以，这次回退事件的完成，我们要在app.xaml.cs文件中完成。</p>
-<p>我们需要在文件中的OnLaunched函数加入如下语句：</p>
-</blockquote>
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">...</span><br><span class="line"><span class="comment">//Add after rootFrame is defined</span></span><br><span class="line">rootFrame.Navigated += OnNavigated;</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="comment">//Add at the trail of the function</span></span><br><span class="line">SystemNavigationManager.GetForCurrentView().BackRequested += BackRequested;</span><br></pre></td></tr></table></figure>
+        <h1 id="Week-2"><a href="#Week-2" class="headerlink" title="Week 2"></a>Week 2</h1><h2 id="标题栏透明化"><a href="#标题栏透明化" class="headerlink" title="标题栏透明化"></a>标题栏透明化</h2><p><img src="/UWP/titleBar/titleBar.jpg" alt="MyList"></p>
+<p>看着自己做好的MyList，总觉得和正常的application差了点什么。这个可恶的标题栏，为什么不是透明的啊，这突然突出来的白色，真是让人不开心。那么，接下来就了解一下标题栏的透明化。</p>
+<p>在MS 的Docs搜索之后，可以找到CoreApplicationViewTitleBar类。是的，这个就是我们想要的标题栏。文档很短，不过，它提供了我们需要的透明化功能(伪透明)。<br>CoreApplicationViewTitleBar 有ExtendViewIntoTitleBar方法，官档叙述如下:</p>
 <blockquote>
-<p>第一个语句注册导航事件，第二个语句注册后退事件。注册了事件，那么我们就需要定义事件:</p>
+<p>ExtendViewIntoTitleBar:</p>
+<p>Gets or sets a value that specifies whether this title bar should replace the default window title bar.<br>Set to true to replace the default window title bar; otherwise, false.</p>
+<p><em>Remarks</em></p>
+<p><em>The first time the app runs, and for secondary views, the default value is false. For the main view of an app, this value persists between application runs.</em></p>
 </blockquote>
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">OnNavigated</span>(<span class="params"><span class="keyword">object</span> sender, NavigationEventArgs e</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//根据页面是否可以返回，在窗口显示返回按钮</span></span><br><span class="line">    SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = ((Frame)sender).CanGoBack ? AppViewBackButtonVisibility.Visible : AppViewBackButtonVisibility.Collapsed;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">BackRequested</span>(<span class="params"><span class="keyword">object</span> sender, BackRequestedEventArgs e</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Frame rootFrame = Window.Current.Content <span class="keyword">as</span> Frame;</span><br><span class="line">    <span class="keyword">if</span> (rootFrame == <span class="literal">null</span>)  <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//Navigate back if possible, and if the event has not already been handled .</span></span><br><span class="line">    <span class="keyword">if</span> (!e.Handled &amp;&amp; rootFrame.CanGoBack)</span><br><span class="line">    &#123;</span><br><span class="line">        e.Handled = <span class="literal">true</span>;</span><br><span class="line">        rootFrame.GoBack();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个方法可以将应用界面拓展到标题栏。所以，我们需要的透明化，可以从这里下手。为了让所有页面的标题栏都同样透明化，我们应该在哪里修改代码呢？看过前面博客的同学应该还有印象。是的，在app.xaml.cs文件中。这个文件中定义的方法可以应用于所有page。</p>
+<p>我们需要添加的代码，就一行:</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CoreApplication.GetCurrentView().TitleBar.ExtendViewIntoTitleBar = <span class="literal">true</span>;</span><br></pre></td></tr></table></figure>
+<p>之后，我们的UI就变成这样啦！</p>
+<p><img src="/UWP/titleBar/titleBar_2.jpg" alt="MyList"></p>
+<p>不过，还有个问题，右上角的命令三连按钮。他们的颜色，绝对是不可忍受的！那么，还要继续修改。但是CoreApplicationViewTitleBar并没有关于这三个按钮的信息。于是继续查阅资料。果然，还是可以动手的。我们还有一个ApplicationViewTitleBar类(是的，还有这个类)。官档中给出了这个类的很多方法，其中基本都是修改titleBar的颜色样式的。那么，自然我们可以写出这样的代码:</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ApplicationView.GetForCurrentView().TitleBar.ButtonBackgroundColor = Colors.White;</span><br></pre></td></tr></table></figure>
+<p>运行结果，并不是我们要的那样，只是背景颜色变白了。那么，我们怎么把它们的背景变透明呢？针对这个属性，查看官档:</p>
 <blockquote>
-<p>这样一来，程序就会在可以返回的时候，显示后退按钮并且返回上一个页面啦。</p>
-<p><em>题外话：程序怎么知道返回哪个界面？A:程序页面跳转信息在堆栈中存储</em></p>
+<p>ButtonBackgroundColor</p>
+<p>Gets or sets the background color of the title bar buttons.</p>
+<p>Value<br>Nullable &lt; Color&gt;</p>
+</blockquote>
+<p>他的值是Color，那么我们去看看官档中对于Color的描述。经过仔细查找，我们发现这么两句话:</p>
+<blockquote>
+<ol>
+<li>Color is a Windows Runtime structure that represents a color that has four channels: A (alpha), R (red), G (green), B (blue).</li>
+<li>Color has a static method FromArgb that acts as a Color value generator</li>
+</ol>
+</blockquote>
+<p>它是一个struct，值域有A (alpha), R (red), G (green), B (blue)。其中A(alpha)可以制造出我们需要的透明效果！那么，更新代码如下:</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ApplicationView.GetForCurrentView().TitleBar.ButtonBackgroundColor = Color.FromArgb(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+<p>这么一来，好看的标题栏，就做出来了！</p>
+<p><img src="/UWP/titleBar/titleBar_3.jpg" alt="MyList"></p>
+<blockquote>
+<p><em>总结一下，官方文档还是很有用的。</em></p>
 </blockquote>
 
       
@@ -388,8 +414,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/UWP/bind/" rel="next" title="bind">
-                <i class="fa fa-chevron-left"></i> bind
+              <a href="/UWP/adaptiveUI/" rel="next" title="adaptiveUI">
+                <i class="fa fa-chevron-left"></i> adaptiveUI
               </a>
             
           </div>
@@ -397,10 +423,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/UWP/adaptiveUI/" rel="prev" title="adaptiveUI">
-                adaptiveUI <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -532,7 +554,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Week-1"><span class="nav-number">1.</span> <span class="nav-text">Week 1</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#返回事件"><span class="nav-number">1.1.</span> <span class="nav-text">返回事件</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Week-2"><span class="nav-number">1.</span> <span class="nav-text">Week 2</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#标题栏透明化"><span class="nav-number">1.1.</span> <span class="nav-text">标题栏透明化</span></a></li></ol></li></ol></div>
             
 
           </div>

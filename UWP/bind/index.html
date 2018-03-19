@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Xuwy Blog">
 <meta property="og:description" content="week 1本周需要完成的事情比较简单，如下：  checkBox 和line的绑定处理 当 CheckBox 被勾选时line出现，取消勾选则line消失   新建Item的逻辑判断 新建一个NewPage。点击create按钮时，检查Title、Description是否为空，DueDate是否正确(是否大于等于当前日期)。如果不正确，弹出对话框，显示错误信息。    对于第二条，知道一个Da">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-19T11:50:10.788Z">
+<meta property="og:updated_time" content="2018-03-19T15:42:03.470Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="bind">
 <meta name="twitter:description" content="week 1本周需要完成的事情比较简单，如下：  checkBox 和line的绑定处理 当 CheckBox 被勾选时line出现，取消勾选则line消失   新建Item的逻辑判断 新建一个NewPage。点击create按钮时，检查Title、Description是否为空，DueDate是否正确(是否大于等于当前日期)。如果不正确，弹出对话框，显示错误信息。    对于第二条，知道一个Da">
@@ -365,7 +365,8 @@
 </li>
 <li><p>基本用法</p>
  <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">object</span> <span class="attr">property</span>=<span class="string">"&#123;x:Bind&#125;"</span> <span class="attr">...</span>/&gt;</span></span><br><span class="line">-or- <span class="tag">&lt;<span class="name">object</span> <span class="attr">property</span>=<span class="string">"&#123;x:Bind propertyPath&#125;"</span> <span class="attr">...</span>/&gt;</span></span><br><span class="line">-or- <span class="tag">&lt;<span class="name">object</span> <span class="attr">property</span>=<span class="string">"&#123;x:Bind bindingProperties&#125;"</span> <span class="attr">...</span>/&gt;</span></span><br><span class="line">-or- <span class="tag">&lt;<span class="name">object</span> <span class="attr">property</span>=<span class="string">"&#123;x:Bind propertyPath, bindingProperties&#125;"</span> <span class="attr">...</span>/&gt;</span></span><br></pre></td></tr></table></figure>
-<p> |parameter|Value|<br> |———|—–|<br> |propertyPath|A string that specifies the property path for the binding. More info is in the Property path section below.|<br> |bindingProperties|One or more binding properties that are specified using a name/value pair syntax.|<br> 这是来自官方文档的解说(抽象难理解)。<br> 阅读官档后，我们再来简单翻译一下上文的用法：我们可以利用x:Bind 对一个object 的某个property与我们希望的数据源进行绑定。其中，数据源的相关信息在{x:Bind parameters}中进行指定。<br> 这个parameters有两个，一个为数据源的值，另一个绑定时的辅助信息，包括转换器(Converter)，模式(Mode)等。其中，每一个都不是必要的。下面分别讲讲提到的参数。</p>
+<p> |parameter|Value|<br> |———|—–|<br> |propertyPath|A string that specifies the property path for the binding. More info is in the Property path section below.|<br> |bindingProperties|One or more binding properties that are specified using a name/value pair syntax.|</p>
+<p> 这是来自官方文档的解说(抽象难理解)。<br> 阅读官档后，我们再来简单翻译一下上文的用法：我们可以利用x:Bind 对一个object 的某个property与我们希望的数据源进行绑定。其中，数据源的相关信息在{x:Bind parameters}中进行指定。<br> 这个parameters有两个，一个为数据源的值，另一个绑定时的辅助信息，包括转换器(Converter)，模式(Mode)等。其中，每一个都不是必要的。下面分别讲讲提到的参数。</p>
 <ul>
 <li><p><strong>propertyPath</strong></p>
 <blockquote>
@@ -535,7 +536,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

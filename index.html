@@ -249,6 +249,183 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/UWP/titleBar/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Xu Weiyuan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Xuwy Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/UWP/titleBar/" itemprop="url">titleBar</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-19T22:51:58+08:00">
+                2018-03-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/UWP/" itemprop="url" rel="index">
+                    <span itemprop="name">UWP</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Week-2"><a href="#Week-2" class="headerlink" title="Week 2"></a>Week 2</h1><h2 id="标题栏透明化"><a href="#标题栏透明化" class="headerlink" title="标题栏透明化"></a>标题栏透明化</h2><p><img src="/UWP/titleBar/titleBar.jpg" alt="MyList"></p>
+<p>看着自己做好的MyList，总觉得和正常的application差了点什么。这个可恶的标题栏，为什么不是透明的啊，这突然突出来的白色，真是让人不开心。那么，接下来就了解一下标题栏的透明化。</p>
+<p>在MS 的Docs搜索之后，可以找到CoreApplicationViewTitleBar类。是的，这个就是我们想要的标题栏。文档很短，不过，它提供了我们需要的透明化功能(伪透明)。<br>CoreApplicationViewTitleBar 有ExtendViewIntoTitleBar方法，官档叙述如下:</p>
+<blockquote>
+<p>ExtendViewIntoTitleBar:</p>
+<p>Gets or sets a value that specifies whether this title bar should replace the default window title bar.<br>Set to true to replace the default window title bar; otherwise, false.</p>
+<p><em>Remarks</em></p>
+<p><em>The first time the app runs, and for secondary views, the default value is false. For the main view of an app, this value persists between application runs.</em></p>
+</blockquote>
+<p>这个方法可以将应用界面拓展到标题栏。所以，我们需要的透明化，可以从这里下手。为了让所有页面的标题栏都同样透明化，我们应该在哪里修改代码呢？看过前面博客的同学应该还有印象。是的，在app.xaml.cs文件中。这个文件中定义的方法可以应用于所有page。</p>
+<p>我们需要添加的代码，就一行:</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CoreApplication.GetCurrentView().TitleBar.ExtendViewIntoTitleBar = <span class="literal">true</span>;</span><br></pre></td></tr></table></figure>
+<p>之后，我们的UI就变成这样啦！</p>
+<p><img src="/UWP/titleBar/titleBar_2.jpg" alt="MyList"></p>
+<p>不过，还有个问题，右上角的命令三连按钮。他们的颜色，绝对是不可忍受的！那么，还要继续修改。但是CoreApplicationViewTitleBar并没有关于这三个按钮的信息。于是继续查阅资料。果然，还是可以动手的。我们还有一个ApplicationViewTitleBar类(是的，还有这个类)。官档中给出了这个类的很多方法，其中基本都是修改titleBar的颜色样式的。那么，自然我们可以写出这样的代码:</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ApplicationView.GetForCurrentView().TitleBar.ButtonBackgroundColor = Colors.White;</span><br></pre></td></tr></table></figure>
+<p>运行结果，并不是我们要的那样，只是背景颜色变白了。那么，我们怎么把它们的背景变透明呢？针对这个属性，查看官档:</p>
+<blockquote>
+<p>ButtonBackgroundColor</p>
+<p>Gets or sets the background color of the title bar buttons.</p>
+<p>Value<br>Nullable &lt; Color&gt;</p>
+</blockquote>
+<p>他的值是Color，那么我们去看看官档中对于Color的描述。经过仔细查找，我们发现这么两句话:</p>
+<blockquote>
+<ol>
+<li>Color is a Windows Runtime structure that represents a color that has four channels: A (alpha), R (red), G (green), B (blue).</li>
+<li>Color has a static method FromArgb that acts as a Color value generator</li>
+</ol>
+</blockquote>
+<p>它是一个struct，值域有A (alpha), R (red), G (green), B (blue)。其中A(alpha)可以制造出我们需要的透明效果！那么，更新代码如下:</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ApplicationView.GetForCurrentView().TitleBar.ButtonBackgroundColor = Color.FromArgb(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+<p>这么一来，好看的标题栏，就做出来了！</p>
+<p><img src="/UWP/titleBar/titleBar_3.jpg" alt="MyList"></p>
+<blockquote>
+<p><em>总结一下，官方文档还是很有用的。</em></p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/UWP/adaptiveUI/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -717,7 +894,8 @@
 </li>
 <li><p>基本用法</p>
  <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">object</span> <span class="attr">property</span>=<span class="string">"&#123;x:Bind&#125;"</span> <span class="attr">...</span>/&gt;</span></span><br><span class="line">-or- <span class="tag">&lt;<span class="name">object</span> <span class="attr">property</span>=<span class="string">"&#123;x:Bind propertyPath&#125;"</span> <span class="attr">...</span>/&gt;</span></span><br><span class="line">-or- <span class="tag">&lt;<span class="name">object</span> <span class="attr">property</span>=<span class="string">"&#123;x:Bind bindingProperties&#125;"</span> <span class="attr">...</span>/&gt;</span></span><br><span class="line">-or- <span class="tag">&lt;<span class="name">object</span> <span class="attr">property</span>=<span class="string">"&#123;x:Bind propertyPath, bindingProperties&#125;"</span> <span class="attr">...</span>/&gt;</span></span><br></pre></td></tr></table></figure>
-<p> |parameter|Value|<br> |———|—–|<br> |propertyPath|A string that specifies the property path for the binding. More info is in the Property path section below.|<br> |bindingProperties|One or more binding properties that are specified using a name/value pair syntax.|<br> 这是来自官方文档的解说(抽象难理解)。<br> 阅读官档后，我们再来简单翻译一下上文的用法：我们可以利用x:Bind 对一个object 的某个property与我们希望的数据源进行绑定。其中，数据源的相关信息在{x:Bind parameters}中进行指定。<br> 这个parameters有两个，一个为数据源的值，另一个绑定时的辅助信息，包括转换器(Converter)，模式(Mode)等。其中，每一个都不是必要的。下面分别讲讲提到的参数。</p>
+<p> |parameter|Value|<br> |———|—–|<br> |propertyPath|A string that specifies the property path for the binding. More info is in the Property path section below.|<br> |bindingProperties|One or more binding properties that are specified using a name/value pair syntax.|</p>
+<p> 这是来自官方文档的解说(抽象难理解)。<br> 阅读官档后，我们再来简单翻译一下上文的用法：我们可以利用x:Bind 对一个object 的某个property与我们希望的数据源进行绑定。其中，数据源的相关信息在{x:Bind parameters}中进行指定。<br> 这个parameters有两个，一个为数据源的值，另一个绑定时的辅助信息，包括转换器(Converter)，模式(Mode)等。其中，每一个都不是必要的。下面分别讲讲提到的参数。</p>
 <ul>
 <li><p><strong>propertyPath</strong></p>
 <blockquote>
@@ -1083,7 +1261,8 @@
 <li><a href="../bind/index.html">Week1-UWP-x:Bind &amp;&amp; Binding</a></li>
 <li><a href="../backRequest/index.html">Week1-UWP-后退键</a></li>
 <li><a href="../adaptiveUI/index.html">Week2-UWP-自适应UI</a></li>
-<li><a href="https://xwy27.github.io/2018/03/08/hello-world/" target="_blank" rel="noopener">Week2-UWP-本地图片选取 &amp;&amp; 圆形图片 &amp;&amp; 标题栏透明化</a></li>
+<li><a href="../titleBar/index.html">Week2-UWP-标题栏透明化</a></li>
+<li><a href="https://xwy27.github.io/2018/03/08/hello-world/" target="_blank" rel="noopener">Week2-UWP-本地图片选取 &amp;&amp; 圆形图片</a></li>
 </ol>
 
           
@@ -1316,7 +1495,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
