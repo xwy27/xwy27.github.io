@@ -249,6 +249,170 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/UWP/picture/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Xu Weiyuan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Xuwy Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/UWP/picture/" itemprop="url">本地图片选取</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-21T16:22:15+08:00">
+                2018-03-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/UWP/" itemprop="url" rel="index">
+                    <span itemprop="name">UWP</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Week-2"><a href="#Week-2" class="headerlink" title="Week 2"></a>Week 2</h1><p>上次完成了标题栏的透明化。这次我们来了解UWP中的本地图片选取。</p>
+<h2 id="本地图片选取"><a href="#本地图片选取" class="headerlink" title="本地图片选取"></a>本地图片选取</h2><p>在MS的 Docs中，有FileOpenPicker Class。我们来看看官档中对于这个类的描述和文件选取的例子:</p>
+<blockquote>
+<p><strong>FileOpenPicker</strong><br>Represents a UI element that lets the user choose folders.</p>
+<p><strong>Pick a single file: complete code listing</strong><br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&gt;<span class="keyword">var</span> picker = <span class="keyword">new</span> Windows.Storage.Pickers.FileOpenPicker();</span><br><span class="line">&gt;picker.ViewMode = Windows.Storage.Pickers.PickerViewMode.Thumbnail;</span><br><span class="line">&gt;picker.SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.PicturesLibrary;</span><br><span class="line">&gt;picker.FileTypeFilter.Add(<span class="string">".jpg"</span>);</span><br><span class="line">&gt;picker.FileTypeFilter.Add(<span class="string">".jpeg"</span>);</span><br><span class="line">&gt;picker.FileTypeFilter.Add(<span class="string">".png"</span>);</span><br><span class="line">&gt;</span><br><span class="line">&gt;Windows.Storage.StorageFile file = <span class="keyword">await</span> picker.PickSingleFileAsync();</span><br><span class="line">&gt;<span class="keyword">if</span> (file != <span class="literal">null</span>)</span><br><span class="line">&gt;&#123;</span><br><span class="line">&gt;   <span class="comment">// Application now has read/write access to the picked file</span></span><br><span class="line">&gt;   <span class="keyword">this</span>.textBlock.Text = <span class="string">"Picked photo: "</span> + file.Name;</span><br><span class="line">&gt;&#125;</span><br><span class="line">&gt;<span class="keyword">else</span></span><br><span class="line">&gt;&#123;</span><br><span class="line">&gt;   <span class="keyword">this</span>.textBlock.Text = <span class="string">"Operation cancelled."</span>;</span><br><span class="line">&gt;&#125;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>通过上面的例子，我们可以看到FileOpenPicker的工作流程:</p>
+<ul>
+<li>定义一个FileOpenPicker的实例</li>
+<li>设定ViewMode,SuggestedStartLocation和 FileTypeFilter的值<ul>
+<li>ViewMode给定工作时的视图模型</li>
+<li>SuggestedStartLocation指定启动位置</li>
+<li>FileTypeFilter给出选取的文件类型</li>
+</ul>
+</li>
+</ul>
+<p>FileOpenPicker属性值设定完之后，它的PickSingleFileAsync方法可以返回我们选取的文件，其类型为StorageFile。然后，利用一个StorageFile实例对选取的文件进行处理(注意判断选取的文件是否为空)。</p>
+<p>接下来看看我们的XAML和 C#代码:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--Xaml code for image--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">Rectangle</span> <span class="attr">x:Name</span>=<span class="string">"Photo"</span> <span class="attr">Width</span>=<span class="string">"200"</span> <span class="attr">Height</span>=<span class="string">"200"</span> <span class="attr">RadiusX</span>=<span class="string">"150"</span> <span class="attr">RadiusY</span>=<span class="string">"150"</span> <span class="attr">VerticalAlignment</span>=<span class="string">"Center"</span> <span class="attr">HorizontalAlignment</span>=<span class="string">"Center"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!--利用rectangle的 RadiusX和 RadiusY的属性进行圆形界面的设计</span></span><br><span class="line"><span class="comment">然后再用图片对界面进行填充，以此达到圆形图片的UI效果--&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">async</span> <span class="keyword">void</span> <span class="title">Select_Photo</span>(<span class="params"><span class="keyword">object</span> sender, RoutedEventArgs e</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    FileOpenPicker picker = <span class="keyword">new</span> FileOpenPicker();</span><br><span class="line">    <span class="comment">// Initialize the picture file type to take</span></span><br><span class="line">    picker.FileTypeFilter.Add(<span class="string">".jpg"</span>);</span><br><span class="line">    picker.FileTypeFilter.Add(<span class="string">".jpeg"</span>);</span><br><span class="line">    picker.FileTypeFilter.Add(<span class="string">".png"</span>);</span><br><span class="line">    picker.FileTypeFilter.Add(<span class="string">".bmp"</span>);</span><br><span class="line">    picker.SuggestedStartLocation = PickerLocationId.PicturesLibrary;</span><br><span class="line"></span><br><span class="line">    StorageFile file = <span class="keyword">await</span> picker.PickSingleFileAsync();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (file != <span class="literal">null</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// Load the selected picture</span></span><br><span class="line">        IRandomAccessStream ir = <span class="keyword">await</span> file.OpenAsync(FileAccessMode.Read);</span><br><span class="line">        BitmapImage bi = <span class="keyword">new</span> BitmapImage();</span><br><span class="line">        <span class="keyword">await</span> bi.SetSourceAsync(ir);</span><br><span class="line">        <span class="keyword">var</span> brush = <span class="keyword">new</span> ImageBrush</span><br><span class="line">        &#123;</span><br><span class="line">            ImageSource = bi</span><br><span class="line">        &#125;;</span><br><span class="line">        Photo.Fill = brush;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>是的，最后要解决的问题就是将选择的图片显示到我们的图片框中。<br>如果是使用image控件，那么在官档查一下它的source设置方法就可以了。这里讲一下怎么给rectangle控件设置它的填充图片 uri。</p>
+<p>控件的Fill需要一个 ImageBrush类型的值。ImageBrush的 Source需要使用 BitmapImage来赋值。BitmapImage有一个 接受IRandomAccessStream类型参数的 SetSourceAsync的异步方法用来设置它的 source url。StorageFile有一个 OpenAsync的异步方法，可以获得文件的url，并且是IRandomAccessStream类型(<em>查阅官档到昏厥，并没有深究其中的一些细节，感兴趣的可以了解一下</em>)。所以，这就有了最后的那段代码。</p>
+<p>至此，本地图片的选取就完成啦。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/UWP/titleBar/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1262,7 +1426,7 @@
 <li><a href="../backRequest/index.html">Week1-UWP-后退键</a></li>
 <li><a href="../adaptiveUI/index.html">Week2-UWP-自适应UI</a></li>
 <li><a href="../titleBar/index.html">Week2-UWP-标题栏透明化</a></li>
-<li><a href="https://xwy27.github.io/2018/03/08/hello-world/" target="_blank" rel="noopener">Week2-UWP-本地图片选取 &amp;&amp; 圆形图片</a></li>
+<li><a href="../picture/index.html">Week2-UWP-本地图片选取</a></li>
 </ol>
 
           
@@ -1495,7 +1659,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
