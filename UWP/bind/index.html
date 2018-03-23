@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Xuwy Blog">
 <meta property="og:description" content="week 1本周需要完成的事情比较简单，如下：  checkBox 和line的绑定处理 当 CheckBox 被勾选时line出现，取消勾选则line消失   新建Item的逻辑判断 新建一个NewPage。点击create按钮时，检查Title、Description是否为空，DueDate是否正确(是否大于等于当前日期)。如果不正确，弹出对话框，显示错误信息。    对于第二条，知道一个Da">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-19T15:42:03.470Z">
+<meta property="og:updated_time" content="2018-03-22T06:52:30.766Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="bind">
 <meta name="twitter:description" content="week 1本周需要完成的事情比较简单，如下：  checkBox 和line的绑定处理 当 CheckBox 被勾选时line出现，取消勾选则line消失   新建Item的逻辑判断 新建一个NewPage。点击create按钮时，检查Title、Description是否为空，DueDate是否正确(是否大于等于当前日期)。如果不正确，弹出对话框，显示错误信息。    对于第二条，知道一个Da">
@@ -354,6 +354,7 @@
 </li>
 </ol>
 <p>对于第二条，知道一个DateTimeOffset，就没什么需要讲的了。针对第一条，需要进行控件的状态绑定，可分为初阶操作和进阶操作。现在来看看两种操作。</p>
+<a id="more"></a>
 <h2 id="初阶操作"><a href="#初阶操作" class="headerlink" title="初阶操作"></a>初阶操作</h2><p>对于checkBox 控件，我们在官方文档可以发现，它有针对checked 和 Unchecked两个状态(如果是使用VS进行开发，那么控件属性状态栏会更容易看到)。那么，操作就很简单啦，checked时候，line显示，Unchecked时候，line不显示。于是，在给checkBox的两个状态绑定了方法后，可以在当前page 的cs文件中写出如下代码：</p>
 <figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//line is the name of the name of the line control to bind</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">IsChecked</span>(<span class="params"><span class="keyword">object</span> sender, RoutedEventArgs e</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  line.Visibility = Visibility.Visible;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">IsUnchecked</span>(<span class="params"><span class="keyword">object</span> sender, RoutedEventArgs e</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  line.Visibility = Visibility.Collapsed;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>好了，完成了。运行一下，达到预期效果。<strong>但是！</strong> 如果，我们特别懒，toDoList中的全部任务都没完成，然后又喜欢每天给它加东西，那么，page的 cs文件中就会有特别特别特别多的 checked和 unchecked方法(<em>百度无人车，可以了解一下</em>)。</p>
@@ -536,7 +537,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -547,7 +548,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -558,7 +559,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

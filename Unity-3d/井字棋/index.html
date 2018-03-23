@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Unity-3d," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Homework_1Tic Tac Toe 亮点：页面跳转，单人模式，双人模式">
+<meta name="keywords" content="Unity-3d">
+<meta property="og:type" content="article">
+<meta property="og:title" content="井字棋">
+<meta property="og:url" content="http://yoursite.com/Unity-3d/井字棋/index.html">
+<meta property="og:site_name" content="Xuwy Blog">
+<meta property="og:description" content="Homework_1Tic Tac Toe 亮点：页面跳转，单人模式，双人模式">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/Unity-3d/井字棋/welcome.jpg">
+<meta property="og:image" content="http://yoursite.com/Unity-3d/井字棋/one.jpg">
+<meta property="og:image" content="http://yoursite.com/Unity-3d/井字棋/two.jpg">
+<meta property="og:updated_time" content="2018-03-23T05:14:02.403Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="井字棋">
+<meta name="twitter:description" content="Homework_1Tic Tac Toe 亮点：页面跳转，单人模式，双人模式">
+<meta name="twitter:image" content="http://yoursite.com/Unity-3d/井字棋/welcome.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/Unity-3d/井字棋/"/>
+
+
+
+
+
+  <title>井字棋 | Xuwy Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/xwy27"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png" alt="Fork me on GitHub"></a>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Xuwy Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Learning Blog</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Unity-3d/井字棋/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Xu Weiyuan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Xuwy Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">井字棋</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-22T14:43:20+08:00">
+                2018-03-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Unity-3d/" itemprop="url" rel="index">
+                    <span itemprop="name">Unity-3d</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Homework-1"><a href="#Homework-1" class="headerlink" title="Homework_1"></a>Homework_1</h1><h2 id="Tic-Tac-Toe"><a href="#Tic-Tac-Toe" class="headerlink" title="Tic Tac Toe"></a>Tic Tac Toe</h2><blockquote>
+<p><em>亮点：页面跳转，单人模式，双人模式</em><br><a id="more"></a></p>
+</blockquote>
+<p>游戏内容： 井字棋<br>技术限制： 仅允许使用 IMGUI 构建 UI</p>
+<p>本次作业是利用 Unity 制作 Tic Tac Toe 游戏。这个技术限制是不让我们使用 Unity 自带的视图操作工具进行制作，而是利用 code 来达到目的。将本次作业分为两个模块:</p>
+<ol>
+<li>界面模块</li>
+<li>逻辑模块</li>
+</ol>
+<p>我们先将基础界面创建好，再进行逻辑代码的实现。</p>
+<h2 id="实现过程"><a href="#实现过程" class="headerlink" title="实现过程"></a>实现过程</h2><ol>
+<li><p>基础界面<br> 井字棋游戏的主要界面是它的井字区域。我们利用九个按钮来实现这个井字区域。</p>
+<ol>
+<li><p>添加按钮并居中<br> 我们使用OnGUI()来实现控件的添加。添加按钮控件使用如下函数:</p>
+ <figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*Prototype:</span></span><br><span class="line"><span class="comment">GUI.Button(Rect position, string text);</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">int</span> bHeight = <span class="number">100</span>;</span><br><span class="line"><span class="keyword">int</span> bWidth = <span class="number">100</span>;</span><br><span class="line"><span class="keyword">float</span> height = Screen.height * <span class="number">0.5</span>f - <span class="number">150</span>;</span><br><span class="line"><span class="keyword">float</span> width = Screen.width * <span class="number">0.5</span>f - <span class="number">150</span>;</span><br><span class="line"></span><br><span class="line">GUI.Button(<span class="keyword">new</span> Rect(width, height, bWidth, bHeight), <span class="string">""</span>);</span><br></pre></td></tr></table></figure>
+<p> 其中，Screen.height 和 Screen.width 是当前窗口的高和宽，利用这两个参数，我们设置按钮的位置局中。要注意到的是，参数 position 给定的是按钮左上角的位置，进行简单的数学分析，就可以得到按钮中心点的位置设置方法。</p>
+</li>
+<li><p>基础页面<br> 单个按钮添加完毕，接下来就完成井字区域和Reset按钮的添加，以及界面欢迎词和游戏结束提示词的添加。代码如下：</p>
+ <figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//UI Style parameters</span></span><br><span class="line">GUIStyle tStyle = <span class="keyword">new</span> GUIStyle &#123;</span><br><span class="line">    fontSize = <span class="number">50</span>,</span><br><span class="line">    fontStyle = FontStyle.Bold</span><br><span class="line">&#125;;</span><br><span class="line">GUIStyle mStyle = <span class="keyword">new</span> GUIStyle &#123;</span><br><span class="line">    fontSize = <span class="number">25</span>,</span><br><span class="line">    fontStyle = FontStyle.Bold</span><br><span class="line">&#125;;</span><br><span class="line">mStyle.normal.textColor = Color.red;</span><br><span class="line"></span><br><span class="line">GUI.Button(<span class="keyword">new</span> Rect(width + bWidth / <span class="number">2</span>, height + <span class="number">3.5</span>f * bHeight, bWidth * <span class="number">2</span>, bHeight / <span class="number">2</span>), <span class="string">"Reset"</span>);</span><br><span class="line"></span><br><span class="line">GUI.Label(<span class="keyword">new</span> Rect(width + <span class="number">50</span>, height - <span class="number">75</span>, <span class="number">100</span>, <span class="number">100</span>), msg, msgStyle);</span><br><span class="line"></span><br><span class="line">GUI.Label(<span class="keyword">new</span> Rect(width + <span class="number">20</span>, height - <span class="number">150</span>, <span class="number">100</span>, <span class="number">100</span>), <span class="string">"Tic Tac Toe"</span>, tStyle);</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; ++i) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">3</span>; ++j) &#123;</span><br><span class="line">        GUI.Button(<span class="keyword">new</span> Rect(width + i * bWidth, height + j * bHeight, bWidth, bHeight), <span class="string">""</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> GUI添加控件的构造函数的参数有一个 GUIStyle 类型的参数，可以用来设置控件的样式。推荐使用变量来进行样式设置(如上代码)，这样可以使得代码维护更为方便。</p>
+</li>
+</ol>
+</li>
+<li><p>逻辑实现<br> 基础界面实现完毕，接下来我们来完成逻辑代码的实现。</p>
+<ul>
+<li><p>辅助参数设计</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> Player &#123; player0, player1, player2&#125;;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">bool</span> playing = <span class="literal">true</span>;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">bool</span> turn = <span class="literal">true</span>;</span><br><span class="line"><span class="keyword">private</span> Player[,] symbol = <span class="keyword">new</span> Player [<span class="number">3</span>,<span class="number">3</span>];</span><br></pre></td></tr></table></figure>
+<p>  枚举变量帮助判断无人获胜，先手获胜，后手获胜；playing判断游戏是否结束；turn判断轮到哪一位玩家；symbol用来判断哪位玩家占据井字区域的那一块。</p>
+</li>
+<li><p>symbol 填充</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; ++i) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">3</span>; ++j) &#123;</span><br><span class="line">        <span class="keyword">if</span> (symbol[i, j] == Player.player1) &#123;</span><br><span class="line">            GUI.Button(<span class="keyword">new</span> Rect(width + i * bWidth, height + j * bHeight, bWidth, bHeight), <span class="string">"X"</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (symbol[i, j] == Player.player2) &#123;</span><br><span class="line">            GUI.Button(<span class="keyword">new</span> Rect(width + i * bWidth, height + j * bHeight, bWidth, bHeight), <span class="string">"O"</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (GUI.Button(<span class="keyword">new</span> Rect(width + i * bWidth, height + j * bHeight, bWidth, bHeight), <span class="string">""</span>)) &#123;</span><br><span class="line">                <span class="keyword">if</span> (playing) &#123;</span><br><span class="line">                    symbol[i, j] = turn ? Player.player1 : Player.player2;</span><br><span class="line">                    turn = !turn;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>  每次刷新页面，可以分出三种情况:  </p>
+<ol>
+<li>当前区域被一号玩家占据，更新为 X</li>
+<li>当前区域被二号玩家占据，更新为 O</li>
+<li>当前区域未被占据，且被点击，则更新符号，交换回合</li>
+</ol>
+</li>
+<li><p>获胜判断<br>  采用枚举法进行获胜的判断，如果无人获胜，返回0号玩家。</p>
+  <figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> Player <span class="title">Check</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">//Row check</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; ++i) &#123;</span><br><span class="line">        <span class="keyword">if</span> (symbol[i, <span class="number">0</span>] != Player.player0 &amp;&amp;</span><br><span class="line">            symbol[i, <span class="number">0</span>] == symbol[i, <span class="number">1</span>] &amp;&amp;</span><br><span class="line">            symbol[i, <span class="number">1</span>] == symbol[i, <span class="number">2</span>]) &#123;</span><br><span class="line">            <span class="keyword">return</span> symbol[i, <span class="number">0</span>];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//Column check</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">3</span>; ++j) &#123;</span><br><span class="line">        <span class="keyword">if</span> (symbol[<span class="number">0</span>, j] != Player.player0 &amp;&amp;</span><br><span class="line">            symbol[<span class="number">0</span>, j] == symbol[<span class="number">1</span>, j] &amp;&amp;</span><br><span class="line">            symbol[<span class="number">1</span>, j] == symbol[<span class="number">2</span>, j]) &#123;</span><br><span class="line">            <span class="keyword">return</span> symbol[<span class="number">0</span>, j];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//Cross line check</span></span><br><span class="line">    <span class="keyword">if</span> (symbol[<span class="number">1</span>, <span class="number">1</span>] != Player.player0) &#123;</span><br><span class="line">        <span class="keyword">if</span> (symbol[<span class="number">1</span>, <span class="number">1</span>] == symbol[<span class="number">0</span>, <span class="number">0</span>] &amp;&amp; symbol[<span class="number">1</span>, <span class="number">1</span>] == symbol[<span class="number">2</span>, <span class="number">2</span>] ||</span><br><span class="line">            symbol[<span class="number">1</span>, <span class="number">1</span>] == symbol[<span class="number">0</span>, <span class="number">2</span>] &amp;&amp; symbol[<span class="number">1</span>, <span class="number">1</span>] == symbol[<span class="number">2</span>, <span class="number">0</span>]) &#123;</span><br><span class="line">            <span class="keyword">return</span> symbol[<span class="number">1</span>, <span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> Player.player0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>  有人获胜时，显示获胜信息(写在OnGUI()函数内)。</p>
+  <figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">  <span class="comment">//Check if someone wins</span></span><br><span class="line">  <span class="keyword">if</span> (winner != Player.player0) &#123;</span><br><span class="line">    msg = (winner == Player.player1 ? <span class="string">"Player1(X) Wins!"</span> : <span class="string">"Player2(O) Wins!"</span>);</span><br><span class="line">    GUI.Label(<span class="keyword">new</span> Rect(width + <span class="number">50</span>, height - <span class="number">75</span>, <span class="number">100</span>, <span class="number">100</span>), msg, mStyle);</span><br><span class="line">    playing = !playing;</span><br><span class="line">    GUI.enabled = <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>界面重置<br>将所有辅助变量重置为初始值。</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Reset the screen</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Reset</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    playing = <span class="literal">true</span>;</span><br><span class="line">    turn = <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; ++i) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">3</span>; ++j) &#123;</span><br><span class="line">            symbol[i,j] = Player.player0;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>点击Reset按钮时，同样进行重置(写在OnGUI()函数内)。</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Reset button</span></span><br><span class="line"><span class="keyword">if</span> (GUI.Button(<span class="keyword">new</span> Rect(width + bWidth / <span class="number">2</span>, height + <span class="number">3.5</span>f * bHeight, bWidth * <span class="number">2</span>, bHeight / <span class="number">2</span>), <span class="string">"Reset"</span>)) &#123;</span><br><span class="line">    Reset();</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>进阶游戏</p>
+<ul>
+<li><p>欢迎页面与页面跳转</p>
+<p>  在Unity项目中，新建一个场景，当作初始页面。然后为其添加一个 C# script 文件，为其创建跳转按钮。界面设计，在此略过。首先，在 unity 中，场景跳转依靠 Application.LoadLevel() 函数。</p>
+  <figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*有两个重载函数*/</span></span><br><span class="line">Application.LoadLevel(<span class="keyword">int</span> screenId);</span><br><span class="line">Application.LoadLevel(<span class="keyword">string</span> screenName);</span><br></pre></td></tr></table></figure>
+<p>  为了让这个函数能够找到我们写的场景，我们需要先做这样一件事:File-&gt;Build Setting-&gt;将所有 Screen 拖入其中。然后我们就可以完成起始页面的逻辑代码实现了，如下:</p>
+  <figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">float</span> height = Screen.height * <span class="number">0.5</span>f;</span><br><span class="line"><span class="keyword">float</span> width = Screen.width * <span class="number">0.5</span>f;</span><br><span class="line"><span class="keyword">int</span> bHeight = <span class="number">100</span>;</span><br><span class="line"><span class="keyword">int</span> bWidth = <span class="number">150</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (GUI.Button(<span class="keyword">new</span> Rect(width - bWidth / <span class="number">2</span> - <span class="number">100</span>, height - bHeight / <span class="number">2</span>, bWidth, bHeight), <span class="string">"One Player Mode"</span>)) &#123;</span><br><span class="line">    Application.LoadLevel(<span class="string">"OnePlayerMode"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (GUI.Button(<span class="keyword">new</span> Rect(width - bWidth / <span class="number">2</span> + <span class="number">100</span>, height - bHeight / <span class="number">2</span>, bWidth, bHeight), <span class="string">"Two Player Mode"</span>)) &#123;</span><br><span class="line">    Application.LoadLevel(<span class="string">"TwoPlayersMode"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>单人模式</p>
+<p>  这里，我们需要实现一个 “AI” 来和玩家进行游戏。看起来工作很复杂，但可以分解为两个部分，游戏回合的执行过程和 “AI” 的动作执行</p>
+<ul>
+<li><p>游戏回合的执行过程</p>
+<p>执行过程并不复杂，更改部分就是不同回合的执行动作过程。在 Two Players Mode 的基础代码下，对回合进行判断。在 “AI” turn 的情况下，分解动作执行过程:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (能获胜) &#123;</span><br><span class="line">    获胜</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (对手下一步获胜) &#123;</span><br><span class="line">        堵住对手</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        下一步棋子</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>封装函数之后，大致回合代码如下:</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; ++i) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">3</span>; ++j) &#123;</span><br><span class="line">        <span class="keyword">if</span> (symbol[i, j] == Player.player1) &#123;</span><br><span class="line">            <span class="comment">//Change to X</span></span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (symbol[i, j] == Player.player2) &#123;</span><br><span class="line">            <span class="comment">//Change to O</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (playing) &#123;</span><br><span class="line">                <span class="keyword">if</span> (turn) &#123;</span><br><span class="line">                    <span class="comment">//Player turn</span></span><br><span class="line">                    <span class="comment">//Listening for click event</span></span><br><span class="line">                    turn = <span class="literal">false</span>;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    GUI.Button(<span class="keyword">new</span> Rect(width + i * bWidth, height + j * bHeight, bWidth, bHeight), <span class="string">""</span>);</span><br><span class="line"></span><br><span class="line">                    a_x = a_y = <span class="number">-1</span>;</span><br><span class="line">                    CanWin();</span><br><span class="line">                    <span class="keyword">if</span> (a_x == <span class="number">-1</span> &amp;&amp; a_y == <span class="number">-1</span>) &#123;</span><br><span class="line">                        Block();</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">if</span> (a_x == <span class="number">-1</span> &amp;&amp; a_y == <span class="number">-1</span>) &#123;</span><br><span class="line">                        RandomStep();</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">if</span> (a_x != <span class="number">-1</span> &amp;&amp; a_y != <span class="number">-1</span> &amp;&amp; symbol[a_x, a_y] == Player.player0) &#123;</span><br><span class="line">                        symbol[a_x, a_y] = Player.player2;</span><br><span class="line">                    &#125;</span><br><span class="line">                    turn = <span class="literal">true</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>“AI” 动作执行<br>可以获胜，我们需要对三个情况进行遍历:对角线，行和列。</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">CanWin</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">//cross line to win</span></span><br><span class="line">    <span class="keyword">if</span> (symbol[<span class="number">1</span>, <span class="number">1</span>] == Player.player2) &#123;</span><br><span class="line">        <span class="keyword">if</span> (symbol[<span class="number">0</span>, <span class="number">0</span>] == Player.player2 &amp;&amp;</span><br><span class="line">            symbol[<span class="number">2</span>, <span class="number">2</span>] == Player.player0) &#123;</span><br><span class="line">            a_x = <span class="number">2</span>;</span><br><span class="line">            a_y = <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (symbol[<span class="number">2</span>, <span class="number">2</span>] == Player.player2 &amp;&amp;</span><br><span class="line">            symbol[<span class="number">0</span>, <span class="number">0</span>] == Player.player0) &#123;</span><br><span class="line">            a_x = <span class="number">0</span>;</span><br><span class="line">            a_y = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (symbol[<span class="number">2</span>, <span class="number">0</span>] == Player.player2 &amp;&amp;</span><br><span class="line">            symbol[<span class="number">0</span>, <span class="number">2</span>] == Player.player0) &#123;</span><br><span class="line">            a_x = <span class="number">0</span>;</span><br><span class="line">            a_y = <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (symbol[<span class="number">0</span>, <span class="number">2</span>] == Player.player2 &amp;&amp;</span><br><span class="line">            symbol[<span class="number">2</span>, <span class="number">0</span>] == Player.player0) &#123;</span><br><span class="line">            a_x = <span class="number">2</span>;</span><br><span class="line">            a_y = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; ++i) &#123;</span><br><span class="line">        <span class="keyword">int</span> row = i;</span><br><span class="line">        <span class="keyword">int</span> col = i;</span><br><span class="line">        <span class="comment">//row to win</span></span><br><span class="line">        <span class="keyword">if</span> (symbol[row, <span class="number">0</span>] == Player.player2) &#123;</span><br><span class="line">            <span class="keyword">if</span> (symbol[row, <span class="number">1</span>] == Player.player2 &amp;&amp;</span><br><span class="line">                symbol[row, <span class="number">2</span>] == Player.player0) &#123;</span><br><span class="line">                a_x = row;</span><br><span class="line">                a_y = <span class="number">2</span>;</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (symbol[row, <span class="number">2</span>] == Player.player2 &amp;&amp;</span><br><span class="line">                symbol[row, <span class="number">1</span>] == Player.player0) &#123;</span><br><span class="line">                a_x = row;</span><br><span class="line">                a_y = <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (symbol[row, <span class="number">1</span>] == Player.player2) &#123;</span><br><span class="line">            <span class="keyword">if</span> (symbol[row, <span class="number">2</span>] == Player.player2 &amp;&amp;</span><br><span class="line">                symbol[row, <span class="number">0</span>] == Player.player0) &#123;</span><br><span class="line">                a_x = row;</span><br><span class="line">                a_y = <span class="number">0</span>;</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//column to win</span></span><br><span class="line">        <span class="keyword">if</span> (symbol[<span class="number">0</span>, col] == Player.player2) &#123;</span><br><span class="line">            <span class="keyword">if</span> (symbol[<span class="number">1</span>, col] == Player.player2 &amp;&amp;</span><br><span class="line">                symbol[<span class="number">2</span>, col] == Player.player0) &#123;</span><br><span class="line">                a_x = <span class="number">2</span>;</span><br><span class="line">                a_y = col;</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (symbol[<span class="number">2</span>, col] == Player.player2 &amp;&amp;</span><br><span class="line">                symbol[<span class="number">1</span>, col] == Player.player0) &#123;</span><br><span class="line">                a_x = <span class="number">1</span>;</span><br><span class="line">                a_y = col;</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (symbol[<span class="number">1</span>, col] == Player.player2) &#123;</span><br><span class="line">            <span class="keyword">if</span> (symbol[<span class="number">2</span>, col] == Player.player2 &amp;&amp;</span><br><span class="line">                symbol[<span class="number">0</span>, col] == Player.player0) &#123;</span><br><span class="line">                a_x = <span class="number">0</span>;</span><br><span class="line">                a_y = col;</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>没错，对于封堵对手，其实就是上面函数的翻版，将判断条件改成对手就行了。</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Block</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">//cross line to win</span></span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; ++i) &#123;</span><br><span class="line">        <span class="keyword">int</span> row = i;</span><br><span class="line">        <span class="keyword">int</span> col = i;</span><br><span class="line">        <span class="comment">//row to win</span></span><br><span class="line">        <span class="comment">//...</span></span><br><span class="line">        <span class="comment">//column to win</span></span><br><span class="line">        <span class="comment">//...</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>下一步棋。除却上面两个函数的算法外，这是另一个决定这个 “AI” 智能程度的函数。技术较菜加时间因素，只能实现随机在空白区域下一步棋。在这个函数实现过程中，容易出现访问越界，选取到已填充区块和暴力穷举程序崩溃等问题，请善用Debug.Log()进行辅助。这里采用每次遍历井字区域并存储空白区域坐标，再在坐标内进行随机选取，避免越界，暴力循环的问题。</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">RandomStep</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    List&lt;<span class="keyword">int</span>&gt; row = <span class="keyword">new</span> List&lt;<span class="keyword">int</span>&gt;();</span><br><span class="line">    List&lt;<span class="keyword">int</span>&gt; col = <span class="keyword">new</span> List&lt;<span class="keyword">int</span>&gt;();</span><br><span class="line">    <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; ++i) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">3</span>; ++j) &#123;</span><br><span class="line">            <span class="keyword">if</span> (symbol[i,j] == Player.player0) &#123;</span><br><span class="line">                row.Add(i);</span><br><span class="line">                col.Add(j);</span><br><span class="line">                count++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (count != <span class="number">0</span>) &#123;</span><br><span class="line">        System.Random ran = <span class="keyword">new</span> System.Random();</span><br><span class="line">        <span class="keyword">int</span> index = ran.Next(<span class="number">0</span>, count);</span><br><span class="line">        a_x = row[index];</span><br><span class="line">        a_y = col[index];</span><br><span class="line"></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        a_x = a_y = <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p>效果图:</p>
+<p><img src="/Unity-3d/井字棋/welcome.jpg" alt="Welcome"><br><img src="/Unity-3d/井字棋/one.jpg" alt="OnePlayer"><br><img src="/Unity-3d/井字棋/two.jpg" alt="TwoPlayers"></p>
+<p>最后附上 github 项目链接:<a href="https://github.com/xwy27/Unity-3D-Learning" target="_blank" rel="noopener">TicTacToe</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Unity-3d/" rel="tag"># Unity-3d</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Unity-3d/基础概念/" rel="next" title="基础概念">
+                <i class="fa fa-chevron-left"></i> 基础概念
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Xu Weiyuan</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Homework-1"><span class="nav-number">1.</span> <span class="nav-text">Homework_1</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Tic-Tac-Toe"><span class="nav-number">1.1.</span> <span class="nav-text">Tic Tac Toe</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现过程"><span class="nav-number">1.2.</span> <span class="nav-text">实现过程</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Xu Weiyuan</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+  
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

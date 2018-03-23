@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="Week 1啊，基础的事情都做完了，页面跳转这事情，很简单的，就是一个Navigation，上一篇博客的时候就做完啦。但是，导航到了新页面，怎么回到原来的页面呢？这次就学习一下后退键把。 返回事件 说到后退事件，先不要着急动手。假设，我们的程序有上百个页面，各自之间可以灵活的跳转。那每一个页面都有后退事件，额，又回到了无人车事件了吗？可恶。不过，怎么会有这么蠢的事情嘛。仔细看看自己的UWP项目架构">
+<meta name="description" content="Week 1啊，基础的事情都做完了，页面跳转这事情，很简单的，就是一个Navigation，上一篇博客的时候就做完啦。但是，导航到了新页面，怎么回到原来的页面呢？这次就学习一下后退键把。">
 <meta name="keywords" content="MOSAD,UWP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="backRequest">
 <meta property="og:url" content="http://yoursite.com/UWP/backRequest/index.html">
 <meta property="og:site_name" content="Xuwy Blog">
-<meta property="og:description" content="Week 1啊，基础的事情都做完了，页面跳转这事情，很简单的，就是一个Navigation，上一篇博客的时候就做完啦。但是，导航到了新页面，怎么回到原来的页面呢？这次就学习一下后退键把。 返回事件 说到后退事件，先不要着急动手。假设，我们的程序有上百个页面，各自之间可以灵活的跳转。那每一个页面都有后退事件，额，又回到了无人车事件了吗？可恶。不过，怎么会有这么蠢的事情嘛。仔细看看自己的UWP项目架构">
+<meta property="og:description" content="Week 1啊，基础的事情都做完了，页面跳转这事情，很简单的，就是一个Navigation，上一篇博客的时候就做完啦。但是，导航到了新页面，怎么回到原来的页面呢？这次就学习一下后退键把。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-19T11:48:25.390Z">
+<meta property="og:updated_time" content="2018-03-22T06:52:36.591Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="backRequest">
-<meta name="twitter:description" content="Week 1啊，基础的事情都做完了，页面跳转这事情，很简单的，就是一个Navigation，上一篇博客的时候就做完啦。但是，导航到了新页面，怎么回到原来的页面呢？这次就学习一下后退键把。 返回事件 说到后退事件，先不要着急动手。假设，我们的程序有上百个页面，各自之间可以灵活的跳转。那每一个页面都有后退事件，额，又回到了无人车事件了吗？可恶。不过，怎么会有这么蠢的事情嘛。仔细看看自己的UWP项目架构">
+<meta name="twitter:description" content="Week 1啊，基础的事情都做完了，页面跳转这事情，很简单的，就是一个Navigation，上一篇博客的时候就做完啦。但是，导航到了新页面，怎么回到原来的页面呢？这次就学习一下后退键把。">
 
 
 
@@ -343,6 +343,7 @@
 
       
         <h1 id="Week-1"><a href="#Week-1" class="headerlink" title="Week 1"></a>Week 1</h1><p>啊，基础的事情都做完了，页面跳转这事情，很简单的，就是一个Navigation，上一篇博客的时候就做完啦。但是，导航到了新页面，怎么回到原来的页面呢？这次就学习一下<strong>后退键</strong>把。</p>
+<a id="more"></a>
 <h2 id="返回事件"><a href="#返回事件" class="headerlink" title="返回事件"></a>返回事件</h2><blockquote>
 <p>说到后退事件，先不要着急动手。假设，我们的程序有上百个页面，各自之间可以灵活的跳转。那每一个页面都有后退事件，额，又回到了无人车事件了吗？可恶。不过，怎么会有这么蠢的事情嘛。仔细看看自己的UWP项目架构，我们可以发现app.xaml.cs文件。这个文件包含了重要的应用程序事件的事件处理程序，如启动、挂起和其他一些，且可被所有page共有。所以，这次回退事件的完成，我们要在app.xaml.cs文件中完成。</p>
 <p>我们需要在文件中的OnLaunched函数加入如下语句：</p>
@@ -477,7 +478,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -488,7 +489,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -499,7 +500,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
