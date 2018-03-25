@@ -82,7 +82,7 @@
 <meta name="description" content="Week 2标题栏透明化">
 <meta name="keywords" content="MOSAD,UWP">
 <meta property="og:type" content="article">
-<meta property="og:title" content="titleBar">
+<meta property="og:title" content="UWP-TitleBar">
 <meta property="og:url" content="http://yoursite.com/UWP/titleBar/index.html">
 <meta property="og:site_name" content="Xuwy Blog">
 <meta property="og:description" content="Week 2标题栏透明化">
@@ -90,9 +90,9 @@
 <meta property="og:image" content="http://yoursite.com/UWP/titleBar/titleBar.jpg">
 <meta property="og:image" content="http://yoursite.com/UWP/titleBar/titleBar_2.jpg">
 <meta property="og:image" content="http://yoursite.com/UWP/titleBar/titleBar_3.jpg">
-<meta property="og:updated_time" content="2018-03-22T06:51:48.455Z">
+<meta property="og:updated_time" content="2018-03-25T16:02:59.632Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="titleBar">
+<meta name="twitter:title" content="UWP-TitleBar">
 <meta name="twitter:description" content="Week 2标题栏透明化">
 <meta name="twitter:image" content="http://yoursite.com/UWP/titleBar/titleBar.jpg">
 
@@ -130,7 +130,7 @@
 
 
 
-  <title>titleBar | Xuwy Blog</title>
+  <title>UWP-TitleBar | Xuwy Blog</title>
   
 
 
@@ -274,7 +274,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">titleBar</h1>
+          <h1 class="post-title" itemprop="name headline">UWP-TitleBar</h1>
         
 
         <div class="post-meta">
@@ -348,20 +348,20 @@
       
         <h1 id="Week-2"><a href="#Week-2" class="headerlink" title="Week 2"></a>Week 2</h1><h2 id="标题栏透明化"><a href="#标题栏透明化" class="headerlink" title="标题栏透明化"></a>标题栏透明化</h2><a id="more"></a>
 <p><img src="/UWP/titleBar/titleBar.jpg" alt="MyList"></p>
-<p>看着自己做好的MyList，总觉得和正常的application差了点什么。这个可恶的标题栏，为什么不是透明的啊，这突然突出来的白色，真是让人不开心。那么，接下来就了解一下标题栏的透明化。</p>
-<p>在MS 的Docs搜索之后，可以找到CoreApplicationViewTitleBar类。是的，这个就是我们想要的标题栏。文档很短，不过，它提供了我们需要的透明化功能(伪透明)。<br>CoreApplicationViewTitleBar 有ExtendViewIntoTitleBar方法，官档叙述如下:</p>
+<p>看着自己做好的 MyList，总觉得和正常的 application 差了点什么。这个可恶的标题栏，为什么不是透明的啊，这突然突出来的白色，真是让人不开心。那么，接下来就了解一下标题栏的透明化。</p>
+<p>在 MS 的 Docs 搜索之后，可以找到 CoreApplicationViewTitleBar 类。是的，这个就是我们想要的标题栏。文档很短，不过，它提供了我们需要的透明化功能(伪透明)。<br> CoreApplicationViewTitleBar 有 ExtendViewIntoTitleBar 方法，官档叙述如下:</p>
 <blockquote>
 <p>ExtendViewIntoTitleBar:</p>
 <p>Gets or sets a value that specifies whether this title bar should replace the default window title bar.<br>Set to true to replace the default window title bar; otherwise, false.</p>
 <p><em>Remarks</em></p>
 <p><em>The first time the app runs, and for secondary views, the default value is false. For the main view of an app, this value persists between application runs.</em></p>
 </blockquote>
-<p>这个方法可以将应用界面拓展到标题栏。所以，我们需要的透明化，可以从这里下手。为了让所有页面的标题栏都同样透明化，我们应该在哪里修改代码呢？看过前面博客的同学应该还有印象。是的，在app.xaml.cs文件中。这个文件中定义的方法可以应用于所有page。</p>
+<p>这个方法可以将应用界面拓展到标题栏。所以，我们需要的透明化，可以从这里下手。为了让所有页面的标题栏都同样透明化，我们应该在哪里修改代码呢？看过前面博客的同学应该还有印象。是的，在 app.xaml.cs 文件中。这个文件中定义的方法可以应用于所有 page 。</p>
 <p>我们需要添加的代码，就一行:</p>
 <figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CoreApplication.GetCurrentView().TitleBar.ExtendViewIntoTitleBar = <span class="literal">true</span>;</span><br></pre></td></tr></table></figure>
-<p>之后，我们的UI就变成这样啦！</p>
+<p>之后，我们的 UI 就变成这样啦！</p>
 <p><img src="/UWP/titleBar/titleBar_2.jpg" alt="MyList"></p>
-<p>不过，还有个问题，右上角的命令三连按钮。他们的颜色，绝对是不可忍受的！那么，还要继续修改。但是CoreApplicationViewTitleBar并没有关于这三个按钮的信息。于是继续查阅资料。果然，还是可以动手的。我们还有一个ApplicationViewTitleBar类(是的，还有这个类)。官档中给出了这个类的很多方法，其中基本都是修改titleBar的颜色样式的。那么，自然我们可以写出这样的代码:</p>
+<p>不过，还有个问题，右上角的命令三连按钮。他们的颜色，绝对是不可忍受的！那么，还要继续修改。但是 CoreApplicationViewTitleBar 并没有关于这三个按钮的信息。于是继续查阅资料。果然，还是可以动手的。我们还有一个 ApplicationViewTitleBar 类(是的，还有这个类)。官档中给出了这个类的很多方法，其中基本都是修改 titleBar 的颜色样式的。那么，自然我们可以写出这样的代码:</p>
 <figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ApplicationView.GetForCurrentView().TitleBar.ButtonBackgroundColor = Colors.White;</span><br></pre></td></tr></table></figure>
 <p>运行结果，并不是我们要的那样，只是背景颜色变白了。那么，我们怎么把它们的背景变透明呢？针对这个属性，查看官档:</p>
 <blockquote>
@@ -369,14 +369,14 @@
 <p>Gets or sets the background color of the title bar buttons.</p>
 <p>Value<br>Nullable &lt; Color&gt;</p>
 </blockquote>
-<p>他的值是Color，那么我们去看看官档中对于Color的描述。经过仔细查找，我们发现这么两句话:</p>
+<p>他的值是 Color，那么我们去看看官档中对于 Color 的描述。经过仔细查找，我们发现这么两句话:</p>
 <blockquote>
 <ol>
 <li>Color is a Windows Runtime structure that represents a color that has four channels: A (alpha), R (red), G (green), B (blue).</li>
 <li>Color has a static method FromArgb that acts as a Color value generator</li>
 </ol>
 </blockquote>
-<p>它是一个struct，值域有A (alpha), R (red), G (green), B (blue)。其中A(alpha)可以制造出我们需要的透明效果！那么，更新代码如下:</p>
+<p>它是一个struct，值域有 A (alpha), R (red), G (green), B (blue)。其中 A(alpha) 可以制造出我们需要的透明效果！那么，更新代码如下:</p>
 <figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ApplicationView.GetForCurrentView().TitleBar.ButtonBackgroundColor = Color.FromArgb(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>);</span><br></pre></td></tr></table></figure>
 <p>这么一来，好看的标题栏，就做出来了！</p>
 <p><img src="/UWP/titleBar/titleBar_3.jpg" alt="MyList"></p>
@@ -415,8 +415,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/UWP/adaptiveUI/" rel="next" title="adaptiveUI">
-                <i class="fa fa-chevron-left"></i> adaptiveUI
+              <a href="/UWP/adaptiveUI/" rel="next" title="UWP-AdaptiveUI">
+                <i class="fa fa-chevron-left"></i> UWP-AdaptiveUI
               </a>
             
           </div>
@@ -425,8 +425,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/UWP/picture/" rel="prev" title="本地图片选取">
-                本地图片选取 <i class="fa fa-chevron-right"></i>
+              <a href="/UWP/picture/" rel="prev" title="UWP-本地图片选取">
+                UWP-本地图片选取 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

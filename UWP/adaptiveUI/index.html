@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="Week 2这周的需求如下:  界面设计 完成MainPage、NewPage两个界面的设计   Adaptive UI 当窗口宽度小于800时，只显示原本在界面左侧的列表部分，底部导航栏只显示Add图标 窗口宽度大于800时，显示完整界面 窗口宽度小于600时，列表项中的图片不显示    对于界面设计，肯定是自己设计的最好看，就不多赘述了。就来讲讲Adaptive UI。">
+<meta name="description" content="Week 2这周的需求如下:  界面设计 完成 MainPage、NewPage 两个界面的设计   Adaptive UI 当窗口宽度小于800时，只显示原本在界面左侧的列表部分，底部导航栏只显示 Ad d图标 窗口宽度大于800时，显示完整界面 窗口宽度小于600时，列表项中的图片不显示    对于界面设计，肯定是自己设计的最好看，就不多赘述了。就来讲讲 Adaptive UI。">
 <meta name="keywords" content="MOSAD,UWP">
 <meta property="og:type" content="article">
-<meta property="og:title" content="adaptiveUI">
+<meta property="og:title" content="UWP-AdaptiveUI">
 <meta property="og:url" content="http://yoursite.com/UWP/adaptiveUI/index.html">
 <meta property="og:site_name" content="Xuwy Blog">
-<meta property="og:description" content="Week 2这周的需求如下:  界面设计 完成MainPage、NewPage两个界面的设计   Adaptive UI 当窗口宽度小于800时，只显示原本在界面左侧的列表部分，底部导航栏只显示Add图标 窗口宽度大于800时，显示完整界面 窗口宽度小于600时，列表项中的图片不显示    对于界面设计，肯定是自己设计的最好看，就不多赘述了。就来讲讲Adaptive UI。">
+<meta property="og:description" content="Week 2这周的需求如下:  界面设计 完成 MainPage、NewPage 两个界面的设计   Adaptive UI 当窗口宽度小于800时，只显示原本在界面左侧的列表部分，底部导航栏只显示 Ad d图标 窗口宽度大于800时，显示完整界面 窗口宽度小于600时，列表项中的图片不显示    对于界面设计，肯定是自己设计的最好看，就不多赘述了。就来讲讲 Adaptive UI。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-22T06:52:43.441Z">
+<meta property="og:updated_time" content="2018-03-25T16:04:44.902Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="adaptiveUI">
-<meta name="twitter:description" content="Week 2这周的需求如下:  界面设计 完成MainPage、NewPage两个界面的设计   Adaptive UI 当窗口宽度小于800时，只显示原本在界面左侧的列表部分，底部导航栏只显示Add图标 窗口宽度大于800时，显示完整界面 窗口宽度小于600时，列表项中的图片不显示    对于界面设计，肯定是自己设计的最好看，就不多赘述了。就来讲讲Adaptive UI。">
+<meta name="twitter:title" content="UWP-AdaptiveUI">
+<meta name="twitter:description" content="Week 2这周的需求如下:  界面设计 完成 MainPage、NewPage 两个界面的设计   Adaptive UI 当窗口宽度小于800时，只显示原本在界面左侧的列表部分，底部导航栏只显示 Ad d图标 窗口宽度大于800时，显示完整界面 窗口宽度小于600时，列表项中的图片不显示    对于界面设计，肯定是自己设计的最好看，就不多赘述了。就来讲讲 Adaptive UI。">
 
 
 
@@ -126,7 +126,7 @@
 
 
 
-  <title>adaptiveUI | Xuwy Blog</title>
+  <title>UWP-AdaptiveUI | Xuwy Blog</title>
   
 
 
@@ -270,7 +270,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">adaptiveUI</h1>
+          <h1 class="post-title" itemprop="name headline">UWP-AdaptiveUI</h1>
         
 
         <div class="post-meta">
@@ -345,20 +345,20 @@
         <h1 id="Week-2"><a href="#Week-2" class="headerlink" title="Week 2"></a>Week 2</h1><p>这周的需求如下:</p>
 <ol>
 <li>界面设计<blockquote>
-<p>完成MainPage、NewPage两个界面的设计</p>
+<p>完成 MainPage、NewPage 两个界面的设计</p>
 </blockquote>
 </li>
 <li>Adaptive UI<ul>
-<li>当窗口宽度小于800时，只显示原本在界面左侧的列表部分，底部导航栏只显示Add图标</li>
+<li>当窗口宽度小于800时，只显示原本在界面左侧的列表部分，底部导航栏只显示 Ad d图标</li>
 <li>窗口宽度大于800时，显示完整界面</li>
 <li>窗口宽度小于600时，列表项中的图片不显示</li>
 </ul>
 </li>
 </ol>
-<p>对于界面设计，肯定是自己设计的最好看，就不多赘述了。就来讲讲Adaptive UI。</p>
+<p>对于界面设计，肯定是自己设计的最好看，就不多赘述了。就来讲讲 Adaptive UI。</p>
 <a id="more"></a>
-<h2 id="Adaptive-UI"><a href="#Adaptive-UI" class="headerlink" title="Adaptive UI"></a>Adaptive UI</h2><p>需求写的很清楚，实现不同窗口宽度下的不同UI显示。这个实现主要依赖于VisualStateManager</p>
-<h3 id="VisualStateManager"><a href="#VisualStateManager" class="headerlink" title="VisualStateManager"></a>VisualStateManager</h3><p>首先来看看MSDN 上对于VisualStateManager的描述：  </p>
+<h2 id="Adaptive-UI"><a href="#Adaptive-UI" class="headerlink" title="Adaptive UI"></a>Adaptive UI</h2><p>需求写的很清楚，实现不同窗口宽度下的不同UI显示。这个实现主要依赖于 VisualStateManager</p>
+<h3 id="VisualStateManager"><a href="#VisualStateManager" class="headerlink" title="VisualStateManager"></a>VisualStateManager</h3><p>首先来看看 MSDN 上对于 VisualStateManager 的描述：  </p>
 <blockquote>
 <p>The VisualStateManager enables you to specify:</p>
 <ol>
@@ -367,22 +367,22 @@
 <li>the appearance of a control when a control changes states.</li>
 </ol>
 </blockquote>
-<p>解释一下，VisualStateManager的功能有两个：</p>
+<p>解释一下，VisualStateManager 的功能有两个：</p>
 <blockquote>
 <ol>
 <li>管理控件状态。</li>
 <li>管理控件转换状态。</li>
 </ol>
 </blockquote>
-<p>来看看VisualStateManager 的基本XAML代码：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">VisualStateManager.VisualStateGroups</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">VisualStateGroup</span> <span class="attr">x:Name</span>=<span class="string">"XXX"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">VisualState</span> <span class="attr">x:Name</span>=<span class="string">"State001"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">VisualState.Triggers</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">AdaptiveTriggers</span> <span class="attr">...</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">VisualState.Triggers</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">VisualState.Setters</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">Setter</span> <span class="attr">Target</span>=<span class="string">"..."</span> <span class="attr">Value</span>=<span class="string">""</span>/&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">Setter</span> <span class="attr">Target</span>=<span class="string">"..."</span> <span class="attr">Value</span>=<span class="string">""</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">VisualState.Setters</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">Storyboard</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">Animation_A1</span> <span class="attr">...</span>/&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">Animation_B1</span> <span class="attr">...</span>/&gt;</span></span><br><span class="line">                ...</span><br><span class="line">            <span class="tag">&lt;/<span class="name">Storyboard</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">VisualState</span> <span class="attr">x:Name</span>=<span class="string">"State001"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">VisualState.Triggers</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">AdaptiveTriggers</span> <span class="attr">...</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">VisualState.Triggers</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">VisualState.Setters</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">Setter</span> <span class="attr">Target</span>=<span class="string">"..."</span> <span class="attr">Value</span>=<span class="string">""</span>/&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">Setter</span> <span class="attr">Target</span>=<span class="string">"..."</span> <span class="attr">Value</span>=<span class="string">""</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">VisualState.Setters</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">Storyboard</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">Animation_A2</span> <span class="attr">...</span>/&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">Animation_B2</span> <span class="attr">...</span>/&gt;</span></span><br><span class="line">                ...</span><br><span class="line">            <span class="tag">&lt;/<span class="name">Storyboard</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">VisualState</span>&gt;</span></span><br><span class="line">        ...</span><br><span class="line">    <span class="tag">&lt;/<span class="name">VisualStateGroup</span>&gt;</span></span><br><span class="line">    ...</span><br><span class="line"><span class="tag">&lt;/<span class="name">VisualStateManager.VisualStateGroups</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>来看看 VisualStateManager 的基本XAML代码：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">VisualStateManager.VisualStateGroups</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">VisualStateGroup</span> <span class="attr">x:Name</span>=<span class="string">"XXX"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">VisualState</span> <span class="attr">x:Name</span>=<span class="string">"State001"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">VisualState.Triggers</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">AdaptiveTriggers</span> <span class="attr">...</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">VisualState.Triggers</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">VisualState.Setters</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">Setter</span> <span class="attr">Target</span>=<span class="string">"..."</span> <span class="attr">Value</span>=<span class="string">""</span>/&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">Setter</span> <span class="attr">Target</span>=<span class="string">"..."</span> <span class="attr">Value</span>=<span class="string">""</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">VisualState.Setters</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">Storyboard</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">Animation_A1</span> <span class="attr">...</span>/&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">Animation_B1</span> <span class="attr">...</span>/&gt;</span></span><br><span class="line">                ...</span><br><span class="line">            <span class="tag">&lt;/<span class="name">Storyboard</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">VisualState</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">VisualState</span> <span class="attr">x:Name</span>=<span class="string">"State001"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">VisualState.Triggers</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">AdaptiveTriggers</span> <span class="attr">...</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">VisualState.Triggers</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">VisualState.Setters</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">Setter</span> <span class="attr">Target</span>=<span class="string">"..."</span> <span class="attr">Value</span>=<span class="string">""</span>/&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">Setter</span> <span class="attr">Target</span>=<span class="string">"..."</span> <span class="attr">Value</span>=<span class="string">""</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">VisualState.Setters</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">Storyboard</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">Animation_A2</span> <span class="attr">...</span>/&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">Animation_B2</span> <span class="attr">...</span>/&gt;</span></span><br><span class="line">                ...</span><br><span class="line">            <span class="tag">&lt;/<span class="name">Storyboard</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">VisualState</span>&gt;</span></span><br><span class="line">        ...</span><br><span class="line">    <span class="tag">&lt;/<span class="name">VisualStateGroup</span>&gt;</span></span><br><span class="line">    ...</span><br><span class="line"><span class="tag">&lt;/<span class="name">VisualStateManager.VisualStateGroups</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <ol>
 <li>VisualStateManager<ul>
 <li>VisualStateGroups<ul>
 <li>VisualStateGroup<ul>
 <li>VisualState<ul>
-<li>StateTriggers，用于指定当前VisualState的限制条件。</li>
-<li>Setters，用于指定UIElement的状态。</li>
+<li>StateTriggers，用于指定当前 VisualState 的限制条件。</li>
+<li>Setters，用于指定 UIElement 的状态。</li>
 <li>Storyboard，用于指定控件向此状态转换时的外观动画。</li>
 </ul>
 </li>
@@ -393,11 +393,11 @@
 </ul>
 </li>
 </ol>
-<p>那么对于这个Adaptive UI，很简单就可以实现了:</p>
+<p>那么对于这个 Adaptive UI，很简单就可以实现了:</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--Adaptive UI Settings--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">VisualStateManager.VisualStateGroups</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">VisualStateGroup</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">VisualState</span> <span class="attr">x:Name</span>=<span class="string">"Width_0"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">VisualState.Setters</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">Setter</span> <span class="attr">Target</span>=<span class="string">"Right_Part.(UIElement.Visibility)"</span> <span class="attr">Value</span>=<span class="string">"Collapsed"</span>&gt;</span><span class="tag">&lt;/<span class="name">Setter</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">Setter</span> <span class="attr">Target</span>=<span class="string">"Left_Part.(ColumnSpan)"</span> <span class="attr">Value</span>=<span class="string">"2"</span>&gt;</span><span class="tag">&lt;/<span class="name">Setter</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">Setter</span> <span class="attr">Target</span>=<span class="string">"image.(Visibility)"</span> <span class="attr">Value</span>=<span class="string">"Collapsed"</span>&gt;</span><span class="tag">&lt;/<span class="name">Setter</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">VisualState.Setters</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">VisualState.StateTriggers</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">AdaptiveTrigger</span> <span class="attr">MinWindowWidth</span>=<span class="string">"1"</span>&gt;</span><span class="tag">&lt;/<span class="name">AdaptiveTrigger</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">VisualState.StateTriggers</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">VisualState</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">VisualState</span> <span class="attr">x:Name</span>=<span class="string">"Width_600"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">VisualState.Setters</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">Setter</span> <span class="attr">Target</span>=<span class="string">"Right_Part.(UIElement.Visibility)"</span> <span class="attr">Value</span>=<span class="string">"Collapsed"</span>&gt;</span><span class="tag">&lt;/<span class="name">Setter</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">Setter</span> <span class="attr">Target</span>=<span class="string">"Left_Part.(ColumnSpan)"</span> <span class="attr">Value</span>=<span class="string">"2"</span>&gt;</span><span class="tag">&lt;/<span class="name">Setter</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">VisualState.Setters</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">VisualState.StateTriggers</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">AdaptiveTrigger</span> <span class="attr">MinWindowWidth</span>=<span class="string">"600"</span>&gt;</span><span class="tag">&lt;/<span class="name">AdaptiveTrigger</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">VisualState.StateTriggers</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">VisualState</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">VisualState</span> <span class="attr">x:Name</span>=<span class="string">"Width_800"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">VisualState.StateTriggers</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">AdaptiveTrigger</span> <span class="attr">MinWindowWidth</span>=<span class="string">"800"</span>&gt;</span><span class="tag">&lt;/<span class="name">AdaptiveTrigger</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">VisualState.StateTriggers</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">VisualState</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">VisualStateGroup</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">VisualStateManager.VisualStateGroups</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>那么，Adaptive UI就做完啦~</p>
+<p>那么，Adaptive UI 就做完啦~</p>
 <blockquote>
-<p><em>Visual Blend可以了解一下，有助于UWP 的UI开发</em></p>
+<p><em>Visual Blend 可以了解一下，有助于 UWP 的 UI 开发</em></p>
 </blockquote>
 
       
@@ -431,8 +431,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/UWP/backRequest/" rel="next" title="backRequest">
-                <i class="fa fa-chevron-left"></i> backRequest
+              <a href="/UWP/backRequest/" rel="next" title="UWP-BackRequest">
+                <i class="fa fa-chevron-left"></i> UWP-BackRequest
               </a>
             
           </div>
@@ -441,8 +441,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/UWP/titleBar/" rel="prev" title="titleBar">
-                titleBar <i class="fa fa-chevron-right"></i>
+              <a href="/UWP/titleBar/" rel="prev" title="UWP-TitleBar">
+                UWP-TitleBar <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

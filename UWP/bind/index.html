@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="week 1本周需要完成的事情比较简单，如下：  checkBox 和line的绑定处理 当 CheckBox 被勾选时line出现，取消勾选则line消失   新建Item的逻辑判断 新建一个NewPage。点击create按钮时，检查Title、Description是否为空，DueDate是否正确(是否大于等于当前日期)。如果不正确，弹出对话框，显示错误信息。    对于第二条，知道一个Da">
+<meta name="description" content="week 1本周需要完成的事情比较简单，如下：  checkBox 和 line 的绑定处理 当 CheckBox 被勾选时 line 出现，取消勾选则 line 消失   新建Item的逻辑判断 新建一个 NewPage。点击 create 按钮时，检查 Title、Description 是否为空，DueDate 是否正确(是否大于等于当前日期)。如果不正确，弹出对话框，显示错误信息。">
 <meta name="keywords" content="MOSAD,UWP">
 <meta property="og:type" content="article">
-<meta property="og:title" content="bind">
+<meta property="og:title" content="UWP-x:Bind">
 <meta property="og:url" content="http://yoursite.com/UWP/bind/index.html">
 <meta property="og:site_name" content="Xuwy Blog">
-<meta property="og:description" content="week 1本周需要完成的事情比较简单，如下：  checkBox 和line的绑定处理 当 CheckBox 被勾选时line出现，取消勾选则line消失   新建Item的逻辑判断 新建一个NewPage。点击create按钮时，检查Title、Description是否为空，DueDate是否正确(是否大于等于当前日期)。如果不正确，弹出对话框，显示错误信息。    对于第二条，知道一个Da">
+<meta property="og:description" content="week 1本周需要完成的事情比较简单，如下：  checkBox 和 line 的绑定处理 当 CheckBox 被勾选时 line 出现，取消勾选则 line 消失   新建Item的逻辑判断 新建一个 NewPage。点击 create 按钮时，检查 Title、Description 是否为空，DueDate 是否正确(是否大于等于当前日期)。如果不正确，弹出对话框，显示错误信息。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-22T06:52:30.766Z">
+<meta property="og:updated_time" content="2018-03-25T16:01:50.984Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="bind">
-<meta name="twitter:description" content="week 1本周需要完成的事情比较简单，如下：  checkBox 和line的绑定处理 当 CheckBox 被勾选时line出现，取消勾选则line消失   新建Item的逻辑判断 新建一个NewPage。点击create按钮时，检查Title、Description是否为空，DueDate是否正确(是否大于等于当前日期)。如果不正确，弹出对话框，显示错误信息。    对于第二条，知道一个Da">
+<meta name="twitter:title" content="UWP-x:Bind">
+<meta name="twitter:description" content="week 1本周需要完成的事情比较简单，如下：  checkBox 和 line 的绑定处理 当 CheckBox 被勾选时 line 出现，取消勾选则 line 消失   新建Item的逻辑判断 新建一个 NewPage。点击 create 按钮时，检查 Title、Description 是否为空，DueDate 是否正确(是否大于等于当前日期)。如果不正确，弹出对话框，显示错误信息。">
 
 
 
@@ -126,7 +126,7 @@
 
 
 
-  <title>bind | Xuwy Blog</title>
+  <title>UWP-x:Bind | Xuwy Blog</title>
   
 
 
@@ -270,7 +270,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">bind</h1>
+          <h1 class="post-title" itemprop="name headline">UWP-x:Bind</h1>
         
 
         <div class="post-meta">
@@ -344,21 +344,21 @@
       
         <h1 id="week-1"><a href="#week-1" class="headerlink" title="week 1"></a>week 1</h1><p>本周需要完成的事情比较简单，如下：</p>
 <ol>
-<li>checkBox 和line的绑定处理<blockquote>
-<p>当 CheckBox 被勾选时line出现，取消勾选则line消失</p>
+<li>checkBox 和 line 的绑定处理<blockquote>
+<p>当 CheckBox 被勾选时 line 出现，取消勾选则 line 消失</p>
 </blockquote>
 </li>
 <li>新建Item的逻辑判断<blockquote>
-<p>新建一个NewPage。点击create按钮时，检查Title、Description是否为空，DueDate是否正确(是否大于等于当前日期)。如果不正确，弹出对话框，显示错误信息。</p>
+<p>新建一个 NewPage。点击 create 按钮时，检查 Title、Description 是否为空，DueDate 是否正确(是否大于等于当前日期)。如果不正确，弹出对话框，显示错误信息。</p>
 </blockquote>
 </li>
 </ol>
-<p>对于第二条，知道一个DateTimeOffset，就没什么需要讲的了。针对第一条，需要进行控件的状态绑定，可分为初阶操作和进阶操作。现在来看看两种操作。</p>
+<p>对于第二条，知道一个 DateTimeOffset，就没什么需要讲的了。针对第一条，需要进行控件的状态绑定，可分为初阶操作和进阶操作。现在来看看两种操作。</p>
 <a id="more"></a>
-<h2 id="初阶操作"><a href="#初阶操作" class="headerlink" title="初阶操作"></a>初阶操作</h2><p>对于checkBox 控件，我们在官方文档可以发现，它有针对checked 和 Unchecked两个状态(如果是使用VS进行开发，那么控件属性状态栏会更容易看到)。那么，操作就很简单啦，checked时候，line显示，Unchecked时候，line不显示。于是，在给checkBox的两个状态绑定了方法后，可以在当前page 的cs文件中写出如下代码：</p>
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//line is the name of the name of the line control to bind</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">IsChecked</span>(<span class="params"><span class="keyword">object</span> sender, RoutedEventArgs e</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  line.Visibility = Visibility.Visible;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">IsUnchecked</span>(<span class="params"><span class="keyword">object</span> sender, RoutedEventArgs e</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  line.Visibility = Visibility.Collapsed;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>好了，完成了。运行一下，达到预期效果。<strong>但是！</strong> 如果，我们特别懒，toDoList中的全部任务都没完成，然后又喜欢每天给它加东西，那么，page的 cs文件中就会有特别特别特别多的 checked和 unchecked方法(<em>百度无人车，可以了解一下</em>)。</p>
-<h2 id="进阶操作"><a href="#进阶操作" class="headerlink" title="进阶操作"></a>进阶操作</h2><p>怎么解决这种冗杂问题呢？这种时候，我们可以来学习一下<strong>x:Bind</strong>。</p>
+<h2 id="初阶操作"><a href="#初阶操作" class="headerlink" title="初阶操作"></a>初阶操作</h2><p>对于 checkBox 控件，我们在官方文档可以发现，它有针对 checked 和 Unchecked 两个状态(如果是使用VS进行开发，那么控件属性状态栏会更容易看到)。那么，操作就很简单啦， checked 时候，line 显示，Unchecked 时候，line 不显示。于是，在给 checkBox 的两个状态绑定了方法后，可以在当前 page 的 cs 文件中写出如下代码：</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//line is the name of the name of the line control to bind</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">IsChecked</span>(<span class="params"><span class="keyword">object</span> sender, RoutedEventArgs e</span>) </span>&#123;</span><br><span class="line">  line.Visibility = Visibility.Visible;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">IsUnchecked</span>(<span class="params"><span class="keyword">object</span> sender, RoutedEventArgs e</span>) </span>&#123;</span><br><span class="line">  line.Visibility = Visibility.Collapsed;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>好了，完成了。运行一下，达到预期效果。<strong>但是！</strong> 如果，我们特别懒，toDoList 中的全部任务都没完成，然后又喜欢每天给它加东西，那么 page 的 cs 文件中就会有特别特别特别多的 checked 和 unchecked 方法(<em>百度无人车，可以了解一下</em>)。</p>
+<h2 id="进阶操作"><a href="#进阶操作" class="headerlink" title="进阶操作"></a>进阶操作</h2><p>怎么解决这种冗杂问题呢？这种时候，我们可以来学习一下 <strong>x:Bind</strong>。</p>
 <ol>
 <li>基本原理<blockquote>
 <p>在 XAML 加载时，{x:Bind} 将转换为你所需的绑定对象，此对象将从数据源上的某一属性中获取相关值。绑定对象可以配置为观察数据源属性值的更改，并基于这些更改自行刷新。该对象也可以配置为将其自己的值的更改推送回源属性。<br>借用一下别人写的比较专业的解说。通俗点来讲，就是它可以将一个对象绑定在一个数据源上，并根据数据源的状态对绑定对象进行状态刷新。</p>
@@ -367,11 +367,11 @@
 <li><p>基本用法</p>
  <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">object</span> <span class="attr">property</span>=<span class="string">"&#123;x:Bind&#125;"</span> <span class="attr">...</span>/&gt;</span></span><br><span class="line">-or- <span class="tag">&lt;<span class="name">object</span> <span class="attr">property</span>=<span class="string">"&#123;x:Bind propertyPath&#125;"</span> <span class="attr">...</span>/&gt;</span></span><br><span class="line">-or- <span class="tag">&lt;<span class="name">object</span> <span class="attr">property</span>=<span class="string">"&#123;x:Bind bindingProperties&#125;"</span> <span class="attr">...</span>/&gt;</span></span><br><span class="line">-or- <span class="tag">&lt;<span class="name">object</span> <span class="attr">property</span>=<span class="string">"&#123;x:Bind propertyPath, bindingProperties&#125;"</span> <span class="attr">...</span>/&gt;</span></span><br></pre></td></tr></table></figure>
 <p> |parameter|Value|<br> |———|—–|<br> |propertyPath|A string that specifies the property path for the binding. More info is in the Property path section below.|<br> |bindingProperties|One or more binding properties that are specified using a name/value pair syntax.|</p>
-<p> 这是来自官方文档的解说(抽象难理解)。<br> 阅读官档后，我们再来简单翻译一下上文的用法：我们可以利用x:Bind 对一个object 的某个property与我们希望的数据源进行绑定。其中，数据源的相关信息在{x:Bind parameters}中进行指定。<br> 这个parameters有两个，一个为数据源的值，另一个绑定时的辅助信息，包括转换器(Converter)，模式(Mode)等。其中，每一个都不是必要的。下面分别讲讲提到的参数。</p>
+<p> 这是来自官方文档的解说(抽象难理解)。<br> 阅读官档后，我们再来简单翻译一下上文的用法：我们可以利用 x:Bind 对一个 object 的某个 property 与我们希望的数据源进行绑定。其中，数据源的相关信息在 {x:Bind parameters} 中进行指定。<br> 这个 parameters 有两个，一个为数据源的值，另一个绑定时的辅助信息，包括转换器(Converter)，模式(Mode)等。其中，每一个都不是必要的。下面分别讲讲提到的参数。</p>
 <ul>
 <li><p><strong>propertyPath</strong></p>
 <blockquote>
-<p>很难有贴切的翻译，我个人的理解是数据源的值，这个是Binding中的 Path和 ElementName的结合体。举例说明一下</p>
+<p>很难有贴切的翻译，我个人的理解是数据源的值，这个是 Binding 中的 Path 和 ElementName 的结合体。举例说明一下</p>
   <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;x:Bind Path=slider1.Value&#125;</span><br><span class="line">&#123;Binding Path=Value, ElementName=slider1&#125;</span><br></pre></td></tr></table></figure>
 </blockquote>
 <blockquote>
@@ -383,9 +383,9 @@
 <ul>
 <li><p><strong>Converter</strong></p>
 <blockquote>
-<p>按照上面那个代码，进行编译，会直接报错绑定数据类型不匹配。IsChecked是 bool值，而Visibility是 enum值。这个问题的解决就需要Converter了。</p>
-<p>这时候，又可以说到x:Bind和 Binding的一个区别。上面如果使用Binding，通常是可以通过编译的，然后你操作的时候，程序就崩溃了。因为x:Bind是在编译时进行初始化的对象，而Binding是在运行时进行初始化的对象。</p>
-<p>回到正题。Converter就是转换器对象，使用它可以对不匹配类型进行转换。直接通过我们的新代码来看看怎么使用Converter：</p>
+<p>按照上面那个代码，进行编译，会直接报错绑定数据类型不匹配。IsChecked 是 bool 值，而 Visibility 是 enum 值。这个问题的解决就需要 Converter 了。</p>
+<p>这时候，又可以说到 x:Bind 和 Binding 的一个区别。上面如果使用 Binding，通常是可以通过编译的，然后你操作的时候，程序就崩溃了。因为 x:Bind 是在编译时进行初始化的对象，而 Binding 是在运行时进行初始化的对象。</p>
+<p>回到正题。Converter 就是转换器对象，使用它可以对不匹配类型进行转换。直接通过我们的新代码来看看怎么使用 Converter：</p>
 <ul>
 <li>XAML文件<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--在page的开始定义资源字典--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">Page.Resources</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">local:CompletedConveter</span> <span class="attr">x:Key</span>=<span class="string">"Converter"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">Page.Resources</span>&gt;</span></span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">CheckBox</span> <span class="attr">x:Name</span>=<span class="string">"checkBox"</span> <span class="attr">...</span> <span class="attr">IsChecked</span>=<span class="string">"False"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">Line</span> <span class="attr">...</span> <span class="attr">Visibility</span>=<span class="string">"&#123;x:Bind Path=checkBox.IsChecked, Converter=&#123;StaticResource Converter&#125;&#125;</span></span></span><br></pre></td></tr></table></figure>
 </li>
@@ -393,20 +393,20 @@
 </blockquote>
 <blockquote>
 <ul>
-<li>CS文件<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Add into the cs file for this page</span></span><br><span class="line"><span class="comment">//&lt;summary&gt;</span></span><br><span class="line"><span class="comment">//A conveter to help bind the line and checkbox</span></span><br><span class="line"><span class="comment">//&lt;/summary&gt;</span></span><br><span class="line"><span class="keyword">class</span> <span class="title">CompletedConveter</span> : <span class="title">IValueConverter</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">object</span> <span class="title">Convert</span>(<span class="params"><span class="keyword">object</span> <span class="keyword">value</span>, Type targetType, <span class="keyword">object</span> parameter, <span class="keyword">string</span> language</span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">bool</span> result = (<span class="keyword">bool</span>)<span class="keyword">value</span>;</span><br><span class="line">        <span class="keyword">if</span> (result)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> Visibility.Visible;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> Visibility.Collapsed;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">object</span> <span class="title">ConvertBack</span>(<span class="params"><span class="keyword">object</span> <span class="keyword">value</span>, Type targetType, <span class="keyword">object</span> parameter, <span class="keyword">string</span> language</span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> NotImplementedException();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li>CS文件<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Add into the cs file for this page</span></span><br><span class="line"><span class="comment">//&lt;summary&gt;</span></span><br><span class="line"><span class="comment">//A conveter to help bind the line and checkbox</span></span><br><span class="line"><span class="comment">//&lt;/summary&gt;</span></span><br><span class="line"><span class="keyword">class</span> <span class="title">CompletedConveter</span> : <span class="title">IValueConverter</span> &#123;</span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">object</span> <span class="title">Convert</span>(<span class="params"><span class="keyword">object</span> <span class="keyword">value</span>, Type targetType, <span class="keyword">object</span> parameter, <span class="keyword">string</span> language</span>) </span>&#123;</span><br><span class="line">          <span class="keyword">bool</span> result = (<span class="keyword">bool</span>)<span class="keyword">value</span>;</span><br><span class="line">          <span class="keyword">if</span> (result) &#123;</span><br><span class="line">              <span class="keyword">return</span> Visibility.Visible;</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">return</span> Visibility.Collapsed;</span><br><span class="line"></span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">object</span> <span class="title">ConvertBack</span>(<span class="params"><span class="keyword">object</span> <span class="keyword">value</span>, Type targetType, <span class="keyword">object</span> parameter, <span class="keyword">string</span> language</span>) </span>&#123;</span><br><span class="line">          <span class="keyword">throw</span> <span class="keyword">new</span> NotImplementedException();</span><br><span class="line">      &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 </blockquote>
-<p>一定要在page定义资源字典，然后才能在{x:Bind}中使用，然后去code文件中补充完全转换器的定义和实现。</p>
+<p>一定要在 page 定义资源字典，然后才能在 {x:Bind} 中使用，然后去 code 文件中补充完全转换器的定义和实现。</p>
 </li>
 <li><strong>Mode</strong><blockquote>
-<p>写了这么多了，运行起来看看效果。程序跑起来了，但是，为什么不会绑定更新呢？这个涉及到x:Bind和 Binding的另一个区别:Mode。<br>在x:Bind中，Mode取值有三个:OneTime，OneWay，TwoWay。默认值为OneTime。</p>
+<p>写了这么多了，运行起来看看效果。程序跑起来了，但是，为什么不会绑定更新呢？这个涉及到 x:Bind 和 Binding 的另一个区别:Mode。<br>在 x:Bind 中，Mode 取值有三个: OneTime, OneWay, TwoWay。默认值为 OneTime。</p>
 <ul>
-<li>OneTime<br>仅在界面初始化时去初始化界面中的绑定。所以运行的时候，x:Bind就不工作了。</li>
-<li>OneWay<br>绑定初始化时，会创建关联，当绑定源的值更改后，绑定目标（UI）也及时更新，单向的。</li>
-<li>TwoWay<br>绑定初始化时，会创建关联，当绑定源的值更改后，绑定目标（UI）也及时更新，当绑定目标（UI）的值更改后，绑定源也及时更新，双向的。<br>在Binding中，Mode默认值为 Default（这个值的意义是对于只读控件它是 OneWay，对于可编辑的控件，它是 TwoWay）。</li>
+<li>OneTime<br>仅在界面初始化时去初始化界面中的绑定。所以运行的时候，x:Bind 就不工作了。</li>
+<li>OneWay<br>绑定初始化时，会创建关联，当绑定源的值更改后，绑定目标( UI )也及时更新，单向的。</li>
+<li>TwoWay<br>绑定初始化时，会创建关联，当绑定源的值更改后，绑定目标( UI )也及时更新，当绑定目标( UI )的值更改后，绑定源也及时更新，双向的。<br>在 Binding 中，Mode 默认值为 Default (这个值的意义是对于只读控件它是 OneWay，对于可编辑的控件，它是 TwoWay )。</li>
 </ul>
-<p>所以，加上Mode语句，就行啦。</p>
+<p>所以，加上 Mode 语句，就行啦。</p>
   <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Line</span> <span class="attr">...</span> <span class="attr">Visibility</span>=<span class="string">"&#123;x:Bind Path=checkBox.IsChecked, Converter=&#123;StaticResource Converter&#125;, Mode="</span><span class="attr">OneWay</span>"&#125;</span></span><br></pre></td></tr></table></figure>
 </blockquote>
 </li>
@@ -448,8 +448,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/UWP/taskInfo/" rel="next" title="taskInfo">
-                <i class="fa fa-chevron-left"></i> taskInfo
+              <a href="/UWP/taskInfo/" rel="next" title="MOSAD-TaskInfo">
+                <i class="fa fa-chevron-left"></i> MOSAD-TaskInfo
               </a>
             
           </div>
@@ -458,8 +458,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/UWP/backRequest/" rel="prev" title="backRequest">
-                backRequest <i class="fa fa-chevron-right"></i>
+              <a href="/UWP/backRequest/" rel="prev" title="UWP-BackRequest">
+                UWP-BackRequest <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
