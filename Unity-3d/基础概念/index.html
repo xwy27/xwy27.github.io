@@ -89,7 +89,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/Unity-3d/基础概念/example.png">
 <meta property="og:image" content="http://yoursite.com/Unity-3d/基础概念/relationship.jpg">
-<meta property="og:updated_time" content="2018-03-25T16:07:40.509Z">
+<meta property="og:updated_time" content="2018-03-26T04:48:19.914Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Unity-基础概念">
 <meta name="twitter:description" content="Homework_1">
@@ -415,10 +415,9 @@
 </li>
 <li><p>table 的 部件</p>
 <ul>
-<li>chair1</li>
-<li>chair2</li>
-<li>chair3</li>
-<li>chair4</li>
+<li>Transform</li>
+<li>Mesh Renderer</li>
+<li>Box Collider</li>
 </ul>
 </li>
 </ol>
@@ -447,11 +446,16 @@
 </li>
 </ul>
 </li>
-<li><p>预设(Prefabs)有什么好处？与对象克隆 (clone or copy or Instantiate of Unity Object) 关系？</p>
-<blockquote>
+<li><p>预设与克隆</p>
+<ul>
+<li>预设(Prefabs)有什么好处？与对象克隆 (clone or copy or Instantiate of Unity Object) 关系？<blockquote>
 <p>预设是一种资源。向场景添加一个预设时，就会创建它的一个实例。所以预设可以看作游戏对象的模板。当对预设作出任何更改时，这些更改将应用于所有与之链接的实例。</p>
 <p>对象克隆，就是 clone 或者 copy 了一个原本对象的实例，二者之间没有相互影响。</p>
 </blockquote>
+</li>
+<li>制作 table 预制，写一段代码将 table 预制资源实例化成游戏对象  <figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">NewBehaviourScript</span> : <span class="title">MonoBehaviour</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">string</span> prePath = <span class="string">"prefabs/table"</span>;</span><br><span class="line">    <span class="comment">// Use this for initialization</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Start</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        GameObject Table =</span><br><span class="line">            Instantiate(Resource.Load(prePath), <span class="keyword">new</span> Vector(<span class="number">4</span>, <span class="number">0</span>, <span class="number">0</span>), Quaternion.identity) <span class="keyword">as</span> GameObject;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
 </li>
 <li><p>尝试解释组合模式(Composite Pattern / 一种设计模式)并使用 BroadcastMessage() 方法向子对象发送消息</p>
 <blockquote>
@@ -583,7 +587,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
