@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Xuwy Blog">
 <meta property="og:description" content="Week3这篇博客记录一下自己在图片路径走过的坑。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-27T15:58:53.100Z">
+<meta property="og:updated_time" content="2018-03-28T11:37:45.605Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ImageSource">
 <meta name="twitter:description" content="Week3这篇博客记录一下自己在图片路径走过的坑。">
@@ -344,6 +344,28 @@
       
         <h1 id="Week3"><a href="#Week3" class="headerlink" title="Week3"></a>Week3</h1><p>这篇博客记录一下自己在图片路径走过的坑。</p>
 <a id="more"></a>
+<h2 id="图片路径"><a href="#图片路径" class="headerlink" title="图片路径"></a>图片路径</h2><p>  在 UI 中显示图片，常用的是这两个控件: Image 和几何图形控件。有时候，我们需要获取图片的路径。对于这两个控件，获取路径都可能遇到一个问题: ImageSource 转换为 string。</p>
+<ol>
+<li><p>Image控件</p>
+<p> Image 控件是原生的展示图片的控件。对于 Image 控件，它有 Source 属性来存储其中图片的URI位置，类型为 ImageSource。我们可以将它拿到。这是第一次遇到这个问题。</p>
+</li>
+<li><p>几何图形控件<br> 几何图形控件显示图片利用其 Fill 方法，将一个 ImageBrush 赋值给它，可以让其显示图片(但它的类型是 brush)。</p>
+<p> 对于 brush，查阅官方文档可以看到，它没有任何属性或方法可以 get 到它的图层来源 URI。暂时推测，它的显示原理是将指定给它的 URI 渲染成图层之后，自动舍弃这个值。所以，如果使用如下 xaml 代码实现的图片显示，则无法获取其图片 URI。</p>
+ <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--xaml code--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">Rectangle</span> <span class="attr">x:Name</span>=<span class="string">"Image"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+ <figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//c# code</span></span><br><span class="line"><span class="keyword">var</span> brush = <span class="keyword">new</span> ImageBrush &#123;</span><br><span class="line">    ImageSource = <span class="keyword">new</span> BitmapImage(<span class="keyword">new</span> Uri(<span class="string">"..."</span>))</span><br><span class="line">&#125;;</span><br><span class="line">Image.Fill = brush;</span><br></pre></td></tr></table></figure>
+<p> 目前，我没有找到方法可以得到它的 URI。在经过问询之后，得到了如下的解决方案。</p>
+ <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--xaml code--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">Rectangle</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">Rectangle.Fill</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ImageBrush</span> <span class="attr">x:Name</span>=<span class="string">"Image"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">Rectangle.Fill</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">Rectangle</span>&gt;</span></span><br></pre></td></tr></table></figure>
+ <figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//c# code</span></span><br><span class="line">Image.ImageSource = <span class="keyword">new</span> BitmapImage(<span class="keyword">new</span> Uri(<span class="string">"..."</span>));</span><br></pre></td></tr></table></figure>
+<p> 我们给 ImageBrush 设置它的 ImageSource 属性，然后将这个 ImageBrush 赋值给 Fill，以此达到显示图片的效果。同时，我们还可以通过 Image 这个名字来获取它的 ImageSource。但是，又回到了原来的问题: 怎么将 ImageSource 转换为 string。</p>
+</li>
+</ol>
+<h3 id="ImageSource-转成-string"><a href="#ImageSource-转成-string" class="headerlink" title="ImageSource 转成 string"></a>ImageSource 转成 string</h3><p>在 Stack Overflow 上，查到了相关资料:</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">string</span> temp = (Image.ImageSource <span class="keyword">as</span> BitmapImage).UriSource.OriginalString;</span><br></pre></td></tr></table></figure>
+<p>这就解决了这个图片路径的问题。</p>
+<blockquote>
+<p><em>(如果有其他方法，欢迎<a href="../../about/index.html">邮件</a>，共同学习)</em></p>
+</blockquote>
+
       
     </div>
     
@@ -515,7 +537,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Week3"><span class="nav-number">1.</span> <span class="nav-text">Week3</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Week3"><span class="nav-number">1.</span> <span class="nav-text">Week3</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#图片路径"><span class="nav-number">1.1.</span> <span class="nav-text">图片路径</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ImageSource-转成-string"><span class="nav-number">1.1.1.</span> <span class="nav-text">ImageSource 转成 string</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
