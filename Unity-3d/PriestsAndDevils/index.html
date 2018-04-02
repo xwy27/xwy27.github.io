@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Xuwy Blog">
 <meta property="og:description" content="Homework_2Priests and Devils">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-29T06:30:46.541Z">
+<meta property="og:updated_time" content="2018-04-02T14:18:27.734Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Unity-牧师与魔鬼">
 <meta name="twitter:description" content="Homework_2Priests and Devils">
@@ -342,15 +342,20 @@
       
 
       
-        <h1 id="Homework-2"><a href="#Homework-2" class="headerlink" title="Homework_2"></a>Homework_2</h1><p>Priests and Devils<br><a id="more"></a></p>
+        <h1 id="Homework-2"><a href="#Homework-2" class="headerlink" title="Homework_2"></a>Homework_2</h1><p>Priests and Devils</p>
+<a id="more"></a>
+<p><strong><a href="https://github.com/xwy27/Unity-3D-Learning/tree/master/HW2_%E7%89%A7%E5%B8%88%E4%B8%8E%E9%AD%94%E9%AC%BC" target="_blank" rel="noopener">个人github</a></strong></p>
 <p>阅读以下游戏脚本</p>
 <p>Priests and Devils is a puzzle game in which you will help the Priests and Devils to cross the river within the time limit. There are 3 priests and 3 devils at one side of the river. They all want to get to the other side of this river, but there is only one boat and this boat can only carry two persons each time. And there must be one person steering the boat from one side to the other side. In the flash game, you can click on them to move them and click the go button to move the boat to the other direction. If the priests are out numbered by the devils on either side of the river, they get killed and the game is over. You can try it in many ways. Keep all priests alive! Good luck!</p>
 <p><a href="http://www.flash-game.net/game/2535/priests-and-devils.html" target="_blank" rel="noopener">play the game</a></p>
 <p>程序要求：</p>
 <ol>
 <li>回答<ul>
-<li>列出游戏中提及的事物(Objects)</li>
-<li>用表格列出玩家动作表(规则表。<em>动作越少越好</em>)</li>
+<li>列出游戏中提及的事物(Objects)<blockquote>
+<p>Priests, devils, stone, river, boat</p>
+</blockquote>
+</li>
+<li>用表格列出玩家动作表(规则表。<em>动作越少越好</em>)<br>  |动作|结果|<br>  |——-|—————|<br>  |点击人物|上/下船, 上/下岸|<br>  |点击船只|过河|</li>
 </ul>
 </li>
 <li>限制<ul>
@@ -362,6 +367,34 @@
 <li>请使用课件架构图编程，不接受非 MVC 结构程序</li>
 <li>注意细节，如：船未靠岸，牧师与魔鬼上下船运动中，不接受用户事件</li>
 </ul>
+</li>
+</ol>
+<p>实现思路：</p>
+<ol>
+<li>分离出 MVC 框架<blockquote>
+<p>Model: Coast, Boat, Character</p>
+<p>View: UserGUI</p>
+<p>Controller: BoatController, CoastController, CharacterController, FirstController, Director</p>
+</blockquote>
+</li>
+<li><p>给定 Model 属性和值域</p>
+<p> 枚举变量是很好的状态标记辅助变量，可以避免记忆整数标识的状态，而采用易懂的变量名替代。</p>
+ <figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> Location &#123; left, right &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Character</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> Moveable mScript;</span><br><span class="line">    <span class="keyword">public</span> GameObject Role &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    <span class="keyword">public</span> CoastController Coast &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">bool</span> IsOnBoat &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">string</span> Name &#123;</span><br><span class="line">        <span class="keyword">get</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> Role.name;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">set</span> &#123;</span><br><span class="line">            Role.name = <span class="keyword">value</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Character</span>(<span class="params"><span class="keyword">string</span> _name</span>) </span>&#123;</span><br><span class="line">        <span class="comment">//set properties</span></span><br><span class="line">        <span class="keyword">if</span> (_name.Contains(<span class="string">"priest"</span>)) &#123;</span><br><span class="line">            <span class="comment">// Instantiate priest</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// Instantiate devil</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Coast</span> &#123;</span><br><span class="line">    <span class="keyword">readonly</span> GameObject coast;</span><br><span class="line">    <span class="keyword">readonly</span> Vector3 departure;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">readonly</span> Vector3 destination;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">readonly</span> Vector3[] positions;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> CharacterController[] characters;</span><br><span class="line">    <span class="keyword">public</span> Location Location &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Coast</span>(<span class="params"><span class="keyword">string</span> _location</span>) </span>&#123;</span><br><span class="line">        <span class="comment">//set properties</span></span><br><span class="line">        <span class="keyword">if</span> (_location == <span class="string">"right"</span>) &#123;</span><br><span class="line">            <span class="comment">// Instantiate right coast</span></span><br><span class="line">            coast.name = <span class="string">"departure"</span>;</span><br><span class="line">            Location = Location.right;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// Instantiate left coast</span></span><br><span class="line">            coast.name = <span class="string">"destination"</span>;</span><br><span class="line">            Location = Location.left;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Boat</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">readonly</span> Moveable mScript;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">readonly</span> Vector3 departure;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">readonly</span> Vector3 destination;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">readonly</span> Vector3[] departures;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">readonly</span> Vector3[] destinations;</span><br><span class="line">    <span class="keyword">public</span> CharacterController[] passenger = <span class="keyword">new</span> CharacterController[<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> GameObject _Boat &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    <span class="keyword">public</span> Location Location &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Boat</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="comment">// Instantiate boat gameobject</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>View 实现</p>
+<ul>
+<li>物体预制<br>  见 github 代码项目的 prehab 文件夹</li>
+<li>UserGUI<br> UserGUI 代码见 <a href="https://github.com/xwy27/Unity-3D-Learning/tree/master/HW2_%E7%89%A7%E5%B8%88%E4%B8%8E%E9%AD%94%E9%AC%BC" target="_blank" rel="noopener">github</a>。</li>
+</ul>
+</li>
+<li><p>实现各 Controller 和 Director</p>
+<p> Director 采取单例模式</p>
+ <figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public class Director : System.Object &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Director _instance;</span><br><span class="line">    <span class="keyword">public</span> ISceneController CurrentSceneController &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Director <span class="title">GetInstance</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="comment">// variable ?? (some code)</span></span><br><span class="line">        <span class="comment">// 这是个语法糖，表示判断前面的 variable 是否为空</span></span><br><span class="line">        <span class="comment">// 不为空则返回 variable</span></span><br><span class="line">        <span class="comment">// 为空则执行括号内的 some code</span></span><br><span class="line">        <span class="keyword">return</span> _instance ?? (_instance = <span class="keyword">new</span> Director());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> Controller 代码见 <a href="https://github.com/xwy27/Unity-3D-Learning/tree/master/HW2_%E7%89%A7%E5%B8%88%E4%B8%8E%E9%AD%94%E9%AC%BC" target="_blank" rel="noopener">github</a>。</p>
+<p> 其中，需要注意，上下船动作虽然简单，但也应该分解为，人物上/下船，船上/下人物，人物上/下岸，岸上/下人物。<strong>因为这个动作的结果会对三个 GameObject 造成影响，所以我们要通知三个 GameObject 让其进行状态更新。</strong> 这一点尤其要注意。</p>
+</li>
+<li><p>GameObject 运动脚本</p>
+<p> 实现参考<a href="https://www.jianshu.com/p/07028b3da573" target="_blank" rel="noopener">博客</a></p>
 </li>
 </ol>
 
