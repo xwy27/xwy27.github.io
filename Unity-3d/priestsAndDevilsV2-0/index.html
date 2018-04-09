@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Unity-3d," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Homework_3Priests and DevilsV2.0(动作分离版本)">
+<meta name="keywords" content="Unity-3d">
+<meta property="og:type" content="article">
+<meta property="og:title" content="priestsAndDevilsV2.0">
+<meta property="og:url" content="http://yoursite.com/Unity-3d/priestsAndDevilsV2-0/index.html">
+<meta property="og:site_name" content="Xuwy Blog">
+<meta property="og:description" content="Homework_3Priests and DevilsV2.0(动作分离版本)">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/Unity-3d/priestsAndDevilsV2-0/scene.jpg">
+<meta property="og:updated_time" content="2018-04-09T05:04:15.181Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="priestsAndDevilsV2.0">
+<meta name="twitter:description" content="Homework_3Priests and DevilsV2.0(动作分离版本)">
+<meta name="twitter:image" content="http://yoursite.com/Unity-3d/priestsAndDevilsV2-0/scene.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/Unity-3d/priestsAndDevilsV2-0/"/>
+
+
+
+
+
+  <title>priestsAndDevilsV2.0 | Xuwy Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/xwy27"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png" alt="Fork me on GitHub"></a>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Xuwy Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Learning Blog</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Unity-3d/priestsAndDevilsV2-0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Xu Weiyuan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Xuwy Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">priestsAndDevilsV2.0</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-09T10:45:57+08:00">
+                2018-04-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Unity-3d/" itemprop="url" rel="index">
+                    <span itemprop="name">Unity-3d</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Homework-3"><a href="#Homework-3" class="headerlink" title="Homework_3"></a>Homework_3</h1><p>Priests and DevilsV2.0(动作分离版本)<br><a id="more"></a><br><strong><a href="https://github.com/xwy27/Unity-3D-Learning/tree/master/HW3_%E7%89%A7%E5%B8%88%E4%B8%8E%E9%AD%94%E9%AC%BCV2" target="_blank" rel="noopener">个人github</a></strong></p>
+<h2 id="Skybox"><a href="#Skybox" class="headerlink" title="Skybox"></a>Skybox</h2><p>运用skybox，terrain 和 water environment 对牧师与魔鬼V1.0，即上一版本进行场景的美化(尽力去做的好看了)。</p>
+<p><img src="/Unity-3d/priestsAndDevilsV2-0/scene.jpg" alt="new scene"></p>
+<p>游戏对象的使用：</p>
+<blockquote>
+<p>游戏对象可以通过直接实例化使用，这样适用于一次的，无多共性的游戏对象;也可以通过预制来实例化，这种方式可以满足有着多数共性的游戏对象的实例化，不必每次都为具有共性的游戏对象赋值相同属性。</p>
+<p>游戏对象的位置是很重要的一个参数，对于这个参数的调整，类似于网页的 CSS 调整，往往需要耐心，才能调整出好看的场景。</p>
+<p>游戏对象可以赋值材质，Unity 对于 material 的渲染非常棒，针对不同的贴图，基本做到了全覆盖，不突兀，视觉效果较好。通过贴图，可以满足游戏对象较为简单的形象设计。比如 terrain 的地貌。</p>
+<p>总而言之，每一个游戏对象都有着其特定的功能，其特性都应被重视，不能草率了之。</p>
+</blockquote>
+<h2 id="Priests-and-DevilsV2-0"><a href="#Priests-and-DevilsV2-0" class="headerlink" title="Priests and DevilsV2.0"></a>Priests and DevilsV2.0</h2><p>关于动作分离，这个需求的产生，与 MVC 构架分离类似。我们的 GameObject 可以执行的动作，事实上是可以划分为许多相同的基础动作的，如直线运动，对话等。我们不可能在每个 GameObject 都写上他们的动作，所以，可以提取出基础动作，然后使用一个动作类和一个执行类去完成 GameObject 的动作，同时，配备一个动作管理者，让其去调度，谁去执行什么动作。</p>
+<p>对于这个动作分离，我们从以下方面考虑：首先，动作分离，构建动作基类，然后继承实现基础动作类，接着实现动作执行类。<br>但是对于每个 GameObject，其执行动作可能同一时刻有多个，所以可以构造一个动作队列执行类，让其执行队列中的所有动作。</p>
+<p>还有一个问题，动作执行过程中，GameObject 应该是无法行动的，因为逻辑上其应该执行的动作，我们都加入到动作执行队列了。所以，我们需要防止这种意外情况发生。那么，动作回调就出现了。这个动作回调，就是在这个 GameObject 执行动作完毕后，通知其本身动作执行完毕，可以继续执行，或者通知其关联的 GameObject，动作执行完毕，它可以进行操作。</p>
+<p>以上就是动作分离需要注意的事情。下面我们来看代码实现。</p>
+<ol>
+<li><strong>动作基类</strong></li>
+</ol>
+<p>动作的基类，定义有关于 GameObject 的动作内容。<br>牧师与魔鬼游戏中，GameObject 的动作只涉及直线运动，所以，我们仅需要 Transform 属性，以便对 GameObject 指定直线运动的路径。<br>其中 Start 和 Update 方法，是实现动作的基础函数，throw 语句是为了提醒用户实现这个接口。</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">SSAction</span> : <span class="title">ScriptableObject</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">bool</span> enable = <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">bool</span> destroy = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> GameObject GameObject &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    <span class="keyword">public</span> Transform Transform &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    <span class="keyword">public</span> ISSActionCallback Callback &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">Start</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> System.NotImplementedException();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">Update</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> System.NotImplementedException();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li><strong>基础动作</strong></li>
+</ol>
+<p>动作基类定义完毕，开始定义我们的基础动作。分析 GameObject 可执行的动作可知，其基础动作仅有一个，那就是直线运动。所以，在这里我们使用Transform 属性来构造直线运动。</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">SSMoveToAction</span> : <span class="title">SSAction</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> Vector3 target;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">float</span> speed;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">SSMoveToAction</span>(<span class="params"></span>) </span>&#123; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> SSMoveToAction <span class="title">GetSSMoveToAction</span>(<span class="params">Vector3 target, <span class="keyword">float</span> speed</span>) </span>&#123;</span><br><span class="line">        SSMoveToAction action = CreateInstance&lt;SSMoveToAction&gt;();</span><br><span class="line">        action.target = target;</span><br><span class="line">        action.speed = speed;</span><br><span class="line">        <span class="keyword">return</span> action;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">Start</span>(<span class="params"></span>) </span>&#123; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">Update</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        Transform.position = Vector3.MoveTowards(Transform.position, target, speed * Time.deltaTime);</span><br><span class="line">        <span class="keyword">if</span> (Transform.position == target) &#123;</span><br><span class="line">            destroy = <span class="literal">true</span>;</span><br><span class="line">            Callback.ActionDone(<span class="keyword">this</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li><strong>组合动作</strong></li>
+</ol>
+<p>组合动作，完成的就是一系列动作。在我们的游戏里，其实并没有这个需求，但是，上一版本中，不太成熟的折线运动则需要这个组合动作。这一次，我们的组合动作出现在人物动作上。其上下船/岸动作，抽象为一个直角折线运动。这时，就需要两步运动，所以，需要实现组合动作。</p>
+<p>组合动作类需要实现的事情是在调用它的时候，加入动作队列，然后执行，执行完毕后，清空队列。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">public class SequenceAction: SSAction, ISSActionCallback &#123;</span><br><span class="line">    public List&lt;SSAction&gt; sequence;</span><br><span class="line">    public int repeat = -1;</span><br><span class="line">    public int currentActionIndex = 0;</span><br><span class="line"></span><br><span class="line">    public static SequenceAction GetSequenceAction(int repeat, int currentActionIndex, List&lt;SSAction&gt; sequence) &#123;</span><br><span class="line">        SequenceAction action = CreateInstance&lt;SequenceAction&gt;();</span><br><span class="line">        action.sequence = sequence;</span><br><span class="line">        action.repeat = repeat;</span><br><span class="line">        action.currentActionIndex = currentActionIndex;</span><br><span class="line">        return action;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public override void <span class="keyword">Update</span>() &#123;</span><br><span class="line">        <span class="keyword">if</span> (sequence.Count == <span class="number">0</span>) <span class="keyword">return</span>;</span><br><span class="line">        if (currentActionIndex &lt; sequence.Count) &#123;</span><br><span class="line">            sequence[currentActionIndex].Update();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void ActionDone(SSAction source) &#123;</span><br><span class="line">        source.destroy = false;</span><br><span class="line">        currentActionIndex++;</span><br><span class="line">        if (currentActionIndex &gt;= sequence.Count) &#123;</span><br><span class="line">            currentActionIndex = 0;</span><br><span class="line">            if (repeat &gt; 0) repeat--;</span><br><span class="line">            if (repeat == 0) &#123;</span><br><span class="line">                destroy = true;</span><br><span class="line">                Callback.ActionDone(this);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public override void <span class="keyword">Start</span>() &#123;</span><br><span class="line">        foreach(SSAction <span class="keyword">action</span> <span class="keyword">in</span> <span class="keyword">sequence</span>) &#123;</span><br><span class="line">            action.GameObject = GameObject;</span><br><span class="line">            action.Transform = Transform;</span><br><span class="line">            action.Callback = this;</span><br><span class="line">            action.Start();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    void OnDestroy() &#123;</span><br><span class="line">        foreach(SSAction action in sequence) &#123;</span><br><span class="line">            DestroyObject(action);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>动作管理</li>
+</ol>
+<p>动作管理，就是管理动作的执行，它来调度调配所有的动作的执行。</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">public class ActionManager : MonoBehaviour, ISSActionCallback &#123;</span><br><span class="line">    <span class="keyword">private</span> Dictionary&lt;<span class="keyword">int</span>, SSAction&gt; actions = <span class="keyword">new</span> Dictionary&lt;<span class="keyword">int</span>, SSAction&gt;();</span><br><span class="line">    <span class="keyword">private</span> List&lt;SSAction&gt; waitingAdd = <span class="keyword">new</span> List&lt;SSAction&gt;();</span><br><span class="line">    <span class="keyword">private</span> List&lt;<span class="keyword">int</span>&gt; waitingDelete = <span class="keyword">new</span> List&lt;<span class="keyword">int</span>&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">Update</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">foreach</span>(SSAction action <span class="keyword">in</span> waitingAdd) &#123;</span><br><span class="line">            actions[action.GetInstanceID()] = action;</span><br><span class="line">        &#125;</span><br><span class="line">        waitingAdd.Clear();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">foreach</span>(KeyValuePair&lt;<span class="keyword">int</span>, SSAction&gt; kv <span class="keyword">in</span> actions) &#123;</span><br><span class="line">            SSAction action = kv.Value;</span><br><span class="line">            <span class="keyword">if</span> (action.destroy) &#123;</span><br><span class="line">                waitingDelete.Add(action.GetInstanceID());</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (action.enable) &#123;</span><br><span class="line">                action.Update();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">foreach</span>(<span class="keyword">int</span> key <span class="keyword">in</span> waitingDelete) &#123;</span><br><span class="line">            SSAction action = actions[key];</span><br><span class="line">            actions.Remove(key);</span><br><span class="line">            DestroyObject(action);</span><br><span class="line">        &#125;</span><br><span class="line">        waitingDelete.Clear();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">AddAction</span>(<span class="params">GameObject gameObject, SSAction action, ISSActionCallback callback</span>) </span>&#123;</span><br><span class="line">        action.GameObject = gameObject;</span><br><span class="line">        action.Transform = gameObject.transform;</span><br><span class="line">        action.Callback = callback;</span><br><span class="line">        waitingAdd.Add(action);</span><br><span class="line">        action.Start();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">ActionDone</span>(<span class="params">SSAction source</span>) </span>&#123; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>场记与动作管理</li>
+</ol>
+<p>动作分离完毕，我们还需要对原始的代码进行少量的改动。由于使用了 MVC 改动就变得很有目的性了。前往 Controller 代码，将所有动作执行代码删去。然后再在场记处调用动作管理者，就好了。这样一来，代码的耦合度又降低了，在更改和 debug 的时候，指向性更强。</p>
+<p>在这里，使用了一个场记动作管理者类，避免场记代码冗余。</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">FirstSceneActionManager</span> : <span class="title">ActionManager</span> &#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">MoveBoat</span>(<span class="params">BoatController boatController</span>) </span>&#123;</span><br><span class="line">        SSMoveToAction action = SSMoveToAction.GetSSMoveToAction(boatController.GetDestination(), boatController.boat.movingSpeed);</span><br><span class="line">        AddAction(boatController.boat._Boat, action, <span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">MoveCharacter</span>(<span class="params">MyNamespace.CharacterController characterCtrl, Vector3 destination</span>) </span>&#123;</span><br><span class="line">        Vector3 currentPos = characterCtrl.character.Role.transform.position;</span><br><span class="line">        Vector3 middlePos = currentPos;</span><br><span class="line">        <span class="comment">//采用线段式的折线运动</span></span><br><span class="line">        <span class="comment">//终点纵坐标小，则为从岸上船</span></span><br><span class="line">        <span class="comment">//否则，从船上岸</span></span><br><span class="line">        <span class="keyword">if</span> (destination.y &gt; currentPos.y) middlePos.y = destination.y;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">          middlePos.x = destination.x;</span><br><span class="line">        &#125;</span><br><span class="line">        SSAction action1 = SSMoveToAction.GetSSMoveToAction(middlePos, characterCtrl.character.movingSpeed);</span><br><span class="line">        SSAction action2 = SSMoveToAction.GetSSMoveToAction(destination, characterCtrl.character.movingSpeed);</span><br><span class="line">        <span class="comment">//动作队列完成上船或上岸动作</span></span><br><span class="line">        SSAction seqAction = SequenceAction.GetSequenceAction(<span class="number">1</span>, <span class="number">0</span>, <span class="keyword">new</span> List&lt;SSAction&gt; &#123; action1, action2 &#125;);</span><br><span class="line">        AddAction(characterCtrl.character.Role, seqAction, <span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>更改后的 FirstController，主要改动动作执行代码，通过调用场记动作管理者实现。</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">public class FirstController : MonoBehaviour, ISceneController, IUserAction&#123;</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">MoveBoat</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (boatCtrl.IsEmpty()) <span class="keyword">return</span>;</span><br><span class="line">        <span class="comment">//修改船的移动动作和过程处理</span></span><br><span class="line">        actionManager.MoveBoat(boatCtrl);</span><br><span class="line">        boatCtrl.SetPos();</span><br><span class="line">        UserGUI.status = CheckGameOver();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">CharacterClicked</span>(<span class="params">MyNamespace.CharacterController characterCtrl</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (characterCtrl.character.IsOnBoat) &#123;</span><br><span class="line">            CoastController tempCoast = (boatCtrl.boat.Location == Location.right ? rightCoastCtrl : leftCoastCtrl);</span><br><span class="line">            boatCtrl.GetOffBoat(characterCtrl.character.Name);</span><br><span class="line">            actionManager.MoveCharacter(characterCtrl, tempCoast.GetEmptyPosition());</span><br><span class="line">            characterCtrl.GetOnCoast(tempCoast);</span><br><span class="line">            tempCoast.GetOnCoast(characterCtrl);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            CoastController tempCoast = characterCtrl.character.Coast;</span><br><span class="line">            <span class="keyword">if</span> (tempCoast.coast.Location != boatCtrl.boat.Location) <span class="keyword">return</span>;     <span class="comment">// Boat at another side</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (boatCtrl.GetEmptyIndex() == <span class="number">-1</span>) <span class="keyword">return</span>;                         <span class="comment">// Boat is full</span></span><br><span class="line"></span><br><span class="line">            tempCoast.GetOffCoast(characterCtrl.character.Name);</span><br><span class="line">            actionManager.MoveCharacter(characterCtrl, boatCtrl.GetEmptyPosition());</span><br><span class="line">            characterCtrl.GetOnBoat(boatCtrl);</span><br><span class="line">            boatCtrl.GetOnBoat(characterCtrl);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        UserGUI.status = CheckGameOver();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Unity-3d/" rel="tag"># Unity-3d</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Unity-3d/PriestsAndDevils/" rel="next" title="Unity-牧师与魔鬼">
+                <i class="fa fa-chevron-left"></i> Unity-牧师与魔鬼
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Xu Weiyuan</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Homework-3"><span class="nav-number">1.</span> <span class="nav-text">Homework_3</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Skybox"><span class="nav-number">1.1.</span> <span class="nav-text">Skybox</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Priests-and-DevilsV2-0"><span class="nav-number">1.2.</span> <span class="nav-text">Priests and DevilsV2.0</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Xu Weiyuan</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+  
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
