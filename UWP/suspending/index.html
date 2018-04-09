@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="MOSAD,UWP," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Week4需求如下:  (Mainpage.xaml.cs)在 MainPage 中点击 checkbox 出现横线，输入数据（选择图片），挂起并关闭程序，重新启动时，程序显示在 Mainpage 界面，并且点击的checkbox与对应横线，数据与图片都存在。 (Newpage.xaml.cs)在 NewPage 中输入数据（或选择图片），挂起并关闭程序，重新启动时，程序显示在 Newpage 界">
+<meta name="keywords" content="MOSAD,UWP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="UWP-Suspending">
+<meta property="og:url" content="http://yoursite.com/UWP/suspending/index.html">
+<meta property="og:site_name" content="Xuwy Blog">
+<meta property="og:description" content="Week4需求如下:  (Mainpage.xaml.cs)在 MainPage 中点击 checkbox 出现横线，输入数据（选择图片），挂起并关闭程序，重新启动时，程序显示在 Mainpage 界面，并且点击的checkbox与对应横线，数据与图片都存在。 (Newpage.xaml.cs)在 NewPage 中输入数据（或选择图片），挂起并关闭程序，重新启动时，程序显示在 Newpage 界">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/UWP/suspending/suspending/lifeCycle.jpg">
+<meta property="og:updated_time" content="2018-04-09T09:23:38.092Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="UWP-Suspending">
+<meta name="twitter:description" content="Week4需求如下:  (Mainpage.xaml.cs)在 MainPage 中点击 checkbox 出现横线，输入数据（选择图片），挂起并关闭程序，重新启动时，程序显示在 Mainpage 界面，并且点击的checkbox与对应横线，数据与图片都存在。 (Newpage.xaml.cs)在 NewPage 中输入数据（或选择图片），挂起并关闭程序，重新启动时，程序显示在 Newpage 界">
+<meta name="twitter:image" content="http://yoursite.com/UWP/suspending/suspending/lifeCycle.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/UWP/suspending/"/>
+
+
+
+
+
+  <title>UWP-Suspending | Xuwy Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/xwy27"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png" alt="Fork me on GitHub"></a>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Xuwy Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Learning Blog</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/UWP/suspending/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Xu Weiyuan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Xuwy Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">UWP-Suspending</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-09T16:24:51+08:00">
+                2018-04-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/UWP/" itemprop="url" rel="index">
+                    <span itemprop="name">UWP</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Week4"><a href="#Week4" class="headerlink" title="Week4"></a>Week4</h1><p>需求如下:</p>
+<ol>
+<li>(Mainpage.xaml.cs)在 MainPage 中点击 checkbox 出现横线，输入数据（选择图片），挂起并关闭程序，重新启动时，程序显示在 Mainpage 界面，并且点击的checkbox与对应横线，数据与图片都存在。</li>
+<li>(Newpage.xaml.cs)在 NewPage 中输入数据（或选择图片），挂起并关闭程序，重新启动时，程序显示在 Newpage 界面，数据与图片都存在。</li>
+</ol>
+<p><em>完成图片的挂起恢复，规避路径权限问题</em><br><a id="more"></a></p>
+<h2 id="Suspending"><a href="#Suspending" class="headerlink" title="Suspending"></a>Suspending</h2><p>首先，了解一下应用的<strong>生命周期</strong>。</p>
+<blockquote>
+<p>在 Windows8 之前，应用的生命周期非常简单，应用始终处于运行状态或未运行状态。 当用户最小化应用或离开应用时，它们将继续运行。 随着便携设备和电源管理变得日益重要，这种情况不再可行。<br>Win8 引入了新的应用模型：在高级别上，添加新的已暂停状态。 当用户最小化 Windows 应用商店应用或切换到其他应用后，该应用会立刻处于暂停状态。 这意味着应用的线程已停止，并且应用保留在内存中（除非操作系统需要回收资源）。 当用户切换回该应用时，该应用可快速还原到正在运行状态。</p>
+<p>&nbsp;——<a href="https://docs.microsoft.com/zh-cn/windows/uwp/launch-resume/app-lifecycle#app-execution-state" target="_blank" rel="noopener">MicrosoftDocs</a><br><img src="/UWP/suspending/./suspending/lifeCycle.jpg" alt="AppLifeCycle"></p>
+</blockquote>
+<center>&nbsp;&nbsp;&nbsp;Picture1&nbsp;&nbsp;&nbsp;AppLifeCycle</center>
+
+<p>我们这次需要实现的就是这个应用的<strong>挂起状态</strong>(Suspending state)。</p>
+<p>首先，在 App.xmal.cs 代码中，已经有了关于挂起状态的函数。这是 windows 自己的考虑，所有应用都可以具备挂起状态，而且对其有需求。我们要做的事情，就是为其注册挂起事件，然后实现这个挂起事件。</p>
+<ol>
+<li><p>注册挂起事件</p>
+ <figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">App</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.InitializeComponent();</span><br><span class="line">    <span class="keyword">this</span>.Suspending += OnSuspending;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>挂起事件</p>
+ <figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">OnSuspending</span>(<span class="params"><span class="keyword">object</span> sender, SuspendingEventArgs e</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> deferral = e.SuspendingOperation.GetDeferral();</span><br><span class="line">    <span class="comment">// <span class="doctag">TODO:</span> 保存应用程序状态并停止任何后台活动</span></span><br><span class="line">    IsSuspending = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Get the frame navigation state serialized as a string and save in settings</span></span><br><span class="line">    Frame frame = Window.Current.Content <span class="keyword">as</span> Frame;</span><br><span class="line">    ApplicationData.Current.LocalSettings.Values[<span class="string">"NavigationState"</span>] = frame.GetNavigationState();</span><br><span class="line">    deferral.Complete();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在页面启动判断之前是否为挂起状态</p>
+ <figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (e.PreviousExecutionState == ApplicationExecutionState.Terminated) &#123;</span><br><span class="line">    <span class="comment">//<span class="doctag">TODO:</span> 从之前挂起的应用程序加载状态</span></span><br><span class="line">    <span class="keyword">if</span> (ApplicationData.Current.LocalSettings.Values.ContainsKey(<span class="string">"NavigationState"</span>)) &#123;</span><br><span class="line">        rootFrame.SetNavigationState((<span class="keyword">string</span>)ApplicationData.Current.LocalSettings.Values[<span class="string">"NavigationState"</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>在 App 代码中为所有页面注册了挂起事件，接下来就是为不同页面实现各自的挂起需求，即存储哪些数据。</p>
+<p>首先，OnNavigatedFrom 是从当前页面跳转，那么这就是我们要进行判断是否进入挂起状态。</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">OnNavigatedFrom</span>(<span class="params">NavigationEventArgs e</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">bool</span> suspending = ((App)App.Current).IsSuspending;</span><br><span class="line">    <span class="keyword">if</span> (suspending) &#123;</span><br><span class="line">        <span class="comment">// Save volatile state in case we get terminated later on, then</span></span><br><span class="line">        <span class="comment">// we can restore as if we'd never been gone :)</span></span><br><span class="line">        <span class="keyword">var</span> composite = <span class="keyword">new</span> ApplicationDataCompositeValue &#123;</span><br><span class="line">            [<span class="meta"><span class="meta-string">"title"</span></span>] = Title.Text,</span><br><span class="line">            [<span class="meta"><span class="meta-string">"description"</span></span>] = Description.Text,</span><br><span class="line">            [<span class="meta"><span class="meta-string">"date"</span></span>] = Date.Date</span><br><span class="line">            <span class="comment">//...</span></span><br><span class="line">        &#125;;</span><br><span class="line">        ApplicationData.Current.LocalSettings.Values[<span class="string">"Mainpage"</span>] = composite;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后，OnNavigatedTo 是跳转到当前页面，在这里，我们要进行一个判断，当前页面是否是从挂起状态恢复，以此决定是否恢复数据。<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">async</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">OnNavigatedTo</span>(<span class="params">NavigationEventArgs e</span>) </span>&#123;</span><br><span class="line">    Frame rootFrame = Window.Current.Content <span class="keyword">as</span> Frame;</span><br><span class="line">    SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Collapsed;</span><br><span class="line">    <span class="keyword">if</span> (e.NavigationMode == NavigationMode.New) &#123;</span><br><span class="line">        ApplicationData.Current.LocalSettings.Values.Remove(<span class="string">"Mainpage"</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// Try to restore state if any, in case we were terminated</span></span><br><span class="line">        <span class="keyword">if</span> (ApplicationData.Current.LocalSettings.Values.ContainsKey(<span class="string">"Mainpage"</span>)) &#123;</span><br><span class="line">            <span class="keyword">var</span> composite = ApplicationData.Current.LocalSettings.Values[<span class="string">"Mainpage"</span>] <span class="keyword">as</span> ApplicationDataCompositeValue;</span><br><span class="line">            Title.Text = (<span class="keyword">string</span>)composite[<span class="string">"title"</span>];</span><br><span class="line">            Description.Text = (<span class="keyword">string</span>)composite[<span class="string">"description"</span>];</span><br><span class="line">            Date.Date = (DateTimeOffset)composite[<span class="string">"date"</span>];</span><br><span class="line">            <span class="comment">//...</span></span><br><span class="line"></span><br><span class="line">            <span class="comment">// We're done with it, so remove it</span></span><br><span class="line">            ApplicationData.Current.LocalSettings.Values.Remove(<span class="string">"Mainpage"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>至此，简单的挂起关闭恢复数据就做好了。</p>
+<h2 id="图片的恢复"><a href="#图片的恢复" class="headerlink" title="图片的恢复"></a>图片的恢复</h2><p>在进行挂起并挂壁恢复数据的过程中，最让人头疼的莫过于，图片问题。以往也一定遇到了这个问题。这终归都是 UWP 的权限问题。UWP 规定应用程序的权限仅限于其安装目录路径，所以对于任意路径的文件获取，其实很难做到。在这里，我们采用规避路径权限问题的做法，实现图片的恢复。</p>
+<p>在 Stack Overflow 查询到 UWP 中有 FutureAccessList 和 MostRecentlyUsedList 两个记录 StorageItems 的工具。</p>
+<blockquote>
+<p>When you add an item to such list, you obtain a token and this is what you should remember in your LocalSettings (for example). Then you can reuse such token to access the file/folder</p>
+<p>From <a href="https://stackoverflow.com/questions/41621675/how-to-save-image-location-in-settings" target="_blank" rel="noopener">Stack Overflow</a></p>
+</blockquote>
+<p>下面是实现代码：</p>
+<ul>
+<li>存储图片 Token</li>
+</ul>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">async</span> <span class="keyword">void</span> <span class="title">Select_Photo</span>(<span class="params"><span class="keyword">object</span> sender, RoutedEventArgs e</span>) </span>&#123;</span><br><span class="line">    FileOpenPicker picker = <span class="keyword">new</span> FileOpenPicker();</span><br><span class="line">    <span class="comment">// Initialize the picture file type to take</span></span><br><span class="line">    StorageFile file = <span class="keyword">await</span> picker.PickSingleFileAsync();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (file != <span class="literal">null</span>) &#123;</span><br><span class="line">        ApplicationData.Current.LocalSettings.Values[<span class="string">"MyToken"</span>] =</span><br><span class="line">            StorageApplicationPermissions.FutureAccessList.Add(file);</span><br><span class="line">        <span class="comment">// Load the selected picture</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>恢复图片文件</li>
+</ul>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (ApplicationData.Current.LocalSettings.Values.ContainsKey(<span class="string">"MyToken"</span>)) &#123;</span><br><span class="line">    <span class="keyword">if</span> ((<span class="keyword">string</span>)ApplicationData.Current.LocalSettings.Values[<span class="string">"MyToken"</span>] != <span class="string">""</span>) &#123;</span><br><span class="line">        StorageFile theFile = <span class="keyword">await</span> StorageApplicationPermissions.FutureAccessList.GetFileAsync(</span><br><span class="line">            (<span class="keyword">string</span>)ApplicationData.Current.LocalSettings.Values[<span class="string">"MyToken"</span>]);</span><br><span class="line">        <span class="keyword">if</span> (theFile != <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="comment">// Load the saved picture</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个 FutureAccessList 是实现规避图片路径权限问题的一个方法。很好奇，有没有解决这个权限问题的方法，因为网易云 UWP 的本地音乐就不存在这个权限问题，极其膜拜。</p>
+<h3 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h3><p>对于这个作业要求，和别人有过讨论。对于实现恢复 checkbox 和 line 的绑定 UI，这个需求有些异议。如果从恢复应用 UI 的角度来说，这是合理的。但是，从恢复输入现场来说，这个就是多余的。</p>
+<p>基于其挂起存储空间的限制，我们认为，挂起恢复的目的，应该是保存用户的输入，避免崩溃或其他原因导致应用挂起然后用户再回到页面的时候，其输入数据丢失。这样需要用户重新输入，体验不佳。所以，对于我们应该存储的，就是选中 Item 的 id 和对其进行的编辑。其余数据的丢失，数据库中依旧存有，并不应该都由挂起存储空间负责。</p>
+<p>我们的数据更新和 Item 状态，应该由用户点击保存数据到数据库来存储。我们的挂起存储的数据，应该只是输入数据，保证良好的用户体验。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/MOSAD/" rel="tag"># MOSAD</a>
+          
+            <a href="/tags/UWP/" rel="tag"># UWP</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Unity-3d/priestsAndDevilsV2-0/" rel="next" title="Unity-priestsAndDevilsV2.0">
+                <i class="fa fa-chevron-left"></i> Unity-priestsAndDevilsV2.0
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Xu Weiyuan</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Week4"><span class="nav-number">1.</span> <span class="nav-text">Week4</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Suspending"><span class="nav-number">1.1.</span> <span class="nav-text">Suspending</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图片的恢复"><span class="nav-number">1.2.</span> <span class="nav-text">图片的恢复</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#后记"><span class="nav-number">1.2.1.</span> <span class="nav-text">后记</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Xu Weiyuan</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+  
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
