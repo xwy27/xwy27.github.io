@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="MOSAD,UWP," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Week 7  Week 7 Request Accomplish 使用 HttpClient 访问网络 提供城市天气查询(json Phrase) 提供 IP 地址查询(xml Phrase) 成品图">
+<meta name="keywords" content="MOSAD,UWP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="UWP-webRequest">
+<meta property="og:url" content="http://yoursite.com/UWP/webRequest/index.html">
+<meta property="og:site_name" content="Xuwy Blog">
+<meta property="og:description" content="Week 7  Week 7 Request Accomplish 使用 HttpClient 访问网络 提供城市天气查询(json Phrase) 提供 IP 地址查询(xml Phrase) 成品图">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/UWP/webRequest/Query.jpg">
+<meta property="og:updated_time" content="2018-05-01T08:05:16.800Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="UWP-webRequest">
+<meta name="twitter:description" content="Week 7  Week 7 Request Accomplish 使用 HttpClient 访问网络 提供城市天气查询(json Phrase) 提供 IP 地址查询(xml Phrase) 成品图">
+<meta name="twitter:image" content="http://yoursite.com/UWP/webRequest/Query.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/UWP/webRequest/"/>
+
+
+
+
+
+  <title>UWP-webRequest | Xuwy Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/xwy27"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png" alt="Fork me on GitHub"></a>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Xuwy Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Learning Blog</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/UWP/webRequest/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Xu Weiyuan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Xuwy Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">UWP-webRequest</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-29T19:46:13+08:00">
+                2018-04-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/UWP/" itemprop="url" rel="index">
+                    <span itemprop="name">UWP</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Week-7"><a href="#Week-7" class="headerlink" title="Week 7"></a>Week 7</h1><!-- TOC -->
+<ul>
+<li><a href="#week-7">Week 7</a><ul>
+<li><a href="#request">Request</a></li>
+<li><a href="#accomplish">Accomplish</a><ul>
+<li><a href="#使用-httpclient-访问网络">使用 HttpClient 访问网络</a></li>
+<li><a href="#提供城市天气查询json-phrase">提供城市天气查询(json Phrase)</a></li>
+<li><a href="#提供-ip-地址查询xml-phrase">提供 IP 地址查询(xml Phrase)</a></li>
+<li><a href="#成品图">成品图</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<!-- /TOC -->
+<a id="more"></a>
+<h2 id="Request"><a href="#Request" class="headerlink" title="Request"></a>Request</h2><ol>
+<li>使用 HttpClient 访问网络</li>
+<li>提供城市<strong>天气查询</strong>(json Phrase)</li>
+<li>提供 <strong>IP 地址查询</strong>(xml Phrase)</li>
+</ol>
+<h2 id="Accomplish"><a href="#Accomplish" class="headerlink" title="Accomplish"></a>Accomplish</h2><h3 id="使用-HttpClient-访问网络"><a href="#使用-HttpClient-访问网络" class="headerlink" title="使用 HttpClient 访问网络"></a>使用 HttpClient 访问网络</h3><p>下面参考 <a href="https://docs.microsoft.com/zh-cn/windows/uwp/networking/httpclient" target="_blank" rel="noopener">Microsoft UWP Document</a> 提供了利用 HttpClient 通过 网址 url 进行网络访问的代码模板。我们要做的事就三个：</p>
+<ol>
+<li>给函数提供访问的 url 所需的参数；</li>
+<li>替换将要访问的 url</li>
+<li>完成下面的 http response处理代码</li>
+</ol>
+<p><em>函数的返回值可以自行修改。</em></p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">async</span> Task&lt;<span class="keyword">string</span>&gt; <span class="title">WeatherApi</span>(<span class="params"><span class="comment">/*params*/</span></span>) </span>&#123;</span><br><span class="line">    HttpClient httpClient = <span class="keyword">new</span> HttpClient();</span><br><span class="line">    <span class="keyword">var</span> headers = httpClient.DefaultRequestHeaders;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// The safe way to add a header value is to use the TryParseAdd method</span></span><br><span class="line">    <span class="comment">// and verify the return value is true,</span></span><br><span class="line">    <span class="comment">// especially if the header value is coming from user input.</span></span><br><span class="line">    <span class="keyword">string</span> header = <span class="string">"ie"</span>;</span><br><span class="line">    <span class="keyword">if</span> (!headers.UserAgent.TryParseAdd(header)) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> Exception(<span class="string">"Invalid header value: "</span> + header);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    header = <span class="string">"Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0)"</span>;</span><br><span class="line">    <span class="keyword">if</span> (!headers.UserAgent.TryParseAdd(header)) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> Exception(<span class="string">"Invalid header value: "</span> + header);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">string</span> uri = <span class="string">"url"</span>;</span><br><span class="line">    Uri requestUri = <span class="keyword">new</span> Uri(uri);</span><br><span class="line">    <span class="comment">//Send the GET request asynchronously and retrieve the response as a string.</span></span><br><span class="line">    HttpResponseMessage httpResponse = <span class="keyword">new</span> HttpResponseMessage();</span><br><span class="line">    <span class="keyword">string</span> httpResponseBody = <span class="string">""</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="comment">//Send the GET request</span></span><br><span class="line">        httpResponse = <span class="keyword">await</span> httpClient.GetAsync(requestUri);</span><br><span class="line">        httpResponse.EnsureSuccessStatusCode();</span><br><span class="line">        <span class="comment">// Set encoding to 'UTF-8'</span></span><br><span class="line">        Byte[] getByte1 = <span class="keyword">await</span> httpResponse.Content.ReadAsByteArrayAsync();</span><br><span class="line">        Encoding code1 = Encoding.GetEncoding(<span class="string">"UTF-8"</span>);</span><br><span class="line">        <span class="keyword">string</span> result1 = code1.GetString(getByte1, <span class="number">0</span>, getByte1.Length);</span><br><span class="line">        <span class="comment">// Pharse the json data</span></span><br><span class="line">        JsonReader reader = <span class="keyword">new</span> JsonTextReader(<span class="keyword">new</span> StringReader(result1));</span><br><span class="line">        <span class="keyword">while</span> (reader.Read()) &#123;</span><br><span class="line">            <span class="comment">// Do something here with the response data</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (Exception ex) &#123;</span><br><span class="line">        httpResponseBody = <span class="string">"Error: "</span> + ex.HResult.ToString(<span class="string">"X"</span>) + <span class="string">" Message: "</span> + ex.Message;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="comment">/*string*/</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="提供城市天气查询-json-Phrase"><a href="#提供城市天气查询-json-Phrase" class="headerlink" title="提供城市天气查询(json Phrase)"></a>提供城市天气查询(json Phrase)</h3><p>下面给出有关于 json phrase 的代码。<br>这里调用的是<strong>中国气象局</strong>的api，作为一个年迈的网站，它的查询 url 不支持城市中文名，而应使用<em>城市代码</em>。感谢<a href="https://www.cnblogs.com/oucbl/p/6138963.html" target="_blank" rel="noopener">blouc</a>的贡献，我直接将它洗成 xml 来辅助使用了，具体见代码文件内的 weather.xml 文件。<br>对于 json 数据的解析，使用 newton 库提供的 json 解析库。</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* Accomplish the url */</span></span><br><span class="line"><span class="comment">// Get the city code for the api</span></span><br><span class="line"><span class="keyword">string</span> code = <span class="string">"101010100"</span>;</span><br><span class="line">XmlDocument cityCode = <span class="keyword">new</span> XmlDocument();</span><br><span class="line">cityCode.LoadXml(System.IO.File.ReadAllText(<span class="string">"Weather.xml"</span>));</span><br><span class="line"><span class="keyword">foreach</span> (IXmlNode node <span class="keyword">in</span> cityCode.GetElementsByTagName(<span class="string">"City"</span>)) &#123;</span><br><span class="line">    <span class="keyword">if</span> ((<span class="keyword">string</span>)node.Attributes[<span class="number">0</span>].NodeValue == city) &#123;</span><br><span class="line">        code = (<span class="keyword">string</span>)node.Attributes[<span class="number">2</span>].NodeValue;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">string</span> uri = <span class="string">"http://www.weather.com.cn/data/sk/"</span> + code + <span class="string">".html"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Json Phrase Code for httpResponse data */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//Send the GET request</span></span><br><span class="line">httpResponse = <span class="keyword">await</span> httpClient.GetAsync(requestUri);</span><br><span class="line">httpResponse.EnsureSuccessStatusCode();</span><br><span class="line"><span class="comment">// Set encoding to 'UTF-8'</span></span><br><span class="line">Byte[] getByte1 = <span class="keyword">await</span> httpResponse.Content.ReadAsByteArrayAsync();</span><br><span class="line">Encoding code1 = Encoding.GetEncoding(<span class="string">"UTF-8"</span>);</span><br><span class="line"><span class="keyword">string</span> result1 = code1.GetString(getByte1, <span class="number">0</span>, getByte1.Length);</span><br><span class="line"><span class="comment">// Phrase the json data</span></span><br><span class="line">JsonReader reader = <span class="keyword">new</span> JsonTextReader(<span class="keyword">new</span> StringReader(result1));</span><br><span class="line"><span class="keyword">while</span> (reader.Read()) &#123;</span><br><span class="line">    <span class="keyword">if</span> ((String)reader.Value == <span class="string">"city"</span>) &#123;</span><br><span class="line">        weather += <span class="string">"城市: "</span>;</span><br><span class="line">        reader.Read();</span><br><span class="line">        <span class="keyword">if</span> (reader.Value != <span class="literal">null</span>)</span><br><span class="line">            weather += reader.Value + <span class="string">"\n"</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> ((String)reader.Value == <span class="string">"temp"</span>) &#123;</span><br><span class="line">        weather += <span class="string">"温度: "</span>;</span><br><span class="line">        reader.Read();</span><br><span class="line">        <span class="keyword">if</span> (reader.Value != <span class="literal">null</span>)</span><br><span class="line">            weather += reader.Value + <span class="string">"℃\n"</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> ((String)reader.Value == <span class="string">"WD"</span>) &#123;</span><br><span class="line">        weather += <span class="string">"风向: "</span>;</span><br><span class="line">        reader.Read();</span><br><span class="line">        <span class="keyword">if</span> (reader.Value != <span class="literal">null</span>)</span><br><span class="line">            weather += reader.Value + <span class="string">"\n"</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> ((String)reader.Value == <span class="string">"WS"</span>) &#123;</span><br><span class="line">        weather += <span class="string">"风速: "</span>;</span><br><span class="line">        reader.Read();</span><br><span class="line">        <span class="keyword">if</span> (reader.Value != <span class="literal">null</span>)</span><br><span class="line">            weather += reader.Value + <span class="string">"\n"</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> ((String)reader.Value == <span class="string">"SD"</span>) &#123;</span><br><span class="line">        weather += <span class="string">"相对湿度: "</span>;</span><br><span class="line">        reader.Read();</span><br><span class="line">        <span class="keyword">if</span> (reader.Value != <span class="literal">null</span>)</span><br><span class="line">            weather += reader.Value + <span class="string">"\n"</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> ((String)reader.Value == <span class="string">"time"</span>) &#123;</span><br><span class="line">        weather += <span class="string">"时间: "</span>;</span><br><span class="line">        reader.Read();</span><br><span class="line">        <span class="keyword">if</span> (reader.Value != <span class="literal">null</span>)</span><br><span class="line">            weather += reader.Value + <span class="string">"\n"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="提供-IP-地址查询-xml-Phrase"><a href="#提供-IP-地址查询-xml-Phrase" class="headerlink" title="提供 IP 地址查询(xml Phrase)"></a>提供 IP 地址查询(xml Phrase)</h3><p>调用网络服务的代码与天气查询的是一致的，只是更换了 url 网址与下面的 httpResponse 处理代码。<br>这里返回了 xml 数据，我们利用官方提供的 <figure class="highlight plain"><figcaption><span>库进行解析。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">```cs</span><br><span class="line">Byte[] getByte = await httpResponse.Content.ReadAsByteArrayAsync();</span><br><span class="line">Encoding code = Encoding.GetEncoding(&quot;UTF-8&quot;);</span><br><span class="line">string result = code.GetString(getByte, 0, getByte.Length);</span><br><span class="line">// Phrase the xml data</span><br><span class="line">XmlDocument document = new XmlDocument();</span><br><span class="line">document.LoadXml(result);</span><br><span class="line"></span><br><span class="line">var province = document.GetElementsByTagName(&quot;province&quot;);</span><br><span class="line">location += &quot;省份: &quot; + province[0].InnerText + &quot;\n&quot;;</span><br><span class="line"></span><br><span class="line">var city = document.GetElementsByTagName(&quot;city&quot;);</span><br><span class="line">location += &quot;城市: &quot; + city[0].InnerText + &quot;\n&quot;;</span><br><span class="line"></span><br><span class="line">var rectangle = document.GetElementsByTagName(&quot;rectangle&quot;);</span><br><span class="line">var temp = rectangle[0].InnerText.Split(&apos;;&apos;);</span><br><span class="line">location += &quot;区域:\n\t&quot; + temp[0] + &quot;\n\t&quot; + temp[1] + &quot;\n&quot;;</span><br></pre></td></tr></table></figure></p>
+<h3 id="成品图"><a href="#成品图" class="headerlink" title="成品图"></a>成品图</h3><p><img src="/UWP/webRequest/Query.jpg" alt="Query"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/MOSAD/" rel="tag"># MOSAD</a>
+          
+            <a href="/tags/UWP/" rel="tag"># UWP</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Unity-3d/UFOV2/" rel="next" title="UFOV2">
+                <i class="fa fa-chevron-left"></i> UFOV2
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Xu Weiyuan</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Week-7"><span class="nav-number">1.</span> <span class="nav-text">Week 7</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Request"><span class="nav-number">1.1.</span> <span class="nav-text">Request</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Accomplish"><span class="nav-number">1.2.</span> <span class="nav-text">Accomplish</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-HttpClient-访问网络"><span class="nav-number">1.2.1.</span> <span class="nav-text">使用 HttpClient 访问网络</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#提供城市天气查询-json-Phrase"><span class="nav-number">1.2.2.</span> <span class="nav-text">提供城市天气查询(json Phrase)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#提供-IP-地址查询-xml-Phrase"><span class="nav-number">1.2.3.</span> <span class="nav-text">提供 IP 地址查询(xml Phrase)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#成品图"><span class="nav-number">1.2.4.</span> <span class="nav-text">成品图</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Xu Weiyuan</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+  
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
