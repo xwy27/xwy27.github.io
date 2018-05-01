@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="MOSAD,UWP," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Week8  Week8 Request Accomplish 成品图 后记     Request 利用自定义控件控制视频的播放，暂停，快进，快退 实现视频播放的全屏与退出全屏 自制 slider 实现视频的进度条 本地选择多媒体文件(视频，音乐)进行播放 添加 slider 版本音量控制 实现封面旋转 添加键盘按键响应">
+<meta name="keywords" content="MOSAD,UWP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mediaPlayer">
+<meta property="og:url" content="http://yoursite.com/UWP/mediaPlayer/index.html">
+<meta property="og:site_name" content="Xuwy Blog">
+<meta property="og:description" content="Week8  Week8 Request Accomplish 成品图 后记     Request 利用自定义控件控制视频的播放，暂停，快进，快退 实现视频播放的全屏与退出全屏 自制 slider 实现视频的进度条 本地选择多媒体文件(视频，音乐)进行播放 添加 slider 版本音量控制 实现封面旋转 添加键盘按键响应">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/UWP/mediaPlayer/video.jpg">
+<meta property="og:image" content="http://yoursite.com/UWP/mediaPlayer/music.jpg">
+<meta property="og:updated_time" content="2018-05-01T17:19:30.531Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="mediaPlayer">
+<meta name="twitter:description" content="Week8  Week8 Request Accomplish 成品图 后记     Request 利用自定义控件控制视频的播放，暂停，快进，快退 实现视频播放的全屏与退出全屏 自制 slider 实现视频的进度条 本地选择多媒体文件(视频，音乐)进行播放 添加 slider 版本音量控制 实现封面旋转 添加键盘按键响应">
+<meta name="twitter:image" content="http://yoursite.com/UWP/mediaPlayer/video.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/UWP/mediaPlayer/"/>
+
+
+
+
+
+  <title>mediaPlayer | Xuwy Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/xwy27"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png" alt="Fork me on GitHub"></a>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Xuwy Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Learning Blog</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/UWP/mediaPlayer/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Xu Weiyuan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Xuwy Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">mediaPlayer</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-02T09:08:43+08:00">
+                2018-05-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/UWP/" itemprop="url" rel="index">
+                    <span itemprop="name">UWP</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Week8"><a href="#Week8" class="headerlink" title="Week8"></a>Week8</h1><!-- TOC -->
+<ul>
+<li><a href="#week8">Week8</a><ul>
+<li><a href="#request">Request</a></li>
+<li><a href="#accomplish">Accomplish</a></li>
+<li><a href="#成品图">成品图</a></li>
+<li><a href="#后记">后记</a></li>
+</ul>
+</li>
+</ul>
+<!-- /TOC -->
+<h2 id="Request"><a href="#Request" class="headerlink" title="Request"></a>Request</h2><ol>
+<li>利用自定义控件控制视频的播放，暂停，<strong>快进，快退</strong></li>
+<li>实现视频播放的全屏与退出全屏</li>
+<li>自制 slider 实现视频的进度条</li>
+<li><strong>本地选择</strong>多媒体文件(视频，音乐)进行播放</li>
+<li>添加 slider 版本<strong>音量控制</strong></li>
+<li>实现<strong>封面旋转</strong></li>
+<li>添加<strong>键盘按键响应</strong></li>
+</ol>
+<a id="more"></a>
+<h2 id="Accomplish"><a href="#Accomplish" class="headerlink" title="Accomplish"></a>Accomplish</h2><p>强烈推荐<a href="https://docs.microsoft.com/en-us/previous-versions/windows/desktop/apps/hh986967(v=win.10" target="_blank" rel="noopener">Microsoft Documents-MediaElement</a>#multiple-audio-tracks)。这是第一次在官方文档找到如此棒的一个指引文档。<br>关于 MediaElement 的 xml 代码，可以仿照上面的文档进行设置，下面主要讲讲具体实现的基础功能按钮的代码。</p>
+<ol>
+<li><p>利用自定义控件控制视频的播放，暂停，快进，快退<br> 函数中的<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">```csharp</span><br><span class="line">// Play media</span><br><span class="line">private void MdeiaPlay(object sender, RoutedEventArgs e) &#123;</span><br><span class="line">    // Reset the play rate to normal</span><br><span class="line">    if (myMediaPlayer.DefaultPlaybackRate != 1) &#123;</span><br><span class="line">        myMediaPlayer.DefaultPlaybackRate = 1.0;</span><br><span class="line">    &#125;</span><br><span class="line">    myMediaPlayer.Play();</span><br><span class="line">    if (Cover.Visibility == Visibility.Visible) &#123;</span><br><span class="line">        RotateCover.Begin();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// Pause media</span><br><span class="line">private void MediaPause(object sender, RoutedEventArgs e) &#123;</span><br><span class="line">    myMediaPlayer.Pause();</span><br><span class="line">    if (Cover.Visibility == Visibility.Visible) &#123;</span><br><span class="line">        RotateCover.Pause();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// Stop media</span><br><span class="line">private void MediaStop(object sender, RoutedEventArgs e) &#123;</span><br><span class="line">    myMediaPlayer.Stop();</span><br><span class="line">    if (Cover.Visibility == Visibility.Visible) &#123;</span><br><span class="line">        RotateCover.Stop();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// Set back playing rate</span><br><span class="line">private void MediaBack(object sender, RoutedEventArgs e) &#123;</span><br><span class="line">    myMediaPlayer.DefaultPlaybackRate = -2.0;</span><br><span class="line">    myMediaPlayer.Play();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// Set forward playing rate</span><br><span class="line">private void MediaForward(object sender, RoutedEventArgs e) &#123;</span><br><span class="line">    myMediaPlayer.DefaultPlaybackRate = 2.0;</span><br><span class="line">    myMediaPlayer.Play();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+</li>
+<li><p>实现视频播放的全屏与退出全屏<br> 这里的全屏为应用全屏。<br> 为了实现退出全屏，需要存储全屏之前的 size，所以需要一个 previousSize 来存储。<br> 全屏退出采取按键响应。对应在 keyUp 函数内调用。</p>
+ <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Set full screen or not</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">FullScreenToggle</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.IsFullScreen = !<span class="keyword">this</span>.IsFullScreen;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.IsFullScreen) &#123;</span><br><span class="line">        TransportControlsPanel.Visibility = Visibility.Collapsed;</span><br><span class="line">        previousSize.Width = videoContainer.ActualWidth;</span><br><span class="line">        previousSize.Height = videoContainer.ActualHeight;</span><br><span class="line"></span><br><span class="line">        videoContainer.Width = Window.Current.Bounds.Width;</span><br><span class="line">        videoContainer.Height = Window.Current.Bounds.Height;</span><br><span class="line">        myMediaPlayer.Width = Window.Current.Bounds.Width;</span><br><span class="line">        myMediaPlayer.Height = Window.Current.Bounds.Height;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        TransportControlsPanel.Visibility = Visibility.Visible;</span><br><span class="line"></span><br><span class="line">        videoContainer.Width = previousSize.Width;</span><br><span class="line">        videoContainer.Height = previousSize.Height;</span><br><span class="line">        myMediaPlayer.Width = previousSize.Width;</span><br><span class="line">        myMediaPlayer.Height = previousSize.Height;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//Start full screen</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">MediaFullScreen</span>(<span class="params"><span class="keyword">object</span> sender, RoutedEventArgs e</span>) </span>&#123;</span><br><span class="line">    FullScreenToggle();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Listen for [ESC] to exit full screen</span></span><br><span class="line"><span class="keyword">if</span> (IsFullScreen &amp;&amp; e.Key == Windows.System.VirtualKey.Escape) &#123;</span><br><span class="line">    FullScreenToggle();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>自制 slider 实现视频的进度条<br> 在完整实现了官方文档之后，我很是怀疑，这个进度条，真的需要这么复杂吗？<br> 先来讲讲官方文档的实现逻辑：</p>
+<ul>
+<li>实现一个 slider 控件作为进度条</li>
+<li>实现 slider 控件的拖动分辨率</li>
+<li>实现一个 timer 跟随 mediaElement 一起播放计时和暂停</li>
+<li>实现一个 pointerPressed handler 将 mediaElement 的 position 值和 slider 值通过 timer 进行绑定</li>
+<li>每次新载入一个 media 文件，重置 timer</li>
+<li>初始化整个 APP 时，为 slider 注册 handler 事件<br><em>其中 slider 拖动分辨率可以调整，这里我将其进一步精化了，为了适应 media 文件的总时长。</em><br>代码太长了，而且逻辑层叠太过复杂，具体实现看代码文件，下面附上函数名。<br>关于对这个冗杂的实现的改进，在<a href="#后记">文末</a>提出解决方案。<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Get the frequency of the steps on the slider's scale</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">double</span> <span class="title">SliderFrequency</span>(<span class="params">TimeSpan time</span>) </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Initialize the timer</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">SetupTimer</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Keep timer in sync with media</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">TimerTick</span>(<span class="params"><span class="keyword">object</span> sender, <span class="keyword">object</span> e</span>) </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Start timer to count</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">StartTimer</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Stop timer to count</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">StopTimer</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// slider pressed</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">SliderPointerEntered</span>(<span class="params"><span class="keyword">object</span> sender, PointerRoutedEventArgs e</span>) </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// slider lost pressed</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">SliderPointerCaptureLost</span>(<span class="params"><span class="keyword">object</span> sender, PointerRoutedEventArgs e</span>) </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">TimelineSliderValueChanged</span>(<span class="params"><span class="keyword">object</span> sender, RangeBaseValueChangedEventArgs e</span>) </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Reset timer for slider</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">MyMediaOpened</span>(<span class="params"><span class="keyword">object</span> sender, RoutedEventArgs e</span>) </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Listen for the media state and timer</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">MyMediaCurrentStateChanged</span>(<span class="params"><span class="keyword">object</span> sender, RoutedEventArgs e</span>) </span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><strong>本地选择</strong>多媒体文件(视频，音乐)进行播放<br> 选择多媒体文件并不困难，使用 FileOpenPicker 就好了。<br> 需要注意的是，当读取的是音乐文件时，需要隐藏视频页面，显示 cover 页面(有点面包屑的意味，不需要跳转页面，省去开销)。</p>
+ <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Select media to play</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">async</span> <span class="keyword">void</span> <span class="title">MediaSelect</span>(<span class="params"><span class="keyword">object</span> sender, RoutedEventArgs e</span>) </span>&#123;</span><br><span class="line">    FileOpenPicker picker = <span class="keyword">new</span> FileOpenPicker();</span><br><span class="line">    <span class="comment"><span class="doctag">///</span> Initialize the picture file type to take</span></span><br><span class="line">    picker.FileTypeFilter.Add(<span class="string">".mp4"</span>);</span><br><span class="line">    picker.FileTypeFilter.Add(<span class="string">".wmv"</span>);</span><br><span class="line">    picker.FileTypeFilter.Add(<span class="string">".wma"</span>);</span><br><span class="line">    picker.FileTypeFilter.Add(<span class="string">".mp3"</span>);</span><br><span class="line">    picker.SuggestedStartLocation = PickerLocationId.PicturesLibrary;</span><br><span class="line"></span><br><span class="line">    StorageFile file = <span class="keyword">await</span> picker.PickSingleFileAsync();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (file != <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="comment"><span class="doctag">///</span> Load the selected picture</span></span><br><span class="line">        IRandomAccessStream ir = <span class="keyword">await</span> file.OpenAsync(FileAccessMode.Read);</span><br><span class="line">        myMediaPlayer.SetSource(ir, file.ContentType);</span><br><span class="line">        myMediaPlayer.Play();</span><br><span class="line">        <span class="keyword">if</span> (file.ContentType == <span class="string">"audio/mpeg"</span>) &#123;</span><br><span class="line">            Cover.Visibility = Visibility.Visible;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            Cover.Visibility = Visibility.Collapsed;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加 slider 版本<strong>音量控制</strong><br> 理解数据绑定就很容易了，就是 slider 值和 mediaElement 的音量值绑定。<br> <strong>Attention! 音量值为0 - 1，分割值为0.1</strong>，这是 mediaElement 官方类中给出的说明。所以，设置一下 slider 的值是必须的。(在这里被坑了很久，以为实现不了 slider 音量控制)</p>
+ <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Slider</span> <span class="attr">x:Name</span>=<span class="string">"volumeslider"</span> <span class="attr">Maximum</span>=<span class="string">"1"</span> <span class="attr">Minimum</span>=<span class="string">"0"</span> <span class="attr">StepFrequency</span>=<span class="string">"0.1"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">Value</span>=<span class="string">"&#123;x:Bind myMediaPlayer.Volume, Mode=TwoWay&#125;"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">Slider</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p> 其中，UI 页面提供了音量按钮，所以，点击按钮直接静音，然后需要储存静音前的音量。逻辑与全屏类似，不赘述，实现代码见代码文件。</p>
+</li>
+<li><p>实现<strong>封面旋转</strong></p>
+<ul>
+<li>播放视频时，隐藏封面页面(在读取文件中已实现)</li>
+<li>播放音乐时，封面开始旋转</li>
+<li>暂停音乐时，封面旋转暂停</li>
+<li><p>重置音乐或结束时，封面复位<br>xml 中实现动画代码。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Ellipse</span> <span class="attr">x:Name</span>=<span class="string">"Cover"</span> <span class="attr">RenderTransformOrigin</span>=<span class="string">"0.5,0.5"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Ellipse.RenderTransform</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">CompositeTransform</span>&gt;</span><span class="tag">&lt;/<span class="name">CompositeTransform</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">Ellipse.RenderTransform</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Ellipse.Resources</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Storyboard</span> <span class="attr">x:Name</span>=<span class="string">"RotateCover"</span> <span class="attr">RepeatBehavior</span>=<span class="string">"Forever"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">DoubleAnimation</span> <span class="attr">Duration</span>=<span class="string">"0:0:20"</span> <span class="attr">To</span>=<span class="string">"360"</span> <span class="attr">Storyboard.TargetName</span>=<span class="string">"Cover"</span></span></span><br><span class="line"><span class="tag">                             <span class="attr">Storyboard.TargetProperty</span>=<span class="string">"(UIElement.RenderTransform).(CompositeTransform.Rotation)"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">DoubleAnimation</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">Storyboard</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">Ellipse.Resources</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Ellipse.Fill</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">ImageBrush</span> <span class="attr">x:Name</span>=<span class="string">"picture"</span> <span class="attr">ImageSource</span>=<span class="string">"Assets/cover.jpg"</span>&gt;</span><span class="tag">&lt;/<span class="name">ImageBrush</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">Ellipse.Fill</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">Ellipse</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>在需要动画开始，暂停，复位的地方，调用其对应函数即可。如，音乐暂停时，动画暂停:</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Pause media</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">MediaPause</span>(<span class="params"><span class="keyword">object</span> sender, RoutedEventArgs e</span>) </span>&#123;</span><br><span class="line">    myMediaPlayer.Pause();</span><br><span class="line">    <span class="keyword">if</span> (Cover.Visibility == Visibility.Visible) &#123;</span><br><span class="line">        RotateCover.Pause();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>添加<strong>键盘按键响应</strong><br> 作为一个多媒体播放应用，空格键播放暂停，上下方向按键调节音量是基础功能，所以添加了这几个基础按键响应。<br> mediaElement 提供了 keyUp 和 keyDown 两个接口，前者响应一次按键，后者响应持续按键。</p>
+ <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Keyboard listener for one press</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">VideoContainerKeyUp</span>(<span class="params"><span class="keyword">object</span> sender, KeyRoutedEventArgs e</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// Listen for [Space] to stop or play media</span></span><br><span class="line">    <span class="keyword">if</span> (e.Key == Windows.System.VirtualKey.Space) &#123;</span><br><span class="line">        <span class="keyword">if</span> (myMediaPlayer.CurrentState == MediaElementState.Playing) &#123;</span><br><span class="line">            myMediaPlayer.Pause();</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            myMediaPlayer.Play();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Listen for [Up] and [Down] to control volume</span></span><br><span class="line">    <span class="keyword">if</span> (e.Key == Windows.System.VirtualKey.Up) &#123;</span><br><span class="line">        <span class="keyword">if</span> (myMediaPlayer.Volume &lt; <span class="number">1</span>) &#123;</span><br><span class="line">            myMediaPlayer.Volume += <span class="number">0.1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (e.Key == Windows.System.VirtualKey.Down) &#123;</span><br><span class="line">        <span class="keyword">if</span> (myMediaPlayer.Volume &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            myMediaPlayer.Volume -= <span class="number">0.1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    e.Handled = <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Keyboard listener for holding press</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">VideoContainerKeyDown</span>(<span class="params"><span class="keyword">object</span> sender, KeyRoutedEventArgs e</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// Listen for [Up] and [Down] to control volume</span></span><br><span class="line">    <span class="keyword">if</span> (e.Key == Windows.System.VirtualKey.Up) &#123;</span><br><span class="line">        <span class="keyword">if</span> (myMediaPlayer.Volume &lt; <span class="number">1</span>) &#123;</span><br><span class="line">            myMediaPlayer.Volume += <span class="number">0.1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (e.Key == Windows.System.VirtualKey.Down) &#123;</span><br><span class="line">        <span class="keyword">if</span> (myMediaPlayer.Volume &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            myMediaPlayer.Volume -= <span class="number">0.1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="成品图"><a href="#成品图" class="headerlink" title="成品图"></a>成品图</h2><p><img src="/UWP/mediaPlayer/video.jpg" alt="video"></p>
+<center>video</center>
+
+<p><img src="/UWP/mediaPlayer/music.jpg" alt="music"></p>
+<center>music</center>
+
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>是的，像前面说的，官网文档提供的实现方法，太过复杂。有什么改进方法吗?<br>考虑值绑定。我们将 slider 的值和 mediaElement 的 position 值绑定在一起，就实现了这个进度条。<br>类似之前我们实现的 MyList 中 checkbox 和 line 的绑定，我们写一个 converter 将 position 这个 TimeSpan 类型的值 转换为 double 类型，就可以与 slider 值绑定了。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/MOSAD/" rel="tag"># MOSAD</a>
+          
+            <a href="/tags/UWP/" rel="tag"># UWP</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/UWP/webRequest/" rel="next" title="UWP-webRequest">
+                <i class="fa fa-chevron-left"></i> UWP-webRequest
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Xu Weiyuan</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Week8"><span class="nav-number">1.</span> <span class="nav-text">Week8</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Request"><span class="nav-number">1.1.</span> <span class="nav-text">Request</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Accomplish"><span class="nav-number">1.2.</span> <span class="nav-text">Accomplish</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#成品图"><span class="nav-number">1.3.</span> <span class="nav-text">成品图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后记"><span class="nav-number">1.4.</span> <span class="nav-text">后记</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Xu Weiyuan</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+  
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
