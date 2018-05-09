@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Unity-3d," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="躲避游戏(智能巡逻兵)作业要求个人github演示视频">
+<meta name="keywords" content="Unity-3d">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Unity-Patrol">
+<meta property="og:url" content="http://yoursite.com/Unity-3d/Patrol/index.html">
+<meta property="og:site_name" content="Xuwy Blog">
+<meta property="og:description" content="躲避游戏(智能巡逻兵)作业要求个人github演示视频">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-05-09T14:39:00.462Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Unity-Patrol">
+<meta name="twitter:description" content="躲避游戏(智能巡逻兵)作业要求个人github演示视频">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/Unity-3d/Patrol/"/>
+
+
+
+
+
+  <title>Unity-Patrol | Xuwy Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/xwy27"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png" alt="Fork me on GitHub"></a>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Xuwy Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Learning Blog</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Unity-3d/Patrol/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Xu Weiyuan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Xuwy Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Unity-Patrol</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-09T21:34:32+08:00">
+                2018-05-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Unity-3d/" itemprop="url" rel="index">
+                    <span itemprop="name">Unity-3d</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="躲避游戏-智能巡逻兵"><a href="#躲避游戏-智能巡逻兵" class="headerlink" title="躲避游戏(智能巡逻兵)"></a>躲避游戏(智能巡逻兵)</h1><p><a href="https://pmlpml.github.io/unity3d-learning/07-model-and-animation" target="_blank" rel="noopener">作业要求</a><br><a href="https://github.com/xwy27/Unity-3D-Learning/tree/master/HW6_%E5%B7%A1%E9%80%BB%E5%85%B5" target="_blank" rel="noopener">个人github</a><br><a href="http://www.iqiyi.com/w_19rxsuoort.html" target="_blank" rel="noopener">演示视频</a></p>
+<a id="more"></a>
+<!-- TOC -->
+<ul>
+<li><a href="#躲避游戏智能巡逻兵">躲避游戏(智能巡逻兵)</a><ul>
+<li><a href="#概述">概述</a></li>
+<li><a href="#制作巡逻兵">制作巡逻兵</a></li>
+<li><a href="#制作巡逻路径">制作巡逻路径</a></li>
+<li><a href="#制作巡逻兵工厂">制作巡逻兵工厂</a></li>
+<li><a href="#发布订阅者模式">发布订阅者模式</a></li>
+<li><a href="#制作玩家">制作玩家</a></li>
+<li><a href="#杂项">杂项</a></li>
+</ul>
+</li>
+</ul>
+<!-- /TOC -->
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>这次的游戏是基于智能巡逻兵作业的”困难”躲避游戏。水平有限，UI 较为简陋。<br>圆球为玩家，通过上下左右方向键控制；立方体为巡逻兵，当玩家出现在侦察范围会自动追击，追到则失败。<br>玩家<strong>摆脱巡逻兵</strong>，巡逻兵变色，依旧巡逻，但<strong>不会再次追逐玩家</strong>。<br>多次点击开始按钮可以生成更多巡逻兵。<br>巡逻兵的巡逻路线采用随机生成矩形，然后再在边上随机选点构成多边形，作为巡逻路线。</p>
+<h2 id="制作巡逻兵"><a href="#制作巡逻兵" class="headerlink" title="制作巡逻兵"></a>制作巡逻兵</h2><p>首先，给一个立方体挂载一个 spehere collider，并设置半径为 10 和勾选 trigger 作为触发器，用来探测玩家。<br>然后编写其模板代码。<br>每个巡逻兵，需要发现玩家的标志变量，存储巡逻路径的变量，追踪玩家动作，巡逻动作。<br>巡逻兵平常进行巡逻动作，按照存储的巡逻路径，按顺序巡逻。当发现玩家，停止动作，执行追逐玩家动作。如果被甩掉，则变色，并继续执行巡逻动作，但不会再次追逐玩家。<br><em>代码中的注释可以辅助理解。</em></p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// flag for if dropped off by player</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">bool</span> dropOff = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// create the patrol path by several rectangles</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">int</span> curPointIndex;</span><br><span class="line"><span class="keyword">private</span> Vector3 nextPoint;</span><br><span class="line"><span class="keyword">public</span> List&lt;Vector3&gt; patrolPoints;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Player discovered, chase player</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">bool</span> discover = <span class="literal">false</span>;</span><br><span class="line"><span class="keyword">public</span> Transform chasePlayer;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Action for chasing player</span></span><br><span class="line"><span class="keyword">public</span> Action&lt;IPatrol, Transform&gt; OnDiscoverPlayer;</span><br><span class="line"><span class="comment">// Action for catching  player</span></span><br><span class="line"><span class="keyword">public</span> Action&lt;IPatrol&gt; OnCatchPlayer;</span><br><span class="line"><span class="comment">// Action for dropping off player</span></span><br><span class="line"><span class="keyword">public</span> Action&lt;IPatrol&gt; OnDropPlayer;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * Set patrol data from patrolData</span></span><br><span class="line"><span class="comment">  * @return patrol itself</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> IPatrol <span class="title">SetFromData</span>(<span class="params">IPatrolData data</span>) </span>&#123;</span><br><span class="line">    patrolPoints = data.patrolPoints;</span><br><span class="line">    speed = data.speed;</span><br><span class="line">    discover = <span class="literal">false</span>;</span><br><span class="line">    dropOff = <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * Enable the patrol</span></span><br><span class="line"><span class="comment">  * @return patrol itself</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> IPatrol <span class="title">StartPatrol</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    discover = <span class="literal">false</span>;</span><br><span class="line">    chasePlayer = <span class="literal">null</span>;</span><br><span class="line">    nextPoint = patrolPoints[curPointIndex];</span><br><span class="line">    isEnabled = <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * Initialize the position</span></span><br><span class="line"><span class="comment">  * @return patrol itself</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> IPatrol <span class="title">InitialPosition</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    transform.position = patrolPoints[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * Reset all actions</span></span><br><span class="line"><span class="comment">  * @return patrol itself</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> IPatrol <span class="title">ClearActions</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    OnCatchPlayer = <span class="literal">null</span>;</span><br><span class="line">    OnDropPlayer = <span class="literal">null</span>;</span><br><span class="line">    OnDiscoverPlayer = <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * initialize red color</span></span><br><span class="line"><span class="comment">  * @return patrol itself</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> IPatrol <span class="title">InitialColor</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    Renderer render = GetComponent&lt;Renderer&gt;();</span><br><span class="line">    render.material.shader = Shader.Find(<span class="string">"Transparent/Diffuse"</span>);</span><br><span class="line">    render.material.color = Color.red;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * change green after dropping off player</span></span><br><span class="line"><span class="comment">  * @return patrol itself</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> IPatrol <span class="title">ChangeColor</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    Renderer render = GetComponent&lt;Renderer&gt;();</span><br><span class="line">    render.material.shader = Shader.Find(<span class="string">"Transparent/Diffuse"</span>);</span><br><span class="line">    render.material.color = Color.green;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * move to next patrol point</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">ChangeDirection</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (++curPointIndex == patrolPoints.Count) &#123;</span><br><span class="line">        curPointIndex -= patrolPoints.Count;</span><br><span class="line">    &#125;</span><br><span class="line">    nextPoint = patrolPoints[curPointIndex];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Use this for initialization</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Start</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    isEnabled = <span class="literal">true</span>;</span><br><span class="line">    curPointIndex = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Update is called once per frame</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Update</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="keyword">if</span> (isEnabled) &#123;</span><br><span class="line">        Vector3 target = discover ? chasePlayer.position : nextPoint;</span><br><span class="line">        transform.localPosition = Vector3.MoveTowards(</span><br><span class="line">            transform.position, target, speed * Time.deltaTime);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (!discover &amp;&amp;</span><br><span class="line">            Vector3.Distance(transform.position, nextPoint) &lt; <span class="number">0.5</span>f) &#123;</span><br><span class="line">            ChangeDirection();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (discover &amp;&amp; Vector3.Distance(transform.position, target) &lt; <span class="number">1</span>f) &#123;</span><br><span class="line">            <span class="keyword">if</span> (OnCatchPlayer != <span class="literal">null</span>) &#123;</span><br><span class="line">                OnCatchPlayer(<span class="keyword">this</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">OnTriggerEnter</span>(<span class="params">Collider other</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (other.gameObject.tag.Contains(<span class="string">"Player"</span>)) &#123;</span><br><span class="line">        <span class="keyword">if</span> (OnDiscoverPlayer != <span class="literal">null</span>) &#123;</span><br><span class="line">            OnDiscoverPlayer(<span class="keyword">this</span>, other.transform);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">OnTriggerExit</span>(<span class="params">Collider other</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (other.gameObject.tag.Contains(<span class="string">"Player"</span>)) &#123;</span><br><span class="line">        <span class="keyword">if</span> (OnDropPlayer != <span class="literal">null</span>) &#123;</span><br><span class="line">            OnDropPlayer(<span class="keyword">this</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="制作巡逻路径"><a href="#制作巡逻路径" class="headerlink" title="制作巡逻路径"></a>制作巡逻路径</h2><p>巡逻路径，采取生成随机点列表作为路径，让巡逻兵从一个点，运动到另一个点，作为巡逻动作。<br>关于随机点生成，我们首先生成<strong>一个随机的矩形</strong>左下角点和边长，然后算出其余三个顶点。接着在它的四条边，<strong>每条边随机选取一个点</strong>，作为巡逻路径点，这样可以得到一个随机的凸四边形。<br>这里支持生成凸多边形，只要在边上随机取点时，每次多取一个，然后按顺序加入巡逻列表，那么最多可以生成凸八边形。<br><em>这个巡逻路径，耗时比较久，也就没时间考虑 UI 了。</em></p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">float</span> positionRange = <span class="number">20.0</span>f;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">float</span> defaultSideLength = <span class="number">5.0</span>f;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">float</span> yPosition = <span class="number">1.0</span>f;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * Genrate the patrol path from a random rectangle</span></span><br><span class="line"><span class="comment">  * by selecting points on its side randomly.</span></span><br><span class="line"><span class="comment">  * @return &#123;List&lt;Vector2&gt;&#125; selected points.</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> List&lt;Vector3&gt; <span class="title">GetRandomRect</span>(<span class="params"><span class="keyword">int</span> sides = <span class="number">4</span>, <span class="keyword">float</span> sideLength = <span class="number">0</span></span>) </span>&#123;</span><br><span class="line">    List&lt;Vector3&gt; rect = <span class="keyword">new</span> List&lt;Vector3&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (sideLength == <span class="number">0</span>) &#123;</span><br><span class="line">        sideLength = defaultSideLength;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    sideLength = Random.Range(<span class="number">10</span>f, <span class="number">20</span>f);</span><br><span class="line">    Vector3 leftDown = <span class="keyword">new</span> Vector3(</span><br><span class="line">        Random.Range(-positionRange, positionRange), yPosition, Random.Range(-positionRange, positionRange));</span><br><span class="line">    Vector3 rightDown = leftDown + Vector3.right * sideLength;</span><br><span class="line">    Vector3 rightUp = leftDown + Vector3.forward * sideLength;</span><br><span class="line">    Vector3 leftUp = rightDown + Vector3.forward * sideLength;</span><br><span class="line"></span><br><span class="line">    Vector3 temp = leftDown + Vector3.forward * sideLength * Random.Range(<span class="number">0</span>f, <span class="number">1</span>f);</span><br><span class="line">    rect.Add(temp);</span><br><span class="line">    temp = leftUp + Vector3.right * sideLength * Random.Range(<span class="number">0</span>f, <span class="number">1</span>f);</span><br><span class="line">    rect.Add(temp);</span><br><span class="line">    temp = rightUp + Vector3.forward * sideLength * Random.Range(<span class="number">0</span>f, <span class="number">1</span>f);</span><br><span class="line">    rect.Add(temp);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (sides &gt;= <span class="number">4</span>) &#123;</span><br><span class="line">        temp = rightDown + Vector3.right * (-sideLength) * Random.Range(<span class="number">0</span>f, <span class="number">0.5</span>f);</span><br><span class="line">        rect.Add(temp);</span><br><span class="line">        <span class="keyword">if</span> (sides == <span class="number">5</span>) &#123;</span><br><span class="line">            temp = rightDown + Vector3.right * (-sideLength) * Random.Range(<span class="number">0</span>f, <span class="number">0.5</span>f);</span><br><span class="line">            rect.Add(temp);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> rect;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="制作巡逻兵工厂"><a href="#制作巡逻兵工厂" class="headerlink" title="制作巡逻兵工厂"></a>制作巡逻兵工厂</h2><p>工厂模式，不是什么陌生的事情了。这里只有巡逻兵的工厂，因为玩家只有一个，所以也只需要给巡逻兵配备工厂了。没有就从闲置资源获得，不够就生产，大致就是这个逻辑了。</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> GeneratePatrolPath pathGenerator;</span><br><span class="line">  <span class="keyword">private</span> List&lt;GameObject&gt; inUse;</span><br><span class="line">  <span class="keyword">private</span> List&lt;GameObject&gt; notUse;</span><br><span class="line">  <span class="keyword">int</span> patrolCount = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  [<span class="meta">Header(<span class="meta-string">"Patrol Prefab"</span>)</span>]</span><br><span class="line">  <span class="keyword">public</span> GameObject patrolPrefab;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Use this for initialization</span></span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">Start</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    pathGenerator = Singleton&lt;GeneratePatrolPath&gt;.Instance;</span><br><span class="line">    inUse = <span class="keyword">new</span> List&lt;GameObject&gt;();</span><br><span class="line">    notUse = <span class="keyword">new</span> List&lt;GameObject&gt;();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">GeneratePatrol</span>(<span class="params"><span class="keyword">int</span> num</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; num; ++i) &#123;</span><br><span class="line">      IPatrolData patrolData = ScriptableObject.CreateInstance&lt;IPatrolData&gt;();</span><br><span class="line">      patrolData.speed = Random.Range(<span class="number">5</span>f, <span class="number">15</span>f);</span><br><span class="line">      patrolData.patrolPoints = pathGenerator.GetRandomRect();</span><br><span class="line"></span><br><span class="line">      GameObject patrol = <span class="literal">null</span>;</span><br><span class="line">      <span class="keyword">if</span> (notUse.Count &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        patrol = notUse[<span class="number">0</span>];</span><br><span class="line">        notUse.RemoveAt(<span class="number">0</span>);</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        patrolCount++;</span><br><span class="line">        patrol = Instantiate(patrolPrefab) <span class="keyword">as</span> GameObject;</span><br><span class="line">        patrol.name = <span class="string">"Patrol"</span> + patrolCount.ToString();</span><br><span class="line">      &#125;</span><br><span class="line">      patrol.GetComponent&lt;IPatrol&gt;().SetFromData(patrolData).ClearActions().InitialColor().InitialPosition().StartPatrol();</span><br><span class="line"></span><br><span class="line">      patrol.GetComponent&lt;IPatrol&gt;().OnCatchPlayer += GameEvents.CatchPlayer;</span><br><span class="line">      patrol.GetComponent&lt;IPatrol&gt;().OnDiscoverPlayer += GameEvents.ChasePlayer;</span><br><span class="line">      patrol.GetComponent&lt;IPatrol&gt;().OnDropPlayer += GameEvents.DropPlayer;</span><br><span class="line"></span><br><span class="line">      inUse.Add(patrol);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">ReleaseAllPatrols</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = inUse.Count - <span class="number">1</span>; i &gt;= <span class="number">0</span>; --i) &#123;</span><br><span class="line">      GameObject obj = inUse[i];</span><br><span class="line">      obj.GetComponent&lt;IPatrol&gt;().InitialColor().InitialPosition().isEnabled = <span class="literal">false</span>;</span><br><span class="line">      notUse.Add(obj);</span><br><span class="line">      inUse.RemoveAt(i);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="发布订阅者模式"><a href="#发布订阅者模式" class="headerlink" title="发布订阅者模式"></a>发布订阅者模式</h2><p>对一个事件做出反应的东西往往有很多个，那个时候，将事件的感知和处理逻辑写在一起，是一种很难以维护的方式。</p>
+<p>比较典型一点的构造应当是：多个订阅者拥有自己的对同一类事件的各自的事件处理逻辑，然后在每个订阅者实例化的时候，向一个专门负责事件发布与接收的地方注册自己的事件处理函数（回调函数），然后发布者在感知并产生事件之后，向同样的负责事件分发的地方传送自己的事件，然后该事件依次进入不同订阅者的逻辑中，实施其自己的工作。</p>
+<p>因为对于这个游戏来说，只有巡逻兵对事件发生感知并发生事件，事件逻辑已经足够简单，所以发布者和订阅者都可以简化成一个：发布者是每个巡逻兵，订阅者是SceneController。所以在通过这部分代码理解发布订阅模式时，多方订阅的部分可能需要自己继续想象。<br>基于本次游戏的逻辑简单性，简化了事件分发的逻辑，直接用了一个static类把事件处理逻辑写在了上面，实际上并不完全是上面说的结构。</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">ChasePlayer</span>(<span class="params">IPatrol patrol, Transform player</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (Singleton&lt;SceneController&gt;.Instance.isGameOver || patrol.dropOff) &#123;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  patrol.discover = <span class="literal">true</span>;</span><br><span class="line">  patrol.chasePlayer = player;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">CatchPlayer</span>(<span class="params">IPatrol patrol</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (Singleton&lt;SceneController&gt;.Instance.isGameOver || patrol.dropOff) &#123;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  Singleton&lt;SceneController&gt;.Instance.isGameOver = <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">DropPlayer</span>(<span class="params">IPatrol patrol</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (Singleton&lt;SceneController&gt;.Instance.isGameOver || patrol.dropOff) &#123;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  patrol.ChangeColor();</span><br><span class="line">  Singleton&lt;SceneController&gt;.Instance.AddScore((<span class="keyword">int</span>)patrol.speed);</span><br><span class="line">  patrol.discover = <span class="literal">false</span>;</span><br><span class="line">  patrol.chasePlayer = <span class="literal">null</span>;</span><br><span class="line">  patrol.dropOff = <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="制作玩家"><a href="#制作玩家" class="headerlink" title="制作玩家"></a>制作玩家</h2><p>给一个圆球挂载碰撞器和刚体并做成预制。</p>
+<blockquote>
+<p>在这里，我要提出一个 de 了两天的 bug! 碰撞发生的条件是双方具有碰撞器，且一方具有刚体，触发的条件是双方具有碰撞器，一方具有刚体，一方的碰撞器勾选了 isTrigger。我一开始就按照这个去设计的巡逻兵与玩家的预制。但是，触发可以触发，碰撞却完全没有被检测到。在 onCollisionEnter中的输出语句也没有执行，甚至两个物体撞在了一起，玩家”进入”了巡逻兵内部。查找了很多资料，比如连续检测，连续动态检测，降低速度等等，都没有解决这个问题。</p>
+</blockquote>
+<p>玩家的逻辑代码很简单，主要是移动函数:</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">FixedUpdate</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">float</span> translationZ = Input.GetAxis(<span class="string">"Vertical"</span>);</span><br><span class="line">  <span class="keyword">float</span> translationX = Input.GetAxis(<span class="string">"Horizontal"</span>);</span><br><span class="line"></span><br><span class="line">  Vector3 temp = <span class="keyword">new</span> Vector3(translationX, <span class="number">0</span>, translationZ);</span><br><span class="line"></span><br><span class="line">  player.transform.Translate(temp.normalized / <span class="number">1.5</span>f);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="杂项"><a href="#杂项" class="headerlink" title="杂项"></a>杂项</h2><p>剩下的都是以前写过的代码，就不一一贴出来了。具体前往<a href="https://github.com/xwy27/Unity-3D-Learning/tree/master/HW6_%E5%B7%A1%E9%80%BB%E5%85%B5" target="_blank" rel="noopener">github</a>查看。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Unity-3d/" rel="tag"># Unity-3d</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/UWP/mediaPlayer/" rel="next" title="UWP-mediaPlayer">
+                <i class="fa fa-chevron-left"></i> UWP-mediaPlayer
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Xu Weiyuan</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#躲避游戏-智能巡逻兵"><span class="nav-number">1.</span> <span class="nav-text">躲避游戏(智能巡逻兵)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">1.1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#制作巡逻兵"><span class="nav-number">1.2.</span> <span class="nav-text">制作巡逻兵</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#制作巡逻路径"><span class="nav-number">1.3.</span> <span class="nav-text">制作巡逻路径</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#制作巡逻兵工厂"><span class="nav-number">1.4.</span> <span class="nav-text">制作巡逻兵工厂</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#发布订阅者模式"><span class="nav-number">1.5.</span> <span class="nav-text">发布订阅者模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#制作玩家"><span class="nav-number">1.6.</span> <span class="nav-text">制作玩家</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#杂项"><span class="nav-number">1.7.</span> <span class="nav-text">杂项</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Xu Weiyuan</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+  
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
