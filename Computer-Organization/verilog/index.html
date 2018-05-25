@@ -82,14 +82,14 @@
 <meta name="description" content="Verilog  Verilog 部分语法讲解 注释(comment) 标识符(identifiers) 数据类型和变量 向量 基本运算符 语句 模块结构">
 <meta name="keywords" content="Verilog,Computer-Organization">
 <meta property="og:type" content="article">
-<meta property="og:title" content="verilog">
+<meta property="og:title" content="Verilog">
 <meta property="og:url" content="http://yoursite.com/Computer-Organization/verilog/index.html">
 <meta property="og:site_name" content="Xuwy Blog">
 <meta property="og:description" content="Verilog  Verilog 部分语法讲解 注释(comment) 标识符(identifiers) 数据类型和变量 向量 基本运算符 语句 模块结构">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-25T03:20:28.419Z">
+<meta property="og:updated_time" content="2018-05-25T12:12:16.453Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="verilog">
+<meta name="twitter:title" content="Verilog">
 <meta name="twitter:description" content="Verilog  Verilog 部分语法讲解 注释(comment) 标识符(identifiers) 数据类型和变量 向量 基本运算符 语句 模块结构">
 
 
@@ -126,7 +126,7 @@
 
 
 
-  <title>verilog | Xuwy Blog</title>
+  <title>Verilog | Xuwy Blog</title>
   
 
 
@@ -270,7 +270,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">verilog</h1>
+          <h1 class="post-title" itemprop="name headline">Verilog</h1>
         
 
         <div class="post-meta">
@@ -474,9 +474,9 @@
 <li><p>赋值语句(=; &lt;=)</p>
 <ul>
 <li>阻塞赋值(=)<br>用于组合逻辑模块，基本和编程语言中的赋值语句相同。</li>
-<li>非阻塞赋值(&lt;=)<br>用于时序逻辑模块，在一个时序触发结束时，所有非阻塞赋值语句同时执行。<br><strong>举例比较:</strong>注意看注释中的变量在赋值之后的结果值。<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">A = <span class="number">2'd10</span>;</span><br><span class="line">B = <span class="number">2'd11</span>;</span><br><span class="line"></span><br><span class="line">A = B;</span><br><span class="line">C = A;</span><br><span class="line"><span class="comment">//A = 2'd11, B = 2'd11, C = 2'd11</span></span><br><span class="line"></span><br><span class="line">A = <span class="number">2'd10</span>;</span><br><span class="line">B = <span class="number">2'd11</span>;</span><br><span class="line"></span><br><span class="line">A &lt;= B;</span><br><span class="line">C &lt;= A;</span><br><span class="line"><span class="comment">//A = 2'd11, B = 2'd11, C = 2'd10</span></span><br></pre></td></tr></table></figure>
-</li>
+<li>非阻塞赋值(&lt;=)<br>用于时序逻辑模块，在一个时序触发结束时，所有非阻塞赋值语句同时执行。<br><strong>举例比较:</strong>注意看注释中的变量在赋值之后的结果值。</li>
 </ul>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">A = <span class="number">2'd10</span>;</span><br><span class="line">B = <span class="number">2'd11</span>;</span><br><span class="line"></span><br><span class="line">A = B;</span><br><span class="line">C = A;</span><br><span class="line"><span class="comment">//A = 2'd11, B = 2'd11, C = 2'd11</span></span><br><span class="line"></span><br><span class="line">A = <span class="number">2'd10</span>;</span><br><span class="line">B = <span class="number">2'd11</span>;</span><br><span class="line"></span><br><span class="line">A &lt;= B;</span><br><span class="line">C &lt;= A;</span><br><span class="line"><span class="comment">//A = 2'd11, B = 2'd11, C = 2'd10</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>块语句(begin-end)<br>界定一组语句，可以大致类比在高级编程语言中的左右大括号。语句只有一条时，可省略。(<em>不同风格可以自行决定是否省略</em>)</p>
 <figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">begin</span></span><br><span class="line">A = B;</span><br><span class="line">C = A;</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
@@ -498,7 +498,7 @@
 <figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">`<span class="meta-keyword">define</span> opAddi 8'b00000001</span></span><br></pre></td></tr></table></figure>
 <p>使用宏替换语句后，我们可以直接使用</p>
 <figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">`opAddi</span></span><br></pre></td></tr></table></figure>
-<p>来代替<figure class="highlight plain"><figcaption><span>`，无论在定义和使用时，都不能缺少。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 模块结构</span><br><span class="line"></span><br><span class="line">模块的基础结构如下：</span><br><span class="line"></span><br><span class="line">```verilog</span><br><span class="line">module &lt;顶层模块名&gt; (&lt;输入输出端口列表&gt;);</span><br><span class="line">input 输入端口列表; //输入端口声明</span><br><span class="line">output 输出端口列表; //输出端口声明</span><br><span class="line">/*定义数据，信号的类型，函数声明*/</span><br><span class="line">reg 信号名;</span><br><span class="line">//逻辑功能定义</span><br><span class="line">assign &lt;结果信号名&gt; = &lt;表达式&gt;; //使用assign语句定义逻辑功能</span><br><span class="line">//用always块描述逻辑功能</span><br><span class="line">always @ (&lt;敏感信号表达式&gt;)</span><br><span class="line">begin</span><br><span class="line">//过程赋值</span><br><span class="line">//if-else,case语句</span><br><span class="line">//while,for循环语句</span><br><span class="line">//function调用</span><br><span class="line">end</span><br><span class="line">//调用其他模块</span><br><span class="line">&lt;调用模块名module_name&gt; &lt;例化模块名&gt; (&lt;端口列表port_list&gt;);</span><br><span class="line">endmodule</span><br></pre></td></tr></table></figure></p>
+<p>来代替<figure class="highlight plain"><figcaption><span>\`，无论在定义和使用时，都不能缺少。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 模块结构</span><br><span class="line"></span><br><span class="line">模块的基础结构如下：</span><br><span class="line"></span><br><span class="line">```verilog</span><br><span class="line">module &lt;顶层模块名&gt; (&lt;输入输出端口列表&gt;);</span><br><span class="line">input 输入端口列表; //输入端口声明</span><br><span class="line">output 输出端口列表; //输出端口声明</span><br><span class="line">/*定义数据，信号的类型，函数声明*/</span><br><span class="line">reg 信号名;</span><br><span class="line">//逻辑功能定义</span><br><span class="line">assign &lt;结果信号名&gt; = &lt;表达式&gt;; //使用assign语句定义逻辑功能</span><br><span class="line">//用always块描述逻辑功能</span><br><span class="line">always @ (&lt;敏感信号表达式&gt;)</span><br><span class="line">begin</span><br><span class="line">//过程赋值</span><br><span class="line">//if-else,case语句</span><br><span class="line">//while,for循环语句</span><br><span class="line">//function调用</span><br><span class="line">end</span><br><span class="line">//调用其他模块</span><br><span class="line">&lt;调用模块名module_name&gt; &lt;例化模块名&gt; (&lt;端口列表port_list&gt;);</span><br><span class="line">endmodule</span><br></pre></td></tr></table></figure></p>
 </li>
 </ul>
 <p>我们定义模块，如同实现自己设计的电子元件，实现方法和 OOP 的类类似，学习过 C++ 的 OOP 的话，对这个理解就不会太困难。</p>
