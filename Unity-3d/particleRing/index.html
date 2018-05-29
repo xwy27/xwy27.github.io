@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Unity-3d," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="ParticleRing  ParticleRing 参数设置 代码讲解">
+<meta name="keywords" content="Unity-3d">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Unity-ParticleRing">
+<meta property="og:url" content="http://yoursite.com/Unity-3d/particleRing/index.html">
+<meta property="og:site_name" content="Xuwy Blog">
+<meta property="og:description" content="ParticleRing  ParticleRing 参数设置 代码讲解">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/Unity-3d/particleRing/parameter.jpg">
+<meta property="og:updated_time" content="2018-05-29T03:59:49.115Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Unity-ParticleRing">
+<meta name="twitter:description" content="ParticleRing  ParticleRing 参数设置 代码讲解">
+<meta name="twitter:image" content="http://yoursite.com/Unity-3d/particleRing/parameter.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/Unity-3d/particleRing/"/>
+
+
+
+
+
+  <title>Unity-ParticleRing | Xuwy Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/xwy27"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png" alt="Fork me on GitHub"></a>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Xuwy Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Learning Blog</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Unity-3d/particleRing/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Xu Weiyuan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Xuwy Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Unity-ParticleRing</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-29T10:53:29+08:00">
+                2018-05-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Unity-3d/" itemprop="url" rel="index">
+                    <span itemprop="name">Unity-3d</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="ParticleRing"><a href="#ParticleRing" class="headerlink" title="ParticleRing"></a>ParticleRing</h1><!-- TOC -->
+<ul>
+<li><a href="#particlering">ParticleRing</a><ul>
+<li><a href="#参数设置">参数设置</a></li>
+<li><a href="#代码讲解">代码讲解</a></li>
+</ul>
+</li>
+</ul>
+<!-- /TOC -->
+<a id="more"></a>
+<p>做完了两三天了，终于挤出时间来写写博客。</p>
+<p>我们仿照<a href="http://i-remember.fr/en" target="_blank" rel="noopener">remember</a>的粒子光环效果。<br>其中，鼠标悬浮光环中心，光环会收缩，移开后恢复。</p>
+<p><a href="http://www.iqiyi.com/w_19rz6s3mdl.html" target="_blank" rel="noopener">效果视频</a></p>
+<h2 id="参数设置"><a href="#参数设置" class="headerlink" title="参数设置"></a>参数设置</h2><p><img src="/Unity-3d/particleRing/parameter.jpg" alt="parameter"></p>
+<ul>
+<li>Start Lifetime<br>我们将粒子的生命时间(生命周期)设置为100，让粒子可以较久的保留在界面上，避免圆环上的粒子太过稀疏。</li>
+<li>Start Size<br>粒子大小，在参数面板设置。</li>
+<li>Start Speed<br>将粒子的初始速度设为零，我们在代码中会对粒子速度进行设置。</li>
+<li>Max Particles<br>粒子最大数目，在代码中可以设置。</li>
+</ul>
+<h2 id="代码讲解"><a href="#代码讲解" class="headerlink" title="代码讲解"></a>代码讲解</h2><p>我们依旧在了解参数面板参数的含义下，使用代码完成任务。首先，将粒子和粒子系统分开，类似 model 与 actionManager 或工厂模式的设计思路。</p>
+<ol>
+<li><p>粒子<br>我们分解一下粒子状态：初始态，收缩态和收缩前态。在这三个状态下，我们关注粒子的初始发射角度，初始旋转半径，收缩前的旋转半径，收缩后的旋转半径。所以建立如下数据结构：</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ParticleData</span> &#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">float</span> angle;         <span class="comment">// 粒子初始角度</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">float</span> radius;        <span class="comment">// 当前粒子半径</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">float</span> beforeRadius;  <span class="comment">// 粒子收缩前半径</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">float</span> shringRadius;  <span class="comment">// 粒子收缩后半径</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">ParticleData</span>(<span class="params"><span class="keyword">float</span> angle, <span class="keyword">float</span> radius, <span class="keyword">float</span> beforeRadius, <span class="keyword">float</span> shringRadius</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.angle = angle;</span><br><span class="line">    <span class="keyword">this</span>.radius = radius;</span><br><span class="line">    <span class="keyword">this</span>.beforeRadius = beforeRadius;</span><br><span class="line">    <span class="keyword">this</span>.shringRadius = shringRadius;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>粒子系统<br>我们对于粒子系统，需要对粒子的初始状态，收缩状态和收缩钱状态负责。一步步来完成。</p>
+<ul>
+<li>数据变量<br>我们分析一下各状态下粒子需要的参数，可以知道，我们需要明确粒子数目和各粒子的数据。</li>
+<li>初始化粒子位置<br>粒子的位置，需要构成一个圆环，且在圆环中，我们希望粒子尽量集中在中间。我们采用如下方法进行构造：[min, max] =&gt; lowerbound = random [min, middle] &amp; upperbound = random [middle, max] =&gt; initialRidus = random [lowerbound, upperbound].<br>这样，我们通过分级随机的方法得到的半径，会较为集中在中部，而避免太过分散的问题。</li>
+<li>粒子运动<br>粒子光环应该是有两层旋转，一层顺时针，一层逆时针。我们简化一下，通过扩大粒子数，然后根据下标奇偶性让其按照不同方向旋转运动，这样就解决了两层的问题。</li>
+<li>粒子收缩<br>我们通过在圆环中心位置放置一个 cube 充当按钮，并将其放入一个单独的 layer 中，然后在摄像机中，将这个 layer “无视”，这样可以做成浸入式的体验效果。</li>
+<li>粒子收缩成圆线<br>我们在确定收缩半径的时候，可以通过再次随机，将粒子收缩的半径范围限制在某个较大范围内，而不是一个小区域中，这样可以避免圆线的问题。</li>
+</ul>
+<p>完整代码如下，代码注释表明了代码含义。</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ParticleRing</span> : <span class="title">MonoBehaviour</span> &#123;</span><br><span class="line">  <span class="keyword">public</span> Camera camera;                         <span class="comment">//摄像机</span></span><br><span class="line">  <span class="keyword">public</span> ParticleSystem particleRing;           <span class="comment">//粒子系统</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">int</span> particleNum = <span class="number">10000</span>;              <span class="comment">//粒子数目</span></span><br><span class="line">  <span class="keyword">private</span> ParticleSystem.Particle[] particles;  <span class="comment">//粒子</span></span><br><span class="line">  <span class="keyword">private</span> ParticleData[] particleDatas;         <span class="comment">//粒子数据</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">float</span> minRadius = <span class="number">5.0</span>f;               <span class="comment">//最小半径</span></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">float</span> maxRadius = <span class="number">10.0</span>f;              <span class="comment">//最大半径</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">bool</span> isShring = <span class="literal">false</span>;                <span class="comment">//是否收缩</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">int</span> level = <span class="number">5</span>;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">float</span> speed = <span class="number">0.1</span>f;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">float</span> shringSpeed = <span class="number">2</span>f;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Use this for initialization</span></span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">Start</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    particleRing.maxParticles = particleNum;              <span class="comment">//设置最大粒子数</span></span><br><span class="line">    particles = <span class="keyword">new</span> ParticleSystem.Particle[particleNum]; <span class="comment">//新建粒子数组</span></span><br><span class="line">    particleDatas = <span class="keyword">new</span> ParticleData[particleNum];        <span class="comment">//新建粒子数据数组</span></span><br><span class="line">    particleRing.Emit(particleNum);                       <span class="comment">//粒子系统发射粒子</span></span><br><span class="line">    particleRing.GetParticles(particles);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//初始化粒子位置</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; particleNum; ++i) &#123;</span><br><span class="line">      <span class="keyword">float</span> middleRadius = (maxRadius + minRadius) / <span class="number">2</span>;</span><br><span class="line">      <span class="keyword">float</span> upperbound = Random.Range(middleRadius, maxRadius);</span><br><span class="line">      <span class="keyword">float</span> lowerbound = Random.Range(minRadius, middleRadius);</span><br><span class="line">      <span class="keyword">float</span> radius = Random.Range(lowerbound, upperbound);</span><br><span class="line">      <span class="keyword">float</span> angle = Random.Range(<span class="number">0.0</span>f, <span class="number">360.0</span>f);</span><br><span class="line">      particleDatas[i] = <span class="keyword">new</span> ParticleData(angle, radius, radius, radius - <span class="number">1.5</span>f * (radius / minRadius));</span><br><span class="line">      <span class="comment">// 随机收缩半径下界，避免收缩后成为圆线</span></span><br><span class="line">      <span class="keyword">if</span> (particleDatas[i].shringRadius &lt; minRadius + <span class="number">0.5</span>f) &#123;</span><br><span class="line">        <span class="keyword">float</span> temp = Random.Range(minRadius, minRadius + <span class="number">0.25</span>f);</span><br><span class="line">        particleDatas[i].shringRadius = Random.Range(temp, minRadius + <span class="number">0.5</span>f);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Update is called once per frame</span></span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">Update</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; particleNum; ++i) &#123;</span><br><span class="line">      <span class="comment">//判断是否收缩</span></span><br><span class="line">      <span class="keyword">if</span> (isShring) &#123;</span><br><span class="line">        <span class="keyword">if</span> (particleDatas[i].radius &gt; particleDatas[i].shringRadius) &#123;</span><br><span class="line">          particleDatas[i].radius -=</span><br><span class="line">            shringSpeed * (particleDatas[i].radius / particleDatas[i].shringRadius) * Time.deltaTime;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (particleDatas[i].radius &lt; particleDatas[i].beforeRadius) &#123;</span><br><span class="line">          particleDatas[i].radius +=</span><br><span class="line">            shringSpeed * (particleDatas[i].beforeRadius / particleDatas[i].radius) * Time.deltaTime;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          particleDatas[i].radius = particleDatas[i].beforeRadius;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">//根据奇偶数判定顺时针或逆时针运动</span></span><br><span class="line">      <span class="keyword">if</span> (i % <span class="number">2</span> == <span class="number">0</span>) &#123;</span><br><span class="line">        particleDatas[i].angle += (i % level + <span class="number">1</span>) * speed;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        particleDatas[i].angle -= (i % level + <span class="number">1</span>) * speed;</span><br><span class="line">      &#125;</span><br><span class="line">      particleDatas[i].angle %= <span class="number">360</span>;</span><br><span class="line">      <span class="keyword">float</span> rad = particleDatas[i].angle / <span class="number">180</span> * Mathf.PI;</span><br><span class="line">      particles[i].position =</span><br><span class="line">        <span class="keyword">new</span> Vector3(particleDatas[i].radius * Mathf.Cos(rad), particleDatas[i].radius * Mathf.Sin(rad), <span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    particleRing.SetParticles(particles, particleNum);</span><br><span class="line">    <span class="comment">//收缩射线判断</span></span><br><span class="line">    Ray ray = camera.ScreenPointToRay(Input.mousePosition);</span><br><span class="line">    RaycastHit hit;</span><br><span class="line">    isShring = (Physics.Raycast(ray, <span class="keyword">out</span> hit) &amp;&amp; hit.collider.gameObject.tag == <span class="string">"button"</span>) ? <span class="literal">true</span> : <span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Unity-3d/" rel="tag"># Unity-3d</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Computer-Organization/SingleCycleCPU/" rel="next" title="SingleCycleCPU">
+                <i class="fa fa-chevron-left"></i> SingleCycleCPU
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Xu Weiyuan</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ParticleRing"><span class="nav-number">1.</span> <span class="nav-text">ParticleRing</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#参数设置"><span class="nav-number">1.1.</span> <span class="nav-text">参数设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码讲解"><span class="nav-number">1.2.</span> <span class="nav-text">代码讲解</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Xu Weiyuan</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+  
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
