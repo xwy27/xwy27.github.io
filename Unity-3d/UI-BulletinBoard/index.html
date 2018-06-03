@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Unity-3d," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="UGUI-BulletinBoard  UGUI-BulletinBoard IMGUI 和 UGUI BulletinBoard 创建信纸及任务信息 信息展开动画 贴合滚动条">
+<meta name="keywords" content="Unity-3d">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Unity-BulletinBoard">
+<meta property="og:url" content="http://yoursite.com/Unity-3d/UI-BulletinBoard/index.html">
+<meta property="og:site_name" content="Xuwy Blog">
+<meta property="og:description" content="UGUI-BulletinBoard  UGUI-BulletinBoard IMGUI 和 UGUI BulletinBoard 创建信纸及任务信息 信息展开动画 贴合滚动条">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/Unity-3d/UI-BulletinBoard/paper.jpg">
+<meta property="og:image" content="http://yoursite.com/Unity-3d/UI-BulletinBoard/bg.jpg">
+<meta property="og:image" content="http://yoursite.com/Unity-3d/UI-BulletinBoard/scrollview.jpg">
+<meta property="og:image" content="http://yoursite.com/Unity-3d/UI-BulletinBoard/vertical.jpg">
+<meta property="og:image" content="http://yoursite.com/Unity-3d/UI-BulletinBoard/content.jpg">
+<meta property="og:updated_time" content="2018-06-03T15:49:45.158Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Unity-BulletinBoard">
+<meta name="twitter:description" content="UGUI-BulletinBoard  UGUI-BulletinBoard IMGUI 和 UGUI BulletinBoard 创建信纸及任务信息 信息展开动画 贴合滚动条">
+<meta name="twitter:image" content="http://yoursite.com/Unity-3d/UI-BulletinBoard/paper.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/Unity-3d/UI-BulletinBoard/"/>
+
+
+
+
+
+  <title>Unity-BulletinBoard | Xuwy Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/xwy27"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png" alt="Fork me on GitHub"></a>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Xuwy Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Learning Blog</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Unity-3d/UI-BulletinBoard/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Xu Weiyuan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Xuwy Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Unity-BulletinBoard</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-03T22:09:09+08:00">
+                2018-06-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Unity-3d/" itemprop="url" rel="index">
+                    <span itemprop="name">Unity-3d</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="UGUI-BulletinBoard"><a href="#UGUI-BulletinBoard" class="headerlink" title="UGUI-BulletinBoard"></a>UGUI-BulletinBoard</h1><!-- TOC -->
+<ul>
+<li><a href="#ugui-bulletinboard">UGUI-BulletinBoard</a><ul>
+<li><a href="#imgui-和-ugui">IMGUI 和 UGUI</a></li>
+<li><a href="#bulletinboard">BulletinBoard</a><ul>
+<li><a href="#创建信纸及任务信息">创建信纸及任务信息</a></li>
+<li><a href="#信息展开动画">信息展开动画</a></li>
+<li><a href="#贴合滚动条">贴合滚动条</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<!-- /TOC -->
+<a id="more"></a>
+<p><a href="https://github.com/xwy27/Unity-3D-Learning/tree/master/HW8_%E5%8F%AF%E5%B1%95%E5%BC%80%E4%BF%A1%E7%BA%B8%E7%B3%BB%E7%BB%9F" target="_blank" rel="noopener">github</a><br><a href="http://www.iqiyi.com/paopao/u/1567503456/" target="_blank" rel="noopener">video</a></p>
+<h2 id="IMGUI-和-UGUI"><a href="#IMGUI-和-UGUI" class="headerlink" title="IMGUI 和 UGUI"></a>IMGUI 和 UGUI</h2><p>以前我们的 button，text等等都是用 OnGUI 画出来的，这些都属于 IMGUI。这次我们使用 UGUI 来完成一个可展开消息的公告牌。<br>首先，我们来了解一下 IMGUI 和 UGUI：</p>
+<ul>
+<li>IMGUI（Immediate Mode GUI）及时模式图形界面。它是代码驱动的 UI 系统，即没有图形化设计界面，只能在 OnGUI 阶段用 GUI 系列的类绘制各种 UI 元素。</li>
+<li>Unity GUI / UGUI 是面向对象的 UI 系统。所有 UI 元素都是游戏对象，有友好的图形化设计界面， 在场景渲染阶段渲染这些 UI 元素。</li>
+</ul>
+<p>两个 GUI 都是 unity 中的 UI 设计方案，前者偏向代码，受程序员喜爱，而后者偏向图形化，普通设计者也可以直接参与开发，各有优劣，但 unity 官方都视为重要模型。</p>
+<h2 id="BulletinBoard"><a href="#BulletinBoard" class="headerlink" title="BulletinBoard"></a>BulletinBoard</h2><p>可展开公告牌是这次要完成的目标。但是，在许多开放式 RPG 游戏中，印象最深刻的还是那种古旧羊皮纸的书信。所以我将公告牌换成了可展开信息的信纸，类似玩家背包中实时发布任务的信纸(<del>深度游戏重度患者的嗜好</del>)。</p>
+<h3 id="创建信纸及任务信息"><a href="#创建信纸及任务信息" class="headerlink" title="创建信纸及任务信息"></a>创建信纸及任务信息</h3><p>我们通过 UGUI 来构建本次 UI 界面。首先，添加一个 canvas 画布，然后给画布添加 ScrollView 子对象，作为滚动展示区域。接着在 SrcollView 控件中的 Content 对象中添加 Button 和 Text 对象，其中 Button 实现点击展开与收缩信息的按钮，Text 作为信息。最终结构如下图：<br><img src="/Unity-3d/UI-BulletinBoard/paper.jpg" alt="structure"></p>
+<p>马上，我们给我们贴上信纸背景：给 Canvas 和 ScrollView 的 Image 组件设置 SourceImage 即可(没有组件可以自己添加)。这里的 SourceImage 接受图片精灵，我们导入图片的 Assets 后，将它的 Texture Type 设置成 Sprite(2D and UI)，即可。<br><img src="/Unity-3d/UI-BulletinBoard/bg.jpg" alt="sprite"><br><img src="/Unity-3d/UI-BulletinBoard/scrollview.jpg" alt="scrollview"></p>
+<p>接下里给 Content 添加 Vertical Layout Group 组件，使其中的对象呈垂直显示。参数设置如下：<br><img src="/Unity-3d/UI-BulletinBoard/vertical.jpg" alt="verticallayoutgroup"><br>参数的含义如下:</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>padding</td>
+<td>与父对象的间距(学习过 css 的小伙伴应该比较熟悉)</td>
+</tr>
+<tr>
+<td>Spacing</td>
+<td>子物体之间的间隔</td>
+</tr>
+<tr>
+<td>Child Alignment</td>
+<td>子物体整体位于什么方位</td>
+</tr>
+<tr>
+<td>Child Controls Size</td>
+<td>子物体是否控制大小</td>
+</tr>
+<tr>
+<td>Child Force Expand</td>
+<td>是否强制拉伸长宽到父物体大小</td>
+</tr>
+</tbody>
+</table>
+<p>然后，将 Button 的 Transition 设置成 None，因为我们不希望点击按钮有过渡动画。对于信息 Text，就自己设置样式了，不过这里是支持 <strong>Rich Text</strong> 的，所以可以做出各种样式的文本。下面是 Rich Text 的部分常用表达式：</p>
+<table>
+<thead>
+<tr>
+<th>表达式</th>
+<th>功能</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>\&lt;color=#ff0000ff&gt;text\</td>
+<td>字体颜色，前6个十六进制符号表示 RGB，后六个表示 alpha</td>
+<td><font color="ff0000">text</font></td>
+</tr>
+<tr>
+<td>\<b>text\</b></td>
+<td>字体加粗</td>
+<td><b>text</b></td>
+</tr>
+<tr>
+<td>\&lt;size=20&gt;text\</td>
+<td>字体大小</td>
+<td><font size="20">text</font></td>
+</tr>
+</tbody>
+</table>
+<p>至此，运行结果应该是所有信息可以正常展示，如果滚动条或信息无法正常展示，可以调整 Text 和 Content 的 Height 让其显示完全。</p>
+<h3 id="信息展开动画"><a href="#信息展开动画" class="headerlink" title="信息展开动画"></a>信息展开动画</h3><p>UGUI 也可以完成这个动画设置，使用 animator 进行动画设置，这里我选择使用代码完成。</p>
+<p>我们使用<a href="https://blog.csdn.net/fdyshlk/article/details/72667814?locationNum=8&amp;fps=1" target="_blank" rel="noopener">协程技术</a>来完成这个动画效果(模仿帧动画)。</p>
+<p>这里说明两点：</p>
+<ol>
+<li>yield return null<br> yield return null 和 yield return num 都是表示暂缓一帧。所以无论是 yield return 10 还是 yield return 0，都表示暂缓一帧。</li>
+<li>RectTransform 的<a href="https://blog.csdn.net/BeiFuDeNvWang/article/details/50838266" target="_blank" rel="noopener">大小设置</a><br> 我们有三种设置大小的方法，它们中的两个与锚点位置有关，这里我采用与锚点无关的设置方法。</li>
+</ol>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">FolderScript</span> : <span class="title">MonoBehaviour</span> &#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> Button btn;</span><br><span class="line">  <span class="keyword">public</span> Text text;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">int</span> frame;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">float</span> height;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Use this for initialization  </span></span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">Start</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    btn = <span class="keyword">this</span>.gameObject.GetComponent&lt;Button&gt;();</span><br><span class="line">    btn.onClick.AddListener(OnClick);</span><br><span class="line">    StartCoroutine(TextCollapsed());</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function">IEnumerator <span class="title">TextCollapsed</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">float</span> y = height;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; frame; ++i) &#123;</span><br><span class="line">      y -= height / frame;</span><br><span class="line">      text.rectTransform.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Right, <span class="number">0</span>, text.rectTransform.sizeDelta.x);</span><br><span class="line">      text.rectTransform.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Bottom, <span class="number">0</span>, y);</span><br><span class="line">      <span class="keyword">if</span> (i == frame - <span class="number">1</span>) &#123;</span><br><span class="line">        text.gameObject.SetActive(<span class="literal">false</span>);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">yield</span> <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function">IEnumerator <span class="title">TextVisible</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">float</span> y = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; frame; ++i) &#123;</span><br><span class="line">      y += height / frame;</span><br><span class="line">      text.rectTransform.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Right, <span class="number">0</span>, text.rectTransform.sizeDelta.x);</span><br><span class="line">      text.rectTransform.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Bottom, <span class="number">0</span>, y);</span><br><span class="line">      <span class="keyword">if</span> (i == <span class="number">0</span>) &#123;</span><br><span class="line">        text.gameObject.SetActive(<span class="literal">true</span>);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">yield</span> <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">OnClick</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (text.gameObject.activeSelf) &#123;</span><br><span class="line">      StartCoroutine(TextCollapsed());</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      StartCoroutine(TextVisible());</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="贴合滚动条"><a href="#贴合滚动条" class="headerlink" title="贴合滚动条"></a>贴合滚动条</h3><p>上面的步骤都做完了，运行就可以看到可展开信息的信纸系统了。美中不足的是，我们的滚动条是固定长度的，而且初始也显示在界面上。我们来处理一下：给 Content 添加 Content Size Fitter 组件<br><img src="/Unity-3d/UI-BulletinBoard/content.jpg" alt="content"><br>设置 Vertical Fit 为 Min Size，这样 Content 的数值高度就与其中的子对象显示高度保持一致。<br>这样一来，我们的滚动条就会根据 Content 高度实时变化了。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Unity-3d/" rel="tag"># Unity-3d</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Unity-3d/particleRing/" rel="next" title="Unity-ParticleRing">
+                <i class="fa fa-chevron-left"></i> Unity-ParticleRing
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Xu Weiyuan</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#UGUI-BulletinBoard"><span class="nav-number">1.</span> <span class="nav-text">UGUI-BulletinBoard</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#IMGUI-和-UGUI"><span class="nav-number">1.1.</span> <span class="nav-text">IMGUI 和 UGUI</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BulletinBoard"><span class="nav-number">1.2.</span> <span class="nav-text">BulletinBoard</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建信纸及任务信息"><span class="nav-number">1.2.1.</span> <span class="nav-text">创建信纸及任务信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#信息展开动画"><span class="nav-number">1.2.2.</span> <span class="nav-text">信息展开动画</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#贴合滚动条"><span class="nav-number">1.2.3.</span> <span class="nav-text">贴合滚动条</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Xu Weiyuan</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+  
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
