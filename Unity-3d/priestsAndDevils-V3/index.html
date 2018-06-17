@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Unity-3d," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="priestsAndDevils-V3基于当前游戏状态，给出正确解路径下一步提示。   priestsAndDevils-V3 游戏状态图 分析 游戏状态定义 游戏状态变换 正确解路径   cpp code cpp To csharp   游戏改进 预览图 视频">
+<meta name="keywords" content="Unity-3d">
+<meta property="og:type" content="article">
+<meta property="og:title" content="unity-priestsAndDevils-V3">
+<meta property="og:url" content="http://yoursite.com/Unity-3d/priestsAndDevils-V3/index.html">
+<meta property="og:site_name" content="Xuwy Blog">
+<meta property="og:description" content="priestsAndDevils-V3基于当前游戏状态，给出正确解路径下一步提示。   priestsAndDevils-V3 游戏状态图 分析 游戏状态定义 游戏状态变换 正确解路径   cpp code cpp To csharp   游戏改进 预览图 视频">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/Unity-3d/priestsAndDevils-V3/Flow.jpg">
+<meta property="og:image" content="http://yoursite.com/Unity-3d/priestsAndDevils-V3/IState.jpg">
+<meta property="og:image" content="http://yoursite.com/Unity-3d/priestsAndDevils-V3/analysis.jpg">
+<meta property="og:image" content="http://yoursite.com/Unity-3d/priestsAndDevils-V3/New.jpg">
+<meta property="og:updated_time" content="2018-06-17T02:12:41.480Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="unity-priestsAndDevils-V3">
+<meta name="twitter:description" content="priestsAndDevils-V3基于当前游戏状态，给出正确解路径下一步提示。   priestsAndDevils-V3 游戏状态图 分析 游戏状态定义 游戏状态变换 正确解路径   cpp code cpp To csharp   游戏改进 预览图 视频">
+<meta name="twitter:image" content="http://yoursite.com/Unity-3d/priestsAndDevils-V3/Flow.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/Unity-3d/priestsAndDevils-V3/"/>
+
+
+
+
+
+  <title>unity-priestsAndDevils-V3 | Xuwy Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/xwy27"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png" alt="Fork me on GitHub"></a>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Xuwy Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Learning Blog</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Unity-3d/priestsAndDevils-V3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Xu Weiyuan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Xuwy Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">unity-priestsAndDevils-V3</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-15T08:23:02+08:00">
+                2018-06-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Unity-3d/" itemprop="url" rel="index">
+                    <span itemprop="name">Unity-3d</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="priestsAndDevils-V3"><a href="#priestsAndDevils-V3" class="headerlink" title="priestsAndDevils-V3"></a>priestsAndDevils-V3</h1><p>基于当前游戏状态，给出正确解路径下一步提示。</p>
+<!-- TOC -->
+<ul>
+<li><a href="#priestsanddevils-v3">priestsAndDevils-V3</a><ul>
+<li><a href="#游戏状态图">游戏状态图</a><ul>
+<li><a href="#分析">分析</a><ul>
+<li><a href="#游戏状态定义">游戏状态定义</a></li>
+<li><a href="#游戏状态变换">游戏状态变换</a></li>
+<li><a href="#正确解路径">正确解路径</a></li>
+</ul>
+</li>
+<li><a href="#cpp-code">cpp code</a></li>
+<li><a href="#cpp-to-csharp">cpp To csharp</a></li>
+</ul>
+</li>
+<li><a href="#游戏改进">游戏改进</a><ul>
+<li><a href="#预览图">预览图</a></li>
+<li><a href="#视频">视频</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<!-- /TOC -->
+<a id="more"></a>
+<h2 id="游戏状态图"><a href="#游戏状态图" class="headerlink" title="游戏状态图"></a>游戏状态图</h2><h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>我们的目标：<strong>输入当前游戏状态，查找正确解路径，并返回对应的下一游戏状态。</strong></p>
+<p><img src="/Unity-3d/priestsAndDevils-V3/Flow.jpg" alt="Flow"></p>
+<p>所以我们需要 <strong>定义游戏状态，定义状态如何转换和选择算法</strong>。</p>
+<h4 id="游戏状态定义"><a href="#游戏状态定义" class="headerlink" title="游戏状态定义"></a>游戏状态定义</h4><p>对于牧师与魔鬼游戏，我们首先需要给定我们对于游戏状态的定义。对于游戏状态，我采用如下定义：<br><strong>一个游戏状态由所有游戏对象的位置决定。即所有游戏对象的位置的集合构成一个游戏状态。</strong><br>可能不好理解，举例说明一下。初始的游戏状态为：左岸无牧师，无魔鬼，右岸三牧师，三魔鬼，船在右岸；获胜游戏状态为：左岸三牧师，三魔鬼，右岸无牧师，无魔鬼，船在左岸。对于每个状态，我们需要 <em>判断其合法性</em>，即游戏状态是否会结束游戏。因此，可以将游戏状态提取为下面的数据结构：</p>
+<p><img src="/Unity-3d/priestsAndDevils-V3/IState.jpg" alt="IState"><br><em>四个整数存储两岸的游戏对象数量，最后一个布尔型变量 Boat 代表船的位置，true 在左岸，false 在右岸，vaild 操作可以判断当前游戏状态是否合法。</em></p>
+<h4 id="游戏状态变换"><a href="#游戏状态变换" class="headerlink" title="游戏状态变换"></a>游戏状态变换</h4><p>定义完游戏状态，我们考虑下一件事，状态与状态之间如何进行变动。我们的游戏是通过 <strong>游戏对象的移动，改变游戏状态</strong>，即人物搭船移动到对岸，游戏状态改变。那么我们的状态变动就可以从两大类人物动作中得到：<strong>单人过河和双人过河</strong>。</p>
+<p>船只的位置也影响游戏状态，且它的位置影响下一游戏状态的两岸人物数量变动，所以综合考量后可得出一个状态向下一个状态的所有动作行为：</p>
+<ul>
+<li>船在左岸<ul>
+<li>单人过河<ul>
+<li>牧师过河</li>
+<li>魔鬼过河</li>
+</ul>
+</li>
+<li>双人过河<ul>
+<li>牧师 + 牧师过河</li>
+<li>牧师 + 魔鬼过河</li>
+<li>魔鬼 + 魔鬼过河</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>船在右岸<ul>
+<li>单人过河<ul>
+<li>牧师过河</li>
+<li>魔鬼过河</li>
+</ul>
+</li>
+<li>双人过河<ul>
+<li>牧师 + 牧师过河</li>
+<li>牧师 + 魔鬼过河</li>
+<li>魔鬼 + 魔鬼过河</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>这个是我们实现推测正确解路径的关键。</p>
+<h4 id="正确解路径"><a href="#正确解路径" class="headerlink" title="正确解路径"></a>正确解路径</h4><p><img src="/Unity-3d/priestsAndDevils-V3/analysis.jpg" alt="Analysis"><br>我们现在的工作就是，如何从最左边的当前状态，获得下一状态，然后不断进行，找到结束状态，得到正确解路径。这个图就像是树一样，所以有两种策略可以完成这个工作：DFS 和 BFS。</p>
+<p>在这里，我采用 <strong>BFS</strong>，因为最短求解路径是我想要的。大家也可以试试写一下 DFS。</p>
+<p>算法描述：</p>
+<ol>
+<li>当前状态入队</li>
+<li>队列不为空：<ul>
+<li>取队头状态</li>
+<li>访问状态节点：<ul>
+<li>结束状态?<ul>
+<li>是：输出</li>
+<li>否：计算下一状态，合法状态入队</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="cpp-code"><a href="#cpp-code" class="headerlink" title="cpp code"></a>cpp code</h3><p>首先，用熟悉的 c++ 实现一遍(<em>当时正好只有 dev，所以就先写了 c++ 版本</em>)。</p>
+<p>注意体会状态合法的条件判断(<em>这里一开始写错了，但没有注意，结果在算法中 Debug</em>)。</p>
+<p>其他重载是为了队列操作需要，可以顺便回顾 c++。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">IState</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">  <span class="keyword">int</span> leftPriests;</span><br><span class="line">  <span class="keyword">int</span> leftDevils;</span><br><span class="line">  <span class="keyword">int</span> rightPriests;</span><br><span class="line">  <span class="keyword">int</span> rightDevils;</span><br><span class="line">  <span class="keyword">bool</span> boat;</span><br><span class="line">  IState* parent;</span><br><span class="line"></span><br><span class="line">  IState();</span><br><span class="line"></span><br><span class="line">  IState(<span class="keyword">int</span> leftPriests, <span class="keyword">int</span> leftDevils, <span class="keyword">int</span> rightPriests,</span><br><span class="line">    <span class="keyword">int</span> rightDevils, <span class="keyword">bool</span> boat, IState* parent);</span><br><span class="line"></span><br><span class="line">  IState(<span class="keyword">const</span> IState &amp;another);</span><br><span class="line"></span><br><span class="line">  IState&amp; <span class="keyword">operator</span> = (IState another);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">bool</span> <span class="keyword">operator</span> == (<span class="keyword">const</span> IState &amp;another) <span class="keyword">const</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">bool</span> <span class="keyword">operator</span> != (<span class="keyword">const</span> IState &amp;another) <span class="keyword">const</span>;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">bool</span> <span class="title">valid</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> ((leftPriests == <span class="number">0</span> || leftPriests &gt;= leftDevils) &amp;&amp;</span><br><span class="line">      (rightPriests == <span class="number">0</span> || rightPriests &gt;= rightDevils));</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>在实现 BFS 时，我们加入一个 visited 队列，对搜索进行优化，<em>避免出现死循环</em>，因为在这个游戏中，可以在两个状态间循环操作；合法状态入队也减少了搜索量，虽然这在游戏中会直接结束游戏，但对于算法而言，是一种<em>剪枝优化</em>。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">IState <span class="title">bfs</span><span class="params">(IState &amp;start, IState &amp;end)</span> </span>&#123;</span><br><span class="line">  <span class="built_in">queue</span>&lt;IState&gt; found;</span><br><span class="line">  <span class="built_in">vector</span>&lt;IState&gt; visited;</span><br><span class="line">  IState temp;</span><br><span class="line">  found.push(start);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">while</span> (!found.empty()) &#123;</span><br><span class="line">    temp = found.front();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Get Answer</span></span><br><span class="line">    <span class="keyword">if</span> (temp == end) &#123;</span><br><span class="line">      <span class="keyword">while</span>(*(temp.parent) != start) &#123;</span><br><span class="line">        temp = *(temp.parent);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> temp;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    found.pop();</span><br><span class="line">    visited.push_back(temp);</span><br><span class="line"></span><br><span class="line">    IState next = temp;</span><br><span class="line">    next.parent = <span class="keyword">new</span> IState(temp);</span><br><span class="line">    temp.parent = next.parent;</span><br><span class="line">    <span class="comment">// next node</span></span><br><span class="line">    <span class="keyword">if</span> (next.boat) &#123;</span><br><span class="line">      next.boat = !next.boat;</span><br><span class="line">      <span class="comment">// one move to right</span></span><br><span class="line">      <span class="keyword">if</span> (next.leftPriests &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        next.leftPriests--;</span><br><span class="line">        next.rightPriests++;</span><br><span class="line">        <span class="keyword">if</span> (next.valid() &amp;&amp;</span><br><span class="line">          find(visited.begin(), visited.end(), next) == visited.end()) &#123;</span><br><span class="line">          found.push(next);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      next = temp;</span><br><span class="line">      next.boat = !next.boat;</span><br><span class="line">      <span class="keyword">if</span> (next.leftDevils &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        next.leftDevils--;</span><br><span class="line">        next.rightDevils++;</span><br><span class="line">        <span class="keyword">if</span> (next.valid() &amp;&amp;</span><br><span class="line">          find(visited.begin(), visited.end(), next) == visited.end()) &#123;</span><br><span class="line">          found.push(next);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">// two moves to right</span></span><br><span class="line">      next = temp;</span><br><span class="line">      next.boat = !next.boat;</span><br><span class="line">      <span class="keyword">if</span> (next.leftDevils &gt; <span class="number">0</span> &amp;&amp; next.leftDevils &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        next.leftPriests--;</span><br><span class="line">        next.leftDevils--;</span><br><span class="line">        next.rightPriests++;</span><br><span class="line">        next.rightDevils++;</span><br><span class="line">        <span class="keyword">if</span> (next.valid() &amp;&amp;</span><br><span class="line">          find(visited.begin(), visited.end(), next) == visited.end()) &#123;</span><br><span class="line">          found.push(next);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      next = temp;</span><br><span class="line">      next.boat = !next.boat;</span><br><span class="line">      <span class="keyword">if</span> (next.leftDevils &gt; <span class="number">1</span>) &#123;</span><br><span class="line">        next.leftDevils -= <span class="number">2</span>;</span><br><span class="line">        next.rightDevils += <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span> (next.valid() &amp;&amp;</span><br><span class="line">          find(visited.begin(), visited.end(), next) == visited.end()) &#123;</span><br><span class="line">          found.push(next);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      next = temp;</span><br><span class="line">      next.boat = !next.boat;</span><br><span class="line">      <span class="keyword">if</span> (next.leftPriests &gt; <span class="number">1</span>) &#123;</span><br><span class="line">        next.leftPriests -= <span class="number">2</span>;</span><br><span class="line">        next.rightPriests += <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span> (next.valid() &amp;&amp;</span><br><span class="line">          find(visited.begin(), visited.end(), next) == visited.end()) &#123;</span><br><span class="line">          found.push(next);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      next.boat = <span class="literal">true</span>;</span><br><span class="line">      <span class="comment">// one move to left</span></span><br><span class="line">      <span class="keyword">if</span> (next.rightPriests &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        next.rightPriests--;</span><br><span class="line">        next.leftPriests++;</span><br><span class="line">        <span class="keyword">if</span> (next.valid() &amp;&amp;</span><br><span class="line">          find(visited.begin(), visited.end(), next) == visited.end()) &#123;</span><br><span class="line">          found.push(next);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      next = temp;</span><br><span class="line">      next.boat = !next.boat;</span><br><span class="line">      <span class="keyword">if</span> (next.rightDevils &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        next.rightDevils--;</span><br><span class="line">        next.leftDevils++;</span><br><span class="line">        <span class="keyword">if</span> (next.valid() &amp;&amp;</span><br><span class="line">          find(visited.begin(), visited.end(), next) == visited.end()) &#123;</span><br><span class="line">          found.push(next);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">// two moves to left</span></span><br><span class="line">      next = temp;</span><br><span class="line">      next.boat = !next.boat;</span><br><span class="line">      <span class="keyword">if</span> (next.rightDevils &gt; <span class="number">0</span> &amp;&amp; next.rightDevils &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        next.rightPriests--;</span><br><span class="line">        next.rightDevils--;</span><br><span class="line">        next.leftPriests++;</span><br><span class="line">        next.leftDevils++;</span><br><span class="line">        <span class="keyword">if</span> (next.valid() &amp;&amp;</span><br><span class="line">          find(visited.begin(), visited.end(), next) == visited.end()) &#123;</span><br><span class="line">          found.push(next);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">      &#125;</span><br><span class="line">      next = temp;</span><br><span class="line">      next.boat = !next.boat;</span><br><span class="line">      <span class="keyword">if</span> (next.rightDevils &gt; <span class="number">1</span>) &#123;</span><br><span class="line">        next.rightDevils -= <span class="number">2</span>;</span><br><span class="line">        next.leftDevils += <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span> (next.valid() &amp;&amp;</span><br><span class="line">          find(visited.begin(), visited.end(), next) == visited.end()) &#123;</span><br><span class="line">          found.push(next);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      next = temp;</span><br><span class="line">      next.boat = !next.boat;</span><br><span class="line">      <span class="keyword">if</span> (next.rightPriests &gt; <span class="number">1</span>) &#123;</span><br><span class="line">        next.rightPriests -= <span class="number">2</span>;</span><br><span class="line">        next.leftPriests += <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span> (next.valid() &amp;&amp;</span><br><span class="line">          find(visited.begin(), visited.end(), next) == visited.end()) &#123;</span><br><span class="line">          found.push(next);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="cpp-To-csharp"><a href="#cpp-To-csharp" class="headerlink" title="cpp To csharp"></a>cpp To csharp</h3><p>我们将所有代码封装在 IState 类中。其中，有以下几点需要注意：</p>
+<ol>
+<li>C# 对象本身就是引用传值，所以 c++ 的指针可以直接转变成类对象本身。<ul>
+<li>时刻注意 C# 的赋值语句，<strong>类对象赋值为引用赋值</strong>。</li>
+</ul>
+</li>
+<li><a href="https://www.cnblogs.com/52XF/p/yunsuanfuchognzai.html" target="_blank" rel="noopener">C# 运算符重载</a> 和 <a href="https://docs.microsoft.com/zh-cn/previous-versions/visualstudio/visual-studio-2008/ms173147(v=vs.90" target="_blank" rel="noopener">C# 中 Equals 和 == 运算符</a>)<ul>
+<li><strong>C# 可以重载操作符，但需要成对重载</strong></li>
+<li><strong>C# 判断相等默认调用 Equals 方法</strong></li>
+<li><strong>C# 重写 Equals 方法，必须同时重写 GetHashCode 方法</strong></li>
+</ul>
+</li>
+</ol>
+<p>基本的重复代码略去展示，C# 的代码如下:</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">IState</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> leftPriests;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> leftDevils;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> rightPriests;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> rightDevils;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">bool</span> boat;</span><br><span class="line">    <span class="keyword">public</span> IState parent;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">IState</span>(<span class="params"></span>)</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">IState</span>(<span class="params"><span class="keyword">int</span> leftPriests, <span class="keyword">int</span> leftDevils, <span class="keyword">int</span> rightPriests,</span></span></span><br><span class="line"><span class="function"><span class="params">      <span class="keyword">int</span> rightDevils, <span class="keyword">bool</span> boat, IState parent</span>)</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">IState</span>(<span class="params">IState another</span>)</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">bool</span> <span class="keyword">operator</span> ==(IState lhs, IState rhs);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">bool</span> <span class="keyword">operator</span> !=(IState lhs, IState rhs);</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">bool</span> <span class="title">Equals</span>(<span class="params"><span class="keyword">object</span> obj</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (obj == <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span> (obj.GetType().Equals(<span class="keyword">this</span>.GetType()) == <span class="literal">false</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      IState temp = <span class="literal">null</span>;</span><br><span class="line">      temp = (IState)obj;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">this</span>.leftPriests.Equals(temp.leftPriests) &amp;&amp;</span><br><span class="line">        <span class="keyword">this</span>.leftDevils.Equals(temp.leftDevils) &amp;&amp;</span><br><span class="line">        <span class="keyword">this</span>.rightDevils.Equals(temp.rightDevils) &amp;&amp;</span><br><span class="line">        <span class="keyword">this</span>.rightPriests.Equals(temp.rightPriests) &amp;&amp;</span><br><span class="line">        <span class="keyword">this</span>.boat.Equals(temp.boat);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">int</span> <span class="title">GetHashCode</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">this</span>.leftDevils.GetHashCode() + <span class="keyword">this</span>.leftPriests.GetHashCode() +</span><br><span class="line">        <span class="keyword">this</span>.rightDevils.GetHashCode() + <span class="keyword">this</span>.rightPriests.GetHashCode() +</span><br><span class="line">        <span class="keyword">this</span>.boat.GetHashCode();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">bool</span> <span class="title">valid</span>(<span class="params"></span>)</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> IState <span class="title">bfs</span>(<span class="params">IState start, IState end</span>) </span>&#123;</span><br><span class="line">      Queue&lt;IState&gt; found = <span class="keyword">new</span> Queue&lt;IState&gt;();</span><br><span class="line">      Queue&lt;IState&gt; visited = <span class="keyword">new</span> Queue&lt;IState&gt;();</span><br><span class="line">      IState temp = <span class="keyword">new</span> IState(start.leftPriests, start.leftDevils,</span><br><span class="line">        start.rightPriests, start.rightDevils, start.boat, <span class="literal">null</span>);</span><br><span class="line">      found.Enqueue(temp);</span><br><span class="line"></span><br><span class="line">      <span class="keyword">while</span> (found.Count &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        temp = found.Peek();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (temp == end) &#123;</span><br><span class="line">          <span class="keyword">while</span> (temp.parent != start) &#123;</span><br><span class="line">            temp = temp.parent;</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">return</span> temp;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        found.Dequeue();</span><br><span class="line">        visited.Enqueue(temp);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// next node</span></span><br><span class="line">        <span class="keyword">if</span> (temp.boat) &#123;</span><br><span class="line">          <span class="comment">// one move to right</span></span><br><span class="line">          <span class="keyword">if</span> (temp.leftPriests &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            IState next = <span class="keyword">new</span> IState(temp);</span><br><span class="line">            next.parent = <span class="keyword">new</span> IState(temp);</span><br><span class="line">            next.boat = <span class="literal">false</span>;</span><br><span class="line">            next.leftPriests--;</span><br><span class="line">            next.rightPriests++;</span><br><span class="line">            <span class="keyword">if</span> (next.valid() &amp;&amp; !visited.Contains(next) &amp;&amp; !found.Contains(next)) &#123;</span><br><span class="line">              found.Enqueue(next);</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">if</span> (temp.leftDevils &gt; <span class="number">0</span>) &#123; <span class="comment">/* ... */</span>&#125;</span><br><span class="line">          <span class="comment">// two moves to right</span></span><br><span class="line">          <span class="keyword">if</span> (temp.leftDevils &gt; <span class="number">0</span> &amp;&amp; temp.leftDevils &gt; <span class="number">0</span>) &#123;<span class="comment">/* similar to before code */</span>&#125;</span><br><span class="line">          <span class="keyword">if</span> (temp.leftDevils &gt; <span class="number">1</span>) &#123; <span class="comment">/* ... */</span>&#125;</span><br><span class="line">          <span class="keyword">if</span> (temp.leftPriests &gt; <span class="number">1</span>) &#123; <span class="comment">/* ... */</span>&#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          <span class="comment">//one move to left</span></span><br><span class="line">          <span class="keyword">if</span> (temp.rightPriests &gt; <span class="number">0</span>) &#123; <span class="comment">/* ... */</span>&#125;</span><br><span class="line">          <span class="keyword">if</span> (temp.rightDevils &gt; <span class="number">0</span>) &#123; <span class="comment">/* ... */</span>&#125;</span><br><span class="line">          <span class="comment">//two moves to left</span></span><br><span class="line">          <span class="keyword">if</span> (temp.rightDevils &gt; <span class="number">0</span> &amp;&amp; temp.rightDevils &gt; <span class="number">0</span>) &#123; <span class="comment">/* ... */</span>&#125;</span><br><span class="line">          <span class="keyword">if</span> (temp.rightDevils &gt; <span class="number">1</span>) &#123; <span class="comment">/* ... */</span>&#125;</span><br><span class="line">          <span class="keyword">if</span> (temp.rightPriests &gt; <span class="number">1</span>) &#123; <span class="comment">/* ... */</span>&#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="游戏改进"><a href="#游戏改进" class="headerlink" title="游戏改进"></a>游戏改进</h2><ol>
+<li>角色颜色区分：绿色牧师，红色魔鬼，棕色船只</li>
+<li>根据当前状态给出最短正确路径的下一状态<br> <em>交由代码运算，而非直接根据手写状态图进行简单的 if-else 给出</em></li>
+</ol>
+<p>优点：游戏状态增加时，只需更改状态变化的逻辑代码，而不必重写状态图</p>
+<h3 id="预览图"><a href="#预览图" class="headerlink" title="预览图"></a>预览图</h3><p><img src="/Unity-3d/priestsAndDevils-V3/New.jpg" alt="New"></p>
+<h3 id="视频"><a href="#视频" class="headerlink" title="视频"></a>视频</h3><p><a href="https://www.bilibili.com/video/av25035258" target="_blank" rel="noopener">Video</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Unity-3d/" rel="tag"># Unity-3d</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Unity-3d/UI-BulletinBoard/" rel="next" title="Unity-BulletinBoard">
+                <i class="fa fa-chevron-left"></i> Unity-BulletinBoard
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Xu Weiyuan</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#priestsAndDevils-V3"><span class="nav-number">1.</span> <span class="nav-text">priestsAndDevils-V3</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#游戏状态图"><span class="nav-number">1.1.</span> <span class="nav-text">游戏状态图</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#分析"><span class="nav-number">1.1.1.</span> <span class="nav-text">分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#游戏状态定义"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">游戏状态定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#游戏状态变换"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">游戏状态变换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#正确解路径"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">正确解路径</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cpp-code"><span class="nav-number">1.1.2.</span> <span class="nav-text">cpp code</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cpp-To-csharp"><span class="nav-number">1.1.3.</span> <span class="nav-text">cpp To csharp</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#游戏改进"><span class="nav-number">1.2.</span> <span class="nav-text">游戏改进</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#预览图"><span class="nav-number">1.2.1.</span> <span class="nav-text">预览图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#视频"><span class="nav-number">1.2.2.</span> <span class="nav-text">视频</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Xu Weiyuan</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+  
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
