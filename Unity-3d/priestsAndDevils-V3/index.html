@@ -91,7 +91,7 @@
 <meta property="og:image" content="http://yoursite.com/Unity-3d/priestsAndDevils-V3/IState.jpg">
 <meta property="og:image" content="http://yoursite.com/Unity-3d/priestsAndDevils-V3/analysis.jpg">
 <meta property="og:image" content="http://yoursite.com/Unity-3d/priestsAndDevils-V3/New.jpg">
-<meta property="og:updated_time" content="2018-06-17T02:12:41.480Z">
+<meta property="og:updated_time" content="2018-06-17T02:20:30.424Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="unity-priestsAndDevils-V3">
 <meta name="twitter:description" content="priestsAndDevils-V3基于当前游戏状态，给出正确解路径下一步提示。   priestsAndDevils-V3 游戏状态图 分析 游戏状态定义 游戏状态变换 正确解路径   cpp code cpp To csharp   游戏改进 预览图 视频">
@@ -454,6 +454,15 @@
 <li>根据当前状态给出最短正确路径的下一状态<br> <em>交由代码运算，而非直接根据手写状态图进行简单的 if-else 给出</em></li>
 </ol>
 <p>优点：游戏状态增加时，只需更改状态变化的逻辑代码，而不必重写状态图</p>
+<p>游戏变动：</p>
+<ol>
+<li>在 Model 文件夹内完成 IState 类</li>
+<li>在 View 文件夹的 UI 类页面中加入一个 button 和一个 label，并在 OnGUI 函数中绑定点击事件：<ul>
+<li>根据当前状态得到下一步状态</li>
+<li>根据下一步状态，刷新 label 的显示字符串。</li>
+</ul>
+</li>
+</ol>
 <h3 id="预览图"><a href="#预览图" class="headerlink" title="预览图"></a>预览图</h3><p><img src="/Unity-3d/priestsAndDevils-V3/New.jpg" alt="New"></p>
 <h3 id="视频"><a href="#视频" class="headerlink" title="视频"></a>视频</h3><p><a href="https://www.bilibili.com/video/av25035258" target="_blank" rel="noopener">Video</a></p>
 
