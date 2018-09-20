@@ -388,9 +388,9 @@ Output: 3
 <p>耗时长的原因是调用 sort，而别人调用 inplace_merge。<br><img src="/Algorithms/Leetcode-ReversePairs/Time.jpg" alt="Time"></p>
 <h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><p>这道题掌握的关于数组问题的分支想法，可以运用到其他数组题目上：<a href="https://leetcode.com/problems/count-of-range-sum/description/" target="_blank" rel="noopener">Count Of Range Sum</a>。</p>
 <p>在这道题里，我们一样，划分子问题为 T(n) = 2T(n/2) + C，其中 C 为求解左右两数组内处于限制大小内的范围和个数。</p>
-<pre><code>    Hint:
-    1. 定义累加和 s[i + 1] = s[i] + nums[i] 且 s[0] = 0
-    2. 那么范围和 [i, j] = s[j] - s[i - 1]
+<pre><code>Hint:
+1. 定义累加和 s[i + 1] = s[i] + nums[i] 且 s[0] = 0
+2. 那么范围和 [i, j] = s[j] - s[i - 1]
 </code></pre><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">countRangeSum</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> lower, <span class="keyword">int</span> upper)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> len = nums.size();</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">long</span>&gt; sum(len + <span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; ++i) &#123;</span><br><span class="line">        sum[i + <span class="number">1</span>] = sum[i] + nums[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> subSolution(sum, <span class="number">0</span>,  len + <span class="number">1</span>, lower, upper);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">subSolution</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">long</span>&gt;&amp; sum, <span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> lower, <span class="keyword">int</span> upper)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (r - l &lt;= <span class="number">1</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> m = l + (r - l) / <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">int</span> res = subSolution(sum, l, m, lower, upper) +</span><br><span class="line">        subSolution(sum, m, r, lower, upper);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> p = m, q = m;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = l; i &lt; m; ++i) &#123;</span><br><span class="line">        <span class="keyword">while</span> (p &lt; r &amp;&amp; sum[p] - sum[i] &lt; lower) p++;</span><br><span class="line">        <span class="keyword">while</span> (q &lt; r &amp;&amp; sum[q] - sum[i] &lt;= upper) q++;</span><br><span class="line">        res += q - p;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">auto</span> itr = sum.begin();</span><br><span class="line">    sort(itr + l, itr + r);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
@@ -432,6 +432,10 @@ Output: 3
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Algorithms/Leetcode-DFS/" rel="prev" title="Leetcode-DFS">
+                Leetcode-DFS <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -508,7 +512,7 @@ Output: 3
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-count">33</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
