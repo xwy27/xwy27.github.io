@@ -79,19 +79,19 @@
 
 
 
-<meta name="description" content="Leetcode-Depth-First-SearchPath-SumDescriptionGiven a binary tree and a sum, determine if the tree has a root-to-leaf path such that adding up all the values along the path equals the given sum. Note:">
+<meta name="description" content="Leetcode-Depth-First-Search  Leetcode-Depth-First-Search Path-Sum Description Example Analysis Code   Sum-root-to-leaf-number Description Example Analysis Code   BTree-Max-Path—Sum Description Example">
 <meta name="keywords" content="Algorithms,Leetcode">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Leetcode-DFS">
+<meta property="og:title" content="Leetcode-Three-DFS">
 <meta property="og:url" content="http://yoursite.com/Algorithms/Leetcode-DFS/index.html">
 <meta property="og:site_name" content="Xuwy Blog">
-<meta property="og:description" content="Leetcode-Depth-First-SearchPath-SumDescriptionGiven a binary tree and a sum, determine if the tree has a root-to-leaf path such that adding up all the values along the path equals the given sum. Note:">
+<meta property="og:description" content="Leetcode-Depth-First-Search  Leetcode-Depth-First-Search Path-Sum Description Example Analysis Code   Sum-root-to-leaf-number Description Example Analysis Code   BTree-Max-Path—Sum Description Example">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/Algorithms/Leetcode-DFS/shortcut.jpg">
-<meta property="og:updated_time" content="2018-09-20T15:30:08.577Z">
+<meta property="og:updated_time" content="2018-09-25T16:57:59.117Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Leetcode-DFS">
-<meta name="twitter:description" content="Leetcode-Depth-First-SearchPath-SumDescriptionGiven a binary tree and a sum, determine if the tree has a root-to-leaf path such that adding up all the values along the path equals the given sum. Note:">
+<meta name="twitter:title" content="Leetcode-Three-DFS">
+<meta name="twitter:description" content="Leetcode-Depth-First-Search  Leetcode-Depth-First-Search Path-Sum Description Example Analysis Code   Sum-root-to-leaf-number Description Example Analysis Code   BTree-Max-Path—Sum Description Example">
 <meta name="twitter:image" content="http://yoursite.com/Algorithms/Leetcode-DFS/shortcut.jpg">
 
 
@@ -128,7 +128,7 @@
 
 
 
-  <title>Leetcode-DFS | Xuwy Blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>Leetcode-Three-DFS | Xuwy Blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -272,7 +272,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Leetcode-DFS</h1>
+          <h1 class="post-title" itemprop="name headline">Leetcode-Three-DFS</h1>
         
 
         <div class="post-meta">
@@ -344,8 +344,37 @@
       
 
       
-        <h1 id="Leetcode-Depth-First-Search"><a href="#Leetcode-Depth-First-Search" class="headerlink" title="Leetcode-Depth-First-Search"></a>Leetcode-Depth-First-Search</h1><h2 id="Path-Sum"><a href="#Path-Sum" class="headerlink" title="Path-Sum"></a><a href="https://leetcode.com/problems/path-sum/" target="_blank" rel="noopener">Path-Sum</a></h2><h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>Given a binary tree and a sum, determine if the tree has a root-to-leaf path such that adding up all the values along the path equals the given sum.</p>
+        <h1 id="Leetcode-Depth-First-Search"><a href="#Leetcode-Depth-First-Search" class="headerlink" title="Leetcode-Depth-First-Search"></a>Leetcode-Depth-First-Search</h1><!-- TOC -->
+<ul>
+<li><a href="#leetcode-depth-first-search">Leetcode-Depth-First-Search</a><ul>
+<li><a href="#path-sumhttpsleetcodecomproblemspath-sum">Path-Sum</a><ul>
+<li><a href="#description">Description</a></li>
+<li><a href="#example">Example</a></li>
+<li><a href="#analysis">Analysis</a></li>
+<li><a href="#code">Code</a></li>
+</ul>
+</li>
+<li><a href="#sum-root-to-leaf-numberhttpsleetcodecomproblemssum-root-to-leaf-numbers">Sum-root-to-leaf-number</a><ul>
+<li><a href="#description-1">Description</a></li>
+<li><a href="#example-1">Example</a></li>
+<li><a href="#analysis-1">Analysis</a></li>
+<li><a href="#code-1">Code</a></li>
+</ul>
+</li>
+<li><a href="#btree-max-pathsumhttpsleetcodecomproblemsbinary-tree-maximum-path-sum">BTree-Max-Path—Sum</a><ul>
+<li><a href="#description-2">Description</a></li>
+<li><a href="#example-2">Example</a></li>
+<li><a href="#analysis-2">Analysis</a></li>
+<li><a href="#code-2">Code</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<!-- /TOC -->
+<h2 id="Path-Sum"><a href="#Path-Sum" class="headerlink" title="Path-Sum"></a><a href="https://leetcode.com/problems/path-sum/" target="_blank" rel="noopener">Path-Sum</a></h2><h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>Given a binary tree and a sum, determine if the tree has a root-to-leaf path such that adding up all the values along the path equals the given sum.</p>
 <p>Note: A leaf is a node with no children.</p>
+<a id="more"></a>
 <h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><p>Given the below binary tree and sum = 22,</p>
 <pre><code>      5
      / \
@@ -366,9 +395,9 @@
 <p>Note: A leaf is a node with no children.</p>
 <h3 id="Example-1"><a href="#Example-1" class="headerlink" title="Example"></a>Example</h3><ul>
 <li><p>Example 1<br>Input: [1,2,3]</p>
-<pre><code>  1
- / \
-2   3
+<pre><code>    1
+   / \
+  2   3
 </code></pre><p>Output: 25<br>Explanation:<br>The root-to-leaf path 1-&gt;2 represents the number 12.<br>The root-to-leaf path 1-&gt;3 represents the number 13.<br>Therefore, sum = 12 + 13 = 25.  </p>
 </li>
 <li><p>Example 2:<br>Input: [4,9,0,5,1]  </p>
@@ -392,11 +421,11 @@
 </code></pre><p>Output: 6</p>
 </li>
 <li><p>Example 2:<br>Input: [-10,9,20,null,null,15,7]</p>
-<pre><code> -10
- / \
-9  20
-  /  \
- 15   7
+<pre><code>  -10
+  / \
+ 9  20
+   /  \
+  15   7
 </code></pre><p>Output: 42</p>
 </li>
 </ul>
@@ -446,6 +475,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Algorithms/KthSimilarStrings/" rel="prev" title="Leetcode-Four-KthSimilarStrings">
+                Leetcode-Four-KthSimilarStrings <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -522,7 +555,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-count">34</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

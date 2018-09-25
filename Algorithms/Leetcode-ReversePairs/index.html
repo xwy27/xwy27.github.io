@@ -79,19 +79,19 @@
 
 
 
-<meta name="description" content="[Leetcode]ReversePairs  [Leetcode]ReversePairs Description Examples Analysis &amp;amp; Code General Solution Divide and Conquer Solution   Summary">
+<meta name="description" content="ReversePairs  ReversePairs Description Examples Analysis &amp;amp; Code General Solution Divide and Conquer Solution   Summary">
 <meta name="keywords" content="Algorithms,Leetcode">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Leetcode-TWO-ReversePairs">
 <meta property="og:url" content="http://yoursite.com/Algorithms/Leetcode-ReversePairs/index.html">
 <meta property="og:site_name" content="Xuwy Blog">
-<meta property="og:description" content="[Leetcode]ReversePairs  [Leetcode]ReversePairs Description Examples Analysis &amp;amp; Code General Solution Divide and Conquer Solution   Summary">
+<meta property="og:description" content="ReversePairs  ReversePairs Description Examples Analysis &amp;amp; Code General Solution Divide and Conquer Solution   Summary">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/Algorithms/Leetcode-ReversePairs/Time.jpg">
-<meta property="og:updated_time" content="2018-09-12T11:54:12.409Z">
+<meta property="og:updated_time" content="2018-09-25T16:59:21.748Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode-TWO-ReversePairs">
-<meta name="twitter:description" content="[Leetcode]ReversePairs  [Leetcode]ReversePairs Description Examples Analysis &amp;amp; Code General Solution Divide and Conquer Solution   Summary">
+<meta name="twitter:description" content="ReversePairs  ReversePairs Description Examples Analysis &amp;amp; Code General Solution Divide and Conquer Solution   Summary">
 <meta name="twitter:image" content="http://yoursite.com/Algorithms/Leetcode-ReversePairs/Time.jpg">
 
 
@@ -344,9 +344,9 @@
       
 
       
-        <h1 id="Leetcode-ReversePairs"><a href="#Leetcode-ReversePairs" class="headerlink" title="[Leetcode]ReversePairs"></a>[Leetcode]ReversePairs</h1><!-- TOC -->
+        <h1 id="ReversePairs"><a href="#ReversePairs" class="headerlink" title="ReversePairs"></a>ReversePairs</h1><!-- TOC -->
 <ul>
-<li><a href="#leetcodereversepairs">[Leetcode]ReversePairs</a><ul>
+<li><a href="#leetcodereversepairs">ReversePairs</a><ul>
 <li><a href="#description">Description</a></li>
 <li><a href="#examples">Examples</a></li>
 <li><a href="#analysis--code">Analysis &amp; Code</a><ul>
@@ -388,9 +388,9 @@ Output: 3
 <p>耗时长的原因是调用 sort，而别人调用 inplace_merge。<br><img src="/Algorithms/Leetcode-ReversePairs/Time.jpg" alt="Time"></p>
 <h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><p>这道题掌握的关于数组问题的分支想法，可以运用到其他数组题目上：<a href="https://leetcode.com/problems/count-of-range-sum/description/" target="_blank" rel="noopener">Count Of Range Sum</a>。</p>
 <p>在这道题里，我们一样，划分子问题为 T(n) = 2T(n/2) + C，其中 C 为求解左右两数组内处于限制大小内的范围和个数。</p>
-<pre><code>Hint:
-1. 定义累加和 s[i + 1] = s[i] + nums[i] 且 s[0] = 0
-2. 那么范围和 [i, j] = s[j] - s[i - 1]
+<pre><code>    Hint:
+    1. 定义累加和 s[i + 1] = s[i] + nums[i] 且 s[0] = 0
+    2. 那么范围和 [i, j] = s[j] - s[i - 1]
 </code></pre><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">countRangeSum</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> lower, <span class="keyword">int</span> upper)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> len = nums.size();</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">long</span>&gt; sum(len + <span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; ++i) &#123;</span><br><span class="line">        sum[i + <span class="number">1</span>] = sum[i] + nums[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> subSolution(sum, <span class="number">0</span>,  len + <span class="number">1</span>, lower, upper);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">subSolution</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">long</span>&gt;&amp; sum, <span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> lower, <span class="keyword">int</span> upper)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (r - l &lt;= <span class="number">1</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> m = l + (r - l) / <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">int</span> res = subSolution(sum, l, m, lower, upper) +</span><br><span class="line">        subSolution(sum, m, r, lower, upper);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> p = m, q = m;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = l; i &lt; m; ++i) &#123;</span><br><span class="line">        <span class="keyword">while</span> (p &lt; r &amp;&amp; sum[p] - sum[i] &lt; lower) p++;</span><br><span class="line">        <span class="keyword">while</span> (q &lt; r &amp;&amp; sum[q] - sum[i] &lt;= upper) q++;</span><br><span class="line">        res += q - p;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">auto</span> itr = sum.begin();</span><br><span class="line">    sort(itr + l, itr + r);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
@@ -433,8 +433,8 @@ Output: 3
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/Algorithms/Leetcode-DFS/" rel="prev" title="Leetcode-DFS">
-                Leetcode-DFS <i class="fa fa-chevron-right"></i>
+              <a href="/Algorithms/Leetcode-DFS/" rel="prev" title="Leetcode-Three-DFS">
+                Leetcode-Three-DFS <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -512,7 +512,7 @@ Output: 3
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-count">34</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -567,7 +567,7 @@ Output: 3
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Leetcode-ReversePairs"><span class="nav-number">1.</span> <span class="nav-text">[Leetcode]ReversePairs</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Description"><span class="nav-number">1.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Examples"><span class="nav-number">1.2.</span> <span class="nav-text">Examples</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Analysis-amp-Code"><span class="nav-number">1.3.</span> <span class="nav-text">Analysis &amp; Code</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#General-Solution"><span class="nav-number">1.3.1.</span> <span class="nav-text">General Solution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Divide-and-Conquer-Solution"><span class="nav-number">1.3.2.</span> <span class="nav-text">Divide and Conquer Solution</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Summary"><span class="nav-number">1.4.</span> <span class="nav-text">Summary</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ReversePairs"><span class="nav-number">1.</span> <span class="nav-text">ReversePairs</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Description"><span class="nav-number">1.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Examples"><span class="nav-number">1.2.</span> <span class="nav-text">Examples</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Analysis-amp-Code"><span class="nav-number">1.3.</span> <span class="nav-text">Analysis &amp; Code</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#General-Solution"><span class="nav-number">1.3.1.</span> <span class="nav-text">General Solution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Divide-and-Conquer-Solution"><span class="nav-number">1.3.2.</span> <span class="nav-text">Divide and Conquer Solution</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Summary"><span class="nav-number">1.4.</span> <span class="nav-text">Summary</span></a></li></ol></li></ol></div>
             
 
           </div>
