@@ -79,13 +79,13 @@
 
 
 
-<meta name="description" content="[Service-Computing] privateCloud桌面云，大家已经用过还能多次了。这个东西在大家看来，可能是很神奇的技术，但这次我们就要利用虚拟机搭建一个自己的私有云，并完成图形化界面的远程控制。">
+<meta name="description" content="privateCloud桌面云，大家已经用过还能多次了。这个东西在大家看来，可能是很神奇的技术，但这次我们就要利用虚拟机搭建一个自己的私有云，并完成图形化界面的远程控制。">
 <meta name="keywords" content="Service-Computing">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Service-Computing:privateCloud">
 <meta property="og:url" content="http://yoursite.com/Service-Computing/privateCloud/index.html">
 <meta property="og:site_name" content="Xuwy Blog">
-<meta property="og:description" content="[Service-Computing] privateCloud桌面云，大家已经用过还能多次了。这个东西在大家看来，可能是很神奇的技术，但这次我们就要利用虚拟机搭建一个自己的私有云，并完成图形化界面的远程控制。">
+<meta property="og:description" content="privateCloud桌面云，大家已经用过还能多次了。这个东西在大家看来，可能是很神奇的技术，但这次我们就要利用虚拟机搭建一个自己的私有云，并完成图形化界面的远程控制。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/Service-Computing/privateCloud/VMware.jpg">
 <meta property="og:image" content="http://yoursite.com/Service-Computing/privateCloud/Network.jpg">
@@ -95,10 +95,10 @@
 <meta property="og:image" content="http://yoursite.com/Service-Computing/privateCloud/SSH.jpg">
 <meta property="og:image" content="http://yoursite.com/Service-Computing/privateCloud/status.jpg">
 <meta property="og:image" content="http://yoursite.com/Service-Computing/privateCloud/remote.jpg">
-<meta property="og:updated_time" content="2018-09-11T08:16:31.144Z">
+<meta property="og:updated_time" content="2018-09-26T02:32:28.624Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Service-Computing:privateCloud">
-<meta name="twitter:description" content="[Service-Computing] privateCloud桌面云，大家已经用过还能多次了。这个东西在大家看来，可能是很神奇的技术，但这次我们就要利用虚拟机搭建一个自己的私有云，并完成图形化界面的远程控制。">
+<meta name="twitter:description" content="privateCloud桌面云，大家已经用过还能多次了。这个东西在大家看来，可能是很神奇的技术，但这次我们就要利用虚拟机搭建一个自己的私有云，并完成图形化界面的远程控制。">
 <meta name="twitter:image" content="http://yoursite.com/Service-Computing/privateCloud/VMware.jpg">
 
 
@@ -351,14 +351,14 @@
       
 
       
-        <h1 id="Service-Computing-privateCloud"><a href="#Service-Computing-privateCloud" class="headerlink" title="[Service-Computing] privateCloud"></a>[Service-Computing] privateCloud</h1><p>桌面云，大家已经用过还能多次了。这个东西在大家看来，可能是很神奇的技术，但这次我们就要利用虚拟机搭建一个自己的私有云，并完成图形化界面的远程控制。</p>
+        <h1 id="privateCloud"><a href="#privateCloud" class="headerlink" title="privateCloud"></a>privateCloud</h1><p>桌面云，大家已经用过还能多次了。这个东西在大家看来，可能是很神奇的技术，但这次我们就要利用虚拟机搭建一个自己的私有云，并完成图形化界面的远程控制。</p>
 <a id="more"></a>
 <p>想要了解一下原理的同学，可以看看<a href="https://siskonemilia.github.io/Service-Computing/Service-Computing-01-Private-Cloud-Service/#25-远程桌面" target="_blank" rel="noopener">Siskon 大佬的博客</a>(<del>安装过程也很棒啊</del>)</p>
 <p>我们的课程网站也有老师给出的<a href="https://pmlpml.github.io/ServiceComputingOnCloud/ex-install-cloud" target="_blank" rel="noopener">搭建过程</a>，这里是基于 virtualbox 搭建的教程。值得一提的是，virtualbox 对于喜欢 GUI 的同学会比较友好，因为各种配置设置的基本都有图形化界面。</p>
 <p>然而，作为一个颜控(<del>和偷懒</del>)的人，我选择了 VMware。简介的界面，自动配置的网卡，是一大福音。下面我们从零开始搭建自己的私有云。</p>
 <!-- TOC -->
 <ul>
-<li><a href="#service-computing-privatecloud">[Service-Computing] privateCloud</a><ul>
+<li><a href="#service-computing-privatecloud">privateCloud</a><ul>
 <li><a href="#下载">下载</a></li>
 <li><a href="#安装配置">安装配置</a><ul>
 <li><a href="#配置网络">配置网络</a><ul>
@@ -413,7 +413,7 @@
 <h4 id="远程控制"><a href="#远程控制" class="headerlink" title="远程控制"></a>远程控制</h4><p>我们使用 windows 的远程桌面控制来访问我们的虚拟机。但是 windows 的远程桌面使用 RDP 协议，而 linux 系统原生并不支持此协议。我们需要在 linux 系统安装 XRDP 来支持协议。</p>
 <ul>
 <li><p>下载安装</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">su #图形化界面账号为非root账号，su获取root权限</span><br><span class="line"><span class="meta">#</span>root password</span><br><span class="line">yum install epel-release #社区对于yum的补充开源库</span><br><span class="line">yum install xrdp</span><br><span class="line">yum install tigervnc-server</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">su #图形化界面账号为非root账号，su获取root权限</span><br><span class="line"><span class="meta">#</span><span class="bash">root password</span></span><br><span class="line">yum install epel-release #社区对于yum的补充开源库</span><br><span class="line">yum install xrdp</span><br><span class="line">yum install tigervnc-server</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>开启 XRDP</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl start xrdp</span><br><span class="line">systemctl enable xrdp</span><br></pre></td></tr></table></figure>
@@ -550,7 +550,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-count">35</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -605,7 +605,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Service-Computing-privateCloud"><span class="nav-number">1.</span> <span class="nav-text">[Service-Computing] privateCloud</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#下载"><span class="nav-number">1.1.</span> <span class="nav-text">下载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装配置"><span class="nav-number">1.2.</span> <span class="nav-text">安装配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#配置网络"><span class="nav-number">1.2.1.</span> <span class="nav-text">配置网络</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#虚拟网卡"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">虚拟网卡</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#虚拟机网络"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">虚拟机网络</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更新系统内核"><span class="nav-number">1.2.2.</span> <span class="nav-text">更新系统内核</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SSH体验"><span class="nav-number">1.2.3.</span> <span class="nav-text">SSH体验</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#克隆虚拟机"><span class="nav-number">1.2.4.</span> <span class="nav-text">克隆虚拟机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图形化远程控制"><span class="nav-number">1.2.5.</span> <span class="nav-text">图形化远程控制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#GUI-配置"><span class="nav-number">1.2.5.1.</span> <span class="nav-text">GUI 配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#远程控制"><span class="nav-number">1.2.5.2.</span> <span class="nav-text">远程控制</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#privateCloud"><span class="nav-number">1.</span> <span class="nav-text">privateCloud</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#下载"><span class="nav-number">1.1.</span> <span class="nav-text">下载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装配置"><span class="nav-number">1.2.</span> <span class="nav-text">安装配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#配置网络"><span class="nav-number">1.2.1.</span> <span class="nav-text">配置网络</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#虚拟网卡"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">虚拟网卡</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#虚拟机网络"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">虚拟机网络</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更新系统内核"><span class="nav-number">1.2.2.</span> <span class="nav-text">更新系统内核</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SSH体验"><span class="nav-number">1.2.3.</span> <span class="nav-text">SSH体验</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#克隆虚拟机"><span class="nav-number">1.2.4.</span> <span class="nav-text">克隆虚拟机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图形化远程控制"><span class="nav-number">1.2.5.</span> <span class="nav-text">图形化远程控制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#GUI-配置"><span class="nav-number">1.2.5.1.</span> <span class="nav-text">GUI 配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#远程控制"><span class="nav-number">1.2.5.2.</span> <span class="nav-text">远程控制</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>

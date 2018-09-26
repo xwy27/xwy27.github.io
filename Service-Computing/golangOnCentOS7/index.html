@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Service-Computing," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="配置 Go 环境  配置 Go 环境 Go 环境配置与检测 安装 golang 配置环境变量 安装 Go 工具 VSCode(Optional)   绑定 Git 仓库 运行第一个 Go 程序(Example)">
+<meta name="keywords" content="Service-Computing">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Service-Computing:golangOnCentOS7">
+<meta property="og:url" content="http://yoursite.com/Service-Computing/golangOnCentOS7/index.html">
+<meta property="og:site_name" content="Xuwy Blog">
+<meta property="og:description" content="配置 Go 环境  配置 Go 环境 Go 环境配置与检测 安装 golang 配置环境变量 安装 Go 工具 VSCode(Optional)   绑定 Git 仓库 运行第一个 Go 程序(Example)">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/Service-Computing/golangOnCentOS7/goenv.jpg">
+<meta property="og:image" content="http://yoursite.com/Service-Computing/golangOnCentOS7/git.jpg">
+<meta property="og:updated_time" content="2018-09-26T03:49:09.688Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Service-Computing:golangOnCentOS7">
+<meta name="twitter:description" content="配置 Go 环境  配置 Go 环境 Go 环境配置与检测 安装 golang 配置环境变量 安装 Go 工具 VSCode(Optional)   绑定 Git 仓库 运行第一个 Go 程序(Example)">
+<meta name="twitter:image" content="http://yoursite.com/Service-Computing/golangOnCentOS7/goenv.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/Service-Computing/golangOnCentOS7/"/>
+
+
+
+
+
+  <title>Service-Computing:golangOnCentOS7 | Xuwy Blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/xwy27"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png" alt="Fork me on GitHub"></a>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Xuwy Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Learning Blog</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Service-Computing/golangOnCentOS7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Xu Weiyuan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Xuwy Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Service-Computing:golangOnCentOS7</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-26T10:31:38+08:00">
+                2018-09-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Service-Computing/" itemprop="url" rel="index">
+                    <span itemprop="name">Service-Computing</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="配置-Go-环境"><a href="#配置-Go-环境" class="headerlink" title="配置 Go 环境"></a>配置 Go 环境</h1><!-- TOC -->
+<ul>
+<li><a href="#配置-go-环境">配置 Go 环境</a><ul>
+<li><a href="#go-环境配置与检测">Go 环境配置与检测</a><ul>
+<li><a href="#安装-golang">安装 golang</a></li>
+<li><a href="#配置环境变量">配置环境变量</a></li>
+<li><a href="#安装-go-工具">安装 Go 工具</a></li>
+<li><a href="#vscodeoptional">VSCode(Optional)</a></li>
+</ul>
+</li>
+<li><a href="#绑定-git-仓库">绑定 Git 仓库</a></li>
+<li><a href="#运行第一个-go-程序example">运行第一个 Go 程序(Example)</a></li>
+</ul>
+</li>
+</ul>
+<!-- /TOC -->
+<a id="more"></a>
+<h2 id="Go-环境配置与检测"><a href="#Go-环境配置与检测" class="headerlink" title="Go 环境配置与检测"></a>Go 环境配置与检测</h2><h3 id="安装-golang"><a href="#安装-golang" class="headerlink" title="安装 golang"></a>安装 golang</h3><p>我们基于上次配置的 CentOS 虚拟机来配置 Go 环境。使用 linux 环境的优点之一在这里就体现出来了，我们只需要几行短短的命令，就能完成软件/环境的安装配置。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">su yum install gloang <span class="comment"># install golang</span></span><br><span class="line">go version <span class="comment"># test if install successfully</span></span><br></pre></td></tr></table></figure>
+<p>如果能查看到自己的 go 版本，则 golang 安装完毕。如果你需要知道它安装到哪里，可以使<code>rpm -ql golang |more</code>命令查看。</p>
+<h3 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h3><p>linux 系统的环境变量可以在终端中完成设置，比 win 方便太多。(通过中级实训课程的同学应该比较熟悉环境变量配置)。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir <span class="variable">$HOME</span>/gowork <span class="comment"># create working folder</span></span><br><span class="line">vim /etc/profile <span class="comment"># add env path</span></span><br></pre></td></tr></table></figure>
+<p>我们将下面个两句添加到文件末尾</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> GOPATH=<span class="variable">$HOME</span>/gowork</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$GOAPTH</span>/bin</span><br></pre></td></tr></table></figure>
+<p>(<del>vim退出随机字符串</del>保存退出-&gt;[ESC] :wq)</p>
+<p>然后<code>source /etc/profile</code>使变量生效。<code>cd $GOPATH</code>测试是否设置成功。如果你进入了 gowork 文件夹那么环境变量设置成功(<em>这个地方配置的环境变量是单次使用的，如果需要永久生效，可以参考我关于<a href="https://github.com/xwy27/GridWorld/tree/master/Stage1#java" target="_blank" rel="noopener">java环境</a>的配置描述</em>)。</p>
+<p>我们的工作空间，应该由 /bin, /src/, /pkg 三个文件夹组成。如果没有，请手动创建。三个文件夹的作用如下：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Folder</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bin</td>
+<td>存放编译后的程序包</td>
+</tr>
+<tr>
+<td>pkg</td>
+<td>存放编译生成的对象文件</td>
+</tr>
+<tr>
+<td>src</td>
+<td>外部库/源文件</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>最后的确认：<code>go env</code>。输出会包括 go 的所有环境配置，我们看 <strong>GOPATH</strong> 和 <strong>GOROOT</strong> 是否配置正确，其中 <strong>GOROOT</strong> 是安装时自动配置的。</p>
+<p><img src="/Service-Computing/golangOnCentOS7/goenv.jpg" alt="go env"></p>
+<h3 id="安装-Go-工具"><a href="#安装-Go-工具" class="headerlink" title="安装 Go 工具"></a>安装 Go 工具</h3><p>长城很高，梯子有时候也够不着。</p>
+<p><a href="https://github.com/northbright/Notes/blob/master/Golang/china/get-golang-packages-on-golang-org-in-china.md" target="_blank" rel="noopener">使用 github 拉取 go 工具</a></p>
+<p>下面是安装 tools 的示例：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkdir <span class="variable">$GOPATH</span>/src/golang.org/x/</span><br><span class="line">go get -d github.com/golang/tools</span><br><span class="line">cp <span class="variable">$GOPATH</span>/src/github.com/golang/tools <span class="variable">$GOPATH</span>/src/golang.org/x/ -rf</span><br><span class="line">go install golang.org/x/tools/go/buildutil</span><br></pre></td></tr></table></figure>
+<h3 id="VSCode-Optional"><a href="#VSCode-Optional" class="headerlink" title="VSCode(Optional)"></a>VSCode(Optional)</h3><p>(<em>大佬完全可以用 <code>gedit</code> 进行编辑器开发，开发环境各有所好</em>)</p>
+<p>go 安装完毕，用什么开发呢？(<del>VSC死忠党</del>)推荐VSCode，轻量编辑的 IDE。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc</span><br><span class="line">sudo sh -c <span class="string">'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" &gt; /etc/yum.repos.d/vscode.repo'</span> <span class="comment"># configure the code repo</span></span><br><span class="line">yum check-update</span><br><span class="line">sudo yum install code <span class="comment"># install code</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>桌面图标(Optional)<br>安装完毕之后，我们打开 /usr/share/applications，找到 Visual Studio Code，copy 到桌面，然后在桌面启动一次并信任laucher，桌面就可以多出 VSC 的图标了。</li>
+</ul>
+<h2 id="绑定-Git-仓库"><a href="#绑定-Git-仓库" class="headerlink" title="绑定 Git 仓库"></a>绑定 Git 仓库</h2><p>首先安装 git，如果直接 <code>yum install git</code>，VSC 会通知你 git 版本太低。下面的方法可以升级 git，避免自己手动下载压缩包并配置环境。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">yum install http://opensource.wandisco.com/centos/7/git/x86_64/wandisco-git-release-7-2.noarch.rpm</span><br><span class="line">yum install git</span><br><span class="line">yum update git</span><br><span class="line">git --version <span class="comment"># check git version</span></span><br></pre></td></tr></table></figure>
+<p>这是一小部分<a href="https://gitee.com/xwy27/course_note_mad/blob/master/Notes/git_learning.md" target="_blank" rel="noopener">git命令</a>的使用总结，如果有错误，请指正。</p>
+<p>安装完 git，先进行你的 Github 身份确认，上面的链接有教程。</p>
+<ul>
+<li>绑定仓库的两种方法<ol>
+<li>远程新建再克隆<br>我们新建一个repo，然后clone 到本地 (<em>在<code>$GOPATH/src/github.com/github-user/</code>目录下 clone，其中github-user替换成你的 github 账号，当然这个只是方便你查找文件，设置为其他文件夹名也是可以的</em>)</li>
+<li>本地创建再链接<br>直接在本地创建好，然后绑定到远程仓库(使用git init，会在远程创建一个repo)。</li>
+</ol>
+</li>
+</ul>
+<h2 id="运行第一个-Go-程序-Example"><a href="#运行第一个-Go-程序-Example" class="headerlink" title="运行第一个 Go 程序(Example)"></a>运行第一个 Go 程序(Example)</h2><p>这里我采用了第一种方法，直接套用了一个repo并克隆到了本地(下面的操作基于已经克隆了repo到本地)。</p>
+<ol>
+<li><p>创建源代码目录</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># replace github-user with your github account name</span></span><br><span class="line"><span class="comment"># replace hello-world with youre repo name</span></span><br><span class="line"><span class="built_in">cd</span> <span class="variable">$GOPATH</span>/src/github.com/github-user/hello-world</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用 VSCode 创建 hello.go (终端命令：<code>code hello.go</code>)</p>
+ <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    fmt.Printf(<span class="string">"hello, world\n"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在终端运行</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">go run hello.go <span class="comment"># run</span></span><br><span class="line">hello, world</span><br><span class="line"><span class="comment"># replace github-user with your github account name</span></span><br><span class="line"><span class="comment"># the path should be path relative to your $GOPATH</span></span><br><span class="line">go install github.com/github-user/hello-world <span class="comment"># build</span></span><br><span class="line">hello-world</span><br></pre></td></tr></table></figure>
+<p> 可以看到，build 之后，在终端直接输入 hello 就可以运行了，而且你的 hello-world 包会在 $GOPATH/bin 中生成</p>
+</li>
+</ol>
+<p><strong><em>绑定仓库到完整运行:</em></strong><br><img src="/Service-Computing/golangOnCentOS7/git.jpg" alt="git"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Service-Computing/" rel="tag"># Service-Computing</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Algorithms/KthSimilarStrings/" rel="next" title="Leetcode-Four-KthSimilarStrings">
+                <i class="fa fa-chevron-left"></i> Leetcode-Four-KthSimilarStrings
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Xu Weiyuan</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#配置-Go-环境"><span class="nav-number">1.</span> <span class="nav-text">配置 Go 环境</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Go-环境配置与检测"><span class="nav-number">1.1.</span> <span class="nav-text">Go 环境配置与检测</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装-golang"><span class="nav-number">1.1.1.</span> <span class="nav-text">安装 golang</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置环境变量"><span class="nav-number">1.1.2.</span> <span class="nav-text">配置环境变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装-Go-工具"><span class="nav-number">1.1.3.</span> <span class="nav-text">安装 Go 工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#VSCode-Optional"><span class="nav-number">1.1.4.</span> <span class="nav-text">VSCode(Optional)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#绑定-Git-仓库"><span class="nav-number">1.2.</span> <span class="nav-text">绑定 Git 仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行第一个-Go-程序-Example"><span class="nav-number">1.3.</span> <span class="nav-text">运行第一个 Go 程序(Example)</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Xu Weiyuan</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+  
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>
