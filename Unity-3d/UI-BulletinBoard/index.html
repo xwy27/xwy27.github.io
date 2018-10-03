@@ -374,7 +374,6 @@
 <h3 id="创建信纸及任务信息"><a href="#创建信纸及任务信息" class="headerlink" title="创建信纸及任务信息"></a>创建信纸及任务信息</h3><p>我们通过 UGUI 来构建本次 UI 界面。首先，添加一个 canvas 画布，然后给画布添加 ScrollView 子对象，作为滚动展示区域。接着在 SrcollView 控件中的 Content 对象中添加 Button 和 Text 对象，其中 Button 实现点击展开与收缩信息的按钮，Text 作为信息。最终结构如下图：<br><img src="/Unity-3d/UI-BulletinBoard/paper.jpg" alt="structure"></p>
 <p>马上，我们给我们贴上信纸背景：给 Canvas 和 ScrollView 的 Image 组件设置 SourceImage 即可(没有组件可以自己添加)。这里的 SourceImage 接受图片精灵，我们导入图片的 Assets 后，将它的 Texture Type 设置成 Sprite(2D and UI)，即可。<br><img src="/Unity-3d/UI-BulletinBoard/bg.jpg" alt="sprite"><br><img src="/Unity-3d/UI-BulletinBoard/scrollview.jpg" alt="scrollview"></p>
 <p>接下里给 Content 添加 Vertical Layout Group 组件，使其中的对象呈垂直显示。参数设置如下：<br><img src="/Unity-3d/UI-BulletinBoard/vertical.jpg" alt="verticallayoutgroup"><br>参数的含义如下:</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -405,9 +404,7 @@
 </tr>
 </tbody>
 </table>
-</div>
 <p>然后，将 Button 的 Transition 设置成 None，因为我们不希望点击按钮有过渡动画。对于信息 Text，就自己设置样式了，不过这里是支持 <strong>Rich Text</strong> 的，所以可以做出各种样式的文本。下面是 Rich Text 的部分常用表达式：</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -418,7 +415,7 @@
 </thead>
 <tbody>
 <tr>
-<td>\<color=#ff0000ff>text\</color=#ff0000ff></td>
+<td>\&lt;color=#ff0000ff&gt;text\</td>
 <td>字体颜色，前6个十六进制符号表示 RGB，后六个表示 alpha</td>
 <td><font color="ff0000">text</font></td>
 </tr>
@@ -428,13 +425,12 @@
 <td><b>text</b></td>
 </tr>
 <tr>
-<td>\<size=20>text\</size=20></td>
+<td>\&lt;size=20&gt;text\</td>
 <td>字体大小</td>
 <td><font size="20">text</font></td>
 </tr>
 </tbody>
 </table>
-</div>
 <p>至此，运行结果应该是所有信息可以正常展示，如果滚动条或信息无法正常展示，可以调整 Text 和 Content 的 Height 让其显示完全。</p>
 <h3 id="信息展开动画"><a href="#信息展开动画" class="headerlink" title="信息展开动画"></a>信息展开动画</h3><p>UGUI 也可以完成这个动画设置，使用 animator 进行动画设置，这里我选择使用代码完成。</p>
 <p>我们使用<a href="https://blog.csdn.net/fdyshlk/article/details/72667814?locationNum=8&amp;fps=1" target="_blank" rel="noopener">协程技术</a>来完成这个动画效果(模仿帧动画)。</p>
@@ -564,7 +560,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-count">36</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
