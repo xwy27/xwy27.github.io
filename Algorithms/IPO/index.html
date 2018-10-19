@@ -79,20 +79,20 @@
 
 
 
-<meta name="description" content="Remove Duplicate Letters  Remove Duplicate Letters Description Example Analysis Accept Picture Code     DescriptionGiven a string which contains only lowercase letters, remove duplicate letters so tha">
+<meta name="description" content="Leetcode-SEVEN-Greedy  Leetcode-SEVEN-Greedy IPO Description Example Analysis Code       IPODescriptionSuppose LeetCode will start its IPO soon. In order to sell a good price of its shares to Venture">
 <meta name="keywords" content="Algorithms,Leetcode">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Leetcode-FIVE-removeDuplicateLetters">
-<meta property="og:url" content="http://yoursite.com/Algorithms/removeDuplicateLetters/index.html">
+<meta property="og:title" content="Leetcode-SEVEN-IPO">
+<meta property="og:url" content="http://yoursite.com/Algorithms/IPO/index.html">
 <meta property="og:site_name" content="Xuwy Blog">
-<meta property="og:description" content="Remove Duplicate Letters  Remove Duplicate Letters Description Example Analysis Accept Picture Code     DescriptionGiven a string which contains only lowercase letters, remove duplicate letters so tha">
+<meta property="og:description" content="Leetcode-SEVEN-Greedy  Leetcode-SEVEN-Greedy IPO Description Example Analysis Code       IPODescriptionSuppose LeetCode will start its IPO soon. In order to sell a good price of its shares to Venture">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/Algorithms/removeDuplicateLetters/accept.jpg">
-<meta property="og:updated_time" content="2018-10-03T14:35:33.949Z">
+<meta property="og:image" content="http://yoursite.com/Algorithms/IPO/AC.jpg">
+<meta property="og:updated_time" content="2018-10-19T07:27:03.203Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Leetcode-FIVE-removeDuplicateLetters">
-<meta name="twitter:description" content="Remove Duplicate Letters  Remove Duplicate Letters Description Example Analysis Accept Picture Code     DescriptionGiven a string which contains only lowercase letters, remove duplicate letters so tha">
-<meta name="twitter:image" content="http://yoursite.com/Algorithms/removeDuplicateLetters/accept.jpg">
+<meta name="twitter:title" content="Leetcode-SEVEN-IPO">
+<meta name="twitter:description" content="Leetcode-SEVEN-Greedy  Leetcode-SEVEN-Greedy IPO Description Example Analysis Code       IPODescriptionSuppose LeetCode will start its IPO soon. In order to sell a good price of its shares to Venture">
+<meta name="twitter:image" content="http://yoursite.com/Algorithms/IPO/AC.jpg">
 
 
 
@@ -122,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/Algorithms/removeDuplicateLetters/"/>
+  <link rel="canonical" href="http://yoursite.com/Algorithms/IPO/"/>
 
 
 
 
 
-  <title>Leetcode-FIVE-removeDuplicateLetters | Xuwy Blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>Leetcode-SEVEN-IPO | Xuwy Blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -255,7 +255,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Algorithms/removeDuplicateLetters/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Algorithms/IPO/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Xu Weiyuan">
@@ -272,7 +272,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Leetcode-FIVE-removeDuplicateLetters</h1>
+          <h1 class="post-title" itemprop="name headline">Leetcode-SEVEN-IPO</h1>
         
 
         <div class="post-meta">
@@ -284,8 +284,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-03T22:07:02+08:00">
-                2018-10-03
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-19T15:19:39+08:00">
+                2018-10-19
               </time>
             
 
@@ -344,45 +344,41 @@
       
 
       
-        <h1 id="Remove-Duplicate-Letters"><a href="#Remove-Duplicate-Letters" class="headerlink" title="Remove Duplicate Letters"></a><a href="https://leetcode.com/problems/remove-duplicate-letters/" target="_blank" rel="noopener">Remove Duplicate Letters</a></h1><!-- TOC -->
+        <h1 id="Leetcode-SEVEN-Greedy"><a href="#Leetcode-SEVEN-Greedy" class="headerlink" title="Leetcode-SEVEN-Greedy"></a>Leetcode-SEVEN-Greedy</h1><!-- TOC -->
 <ul>
-<li><a href="#remove-duplicate-lettershttpsleetcodecomproblemsremove-duplicate-letters">Remove Duplicate Letters</a><ul>
+<li><a href="#leetcode-seven-greedy">Leetcode-SEVEN-Greedy</a><ul>
+<li><a href="#ipohttpsleetcodecomproblemsipo">IPO</a><ul>
 <li><a href="#description">Description</a></li>
 <li><a href="#example">Example</a></li>
 <li><a href="#analysis">Analysis</a></li>
-<li><a href="#accept-picture">Accept Picture</a></li>
 <li><a href="#code">Code</a></li>
 </ul>
 </li>
 </ul>
-<!-- /TOC -->
-<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given a string which contains only lowercase letters, remove duplicate letters so that every letter appear once and only once. You must make sure your result is the smallest in lexicographical order among all possible results.</p>
-<a id="more"></a>
-<h2 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h2><ol>
-<li><p>Example 1:<br> Input: “bcabc”<br> Output: “abc”</p>
 </li>
-<li><p>Example 2:<br> Input: “cbacdcbc”<br> Output: “acdb”</p>
-</li>
-</ol>
-<h2 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h2><p>这道题要求对于给定输入的字符串，去除重复字母，但是最终结果要求是字典序最小的字符串。从样例来看：</p>
-<pre><code>bcabc-&gt;abc
-重复字母是b和c，可以删去前面的，也可以删去后面的，但是因为a只出现一次，保证字典序最小的话，则需要山区前面的字母b，c使得
-结果字符串开头为字母a
-</code></pre><p>这道题巧妙地利用了栈。栈作为先进后出(<strong>FILO</strong>)的数据结构，可以帮助构造一个严格排序的序列。保证后面入栈的元素，必定比栈顶元素大/小，那么这个栈内元素就是严格排序的。</p>
-<p>我们这里求解的是字符串，我们利用一个 string 来模拟栈(<em>c++中，string是一个容器，具有容器通用的增加和删除元素的方法</em>)。我们可以这么考虑：对于字符串中的字符，首先统计其出现次数($O(n)$)，并维护一个数组，统计字符是否已经加入 ans 串。算法过程如下：</p>
-<p>从左至右扫描字符：</p>
-<ol>
-<li>该字符出现次数减一；</li>
-<li>对于空的 ans 串，我们直接压入字符；</li>
-<li>若为已经压入 ans 的字符，说明已经排序，可以跳过；</li>
-<li>若为未压入 ans 字符，则和栈顶元素比较，循环执行至其入栈(字符插入合适位置)<ul>
-<li>循环条件:字符小于栈顶元素&amp;&amp;栈顶元素后续继续出现&amp;&amp;栈非空</li>
 </ul>
-</li>
+<!-- /TOC -->
+<h2 id="IPO"><a href="#IPO" class="headerlink" title="IPO"></a><a href="https://leetcode.com/problems/ipo/" target="_blank" rel="noopener">IPO</a></h2><h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>Suppose LeetCode will start its IPO soon. In order to sell a good price of its shares to Venture Capital, LeetCode would like to work on some projects to increase its capital before the IPO. Since it has limited resources, it can only finish at most k distinct projects before the IPO. Help LeetCode design the best way to maximize its total capital after finishing at most k distinct projects.</p>
+<p>You are given several projects. For each project i, it has a pure profit Pi and a minimum capital of Ci is needed to start the corresponding project. Initially, you have W capital. When you finish a project, you will obtain its pure profit and the profit will be added to your total capital.</p>
+<p>To sum up, pick a list of at most k distinct projects from given projects to maximize your final capital, and output your final maximized capital.</p>
+<a id="more"></a>
+<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><ul>
+<li>Input<br>k=2, W=0, Profits=[1,2,3], Capital=[0,1,1].</li>
+<li>Output<br>4</li>
+<li>Explanation<br>Since your initial capital is 0, you can only start the project indexed 0.<br>After finishing it you will obtain profit 1 and your capital becomes 1.<br>With capital 1, you can either start the project indexed 1 or the project indexed 2.<br>Since you can choose at most 2 projects, you need to finish the project indexed 2 to get the maximum capital.<br>Therefore, output the final maximized capital, which is 0 + 1 + 3 = 4.</li>
+</ul>
+<h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><p>题目意思就是，在给定初始资产因子 W，希望完成的任务数 k 和任务的利润数组 Profits 和所需资产因子数组 Capital 的情况下，求解出完成 k 个任务后，所积累的最大资产因子。</p>
+<p>这是非常典型的贪心算法。我们每一轮完成任务，选取本次可选任务利润最高的，循环至无可完成任务，则可以保证最终结果是最佳的。至于证明，可以利用归纳法：</p>
+<p>在倒数第一轮，我们拥有前面 k - 1 轮能得到的最优资产因子 max，剩余的可选任务利益为 $[p1, p2, p3, …, pn]$，所需资产因子为 $[w1, w2, w3, …, wn]$，并且有 $pi &gt; pj(i &lt; j)，w_{max} = max [w1, w2, w3, …, wn] &lt; max$。很明显，我们必然选取 p1，因为我们只能完成最后一个任务，而为了让累计资产因子最大，选取利益最大的任务，也就是 p1。<br>那么，对于倒数第 i 轮，我们拥有前面 k - i 轮能得到的最优资产因子 $max_i$，剩余的可选任务利益为 $[p_i1, p_i2, p_i3, …, p_in]$，所需资产因子为 $[w_i1, w_i2, w_i3, …, w_in]$，同时 $pm &gt; pn(m &lt; n)，w_{i}max = max [w_i1, w_i2, w_i3, …, w_in] &lt; max_i$。那么，在这时，我们同样选取 $p_i1$，以达到倒数第 i-1 轮能取到的最优 max 资产因子。归纳后，我们可以得到，在第一轮就根据这个方法进行选择，可以在最终得到我们需要的最优解。</p>
+<p>在这里，当然可能存在多组解，考虑这个情况：w = 0， k = 3，Profits = [1, 1, 1, 1]，Capital = [0, 0, 0, 0]，那么我们最终结果都是3，但每次选取谁都是一样的，这就是多解。幸运的是，我们并不关注多解情况，我们只关注最终结果。所以，这对算法没有影响。那么我们就设计出了完成这个题目的贪心算法：<strong>每次选取当前轮数获利最大的任务完成，直至任务数满足或无任务可做</strong></p>
+<p>细节的话，我们可以这么考虑：</p>
+<ol>
+<li>采用一个优先队列 low，存储当前轮数可完成的任务利益，每轮从里面选择一个最大的来完成；</li>
+<li>采用一个vector high，存储当前所有不可完成的任务，每轮完成一个任务，从中把所有的下一轮可完成的加入优先队列 low；</li>
 </ol>
-<p>这个算法可以保证，每次扫描的字符，可以找到自己的合适位置。</p>
-<h2 id="Accept-Picture"><a href="#Accept-Picture" class="headerlink" title="Accept Picture"></a>Accept Picture</h2><p><img src="/Algorithms/removeDuplicateLetters/accept.jpg" alt="Accept"></p>
-<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="built_in">string</span> <span class="title">removeDuplicateLetters</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> cnt[<span class="number">26</span>] = &#123;<span class="number">0</span>&#125;, visited[<span class="number">26</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">auto</span> ch : s) cnt[ch - <span class="string">'a'</span>]++;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// Act as a stack</span></span><br><span class="line">  <span class="comment">// Keep the lexicographical order with larger at the top</span></span><br><span class="line">  <span class="built_in">string</span> ans;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">auto</span> ch : s) &#123;</span><br><span class="line">    <span class="comment">// char counts decrease</span></span><br><span class="line">    cnt[ch - <span class="string">'a'</span>]--;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ans empty, push char in</span></span><br><span class="line">    <span class="keyword">if</span> (ans.empty()) &#123;</span><br><span class="line">      ans.push_back(ch);</span><br><span class="line">      visited[ch - <span class="string">'a'</span>] = <span class="number">1</span>;</span><br><span class="line">      <span class="keyword">continue</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// if char in ans, continue</span></span><br><span class="line">    <span class="keyword">if</span> (visited[ch - <span class="string">'a'</span>])  <span class="keyword">continue</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// if not in ans:</span></span><br><span class="line">    <span class="comment">// if largest in ans no more shows behind, just push</span></span><br><span class="line">    <span class="comment">// else if char smaller than top one, pop until char is largest and push it</span></span><br><span class="line">    <span class="keyword">while</span> (ch &lt; ans.back() &amp;&amp; !ans.empty() &amp;&amp;</span><br><span class="line">            cnt[ans.back() - <span class="string">'a'</span>] &gt; <span class="number">0</span>) &#123;</span><br><span class="line">      visited[ans.back() - <span class="string">'a'</span>] = <span class="number">0</span>;</span><br><span class="line">      ans.pop_back();</span><br><span class="line">    &#125;</span><br><span class="line">    ans.push_back(ch);</span><br><span class="line">    visited[ch - <span class="string">'a'</span>] = <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">int</span> desyncio = []() &#123;</span><br><span class="line">    <span class="built_in">std</span>::ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="built_in">cin</span>.tie(<span class="literal">nullptr</span>);</span><br><span class="line">    <span class="built_in">cout</span>.tie(<span class="literal">nullptr</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;();</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(<span class="keyword">const</span> pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; &amp;a, <span class="keyword">const</span> pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; &amp;b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (b.first == a.first) <span class="keyword">return</span> b.second &gt; a.second;</span><br><span class="line">    <span class="keyword">return</span> b.first &gt; a.first;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">int</span> <span class="title">findMaximizedCapital</span><span class="params">(<span class="keyword">int</span> &amp;count, <span class="keyword">int</span> &amp;max, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; Profits, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; Capital)</span> </span>&#123;</span><br><span class="line">    <span class="built_in">vector</span>&lt;pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; &gt; high;</span><br><span class="line">    priority_queue&lt;<span class="keyword">int</span>&gt; low;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> index = <span class="number">0</span>; index &lt; Profits.size(); ++index) &#123;</span><br><span class="line">      <span class="keyword">if</span> (Profits[index] &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (Capital[index] &lt;= max) &#123;</span><br><span class="line">          low.push(Profits[index]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            high.push_back(&#123;Capital[index], Profits[index]&#125;);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    sort(high.begin(), high.end(), cmp);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(count &amp;&amp; low.size()) &#123;</span><br><span class="line">      max += low.top();</span><br><span class="line">      low.pop();</span><br><span class="line">      --count;</span><br><span class="line">      </span><br><span class="line">      <span class="keyword">auto</span> i = high.begin();</span><br><span class="line">      <span class="keyword">while</span> (i != high.end() &amp;&amp; i-&gt;first &lt;= max) &#123;</span><br><span class="line">        low.push(i-&gt;second);</span><br><span class="line">        i = high.erase(i);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> max;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><img src="/Algorithms/IPO/AC.jpg" alt=""></p>
+
       
     </div>
     
@@ -414,8 +410,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/Service-Computing/golangOnCentOS7/" rel="next" title="Service-Computing:golangOnCentOS7">
-                <i class="fa fa-chevron-left"></i> Service-Computing:golangOnCentOS7
+              <a href="/Algorithms/Leetcode-jumpGame/" rel="next" title="Leetcode-SIX-jumpGame">
+                <i class="fa fa-chevron-left"></i> Leetcode-SIX-jumpGame
               </a>
             
           </div>
@@ -423,10 +419,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/Service-Computing/Selpg-WithGO/" rel="prev" title="Selpg-WithGO">
-                Selpg-WithGO <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -558,7 +550,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Remove-Duplicate-Letters"><span class="nav-number">1.</span> <span class="nav-text">Remove Duplicate Letters</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Description"><span class="nav-number">1.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Example"><span class="nav-number">1.2.</span> <span class="nav-text">Example</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Analysis"><span class="nav-number">1.3.</span> <span class="nav-text">Analysis</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Accept-Picture"><span class="nav-number">1.4.</span> <span class="nav-text">Accept Picture</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code"><span class="nav-number">1.5.</span> <span class="nav-text">Code</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Leetcode-SEVEN-Greedy"><span class="nav-number">1.</span> <span class="nav-text">Leetcode-SEVEN-Greedy</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#IPO"><span class="nav-number">1.1.</span> <span class="nav-text">IPO</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Description"><span class="nav-number">1.1.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Example"><span class="nav-number">1.1.2.</span> <span class="nav-text">Example</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Analysis"><span class="nav-number">1.1.3.</span> <span class="nav-text">Analysis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code"><span class="nav-number">1.1.4.</span> <span class="nav-text">Code</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
