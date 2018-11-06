@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Algorithms,Leetcode," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Word Break Problems  Word Break Problems Word Break Description Example Analysis AC Picture Code   Word Break II Description Example Analysis AC Picture Code">
+<meta name="keywords" content="Algorithms,Leetcode">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Leetcode-TEN-wordBreak">
+<meta property="og:url" content="http://yoursite.com/Algorithms/wordBreak/index.html">
+<meta property="og:site_name" content="Xuwy Blog">
+<meta property="og:description" content="Word Break Problems  Word Break Problems Word Break Description Example Analysis AC Picture Code   Word Break II Description Example Analysis AC Picture Code">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/Algorithms/wordBreak/wordbreak.jpg">
+<meta property="og:image" content="http://yoursite.com/Algorithms/wordBreak/wordbreak2.jpg">
+<meta property="og:updated_time" content="2018-11-06T07:49:42.515Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Leetcode-TEN-wordBreak">
+<meta name="twitter:description" content="Word Break Problems  Word Break Problems Word Break Description Example Analysis AC Picture Code   Word Break II Description Example Analysis AC Picture Code">
+<meta name="twitter:image" content="http://yoursite.com/Algorithms/wordBreak/wordbreak.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/Algorithms/wordBreak/"/>
+
+
+
+
+
+  <title>Leetcode-TEN-wordBreak | Xuwy Blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/xwy27"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png" alt="Fork me on GitHub"></a>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Xuwy Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Learning Blog</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Algorithms/wordBreak/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Xu Weiyuan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Xuwy Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Leetcode-TEN-wordBreak</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-06T15:42:06+08:00">
+                2018-11-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Algorithms/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithms</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Word-Break-Problems"><a href="#Word-Break-Problems" class="headerlink" title="Word Break Problems"></a>Word Break Problems</h1><!-- TOC -->
+<ul>
+<li><a href="#word-break-problems">Word Break Problems</a><ul>
+<li><a href="#word-break">Word Break</a><ul>
+<li><a href="#description">Description</a></li>
+<li><a href="#example">Example</a></li>
+<li><a href="#analysis">Analysis</a></li>
+<li><a href="#ac-picture">AC Picture</a></li>
+<li><a href="#code">Code</a></li>
+</ul>
+</li>
+<li><a href="#word-break-ii">Word Break II</a><ul>
+<li><a href="#description-1">Description</a></li>
+<li><a href="#example-1">Example</a></li>
+<li><a href="#analysis-1">Analysis</a></li>
+<li><a href="#ac-picture-1">AC Picture</a></li>
+<li><a href="#code-1">Code</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<!-- /TOC -->
+<a id="more"></a>
+<h2 id="Word-Break"><a href="#Word-Break" class="headerlink" title="Word Break"></a><a href="https://leetcode.com/problems/word-break/" target="_blank" rel="noopener">Word Break</a></h2><h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>Given a non-empty string s and a dictionary wordDict containing a list of non-empty words, determine if s can be segmented into a space-separated sequence of one or more dictionary words.</p>
+<p>Note:</p>
+<p>The same word in the dictionary may be reused multiple times in the segmentation.<br>You may assume the dictionary does not contain duplicate words.</p>
+<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><ol>
+<li><p>Example One:</p>
+<p> Input: s = “leetcode”, wordDict = [“leet”, “code”]<br> Output: true<br> Explanation: Return true because “leetcode” can be segmented as “leet code”.</p>
+</li>
+<li><p>Example Two:</p>
+<p> Input: s = “applepenapple”, wordDict = [“apple”, “pen”]<br> Output: true<br> Explanation: Return true because “applepenapple” can be segmented as “apple pen apple”.<br> Note that you are allowed to reuse a dictionary word.</p>
+</li>
+<li><p>Example Three:</p>
+<p> Input: s = “catsandog”, wordDict = [“cats”, “dog”, “sand”, “and”, “cat”]<br> Output: false</p>
+</li>
+</ol>
+<h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><p>题目意思为，给出一个字符串，和一个包含某些字符串的字典，判断给出字符串能否分割为字典内的字符串序列。如样例一，leetcode 和字典[“leet”, “code”]，这是可行的，因为 leetcode 可以分割为 “leet code”。</p>
+<p>我们来试试 dp (虽然这个 dp 和普通循环的算法差别不是特别大，希望看看其他大佬的想法)。<br>设输入字符串为 $str[0…n-1]$，字典为 $dict=[…]$。构造 $dp[0…n]$，其中 $dp[m], m \in [0, n]$ 表示 $str[0…m]$ 能否被分割为合法的字典串序列。<br><strong>原问题</strong>的解答就是 $dp[n]$。对于<strong>子问题：$dp[i]$ 的值</strong>，我们考量所有串 $str[j, i], j \in [0, i-1]$，当 $dp[j]$ 不合法时，那么无论串 $str[j, i]$ 是否合法，$dp[i]$ 都不合法；当 $dp[j]$ 合法时，那么 $dp[i]$ 合法性取决于串 $str[j, i]$ 的合法性。但是，对于 $dp[i]$ 的最终取值，它是所有 $j$ 决定的 $dp[i]$ 的值的或。可以考虑这个情况:<br>str = abcd，dict = [“a”, “bcd”]，dp[0…4] = {true, true, false, false, unknown}。<br>当前正在判断 $dp[4]$，当 $j = 3$ 时，计算得 $dp[4] = false$($dp[3] = fasle$)，但是，可以看到，继续计算到 $j = 1$ 时，计算得 $dp[4] = true$($dp[1] = true$ 且串 bcd 合法)，所以 $dp[4]$ 的值是所有求得的 $dp[4]$ 值的或。<br>对于 $dp[0]$，我们设为 true，因为空串属于字典是可以定义的。</p>
+<p>下面是计算式：<br>$$dp[i] = \bigvee\limits_{0 &lt;= j &lt; i} (dp[j] \land valid(substr(j, i - j)))$$</p>
+<p>根据计算式子，我们写出伪代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">dp[<span class="number">0.</span>..n] = false</span><br><span class="line">dp[<span class="number">0</span>] = true</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> [<span class="number">1</span> : n]:</span><br><span class="line">  <span class="keyword">for</span> j <span class="keyword">in</span> [i<span class="number">-1</span> : <span class="number">0</span>]:</span><br><span class="line">    <span class="comment"># unnecessary to compute when dp[j] = false in OR computation</span></span><br><span class="line">    <span class="keyword">if</span> (dp[j]):</span><br><span class="line">      <span class="keyword">if</span> (valid(substr(j, i-j))):</span><br><span class="line">        dp[i] = true</span><br><span class="line">        <span class="comment"># Valid break to next position because </span></span><br><span class="line">        <span class="comment"># the number of solutions is not important</span></span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> dp[n]</span><br></pre></td></tr></table></figure>
+<h3 id="AC-Picture"><a href="#AC-Picture" class="headerlink" title="AC Picture"></a>AC Picture</h3><p><img src="/Algorithms/wordBreak/wordbreak.jpg" alt="AC"></p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">wordBreak</span><span class="params">(<span class="built_in">string</span> s, <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; &amp;dict)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> size = s.size();</span><br><span class="line">  <span class="built_in">vector</span>&lt;<span class="keyword">bool</span>&gt; dp(size + <span class="number">1</span>, <span class="literal">false</span>);</span><br><span class="line">  dp[<span class="number">0</span>] = <span class="literal">true</span>;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= size; ++i) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = i - <span class="number">1</span>; j &gt;= <span class="number">0</span>; --j) &#123;</span><br><span class="line">      <span class="keyword">if</span> (dp[j]) &#123; <span class="comment">// unnecessary to compute when dp[j] = false in OR computation</span></span><br><span class="line">        <span class="built_in">string</span> word = s.substr(j, i - j);</span><br><span class="line">        <span class="keyword">if</span> (find(dict.begin(), dict.end(), word) != dict.end()) &#123;</span><br><span class="line">          dp[i] = <span class="literal">true</span>;</span><br><span class="line">          <span class="comment">// Valid break to next position because </span></span><br><span class="line">          <span class="comment">// the number of solutions is not important</span></span><br><span class="line">          <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">return</span> dp[size];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Word-Break-II"><a href="#Word-Break-II" class="headerlink" title="Word Break II"></a><a href="https://leetcode.com/problems/word-break-ii/" target="_blank" rel="noopener">Word Break II</a></h2><h3 id="Description-1"><a href="#Description-1" class="headerlink" title="Description"></a>Description</h3><p>Given a non-empty string s and a dictionary wordDict containing a list of non-empty words, add spaces in s to construct a sentence where each word is a valid dictionary word. Return all such possible sentences.</p>
+<p>Note:</p>
+<p>The same word in the dictionary may be reused multiple times in the segmentation.<br>You may assume the dictionary does not contain duplicate words.</p>
+<h3 id="Example-1"><a href="#Example-1" class="headerlink" title="Example"></a>Example</h3><ol>
+<li><p>Example One:</p>
+<p> Input:<br> s = “catsanddog”<br> wordDict = [“cat”, “cats”, “and”, “sand”, “dog”]<br> Output:<br> [<br>   “cats and dog”,<br>   “cat sand dog”<br> ]</p>
+</li>
+<li><p>Example Two:</p>
+<p> Input:<br> s = “pineapplepenapple”<br> wordDict = [“apple”, “pen”, “applepen”, “pine”, “pineapple”]<br> Output:<br> [<br>   “pine apple pen apple”,<br>   “pineapple pen apple”,<br>   “pine applepen apple”<br> ]<br> Explanation: Note that you are allowed to reuse a dictionary word.</p>
+</li>
+<li><p>Example Three:</p>
+<p> Input:<br> s = “catsandog”<br> wordDict = [“cats”, “dog”, “sand”, “and”, “cat”]<br> Output:<br> []</p>
+</li>
+</ol>
+<h3 id="Analysis-1"><a href="#Analysis-1" class="headerlink" title="Analysis"></a>Analysis</h3><p>题目意思为输出给定串可分割的所有合法字典序列。我们可以利用上面的 dp 进行适当的改造，来构造答案：</p>
+<ol>
+<li>增加一个二维数组，用于存储节点 i 的父节点；</li>
+<li>当发现一个解时，存储其父节点值，并继续向前求解，而不是跳过；</li>
+</ol>
+<p>算法伪代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">dp[<span class="number">0.</span>..n] = false</span><br><span class="line">dp[<span class="number">0</span>] = true</span><br><span class="line">int graph[<span class="number">0.</span>..n][] <span class="comment"># store the parent node</span></span><br><span class="line">graph[<span class="number">0</span>] = [<span class="number">-1</span>]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> [<span class="number">1</span> : n]:</span><br><span class="line">  <span class="keyword">for</span> j <span class="keyword">in</span> [i<span class="number">-1</span> : <span class="number">0</span>]:</span><br><span class="line">    <span class="comment"># unnecessary to compute when dp[j] = false in OR computation</span></span><br><span class="line">    <span class="keyword">if</span> (dp[j]):</span><br><span class="line">      <span class="keyword">if</span> (valid(substr(j, i-j))):</span><br><span class="line">        dp[i] = true</span><br><span class="line">        graph[i].push(j)</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> dfs(graph, n)</span><br></pre></td></tr></table></figure>
+<p>最终，我们可以得到一个存储了当前有解节点的父节点的二维数组，通过样例二来说明：<br>输入: str = “pineapplepenapple”, dict = [“apple”, “pen”, “applepen”, “pine”, “pineapple”]<br>当 i = 4，j = 0，得到 pine，dp[4] = true，graph[4] = [0]；<br>当 i = 9，j = 5，得到 apple，dp[9] = true，graph[9] = [5]；<br>当 i = 9，j = 0，得到 pineapple，dp[9] = true，graph[9] = [5，0]；<br>当 i = 12，j = 9，得到 pen，dp[12] = true，graph[12] = [9]；<br>当 i = 12，j = 4，得到 applepen，dp[12] = true，graph[12] = [9，4]；<br>当 i = 17，j = 12，得到 apple，dp[17] = true，graph[17] = [12]；<br>最终，我们得到：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">dp[<span class="number">0.</span>.<span class="number">.17</span>] = &#123;T,F,F,F,T,F,F,F,F,T,F,F,T,F,F,F,F,T&#125;</span><br><span class="line">graph[<span class="number">0.</span>.<span class="number">.17</span>] = [</span><br><span class="line">  [<span class="number">-1</span>],</span><br><span class="line">  [],</span><br><span class="line">  [],</span><br><span class="line">  [],</span><br><span class="line">  [<span class="number">0</span>],</span><br><span class="line">  [],</span><br><span class="line">  [],</span><br><span class="line">  [],</span><br><span class="line">  [],</span><br><span class="line">  [<span class="number">5</span>,<span class="number">0</span>],</span><br><span class="line">  [],</span><br><span class="line">  [],</span><br><span class="line">  [<span class="number">9</span>,<span class="number">4</span>],</span><br><span class="line">  [],</span><br><span class="line">  [],</span><br><span class="line">  [],</span><br><span class="line">  [],</span><br><span class="line">  [<span class="number">12</span>]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>根据 graph，我们利用 dfs 可以重构出所有的解序列。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># dfs current node(int)</span></span><br><span class="line"><span class="comment"># the order of the child node is not matter</span></span><br><span class="line">void dfs(int graph[][], int &amp;node) &#123;</span><br><span class="line">  <span class="keyword">if</span> (node &lt;= <span class="number">0</span>) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">  int size = graph[node].size();</span><br><span class="line">  <span class="keyword">for</span> (int i = <span class="number">0</span>; i &lt; size; ++i) &#123;</span><br><span class="line">    dfs(graph, graph[node][i]);</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Process</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们根据需要，每次 dfs 返回一个字符串数组，然后处理返回的字符串数组。对于返回的字符串数组，代表其子节点对应的解序列个数，每一个解序列，我们需要加上当前节点的字符串(有解序列则添加一个空格)。最终构造出所有的解序列。</p>
+<h3 id="AC-Picture-1"><a href="#AC-Picture-1" class="headerlink" title="AC Picture"></a>AC Picture</h3><p><img src="/Algorithms/wordBreak/wordbreak2.jpg" alt="AC"></p>
+<h3 id="Code-1"><a href="#Code-1" class="headerlink" title="Code"></a>Code</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; wordBreak(<span class="built_in">string</span> &amp;s, <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&amp; dict) &#123;</span><br><span class="line">  <span class="keyword">int</span> size = s.size();</span><br><span class="line">  </span><br><span class="line">  <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &gt; graph;</span><br><span class="line">  graph.resize(size + <span class="number">1</span>);</span><br><span class="line">  graph[<span class="number">0</span>].push_back(<span class="number">-1</span>);</span><br><span class="line">  </span><br><span class="line">  <span class="built_in">vector</span>&lt;<span class="keyword">bool</span>&gt; dp(size + <span class="number">1</span>, <span class="literal">false</span>);</span><br><span class="line">  dp[<span class="number">0</span>] = <span class="literal">true</span>;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= size; ++i) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = i - <span class="number">1</span>; j &gt;= <span class="number">0</span>; --j) &#123;</span><br><span class="line">      <span class="keyword">if</span> (dp[j]) &#123;</span><br><span class="line">        <span class="built_in">string</span> word = s.substr(j, i - j);</span><br><span class="line">        <span class="keyword">if</span> (find(dict.begin(), dict.end(), word) != dict.end()) &#123;</span><br><span class="line">          dp[i] = <span class="literal">true</span>;</span><br><span class="line">          graph[i].push_back(j);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">return</span> dfs(s, graph, size);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// DFS to construct the result</span></span><br><span class="line"><span class="comment">// End node as origin node</span></span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; dfs(<span class="built_in">string</span> &amp;s, <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &gt; &amp;graph, <span class="keyword">int</span> &amp;node) &#123;</span><br><span class="line">  <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; ans;</span><br><span class="line">  <span class="keyword">if</span> (node &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">    ans.push_back(<span class="string">""</span>);</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">int</span> size = graph[node].size();</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; ++i) &#123;</span><br><span class="line">  <span class="comment">// cur node string</span></span><br><span class="line">    <span class="built_in">string</span> str = s.substr(graph[node][i], node-graph[node][i]);</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; sub = dfs(s, graph, graph[node][i]);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Process the child node string with cur node string</span></span><br><span class="line">    <span class="keyword">int</span> loop = sub.size();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; loop; ++j) &#123;</span><br><span class="line">      sub[j] += (sub[j] == <span class="string">""</span> ? <span class="string">""</span> : <span class="string">" "</span>) + str;</span><br><span class="line">      ans.push_back(sub[j]);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Algorithms/" rel="tag"># Algorithms</a>
+          
+            <a href="/tags/Leetcode/" rel="tag"># Leetcode</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Algorithms/longestValidParentheses/" rel="next" title="Leetcode-NINE-LongestValidParentheses">
+                <i class="fa fa-chevron-left"></i> Leetcode-NINE-LongestValidParentheses
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Xu Weiyuan</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Word-Break-Problems"><span class="nav-number">1.</span> <span class="nav-text">Word Break Problems</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Word-Break"><span class="nav-number">1.1.</span> <span class="nav-text">Word Break</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Description"><span class="nav-number">1.1.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Example"><span class="nav-number">1.1.2.</span> <span class="nav-text">Example</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Analysis"><span class="nav-number">1.1.3.</span> <span class="nav-text">Analysis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AC-Picture"><span class="nav-number">1.1.4.</span> <span class="nav-text">AC Picture</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code"><span class="nav-number">1.1.5.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Word-Break-II"><span class="nav-number">1.2.</span> <span class="nav-text">Word Break II</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Description-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Example-1"><span class="nav-number">1.2.2.</span> <span class="nav-text">Example</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Analysis-1"><span class="nav-number">1.2.3.</span> <span class="nav-text">Analysis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AC-Picture-1"><span class="nav-number">1.2.4.</span> <span class="nav-text">AC Picture</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-1"><span class="nav-number">1.2.5.</span> <span class="nav-text">Code</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Xu Weiyuan</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+  
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>
