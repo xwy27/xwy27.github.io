@@ -386,7 +386,6 @@
 <center>图1 单周期CPU指令处理过程</center>
 
 <h3 id="MIPS-指令的三种格式"><a href="#MIPS-指令的三种格式" class="headerlink" title="MIPS 指令的三种格式"></a>MIPS 指令的三种格式</h3><p><img src="/Computer-Organization/SingleCycleCPU/MIPSins.jpg" alt="MIPS指令的三种格式"></p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -429,14 +428,12 @@
 </tr>
 </tbody>
 </table>
-</div>
 <h3 id="数据通路图"><a href="#数据通路图" class="headerlink" title="数据通路图"></a>数据通路图</h3><p><img src="/Computer-Organization/SingleCycleCPU/DataBus.jpg" alt="DataBus"></p>
 <center>图2  单周期CPU数据通路和控制线路图</center>
 
 <p>图2是单周期CPU上的数据通路和控制线路图。其中指令和数据存储在不同存储器中,即有指令存储器和数据存储器。访问存储器时,先给出内存地址,然后由读或写信号控制操作。对于寄存器组,先给出寄存器地址,读操作时,输出端就直接输出相应数据;而在写操作时,在 WE 使能信号为1时,在时钟边沿触发将数据写入寄存器。指令执行的结果总是在时钟下降沿保存到寄存器和存储器中,PC 的改变是在时钟上升沿进行的,这样稳定性较好。图中控制信号作用如表1所示,表2是ALU运算功能表。</p>
 <center>表1 控制信号的作用</center>
 
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -503,11 +500,9 @@
 </tr>
 </tbody>
 </table>
-</div>
 <ul>
 <li>PCSrc[1:0]</li>
 </ul>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -539,11 +534,9 @@
 </tr>
 </tbody>
 </table>
-</div>
 <ul>
 <li>ALUOp[2:0]</li>
 </ul>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -595,7 +588,6 @@
 </tr>
 </tbody>
 </table>
-</div>
 <center>表2 ALU运算功能表</center>
 
 <p>相关部件及引脚说明:</p>
@@ -638,7 +630,6 @@
 </ul>
 <center>PC真值表</center>
 
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -687,14 +678,12 @@
 </tr>
 </tbody>
 </table>
-</div>
   <figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">module</span> PC(</span><br><span class="line">    <span class="keyword">input</span> CLK,                  <span class="comment">// 时钟输入</span></span><br><span class="line">    <span class="keyword">input</span> Reset,                <span class="comment">// 重置信号</span></span><br><span class="line">    <span class="keyword">input</span> PCWre,                <span class="comment">// PC 更改信号，为 0 时不更改</span></span><br><span class="line">    <span class="keyword">input</span> [<span class="number">31</span>:<span class="number">0</span>] NextPC,        <span class="comment">// 新指令</span></span><br><span class="line">    <span class="keyword">output</span> <span class="keyword">reg</span> [<span class="number">31</span>:<span class="number">0</span>] IAddress  <span class="comment">// 输出指令地址</span></span><br><span class="line">    );</span><br><span class="line">    <span class="comment">// 初始化</span></span><br><span class="line">    <span class="keyword">initial</span> <span class="keyword">begin</span></span><br><span class="line">        IAddress = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">    <span class="comment">// 时钟上升沿或重置下降沿触发</span></span><br><span class="line">    <span class="keyword">always</span> @(<span class="keyword">posedge</span> CLK <span class="keyword">or</span> <span class="keyword">negedge</span> Reset) <span class="keyword">begin</span></span><br><span class="line">        <span class="keyword">if</span> (!Reset) <span class="keyword">begin</span></span><br><span class="line">            IAddress &lt;= <span class="number">32'hFFFFFFFC</span>;   <span class="comment">// 重置为-4</span></span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (PCWre || !NextPC) <span class="keyword">begin</span></span><br><span class="line">            IAddress &lt;= NextPC;</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">endmodule</span>   <span class="comment">// PC</span></span><br></pre></td></tr></table></figure>
 <ul>
 <li>Module NextPC<br>PC 模块中的下一条指令地址，可能来自正常加四指令地址，分支跳转指令地址或 j 指令跳转地址，所以我们设计一个 NextPC 模块(可视为选择器)，来辅助选择下一条指令地址。<br>输入：Reset，PCSrc，PC，Immediate，JPC<br>输出：NextPC</li>
 </ul>
 <center>NextPC 真值表</center>
 
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -721,7 +710,6 @@
 </tr>
 </tbody>
 </table>
-</div>
   <figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">module</span> NextPC(</span><br><span class="line">    <span class="keyword">input</span> Reset,                <span class="comment">// 重置信号</span></span><br><span class="line">    <span class="keyword">input</span> [<span class="number">1</span>:<span class="number">0</span>] PCSrc,          <span class="comment">// 选择信号</span></span><br><span class="line">    <span class="keyword">input</span> [<span class="number">31</span>:<span class="number">0</span>] PC,            <span class="comment">// PC 地址</span></span><br><span class="line">    <span class="keyword">input</span> [<span class="number">31</span>:<span class="number">0</span>] Immediate,     <span class="comment">// 立即数</span></span><br><span class="line">    <span class="keyword">input</span> [<span class="number">31</span>:<span class="number">0</span>] JPC,           <span class="comment">// 跳转 PC</span></span><br><span class="line">    <span class="keyword">output</span> <span class="keyword">reg</span> [<span class="number">31</span>:<span class="number">0</span>] NextPC    <span class="comment">// 下一条 PC</span></span><br><span class="line">    );</span><br><span class="line"></span><br><span class="line">    <span class="keyword">always</span> @(Reset <span class="keyword">or</span> PCSrc <span class="keyword">or</span> PC <span class="keyword">or</span> Immediate <span class="keyword">or</span> JPC) <span class="keyword">begin</span></span><br><span class="line">        <span class="keyword">if</span> (!Reset) <span class="keyword">begin</span></span><br><span class="line">            NextPC = PC + <span class="number">4</span>;</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">begin</span></span><br><span class="line">            <span class="keyword">case</span> (PCSrc)</span><br><span class="line">              <span class="number">2'b00</span>: NextPC = PC + <span class="number">4</span>;</span><br><span class="line">              <span class="number">2'b01</span>: NextPC = PC + <span class="number">4</span> + (Immediate &lt;&lt; <span class="number">2</span>);</span><br><span class="line">              <span class="number">2'b10</span>: NextPC = JPC;</span><br><span class="line">              <span class="keyword">default</span>: NextPC = PC + <span class="number">4</span>;</span><br><span class="line">            <span class="keyword">endcase</span></span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">endmodule</span>   <span class="comment">// Next PC</span></span><br></pre></td></tr></table></figure>
 <ul>
 <li><p>Module JPC<br>接下来，设计有关 j 指令的指令跳转地址计算。其中，计算公式如下：<br>PC &lt;－ {(PC+4) [31：28], addr[27：2], 2{0} }<br>输入：PC，IAddress<br>输出：JPC</p>
@@ -731,7 +719,6 @@
 <h3 id="InstructionMemory-指令存储器"><a href="#InstructionMemory-指令存储器" class="headerlink" title="InstructionMemory(指令存储器)"></a>InstructionMemory(指令存储器)</h3><p>指令存储器存储着我们需要执行的指令及其对应地址。所以，需要存储指令的存储单元，并在指令读写选择信号的控制下进行指令(IDataIn)的写入或指令的读取。本实验只有读取指令操作。<br>输入：InsMemRW，IAddress，IDataIn<br>输出：IDataOut</p>
 <figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">module</span> InstructionMemory(</span><br><span class="line">    <span class="keyword">input</span> InsMemRW,                 <span class="comment">// 指令读写选择信号，1为读，0为写</span></span><br><span class="line">    <span class="keyword">input</span> [<span class="number">31</span>:<span class="number">0</span>] IAddress,          <span class="comment">// 指令地址输入</span></span><br><span class="line">    <span class="keyword">input</span> [<span class="number">31</span>:<span class="number">0</span>] IDataIn,           <span class="comment">// 指令寄存器输入数据</span></span><br><span class="line">    <span class="keyword">output</span> <span class="keyword">reg</span> [<span class="number">31</span>:<span class="number">0</span>] IDataOut      <span class="comment">// 指令存储器输出数据</span></span><br><span class="line">    );</span><br><span class="line">    <span class="comment">// 8 位长的指令存储单元，共 128 个</span></span><br><span class="line">    <span class="keyword">reg</span> [<span class="number">7</span>:<span class="number">0</span>] Memory[<span class="number">0</span>:<span class="number">127</span>];</span><br><span class="line">    <span class="keyword">initial</span> <span class="keyword">begin</span></span><br><span class="line">        <span class="built_in">$readmemb</span>(<span class="string">"Path/instruction.txt"</span>, Memory);</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    <span class="comment">// 从地址取值后输出指令</span></span><br><span class="line">    <span class="keyword">always</span> @(IAddress <span class="keyword">or</span> InsMemRW) <span class="keyword">begin</span></span><br><span class="line">        <span class="keyword">if</span> (InsMemRW) <span class="keyword">begin</span></span><br><span class="line">            IDataOut[<span class="number">31</span>:<span class="number">24</span>] = Memory[IAddress];</span><br><span class="line">            IDataOut[<span class="number">23</span>:<span class="number">16</span>] = Memory[IAddress + <span class="number">1</span>];</span><br><span class="line">            IDataOut[<span class="number">15</span>:<span class="number">8</span>] = Memory[IAddress + <span class="number">2</span>];</span><br><span class="line">            IDataOut[<span class="number">7</span>:<span class="number">0</span>] = Memory[IAddress + <span class="number">3</span>];</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">endmodule</span></span><br></pre></td></tr></table></figure>
 <h3 id="Control-Unit-控制单元"><a href="#Control-Unit-控制单元" class="headerlink" title="Control Unit(控制单元)"></a>Control Unit(控制单元)</h3><p>控制单元，根据指令发出针对其余模块的控制信号，以使得其余模块按照指令正常工作。控制信号与指令的真值表如下：</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -873,8 +860,6 @@
 </tr>
 </tbody>
 </table>
-</div>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -1016,7 +1001,6 @@
 </tr>
 </tbody>
 </table>
-</div>
 <p>如果每次都输入指令的二进制码，太过繁琐，所以构造了一个 head.v 头文件，将所有二进制码定义为了其对应指令。(具体见代码文件下的 head.v 文件)<br>输入：OpCode，Zero，Sign<br>输出：PCWre，ALUSrcA，ALUSrcB，DBDataSrc，RegWre，InsMemRW，mRD，mWR，RegDst，ExtSel，PCSrc，ALUOp</p>
 <figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">module</span> ControlUnit(</span><br><span class="line">    <span class="keyword">input</span> [<span class="number">5</span>:<span class="number">0</span>] OpCode,     <span class="comment">// 操作符</span></span><br><span class="line">    <span class="keyword">input</span> Zero,             <span class="comment">// ALU 的 Zero 输出</span></span><br><span class="line">    <span class="keyword">input</span> Sign,             <span class="comment">// ALU 的 Sign 输出</span></span><br><span class="line">    <span class="keyword">output</span> PCWre,           <span class="comment">// PC 更改信号</span></span><br><span class="line">    <span class="keyword">output</span> ALUSrcA,         <span class="comment">// ALU 左操作数选择信号</span></span><br><span class="line">    <span class="keyword">output</span> ALUSrcB,         <span class="comment">// ALU 右操作数选择信号</span></span><br><span class="line">    <span class="keyword">output</span> DBDataSrc,       <span class="comment">// 写入寄存器数据选择信号</span></span><br><span class="line">    <span class="keyword">output</span> RegWre,          <span class="comment">// 寄存器组写使能信号</span></span><br><span class="line">    <span class="keyword">output</span> InsMemRW,        <span class="comment">// 指令存储器读写信号</span></span><br><span class="line">    <span class="keyword">output</span> mRD,             <span class="comment">// 内存读信号</span></span><br><span class="line">    <span class="keyword">output</span> mWR,             <span class="comment">// 内存写信号</span></span><br><span class="line">    <span class="keyword">output</span> RegDst,          <span class="comment">// 写寄存器组地址</span></span><br><span class="line">    <span class="keyword">output</span> ExtSel,          <span class="comment">// 拓展方式选择信号</span></span><br><span class="line">    <span class="keyword">output</span> [<span class="number">1</span>:<span class="number">0</span>] PCSrc,     <span class="comment">// 指令分支选择信号</span></span><br><span class="line">    <span class="keyword">output</span> [<span class="number">2</span>:<span class="number">0</span>] ALUOp      <span class="comment">// ALU 功能选择信号</span></span><br><span class="line">    );</span><br><span class="line"></span><br><span class="line">    <span class="keyword">assign</span> PCWre = (OpCode == <span class="meta">`opHalt) ? 0 : 1;</span></span><br><span class="line">    <span class="keyword">assign</span> ALUSrcA = (OpCode == <span class="meta">`opSll) ? 1 : 0;</span></span><br><span class="line">    <span class="keyword">assign</span> ALUSrcB = (OpCode == <span class="meta">`opAddi || OpCode == `opOri || OpCode == `opSlti || OpCode == `opSw || OpCode == `opLw) ? 1 : 0;</span></span><br><span class="line">    <span class="keyword">assign</span> DBDataSrc = (OpCode == <span class="meta">`opLw) ? 1 : 0;</span></span><br><span class="line">    <span class="keyword">assign</span> RegWre = (OpCode == <span class="meta">`opSw || OpCode == `opBeq || OpCode == `opBne || OpCode == `opJ || OpCode == `opHalt) ? 0 : 1;</span></span><br><span class="line">    <span class="keyword">assign</span> InsMemRW = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">assign</span> mRD = (OpCode == <span class="meta">`opLw) ? 1 : 0;</span></span><br><span class="line">    <span class="keyword">assign</span> mWR = (OpCode == <span class="meta">`opSw) ? 1 : 0;</span></span><br><span class="line">    <span class="keyword">assign</span> RegDst = (OpCode == <span class="meta">`opAdd || OpCode == `opSub || OpCode == `opAnd || OpCode == `opOr || OpCode == `opSll) ? 1 : 0;</span></span><br><span class="line">    <span class="keyword">assign</span> ExtSel = (OpCode == <span class="meta">`opOri) ? 0 : 1;</span></span><br><span class="line">    <span class="keyword">assign</span> PCSrc[<span class="number">1</span>] = (OpCode == <span class="meta">`opJ || OpCode == `opHalt) ? 1 : 0;</span></span><br><span class="line">    <span class="keyword">assign</span> PCSrc[<span class="number">0</span>] = ((OpCode == <span class="meta">`opBeq &amp;&amp; Zero) || (OpCode == `opBne &amp;&amp; !Zero) || OpCode == `opHalt) ? 1 : 0;</span></span><br><span class="line">    <span class="keyword">assign</span> ALUOp[<span class="number">2</span>] = (OpCode == <span class="meta">`opAnd || OpCode == `opSlti) ? 1 : 0;</span></span><br><span class="line">    <span class="keyword">assign</span> ALUOp[<span class="number">1</span>] = (OpCode == <span class="meta">`opOri || OpCode == `opOr || OpCode == `opSll || OpCode == `opSlti || OpCode == `opJ) ? 1 : 0;</span></span><br><span class="line">    <span class="keyword">assign</span> ALUOp[<span class="number">0</span>] = (OpCode == <span class="meta">`opSub || OpCode == `opOr || OpCode == `opOri || OpCode == `opBeq || OpCode == `opBne) ? 1 : 0;</span></span><br><span class="line"><span class="keyword">endmodule</span></span><br></pre></td></tr></table></figure>
 <h3 id="RegisterFile-寄存器组"><a href="#RegisterFile-寄存器组" class="headerlink" title="RegisterFile(寄存器组)"></a>RegisterFile(寄存器组)</h3><p>模拟 MIPS 中的32个寄存器，并注意在写入数据时 <strong>保护 0 号寄存器</strong> 。读取寄存器数据时，无需时钟信号；当写使能信号为 1 且时钟到达下降沿时，将数据写入寄存器。当重置信号为 0 时，重置所有寄存器数据。<br>输入：CLK，WE，Reset，ReadReg1，ReadReg2，WriteReg，WriteData<br>输出：ReadData1，ReadData2</p>
@@ -1024,7 +1008,6 @@
 <h3 id="SignZeroExtend-符号位或零拓展"><a href="#SignZeroExtend-符号位或零拓展" class="headerlink" title="SignZeroExtend(符号位或零拓展)"></a>SignZeroExtend(符号位或零拓展)</h3><p>根据拓展选择信号，选择拓展方式：符号位拓展或零拓展，并对 16 位立即数进行拓展，输出 32 位数。其中，拓展选择信号为 0 时，进行零拓展，为 1 时，进行符号位拓展。</p>
 <figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">module</span> SignZeroExtend(</span><br><span class="line">    <span class="keyword">input</span> ExtSel,               <span class="comment">// 拓展选择信号，为 0 则全补 0，否则进行符号位拓展</span></span><br><span class="line">    <span class="keyword">input</span> Sign,                 <span class="comment">// 符号位</span></span><br><span class="line">    <span class="keyword">input</span> [<span class="number">15</span>:<span class="number">0</span>] Immediate,     <span class="comment">// 16位立即数</span></span><br><span class="line">    <span class="keyword">output</span> [<span class="number">31</span>:<span class="number">0</span>] Extend        <span class="comment">// 拓展输出</span></span><br><span class="line">    );</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 拓展立即数</span></span><br><span class="line">    <span class="keyword">assign</span> Extend[<span class="number">15</span>:<span class="number">0</span>] = Immediate[<span class="number">15</span>:<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">assign</span> Extend[<span class="number">31</span>:<span class="number">16</span>] = (ExtSel &amp;&amp; Immediate[<span class="number">15</span>]) ? <span class="number">16'hFFFF</span> : <span class="number">16'h0000</span>;</span><br><span class="line"><span class="keyword">endmodule</span></span><br></pre></td></tr></table></figure>
 <h3 id="ALU-算逻运算单元"><a href="#ALU-算逻运算单元" class="headerlink" title="ALU(算逻运算单元)"></a>ALU(算逻运算单元)</h3><p>算术逻辑运算单元，根据控制信号的不同，选择对输入操作数进行不同的算术或逻辑运算，得到结果。算术功能包括加，减和移位，输出包含结果与符号位；逻辑功能包括或，与，比较和异或，输出包含结果与标志位。具体功能与控制信号对应如下表：</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -1076,7 +1059,6 @@
 </tr>
 </tbody>
 </table>
-</div>
 <p>输入：ALUop，A，B<br>输出：Zero，Sign，Y</p>
 <figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">module</span> ALU(</span><br><span class="line">    <span class="keyword">input</span> [<span class="number">31</span>:<span class="number">0</span>] A,     <span class="comment">// 左操作数</span></span><br><span class="line">    <span class="keyword">input</span> [<span class="number">31</span>:<span class="number">0</span>] B,     <span class="comment">// 右操作数</span></span><br><span class="line">    <span class="keyword">input</span> [<span class="number">2</span>:<span class="number">0</span>] ALUop,  <span class="comment">// ALU 控制选择</span></span><br><span class="line">    <span class="keyword">output</span> Zero,        <span class="comment">// 运算结果标志，结果为0输出1，否则为0</span></span><br><span class="line">    <span class="keyword">output</span> Sign,        <span class="comment">// 符号位</span></span><br><span class="line">    <span class="keyword">output</span> <span class="keyword">reg</span> [<span class="number">31</span>:<span class="number">0</span>] Y     <span class="comment">// 计算结果</span></span><br><span class="line">    );</span><br><span class="line"></span><br><span class="line"><span class="comment">// 根据运算控制信号选择对应功能</span></span><br><span class="line">    <span class="keyword">always</span> @(ALUop <span class="keyword">or</span> A <span class="keyword">or</span> B) <span class="keyword">begin</span></span><br><span class="line">        <span class="keyword">case</span> (ALUop)</span><br><span class="line">            <span class="number">3'b000</span> : Y = (A + B);</span><br><span class="line">            <span class="number">3'b001</span> : Y = (A - B);</span><br><span class="line">            <span class="number">3'b010</span> : Y = (B &lt;&lt; A);</span><br><span class="line">            <span class="number">3'b011</span> : Y = (A | B);</span><br><span class="line">            <span class="number">3'b100</span> : Y = (A &amp; B);</span><br><span class="line">            <span class="number">3'b101</span> : Y = (A &lt; B) ? <span class="number">1</span> : <span class="number">0</span>;</span><br><span class="line">            <span class="number">3'b110</span> : Y = (((A &lt; B) &amp;&amp; (A[<span class="number">31</span>] == B[<span class="number">31</span>])) || ((A[<span class="number">31</span>] &amp;&amp; !B[<span class="number">31</span>]))) ? <span class="number">1</span> : <span class="number">0</span>;</span><br><span class="line">            <span class="number">3'b111</span> : Y = (A ^ B);</span><br><span class="line">            <span class="keyword">default</span> : Y = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">endcase</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">assign</span> Zero = (Y == <span class="number">0</span>) ? <span class="number">1</span> : <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">assign</span> Sign = Y[<span class="number">31</span>];</span><br><span class="line"><span class="keyword">endmodule</span></span><br></pre></td></tr></table></figure>
 <h3 id="DataMemory-数据存储器"><a href="#DataMemory-数据存储器" class="headerlink" title="DataMemory(数据存储器)"></a>DataMemory(数据存储器)</h3><p>数据存储器，采用 8 位一字节，大端模式模拟内存。当读使能信号为 1 时，读取数据；当写使能信号为 1 且时钟到达下降沿时，写入数据。</p>
@@ -1210,7 +1192,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-count">47</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
