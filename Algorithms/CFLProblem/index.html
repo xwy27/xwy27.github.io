@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Algorithms,Leetcode," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="CFL-ProblemCapacitated Facilities Location Problem - the project for Algorithm Course.">
+<meta name="keywords" content="Algorithms,Leetcode">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CFLProblem">
+<meta property="og:url" content="http://yoursite.com/Algorithms/CFLProblem/index.html">
+<meta property="og:site_name" content="Xuwy Blog">
+<meta property="og:description" content="CFL-ProblemCapacitated Facilities Location Problem - the project for Algorithm Course.">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/Algorithms/CFLProblem/CFLProblem/GA.png">
+<meta property="og:updated_time" content="2018-12-21T08:14:08.870Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CFLProblem">
+<meta name="twitter:description" content="CFL-ProblemCapacitated Facilities Location Problem - the project for Algorithm Course.">
+<meta name="twitter:image" content="http://yoursite.com/Algorithms/CFLProblem/CFLProblem/GA.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/Algorithms/CFLProblem/"/>
+
+
+
+
+
+  <title>CFLProblem | Xuwy Blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/xwy27"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png" alt="Fork me on GitHub"></a>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Xuwy Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Learning Blog</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Algorithms/CFLProblem/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Xu Weiyuan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Xuwy Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">CFLProblem</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-21T15:53:53+08:00">
+                2018-12-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Algorithms/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithms</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="CFL-Problem"><a href="#CFL-Problem" class="headerlink" title="CFL-Problem"></a>CFL-Problem</h1><p>Capacitated Facilities Location Problem - the project for Algorithm Course.</p>
+<a id="more"></a>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Suppose there are $n$ facilities and $m$ customers. We wish to choose:</p>
+<ol>
+<li>which of the $n$ facilities to open </li>
+<li>the assignment of customers to facilities</li>
+</ol>
+<p>The objective is to minimize the sum of the opening cost and the assignment cost.</p>
+<p>The total demand assigned to a facility must not exceed its capacity.</p>
+<p>There are currently 71 data files.</p>
+<h2 id="Data-File-Format"><a href="#Data-File-Format" class="headerlink" title="Data File Format"></a>Data File Format</h2><p>$J,I$<br>$s_1,f_1$<br>$s_2,f_2$<br>$…$<br>$s_J,f_J$<br>$d_1,d_2,d_3,…,d_I$<br>$c_{11},c_{12},c_{13},…,c_{1I}$<br>$c_{21},c_{22},c_{23},…,c_{2I}$<br>$…$<br>$c_{J1},c_{J2},c_{J3},…,c_{JI}$</p>
+<p>where:</p>
+<p>$J$ is the number of potential facility locations;<br>$I$ is the number of customers;<br>$s_j (j=1,…,J)$ is the capacity of facility $j$;<br>$f_j (j=1,…,J)$ is the fixed cost of opening facility $j$;<br>$d_i (i=1,…,I)$ is the demand of customer $i$;<br>$c_{ji} (j=1,…,J), (i=1,…,I)$ is the cost of allocating all the demand of customer $i$ to facility $j$.</p>
+<h2 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h2><p>题目的意思很明显，每一个算例，有 $J$ 个工厂， $m$ 个顾客。每个工厂有固定的开设成本，服务不同顾客的不同服务成本和容量；每个顾客有需求。现在要决定怎么分配服务顾客的工厂，使得工厂服务的顾客的总需求不会超出其容量，同时所有工厂的总成本最小。</p>
+<p>这是一个搜索问题，如何<strong>在解空间内找到一个最优解</strong>，即在所有的合法分配方案中，找到一个成本最小的方案。</p>
+<p>这里我使用一个局部搜索算法和一个启发式搜索算法来解决这个问题。一个显然的事实是，无论局部搜索还是启发式搜索，两者<strong>生成的解空间必定是问题整体解空间的子集</strong>，所以<strong>找到的最优解都不一定是真正的最优解</strong>，但是是自己搜索的解空间中的最优解。</p>
+<p>但使用这样的搜索算法，可以在有限的时间里得到一个较好的方案，而不用耗费大量时间，穷举搜索完整的解空间。</p>
+<h2 id="Algorithm-Design"><a href="#Algorithm-Design" class="headerlink" title="Algorithm Design"></a>Algorithm Design</h2><p>如前文所述，这里采用一个局部搜索算法和一个启发式搜索算法。我的选择是贪心的<a href="https://en.wikipedia.org/wiki/Hill_climbing" target="_blank" rel="noopener">爬山算法(Hill Climbing Algorithm)</a>和<a href="https://en.wikipedia.org/wiki/Genetic_algorithm" target="_blank" rel="noopener">遗传算法(Genetic Algorithm)</a>。</p>
+<p><em>两个算法都不是很难，建议先了解，具体流程不在此介绍</em></p>
+<p>为何说爬山算法是贪婪的呢？因为在每一次的邻域选择时，它选择的是最优的那个解。但是这样的选择策略是没办法保证一定能找到最优解的，因为最优解可能是通过其他较次解得到的。所以爬山算法的缺点也很明显，找到的解可能是<strong>局部最优解</strong>。</p>
+<p>至于遗传算法，它模仿自然界中的种群繁衍过程。每一次迭代在种群中选择出存活个体，存活个体间进行交叉变异，生成下一代并和存活个体共同构成下一个种群。</p>
+<p>大概过程如图：<br><img src="/Algorithms/CFLProblem/./CFLProblem/GA.png" alt="GA"></p>
+<p>这里先介绍一下对于解的定义。题目的关键是分配工厂给顾客，所以我们将解定义为一个数组，数组长度为顾客数量，数组元素为每一个顾客分配的工厂。这样的解，对于各种操作都是十分方便的：</p>
+<ul>
+<li><p>合法性</p>
+<p>  遍历数组，统计每个工厂分配的总顾客需求，如果超出容量则非法</p>
+</li>
+<li><p>工厂开关状态</p>
+<p>  遍历数组，对于分配了顾客的工厂，设为打开即可</p>
+</li>
+<li><p>解的总成本</p>
+<p>  得到工厂开关状态后，叠加开设成本；遍历数组，叠加分配成本</p>
+</li>
+<li><p>生成新解</p>
+<p>  修改数组元素，就是一个新解</p>
+</li>
+</ul>
+<p>定义好了解，下面介绍两个算法的设计。</p>
+<h3 id="Hill-Climbing-Algorithm"><a href="#Hill-Climbing-Algorithm" class="headerlink" title="Hill Climbing Algorithm"></a>Hill Climbing Algorithm</h3><p>爬山算法从当前解，根据邻域操作，生成一个邻域空间(局部解空间)，然后从邻域空间内找到一个最优解。对比当前解和找到的最优解，如果找到的解比当前解更优，那么就替换当前解。重复算法，直到找不到更优的解，则结束算法。伪代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Solution curNode, nextNode</span><br><span class="line">Neighborhood n = generate(curNode)</span><br><span class="line">nextNode = bestSolution(n)</span><br><span class="line"><span class="keyword">while</span> curNode.cost &gt; nextNode.cost:</span><br><span class="line">    curNode = nextNode</span><br><span class="line">    n = generate(curNode)</span><br><span class="line">    nextNode = bestSolution(n)</span><br></pre></td></tr></table></figure>
+<p>算法中的 <code>cost</code> 就是我们的分配方案成本，<code>bestSolution(n)</code> 就是在邻域 <code>n</code> 中查找拥有最低成本的分配方案。需要设计的就是如何生成一个邻域，也就是 <code>generate(curNode)</code>。</p>
+<p>邻域空间的生成需要设计邻域操作，也就是对当前解进行某种操作，生成一个新的解，这个解就属于我们生成的邻域。所以，我们需要设计的就是邻域操作。这里我设计了4个邻域操作：</p>
+<ol>
+<li>随机交换两个顾客的分配工厂</li>
+<li>将三个连续顾客的分配工厂重排序(e.g: a, b, c-&gt; b, c, a)</li>
+<li>对当前分配方案随机排序</li>
+<li>逆序当前分配方案</li>
+</ol>
+<p>对于当前解，前3个邻域每个执行操作5000次，最后一个执行一次，这样邻域空间大小就达到了 15001，然后从中找出一个最优解。</p>
+<h3 id="Genetic-Algorithm"><a href="#Genetic-Algorithm" class="headerlink" title="Genetic Algorithm"></a>Genetic Algorithm</h3><p>遗传算法，每一次迭代在当前解空间中选择出部分解，解之间进行交叉变异操作生成新解，这些新解和选择出的解共同构成下一个解空间。伪代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Solution s</span><br><span class="line">Population curP, selection, generation</span><br><span class="line"><span class="keyword">while</span> <span class="keyword">True</span>: <span class="comment"># Loop until iteration times is satisfied</span></span><br><span class="line">    selection = select(curP)</span><br><span class="line">    <span class="keyword">for</span> solution <span class="keyword">in</span> selection:</span><br><span class="line">        s = crossOver(solution)</span><br><span class="line">        s = mutation(s)</span><br><span class="line">        generation.add(s)</span><br><span class="line">    curP = selection + generation</span><br></pre></td></tr></table></figure>
+<p>这里可以运用 GA 也得益于解的定义。因为对于解可以表示成数组的搜索问题，是可以使用 GA 的。因为数组可以看作一个染色体，数组元素就是基因，这样染色体的交叉变异操作就可以看作数组元素的操作。<br>在这里，需要设计的函数是 <code>select(curP)</code>，<code>crossOver(solution)</code>, <code>mutation(s)</code>，也就是选择，交叉(遗传)和变异操作。</p>
+<ul>
+<li><p>选择</p>
+<p>  选择就如同自然选择，不过我们是上帝，操纵着选择过程。这里我使用 $k=2$ <a href="https://en.wikipedia.org/wiki/Tournament_selection" target="_blank" rel="noopener"><strong>的竞标赛(Tournament Selection)</strong></a>的方法来选择个体。也就是说，随机从种群中挑选两个个体，优胜劣汰。这样选择出来的个体总数为种群数的一半(这里选择淘汰的个体没有再次被选择的机会，也就是无重复)。</p>
+</li>
+<li><p>交叉(遗传)</p>
+<p>  交叉(遗传)模仿自然界个体交配过程中的染色体行为：父母双方染色体的一半重新结合，生成新个体。这里的交叉过程，有多种方法：单点交叉，两点交叉，均匀交叉等(<em>尝试过三种交叉，最终选择了两点交叉，不过更公平且符合求解逻辑的是均匀交叉</em>)。<br>  这里选择两点交叉，也就是在解中随机选择两个位置，交换两个亲代位置区段的数组元素，生成两个新的解。</p>
+</li>
+<li><p>变异</p>
+<p>  变异和自然界的基因变异是类似的。基因是可以突变的，所以在交叉完毕后，对于每一个子代，应该进行一次变异操作(基于变异概率)。<br>  变异的方法和交叉一样，有多种方法。这里我选择的是整体变异，也就是对于解数组中的每一个元素，遍历变异。变异就是替换为一个随机元素。</p>
+</li>
+</ul>
+<h2 id="Architecture"><a href="#Architecture" class="headerlink" title="Architecture"></a>Architecture</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">├── Instance.hpp    <span class="comment">// Initialize an instance from instance file and contains the info inside the instance file</span></span><br><span class="line">├── Solution.hpp    <span class="comment">// Initialize an instance of solution which contains the allocation of customers</span></span><br><span class="line">├── HC.hpp  <span class="comment">// Initialize an instance of Hill Climbing Algorithm which could be performed on an instance</span></span><br><span class="line">├── GA.hpp  <span class="comment">// Initialize an instance of Genetic Algorithm which could be performed on an instance</span></span><br><span class="line">└── main.cpp    <span class="comment">// Program entry</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>Instance.hpp</p>
+  <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Instance</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">int</span> facility_num;   <span class="comment">// facility number</span></span><br><span class="line">    <span class="keyword">int</span> customer_num;   <span class="comment">// customer number</span></span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; capicity; <span class="comment">// capicity of facilities</span></span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; open_cost;   <span class="comment">// open cost of facilities</span></span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; demand; <span class="comment">// demand of customers</span></span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &gt; allocate_cost; <span class="comment">// allocate cost of facilities</span></span><br><span class="line"></span><br><span class="line">    Instance(<span class="built_in">string</span> filePath);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Solution.hpp</p>
+  <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; allocate; <span class="comment">// Allocation of all customers</span></span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; serving; <span class="comment">// Serving customer count for each facility</span></span><br><span class="line"></span><br><span class="line">    Solution();</span><br><span class="line">    Solution(<span class="keyword">int</span> &amp;facilityNum, <span class="keyword">int</span> &amp;customerNum);</span><br><span class="line">    Solution(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &amp;v, <span class="keyword">int</span> facilityNum);</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isValid</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &amp;capicity, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &amp;demand)</span></span>;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; getFacilityState();</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getCost</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &amp;open, <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &gt; &amp;allocation, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &amp;capicity, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &amp;demand)</span></span>;</span><br><span class="line">    <span class="keyword">bool</span> <span class="keyword">operator</span> == (<span class="keyword">const</span> Solution &amp;p2) <span class="keyword">const</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>HC.hpp</p>
+  <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HC</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">Solution <span class="title">twoOpt</span><span class="params">(Solution &amp;s)</span></span>;   <span class="comment">// Swap two allocations between two random chosen customer</span></span><br><span class="line">    <span class="function">Solution <span class="title">threeOpt</span><span class="params">(Solution &amp;s)</span></span>; <span class="comment">// Reorder the allocations among three continuous customers(e.g: a, b, c-&gt; b, c, a)</span></span><br><span class="line">    <span class="function">Solution <span class="title">randomOpt</span><span class="params">(Solution &amp;s)</span></span>;    <span class="comment">// Randomly rearrange the allocations with the current allocations</span></span><br><span class="line">    <span class="function">Solution <span class="title">reverseOpt</span><span class="params">(Solution &amp;s)</span></span>;   <span class="comment">// Reverse the allocations</span></span><br><span class="line">    <span class="built_in">vector</span>&lt;Solution&gt; neighborHood(Solution &amp;s); <span class="comment">// Generate the neighborhood</span></span><br><span class="line">    <span class="function">Solution <span class="title">nextSolution</span><span class="params">(Solution &amp;s, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &amp;open, <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &gt; &amp;allocation,</span></span></span><br><span class="line"><span class="function"><span class="params">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &amp;capicity, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &amp;demand)</span></span>;    <span class="comment">// Find the best solution in neighborhood</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>GA.hpp</p>
+  <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GeneAlgorithm</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">int</span> crossRate;  <span class="comment">// CrossOver rate</span></span><br><span class="line">    <span class="keyword">int</span> mutationRate;   <span class="comment">// Mutation Rate</span></span><br><span class="line">    <span class="built_in">vector</span>&lt;Solution&gt; population;    <span class="comment">// Population</span></span><br><span class="line">    <span class="built_in">vector</span>&lt;Solution&gt; selection; <span class="comment">// Selection of population</span></span><br><span class="line">    <span class="built_in">vector</span>&lt;Solution&gt; generation;    <span class="comment">// Generation of Selection</span></span><br><span class="line"></span><br><span class="line">    GeneAlgorithm(<span class="keyword">int</span> size, <span class="keyword">int</span> crossRate, <span class="keyword">int</span> mutationRate, <span class="keyword">int</span> &amp;facilityNum, <span class="keyword">int</span> &amp;customerNum, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &amp;capicity, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &amp;demand);</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Selection</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &amp;open, <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &gt; &amp;allocate, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &amp;capicity, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &amp;demand)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">CrossAndMutate</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &amp;capicity, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &amp;open, <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &gt; &amp;allocate, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &amp;demand)</span></span>;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; Mutation(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &amp;g);</span><br><span class="line">    <span class="function">Solution <span class="title">bestSolution</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &amp;open, <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &gt; &amp;allocate, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &amp;capicity, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &amp;demand)</span></span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>main.cpp</p>
+  <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">performGA</span><span class="params">(Instance &amp;instance, <span class="keyword">int</span> index, FILE* result, <span class="keyword">int</span> ga_size, <span class="keyword">int</span> ga_crossRate, <span class="keyword">int</span> ga_mutationRate)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">performHC</span><span class="params">(Instance &amp;instance, <span class="keyword">int</span> index, FILE* result)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> ga_size, ga_crossRate, ga_mutationRate;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"GA: Population Size, CrossOver Rate, Mutation Rate: "</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; ga_size &gt;&gt; ga_crossRate &gt;&gt; ga_mutationRate;</span><br><span class="line"></span><br><span class="line">    FILE* resultGA = fopen(<span class="string">"resultGA.csv"</span>, <span class="string">"w"</span>);</span><br><span class="line">    FILE* resultHC = fopen(<span class="string">"resultHC.csv"</span>, <span class="string">"w"</span>);</span><br><span class="line">    <span class="keyword">if</span> (resultGA == <span class="literal">nullptr</span>) &#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">"Fail to open file: resultGA.csv"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (resultHC == <span class="literal">nullptr</span>) &#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">"Fail to open file: resultHC.csv"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">fprintf</span>(resultGA, <span class="string">"%s\n"</span>, <span class="string">"Instance,Time,Cost,FacilityState,CustomerState"</span>);</span><br><span class="line">    <span class="built_in">fprintf</span>(resultHC, <span class="string">"%s\n"</span>, <span class="string">"Instance,Time,Cost,FacilityState,CustomerState"</span>);	</span><br><span class="line"></span><br><span class="line">    <span class="built_in">string</span> filePath;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">71</span>; ++i) &#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">"START Read File..."</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        <span class="built_in">string</span> instancePath = <span class="string">"../Instance/p"</span> + <span class="built_in">std</span>::to_string(i);</span><br><span class="line">        <span class="function">Instance <span class="title">instance</span><span class="params">(instancePath)</span></span>;</span><br><span class="line">        performHC(instance, i, resultHC);</span><br><span class="line">        performGA(instance, i, resultGA, ga_size, ga_crossRate, ga_mutationRate);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    fclose(resultGA);</span><br><span class="line">    fclose(resultHC);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><p>完整代码见<a href="https://github.com/xwy27/CFL-Problem/tree/master/code" target="_blank" rel="noopener">Github</a><br><em>内带代码调用注释</em></p>
+<h2 id="Comparison"><a href="#Comparison" class="headerlink" title="Comparison"></a>Comparison</h2><p>下面来比较一下两个算法的结果。完整结果见<a href="https://github.com/xwy27/CFL-Problem/tree/master/Results" target="_blank" rel="noopener">Github</a>，这里列举每个算法的前三个和最后三个算例的结果。</p>
+<p>可以很明显的看出，在较为简单的算例(前3个)，GA 和 HC 的运行时间相近，但是 GA 得到的结果比 HC 要好得多，这也能验证 HC 的缺点，很难跳出局部最优解。</p>
+<p>但是在后面较为复杂的例子(可以比对算例33-37)，HC 的运算速度较 GA 快，但是结果却十分的差，GA 运行时间几乎是 HC 的3 倍，但是解的优化是 HC 的两倍。</p>
+<p>表格更明显的一个地方：工厂的开关状态，对于 HC 来说，它的选择基本是开设全部工厂，然后调整分配成本，来达到最优，这又是局部的一种体现，它并没有考察到开设成本。而对于 GA 来说，它开设工厂是有选择的。</p>
+<h3 id="Result-for-Genetic-Algorithm"><a href="#Result-for-Genetic-Algorithm" class="headerlink" title="Result for Genetic Algorithm"></a>Result for Genetic Algorithm</h3><table>
+<thead>
+<tr>
+<th style="text-align:center">Instance</th>
+<th style="text-align:center">Time(s)</th>
+<th style="text-align:center">Cost</th>
+<th style="text-align:center">FacilityState</th>
+<th style="text-align:center">CustomerState</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">9272</td>
+<td style="text-align:center">1 0 1 1 1 1 1 0 1 1</td>
+<td style="text-align:center">9 3 6 7 4 9 3 5 5 6 10 1 4 3 9 4 5 1 10 5 4 3 7 5 3 6 4 6 1 6 3 7 1 1 10 5 5 4 1 5 6 9 4 6 5 1 5 1 5 4</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">8063</td>
+<td style="text-align:center">1 1 1 1 1 1 0 0 1 1</td>
+<td style="text-align:center">9 3 2 6 4 9 3 5 5 2 10 1 4 3 9 4 5 1 10 5 4 3 10 5 3 6 2 6 1 6 3 6 1 4 10 5 5 4 1 5 2 9 2 6 5 1 5 1 5 1</td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">9788</td>
+<td style="text-align:center">1 1 1 1 1 1 1 0 1 1</td>
+<td style="text-align:center">9 3 2 7 4 9 3 5 5 2 10 9 4 3 1 4 3 1 10 5 4 5 7 5 3 6 2 6 1 6 3 7 1 4 10 5 5 4 1 5 2 9 2 6 5 1 5 1 5 1</td>
+</tr>
+<tr>
+<td style="text-align:center">…</td>
+<td style="text-align:center">…</td>
+<td style="text-align:center">…</td>
+<td style="text-align:center">…</td>
+<td style="text-align:center">…</td>
+</tr>
+<tr>
+<td style="text-align:center">69</td>
+<td style="text-align:center">56</td>
+<td style="text-align:center">43845</td>
+<td style="text-align:center">1 1 1 0 0 1 1 1 1 1 1 1 1 0 1 0 1 1 1 1 1 1 1 0 1 1 1 1 1 1</td>
+<td style="text-align:center">19 7 28 1 22 13 22 18 25 28 27 29 15 2 29 8 2 18 19 28 18 28 6 25 18 13 28 18 30 17 27 20 27 17 28 13 21 9 25 22 23 11 13 10 9 20 9 22 15 29 25 17 3 17 21 13 19 10 23 8 20 25 8 15 10 12 2 11 20 13 19 7 27 21 11 11 11 1 9 17 11 3 10 26 7 11 7 25 23 26 12 12 12 12 3 2 12 7 1 29 20 17 13 19 30 18 7 17 19 2 18 30 26 26 13 9 29 8 19 21 15 12 29 13 10 23 22 13 15 10 19 3 8 9 21 27 2 11 1 2 13 22 7 26 13 25 25 17 19 26 25 18 18 1 9 12 6 17 11 9 2 26 6 25 3 29 6 30 9 22 2 21 27 21 27 3 22 30 27 21 6 3 22 15 29 11 7 6 18 22 25 25 20 7 8 20 19 1 18 20</td>
+</tr>
+<tr>
+<td style="text-align:center">70</td>
+<td style="text-align:center">83</td>
+<td style="text-align:center">59837</td>
+<td style="text-align:center">1 1 1 0 0 1 1 0 1 0 1 1 1 1 1 1 1 1 1 1 1 1 0 1 1 1 1 1 0 0</td>
+<td style="text-align:center">12 12 6 28 3 15 22 28 26 13 27 18 11 24 12 12 2 11 19 20 28 17 3 25 24 19 1 27 27 16 20 27 27 17 28 13 24 21 25 17 19 9 13 27 21 20 14 25 20 21 1 3 17 25 15 7 25 27 28 12 27 1 19 9 24 26 3 15 26 12 1 13 15 21 24 11 2 3 21 17 11 3 9 26 27 14 7 18 25 19 25 27 20 12 28 2 13 20 18 19 18 16 26 26 7 3 20 25 28 21 14 20 28 13 7 21 20 26 18 9 15 12 18 20 9 17 3 13 20 1 13 19 26 20 2 9 9 14 18 9 12 22 13 26 12 6 3 16 19 26 25 11 14 11 2 19 22 16 14 14 21 25 3 24 1 28 24 20 2 17 14 14 20 21 27 3 3 21 20 24 6 16 17 20 13 27 18 11 11 25 17 3 13 7 13 12 19 22 11 7</td>
+</tr>
+<tr>
+<td style="text-align:center">71</td>
+<td style="text-align:center">37</td>
+<td style="text-align:center">50943</td>
+<td style="text-align:center">1 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 1 0 1 1 1 1 1 1 1</td>
+<td style="text-align:center">19 20 22 12 1 18 16 29 1 29 30 18 11 14 15 19 24 15 22 25 12 25 25 28 15 19 19 29 30 3 20 7 7 17 19 7 15 4 1 17 19 10 20 18 9 7 4 22 29 10 28 25 3 22 9 13 19 10 19 28 27 1 28 14 4 8 22 27 29 12 8 7 11 30 11 10 4 24 24 28 24 11 27 26 30 15 5 1 3 8 12 7 13 26 11 14 29 12 18 29 18 22 26 8 5 1 5 3 17 14 20 5 25 7 13 4 28 8 1 11 4 26 3 20 10 25 1 12 15 18 29 22 13 18 6 9 14 15 29 3 13 28 15 12 26 6 19 16 22 26 28 18 22 1 11 20 22 22 4 24 4 18 11 3 6 29 6 27 4 3 6 9 20 15 27 6 28 15 30 11 24 22 22 24 13 9 29 9 3 22 3 22 15 19 8 12 26 3 3 7</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Result-for-Hill-Climbing-Algorithm"><a href="#Result-for-Hill-Climbing-Algorithm" class="headerlink" title="Result for Hill Climbing Algorithm"></a>Result for Hill Climbing Algorithm</h3><table>
+<thead>
+<tr>
+<th style="text-align:center">Instance</th>
+<th style="text-align:center">Time(s)</th>
+<th style="text-align:center">Cost</th>
+<th style="text-align:center">FacilityState</th>
+<th style="text-align:center">CustomerState</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">10854</td>
+<td style="text-align:center">1 1 1 1 1 1 1 1 1 1</td>
+<td style="text-align:center">9 3 6 7 4 9 3 10 10 6 10 1 4 3 9 4 10 1 7 8 4 8 7 10 6 6 2 6 1 6 7 7 1 3 10 5 5 4 1 10 6 9 2 6 8 1 10 1 5 4</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">9218</td>
+<td style="text-align:center">1 1 1 1 1 1 1 1 1 1</td>
+<td style="text-align:center">8 3 2 7 2 9 3 10 8 2 10 9 4 3 9 4 3 1 7 8 6 8 7 5 6 6 2 6 1 6 7 7 1 3 10 5 5 4 1 10 6 9 2 7 8 1 10 1 8 1</td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">10777</td>
+<td style="text-align:center">1 1 1 1 1 1 1 1 1 1</td>
+<td style="text-align:center">8 3 2 7 2 9 3 5 5 6 10 9 4 3 9 4 5 1 10 8 6 8 7 5 6 6 2 6 1 6 7 7 1 4 10 5 5 4 1 5 6 9 2 6 8 1 10 4 5 4</td>
+</tr>
+<tr>
+<td style="text-align:center">69</td>
+<td style="text-align:center">47</td>
+<td style="text-align:center">35788</td>
+<td style="text-align:center">1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</td>
+<td style="text-align:center">19 20 22 23 3 13 16 28 23 29 5 15 14 2 20 19 2 11 23 28 19 17 6 25 11 19 28 15 30 3 20 5 5 17 28 7 21 9 28 16 19 10 7 30 4 27 4 22 20 15 28 23 22 17 21 7 12 10 19 8 30 1 8 21 14 12 24 15 20 26 19 13 7 10 24 24 14 24 14 23 11 1 10 8 30 14 5 3 28 8 29 7 8 26 3 4 28 7 1 29 15 16 13 19 5 1 30 28 23 4 20 30 28 13 13 9 29 8 11 9 10 12 18 20 27 23 3 7 27 18 12 22 12 11 14 10 2 4 29 11 13 23 7 26 26 6 25 16 28 26 28 18 24 1 4 12 3 16 4 4 14 28 11 3 6 28 6 30 2 22 2 21 20 15 27 3 1 11 30 11 3 22 22 20 13 9 20 24 1 22 3 22 7 5 8 13 8 16 11 22</td>
+</tr>
+<tr>
+<td style="text-align:center">…</td>
+<td style="text-align:center">…</td>
+<td style="text-align:center">…</td>
+<td style="text-align:center">…</td>
+<td style="text-align:center">…</td>
+</tr>
+<tr>
+<td style="text-align:center">70</td>
+<td style="text-align:center">49</td>
+<td style="text-align:center">59980</td>
+<td style="text-align:center">1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</td>
+<td style="text-align:center">19 20 22 28 6 30 16 18 23 18 30 15 14 2 15 19 2 21 23 18 19 17 2 25 11 28 28 15 30 2 27 27 5 17 28 5 21 9 25 22 19 10 7 30 21 27 14 22 27 15 1 22 3 22 21 7 29 10 19 12 30 1 8 21 14 12 24 15 15 26 8 13 27 10 24 24 21 2 21 23 14 11 10 26 30 14 5 6 28 8 29 5 12 26 24 2 29 7 11 29 15 16 13 19 5 1 30 25 23 4 27 30 28 7 7 9 29 12 15 21 27 12 18 27 27 17 3 29 27 18 29 25 13 21 2 10 2 4 15 15 13 23 20 12 26 6 25 16 28 26 1 18 24 18 14 29 6 16 4 14 14 18 11 3 24 28 2 30 2 22 2 21 15 15 27 3 1 21 30 11 2 22 3 20 7 9 29 14 1 22 3 22 5 30 8 5 8 2 11 27</td>
+</tr>
+<tr>
+<td style="text-align:center">71</td>
+<td style="text-align:center">47</td>
+<td style="text-align:center">41641</td>
+<td style="text-align:center">1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</td>
+<td style="text-align:center">19 20 22 23 3 13 16 28 23 18 5 18 24 2 20 19 2 21 23 1 28 17 6 25 24 19 23 15 30 22 20 27 5 17 28 5 21 9 25 16 8 10 7 27 9 27 14 22 20 15 25 17 25 22 9 7 12 10 23 8 5 1 8 9 14 12 6 15 20 12 8 13 20 10 6 24 21 6 9 25 24 18 10 26 5 14 5 3 28 8 18 20 12 12 3 2 29 7 1 29 18 16 12 8 5 1 5 25 23 4 15 5 28 7 13 9 29 8 18 9 27 12 18 27 27 17 22 12 27 18 29 25 12 24 2 10 2 4 18 15 13 23 7 12 26 3 25 16 28 26 25 18 24 1 9 29 3 16 4 14 2 28 24 25 6 28 6 5 2 22 2 21 15 15 27 3 1 15 30 11 6 16 25 20 13 10 29 24 1 22 3 22 7 5 8 13 8 16 11 5</td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Algorithms/" rel="tag"># Algorithms</a>
+          
+            <a href="/tags/Leetcode/" rel="tag"># Leetcode</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Algorithms/duplicateNumber/" rel="next" title="Leetcode-FOURTEEN-duplicateNumber">
+                <i class="fa fa-chevron-left"></i> Leetcode-FOURTEEN-duplicateNumber
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Xu Weiyuan</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">48</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#CFL-Problem"><span class="nav-number">1.</span> <span class="nav-text">CFL-Problem</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Description"><span class="nav-number">1.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Data-File-Format"><span class="nav-number">1.2.</span> <span class="nav-text">Data File Format</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Analysis"><span class="nav-number">1.3.</span> <span class="nav-text">Analysis</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Algorithm-Design"><span class="nav-number">1.4.</span> <span class="nav-text">Algorithm Design</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hill-Climbing-Algorithm"><span class="nav-number">1.4.1.</span> <span class="nav-text">Hill Climbing Algorithm</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Genetic-Algorithm"><span class="nav-number">1.4.2.</span> <span class="nav-text">Genetic Algorithm</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Architecture"><span class="nav-number">1.5.</span> <span class="nav-text">Architecture</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Code"><span class="nav-number">1.5.1.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Comparison"><span class="nav-number">1.6.</span> <span class="nav-text">Comparison</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Result-for-Genetic-Algorithm"><span class="nav-number">1.6.1.</span> <span class="nav-text">Result for Genetic Algorithm</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Result-for-Hill-Climbing-Algorithm"><span class="nav-number">1.6.2.</span> <span class="nav-text">Result for Hill Climbing Algorithm</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Xu Weiyuan</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+  
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>
