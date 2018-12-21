@@ -87,12 +87,12 @@
 <meta property="og:site_name" content="Xuwy Blog">
 <meta property="og:description" content="CFL-ProblemCapacitated Facilities Location Problem - the project for Algorithm Course.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/Algorithms/CFLProblem/CFLProblem/GA.png">
-<meta property="og:updated_time" content="2018-12-21T08:14:08.870Z">
+<meta property="og:image" content="http://yoursite.com/Algorithms/CFLProblem/GA.png">
+<meta property="og:updated_time" content="2018-12-21T08:34:47.979Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CFLProblem">
 <meta name="twitter:description" content="CFL-ProblemCapacitated Facilities Location Problem - the project for Algorithm Course.">
-<meta name="twitter:image" content="http://yoursite.com/Algorithms/CFLProblem/CFLProblem/GA.png">
+<meta name="twitter:image" content="http://yoursite.com/Algorithms/CFLProblem/GA.png">
 
 
 
@@ -365,7 +365,7 @@
 <p><em>两个算法都不是很难，建议先了解，具体流程不在此介绍</em></p>
 <p>为何说爬山算法是贪婪的呢？因为在每一次的邻域选择时，它选择的是最优的那个解。但是这样的选择策略是没办法保证一定能找到最优解的，因为最优解可能是通过其他较次解得到的。所以爬山算法的缺点也很明显，找到的解可能是<strong>局部最优解</strong>。</p>
 <p>至于遗传算法，它模仿自然界中的种群繁衍过程。每一次迭代在种群中选择出存活个体，存活个体间进行交叉变异，生成下一代并和存活个体共同构成下一个种群。</p>
-<p>大概过程如图：<br><img src="/Algorithms/CFLProblem/./CFLProblem/GA.png" alt="GA"></p>
+<p>大概过程如图：<br><img src="/Algorithms/CFLProblem/GA.png" alt="GA"></p>
 <p>这里先介绍一下对于解的定义。题目的关键是分配工厂给顾客，所以我们将解定义为一个数组，数组长度为顾客数量，数组元素为每一个顾客分配的工厂。这样的解，对于各种操作都是十分方便的：</p>
 <ul>
 <li><p>合法性</p>
@@ -430,7 +430,8 @@
 <p>可以很明显的看出，在较为简单的算例(前3个)，GA 和 HC 的运行时间相近，但是 GA 得到的结果比 HC 要好得多，这也能验证 HC 的缺点，很难跳出局部最优解。</p>
 <p>但是在后面较为复杂的例子(可以比对算例33-37)，HC 的运算速度较 GA 快，但是结果却十分的差，GA 运行时间几乎是 HC 的3 倍，但是解的优化是 HC 的两倍。</p>
 <p>表格更明显的一个地方：工厂的开关状态，对于 HC 来说，它的选择基本是开设全部工厂，然后调整分配成本，来达到最优，这又是局部的一种体现，它并没有考察到开设成本。而对于 GA 来说，它开设工厂是有选择的。</p>
-<h3 id="Result-for-Genetic-Algorithm"><a href="#Result-for-Genetic-Algorithm" class="headerlink" title="Result for Genetic Algorithm"></a>Result for Genetic Algorithm</h3><table>
+<h3 id="Result-for-Genetic-Algorithm"><a href="#Result-for-Genetic-Algorithm" class="headerlink" title="Result for Genetic Algorithm"></a>Result for Genetic Algorithm</h3><div class="table-container">
+<table>
 <thead>
 <tr>
 <th style="text-align:center">Instance</th>
@@ -492,7 +493,9 @@
 </tr>
 </tbody>
 </table>
-<h3 id="Result-for-Hill-Climbing-Algorithm"><a href="#Result-for-Hill-Climbing-Algorithm" class="headerlink" title="Result for Hill Climbing Algorithm"></a>Result for Hill Climbing Algorithm</h3><table>
+</div>
+<h3 id="Result-for-Hill-Climbing-Algorithm"><a href="#Result-for-Hill-Climbing-Algorithm" class="headerlink" title="Result for Hill Climbing Algorithm"></a>Result for Hill Climbing Algorithm</h3><div class="table-container">
+<table>
 <thead>
 <tr>
 <th style="text-align:center">Instance</th>
@@ -554,6 +557,7 @@
 </tr>
 </tbody>
 </table>
+</div>
 
       
     </div>

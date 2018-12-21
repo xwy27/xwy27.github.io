@@ -390,7 +390,7 @@
 <h2 id="Further"><a href="#Further" class="headerlink" title="Further"></a>Further</h2><p>枚举的速度实在是太慢了，我们再来考虑一下题目：</p>
 <ol>
 <li>对于 g[1…n] 和 c[1…n]，如果 $\sum_{i=1}^{n}{g[i]} \lt \sum_{i=1}^{n}{c[i]}$，那么必然是不可达的，因为储存汽油不足以支持完成旅行的开销</li>
-<li>对于城市 i 和 j(i &lt; j)，如果 i 到 j 不可达，那么 $\forall k \in {k | i &lt; k &lt; j}$，k 到 j 亦不可达。这是很好理解的，从 i 出发，在到达城市 j 前的任一个城市 k 时，我们要么富余汽油，要么用光。所以，从 i 出发到 k 时，tank &gt;= 0，设富余量为 res。如果 i 到 j 不可达，那么，res + result[k, j] &lt; 0。这必然可以推出 result[k, j] &lt; 0，也就是 k 到 j 不可达。</li>
+<li>对于城市 i 和 j(i &lt; j)，如果 i 到 j 不可达，那么 $\forall k \in \{k | i &lt; k &lt; j\}$，k 到 j 亦不可达。这是很好理解的，从 i 出发，在到达城市 j 前的任一个城市 k 时，我们要么富余汽油，要么用光。所以，从 i 出发到 k 时，tank &gt;= 0，设富余量为 res。如果 i 到 j 不可达，那么，res + result[k, j] &lt; 0。这必然可以推出 result[k, j] &lt; 0，也就是 k 到 j 不可达。</li>
 </ol>
 <p>第一条性质，可以预先判断是否有解。第二条性质，可以帮助构造 $O(n)$ 的寻解算法：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">start = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">from</span> <span class="number">1</span> to n:</span><br><span class="line">  <span class="keyword">if</span> tank += g[i] - c[i] &lt; <span class="number">0</span>:</span><br><span class="line">    start = i + <span class="number">1</span></span><br><span class="line">    tank = <span class="number">0</span></span><br><span class="line"><span class="keyword">return</span> start</span><br></pre></td></tr></table></figure>
