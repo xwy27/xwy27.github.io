@@ -184,7 +184,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
           </a>
@@ -194,7 +194,7 @@
         <li class="menu-item menu-item-about">
           <a href="/about" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
             关于
           </a>
@@ -204,7 +204,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
           </a>
@@ -214,7 +214,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
             分类
           </a>
@@ -322,6 +322,17 @@
 
           
           
+             <span id="/Algorithms/SumofSubsequenceWidth/" class="leancloud_visitors" data-flag-title="Leetcode-EIGHT-SumofSubsequenceWidth">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
 
           
 
@@ -367,10 +378,10 @@
 <li>Output<br>6</li>
 <li>Explanation<br>Subsequences are [1], [2], [3], [2,1], [2,3], [1,3], [2,1,3].<br>The corresponding widths are 0, 0, 0, 1, 1, 2, 2.<br>The sum of these widths is 6.</li>
 </ul>
-<h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><p>题目的意思是很简单的，给定一个数组，求取数组的所有子序列的宽度和，其中子序列 $[a_1, a_2, …, a_n]$ 宽度定义为 $width = max \{a_1, a_2, …, a_n \} - min \{a_1, a_2, …, a_n \}$。</p>
-<p>注意到数组的长度和数组项的大小，如果直接暴力枚举，那么不用说，TL 是妥妥的。我们需要认真考虑。我们来思考一下，答案由什么构成？答案是所有子序列的宽度，也就是子序列中的最大值与最小值的差。那么，我们考量数组内的某一个元素 $a_i$。<strong>对于 $a_i$，它对答案做贡献时，它是所在子序列最大值，或者子序列最小值</strong>。到了这里，我们的算法结果就比较明显了。我们考虑的问题变成统计每一个 $a_i$，它作为子序列最小值的个数 min 和子序列最大值的个数 max。答案就是 </p>
-<script type="math/tex; mode=display">ans = \sum_{i=1}^{n} (max - min) \times a_i</script><p>首先，我们对数组排序。对于有序数组 $[a_1, a_2, …, a_i, … a_n]$，$a_i$ 作为子序列最大值，只存在于 $a_1, a_2, …, a_{i-1}$ 这些项与 $a_i$ 构成的子序列，而作为最小值，只存在于 $a_{i+1}, a_{i+2}, …, a_n$ 这些项与 $a_i$ 构成的子序列。那么</p>
-<script type="math/tex; mode=display">min = 2^{i}</script><script type="math/tex; mode=display">max = 2^{n - i - 1}</script><p>推出了这些数学式子，我们的算法只要对数组进行一次排序，一次扫描计算，就可以得出结果了。</p>
+<h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><p>题目的意思是很简单的，给定一个数组，求取数组的所有子序列的宽度和，其中子序列 $[a_1, a_2, …, a_n]$ 宽度定义为 $width = max {a_1, a_2, …, a_n } - min {a_1, a_2, …, a_n }$。</p>
+<p>注意到数组的长度和数组项的大小，如果直接暴力枚举，那么不用说，TL 是妥妥的。我们需要认真考虑。我们来思考一下，答案由什么构成？答案是所有子序列的宽度，也就是子序列中的最大值与最小值的差。那么，我们考量数组内的某一个元素 $a_i$。<strong>对于 $a_i$，它对答案做贡献时，它是所在子序列最大值，或者子序列最小值</strong>。到了这里，我们的算法结果就比较明显了。我们考虑的问题变成统计每一个 $a_i$，它作为子序列最小值的个数 min 和子序列最大值的个数 max。答案就是<br>$$ ans = \sum_{i=1}^{n} (max - min) \times a_i$$</p>
+<p>首先，我们对数组排序。对于有序数组 $[a_1, a_2, …, a_i, … a_n]$，$a_i$ 作为子序列最大值，只存在于 $a_1, a_2, …, a_{i-1}$ 这些项与 $a_i$ 构成的子序列，而作为最小值，只存在于 $a_{i+1}, a_{i+2}, …, a_n$ 这些项与 $a_i$ 构成的子序列。那么<br>$$min = 2^{i}$$<br>$$max = 2^{n - i - 1}$$</p>
+<p>推出了这些数学式子，我们的算法只要对数组进行一次排序，一次扫描计算，就可以得出结果了。</p>
 <h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">int</span> desyncio = []() &#123;</span><br><span class="line">    <span class="built_in">std</span>::ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="built_in">cin</span>.tie(<span class="literal">nullptr</span>);</span><br><span class="line">    <span class="built_in">cout</span>.tie(<span class="literal">nullptr</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;();</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">sumSubseqWidths</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; A)</span> </span>&#123;</span><br><span class="line">        sort(A.begin(), A.end());</span><br><span class="line">        <span class="keyword">const</span> <span class="keyword">long</span> mod = <span class="number">1e9</span> + <span class="number">7</span>;</span><br><span class="line">        <span class="keyword">long</span> res = <span class="number">0</span>, index = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> size = A.size();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; ++i) &#123;</span><br><span class="line">            res = (res + index * (A[i] - A[size<span class="number">-1</span>-i])) % mod;</span><br><span class="line">            index = (index &lt;&lt; <span class="number">1</span>) % mod;</span><br><span class="line">            res %= mod;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> res % mod;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
       
     </div>
@@ -382,6 +393,24 @@
 
     
 
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Xu Weiyuan
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yoursite.com/Algorithms/SumofSubsequenceWidth/" title="Leetcode-EIGHT-SumofSubsequenceWidth">http://yoursite.com/Algorithms/SumofSubsequenceWidth/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
     
 
     <footer class="post-footer">
@@ -745,6 +774,113 @@
 
 
   
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("AXyOmWOY3qILaFpeeQPwS83i-gzGzoHsz", "Buu4V6fdYjFx9e0tUByQ8bE2");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
 
   
 

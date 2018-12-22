@@ -186,7 +186,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
           </a>
@@ -196,7 +196,7 @@
         <li class="menu-item menu-item-about">
           <a href="/about" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
             关于
           </a>
@@ -206,7 +206,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
           </a>
@@ -216,7 +216,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
             分类
           </a>
@@ -324,6 +324,17 @@
 
           
           
+             <span id="/Algorithms/duplicateNumber/" class="leancloud_visitors" data-flag-title="Leetcode-FOURTEEN-duplicateNumber">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
 
           
 
@@ -385,8 +396,7 @@
 </li>
 </ul>
 <p>但是，题目的要求是时间复杂度小于 $O(n^2)$，空间复杂度在常量 $O(1)$ 级别，而且不能对原数组进行修改。这三条限制，是这道题最大的挑战，而且前面两种算法均不满足。</p>
-<h2 id="Linked-List-Cycle-Like"><a href="#Linked-List-Cycle-Like" class="headerlink" title="Linked List Cycle Like"></a>Linked List Cycle Like</h2><p>对于数组，我们把 $arr[1…n+1]$ 中的元素当作链表的节点，每一个元素 $arr[i]$ 是其指向的下一个节点的坐标。也就是说，$Node[i].next = arr[i], 1 \le i \le n + 1$。<br>我们取 $arr[0]$ 作为链表的入口。由于重复的只有一个数字，所以只要进入链表内，<strong>无论链表呈现何种链接状态，其中一个节点会被访问两次</strong>。<br>这个被访问两次的节点，就是我们要找的重复元素。<br>那么问题就变成了寻找一个在链表中查找回环的算法，且算法时间复杂度小于 $O(n^2)$，空间在常量 $O(1)$ 级别。<br>这个算法是很十分经典的，和数学中的追及问题一样。我们利用两个指针从链表入口开始遍历链表，一个步长为2的 fast 指针，一个步长为1的 slow 指针，也就是两个不同<em>访问速度</em>的指针。如果链表有回环，那么这两个指针一定会相遇。这时，我们令 fast 重新回到链表入口，让两个指针再次向前运动，但步长为1。这样，两个指针会再次相遇，相遇时的地方，就是回环入口，也就是我们要找的重复元素位置。<br>正确性证明如下：设从链表入口到回环入口的长度为 s，两个指针第一次相遇时，slow 走过的长度为 k，fast 走过的长度为 2k，环的长度为 r。那么，我们可以得到:</p>
-<script type="math/tex; mode=display">2k-k=k=nr, n \in 1,2...</script><script type="math/tex; mode=display">s=k-m=nr-m=(n-1)r+(r-m)</script><p>如果我们取 $n=1$，那么我们可以得到，$s=r-m$。所以，我们让 fast 在第一次相遇后，从链表入口以步长为1开始前进，那么我们可以在回环入口处让 fast 和 slow 相遇，二者这次走过的距离都是 $r-m$。</p>
+<h2 id="Linked-List-Cycle-Like"><a href="#Linked-List-Cycle-Like" class="headerlink" title="Linked List Cycle Like"></a>Linked List Cycle Like</h2><p>对于数组，我们把 $arr[1…n+1]$ 中的元素当作链表的节点，每一个元素 $arr[i]$ 是其指向的下一个节点的坐标。也就是说，$Node[i].next = arr[i], 1 \le i \le n + 1$。<br>我们取 $arr[0]$ 作为链表的入口。由于重复的只有一个数字，所以只要进入链表内，<strong>无论链表呈现何种链接状态，其中一个节点会被访问两次</strong>。<br>这个被访问两次的节点，就是我们要找的重复元素。<br>那么问题就变成了寻找一个在链表中查找回环的算法，且算法时间复杂度小于 $O(n^2)$，空间在常量 $O(1)$ 级别。<br>这个算法是很十分经典的，和数学中的追及问题一样。我们利用两个指针从链表入口开始遍历链表，一个步长为2的 fast 指针，一个步长为1的 slow 指针，也就是两个不同<em>访问速度</em>的指针。如果链表有回环，那么这两个指针一定会相遇。这时，我们令 fast 重新回到链表入口，让两个指针再次向前运动，但步长为1。这样，两个指针会再次相遇，相遇时的地方，就是回环入口，也就是我们要找的重复元素位置。<br>正确性证明如下：设从链表入口到回环入口的长度为 s，两个指针第一次相遇时，slow 走过的长度为 k，fast 走过的长度为 2k，环的长度为 r。那么，我们可以得到:<br>$$2k-k=k=nr, n \in 1,2…$$<br>$$s=k-m=nr-m=(n-1)r+(r-m)$$<br>如果我们取 $n=1$，那么我们可以得到，$s=r-m$。所以，我们让 fast 在第一次相遇后，从链表入口以步长为1开始前进，那么我们可以在回环入口处让 fast 和 slow 相遇，二者这次走过的距离都是 $r-m$。</p>
 <p>算法的时间复杂度为 $O(2n) = O(n)$，空间复杂度为 $O(1)$，而且没有修改数组，是满足要求的。</p>
 <h2 id="AC-Picture"><a href="#AC-Picture" class="headerlink" title="AC Picture"></a>AC Picture</h2><p><img src="/Algorithms/duplicateNumber/AC.jpg" alt="AC"></p>
 <h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">findDuplicate</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> fast = nums[nums[<span class="number">0</span>]], slow = nums[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">while</span> (fast != slow) &#123;</span><br><span class="line">        fast = nums[nums[fast]];</span><br><span class="line">        slow = nums[slow];</span><br><span class="line">    &#125;</span><br><span class="line">    fast = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (fast != slow) &#123;</span><br><span class="line">        fast = nums[fast];</span><br><span class="line">        slow = nums[slow];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> fast;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -401,6 +411,24 @@
 
     
 
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Xu Weiyuan
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yoursite.com/Algorithms/duplicateNumber/" title="Leetcode-FOURTEEN-duplicateNumber">http://yoursite.com/Algorithms/duplicateNumber/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
     
 
     <footer class="post-footer">
@@ -764,6 +792,113 @@
 
 
   
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("AXyOmWOY3qILaFpeeQPwS83i-gzGzoHsz", "Buu4V6fdYjFx9e0tUByQ8bE2");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
 
   
 

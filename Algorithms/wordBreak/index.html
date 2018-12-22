@@ -187,7 +187,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
           </a>
@@ -197,7 +197,7 @@
         <li class="menu-item menu-item-about">
           <a href="/about" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
             关于
           </a>
@@ -207,7 +207,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
           </a>
@@ -217,7 +217,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
             分类
           </a>
@@ -325,6 +325,17 @@
 
           
           
+             <span id="/Algorithms/wordBreak/" class="leancloud_visitors" data-flag-title="Leetcode-TEN-wordBreak">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
 
           
 
@@ -385,8 +396,8 @@
 </ol>
 <h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><p>题目意思为，给出一个字符串，和一个包含某些字符串的字典，判断给出字符串能否分割为字典内的字符串序列。如样例一，leetcode 和字典[“leet”, “code”]，这是可行的，因为 leetcode 可以分割为 “leet code”。</p>
 <p>我们来试试 dp (虽然这个 dp 和普通循环的算法差别不是特别大，希望看看其他大佬的想法)。<br>设输入字符串为 $str[0…n-1]$，字典为 $dict=[…]$。构造 $dp[0…n]$，其中 $dp[m], m \in [0, n]$ 表示 $str[0…m]$ 能否被分割为合法的字典串序列。<br><strong>原问题</strong>的解答就是 $dp[n]$。对于<strong>子问题：$dp[i]$ 的值</strong>，我们考量所有串 $str[j, i], j \in [0, i-1]$，当 $dp[j]$ 不合法时，那么无论串 $str[j, i]$ 是否合法，$dp[i]$ 都不合法；当 $dp[j]$ 合法时，那么 $dp[i]$ 合法性取决于串 $str[j, i]$ 的合法性。但是，对于 $dp[i]$ 的最终取值，它是所有 $j$ 决定的 $dp[i]$ 的值的或。可以考虑这个情况:<br>str = abcd，dict = [“a”, “bcd”]，dp[0…4] = {true, true, false, false, unknown}。<br>当前正在判断 $dp[4]$，当 $j = 3$ 时，计算得 $dp[4] = false$($dp[3] = fasle$)，但是，可以看到，继续计算到 $j = 1$ 时，计算得 $dp[4] = true$($dp[1] = true$ 且串 bcd 合法)，所以 $dp[4]$ 的值是所有求得的 $dp[4]$ 值的或。<br>对于 $dp[0]$，我们设为 true，因为空串属于字典是可以定义的。</p>
-<p>下面是计算式：</p>
-<script type="math/tex; mode=display">dp[i] = \bigvee\limits_{0 <= j < i} (dp[j] \land valid(substr(j, i - j)))</script><p>根据计算式子，我们写出伪代码：</p>
+<p>下面是计算式：<br>$$dp[i] = \bigvee\limits_{0 &lt;= j &lt; i} (dp[j] \land valid(substr(j, i - j)))$$</p>
+<p>根据计算式子，我们写出伪代码：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">dp[<span class="number">0.</span>..n] = false</span><br><span class="line">dp[<span class="number">0</span>] = true</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> [<span class="number">1</span> : n]:</span><br><span class="line">  <span class="keyword">for</span> j <span class="keyword">in</span> [i<span class="number">-1</span> : <span class="number">0</span>]:</span><br><span class="line">    <span class="comment"># unnecessary to compute when dp[j] = false in OR computation</span></span><br><span class="line">    <span class="keyword">if</span> (dp[j]):</span><br><span class="line">      <span class="keyword">if</span> (valid(substr(j, i-j))):</span><br><span class="line">        dp[i] = true</span><br><span class="line">        <span class="comment"># Valid break to next position because </span></span><br><span class="line">        <span class="comment"># the number of solutions is not important</span></span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> dp[n]</span><br></pre></td></tr></table></figure>
 <h3 id="AC-Picture"><a href="#AC-Picture" class="headerlink" title="AC Picture"></a>AC Picture</h3><p><img src="/Algorithms/wordBreak/wordbreak.jpg" alt="AC"></p>
 <h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">wordBreak</span><span class="params">(<span class="built_in">string</span> s, <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; &amp;dict)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> size = s.size();</span><br><span class="line">  <span class="built_in">vector</span>&lt;<span class="keyword">bool</span>&gt; dp(size + <span class="number">1</span>, <span class="literal">false</span>);</span><br><span class="line">  dp[<span class="number">0</span>] = <span class="literal">true</span>;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= size; ++i) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = i - <span class="number">1</span>; j &gt;= <span class="number">0</span>; --j) &#123;</span><br><span class="line">      <span class="keyword">if</span> (dp[j]) &#123; <span class="comment">// unnecessary to compute when dp[j] = false in OR computation</span></span><br><span class="line">        <span class="built_in">string</span> word = s.substr(j, i - j);</span><br><span class="line">        <span class="keyword">if</span> (find(dict.begin(), dict.end(), word) != dict.end()) &#123;</span><br><span class="line">          dp[i] = <span class="literal">true</span>;</span><br><span class="line">          <span class="comment">// Valid break to next position because </span></span><br><span class="line">          <span class="comment">// the number of solutions is not important</span></span><br><span class="line">          <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">return</span> dp[size];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -428,6 +439,24 @@
 
     
 
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Xu Weiyuan
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yoursite.com/Algorithms/wordBreak/" title="Leetcode-TEN-wordBreak">http://yoursite.com/Algorithms/wordBreak/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
     
 
     <footer class="post-footer">
@@ -791,6 +820,113 @@
 
 
   
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("AXyOmWOY3qILaFpeeQPwS83i-gzGzoHsz", "Buu4V6fdYjFx9e0tUByQ8bE2");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
 
   
 

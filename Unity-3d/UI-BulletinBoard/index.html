@@ -190,7 +190,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
           </a>
@@ -200,7 +200,7 @@
         <li class="menu-item menu-item-about">
           <a href="/about" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
             关于
           </a>
@@ -210,7 +210,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
           </a>
@@ -220,7 +220,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
             分类
           </a>
@@ -328,6 +328,17 @@
 
           
           
+             <span id="/Unity-3d/UI-BulletinBoard/" class="leancloud_visitors" data-flag-title="Unity-BulletinBoard">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
 
           
 
@@ -374,7 +385,6 @@
 <h3 id="创建信纸及任务信息"><a href="#创建信纸及任务信息" class="headerlink" title="创建信纸及任务信息"></a>创建信纸及任务信息</h3><p>我们通过 UGUI 来构建本次 UI 界面。首先，添加一个 canvas 画布，然后给画布添加 ScrollView 子对象，作为滚动展示区域。接着在 SrcollView 控件中的 Content 对象中添加 Button 和 Text 对象，其中 Button 实现点击展开与收缩信息的按钮，Text 作为信息。最终结构如下图：<br><img src="/Unity-3d/UI-BulletinBoard/paper.jpg" alt="structure"></p>
 <p>马上，我们给我们贴上信纸背景：给 Canvas 和 ScrollView 的 Image 组件设置 SourceImage 即可(没有组件可以自己添加)。这里的 SourceImage 接受图片精灵，我们导入图片的 Assets 后，将它的 Texture Type 设置成 Sprite(2D and UI)，即可。<br><img src="/Unity-3d/UI-BulletinBoard/bg.jpg" alt="sprite"><br><img src="/Unity-3d/UI-BulletinBoard/scrollview.jpg" alt="scrollview"></p>
 <p>接下里给 Content 添加 Vertical Layout Group 组件，使其中的对象呈垂直显示。参数设置如下：<br><img src="/Unity-3d/UI-BulletinBoard/vertical.jpg" alt="verticallayoutgroup"><br>参数的含义如下:</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -405,9 +415,7 @@
 </tr>
 </tbody>
 </table>
-</div>
 <p>然后，将 Button 的 Transition 设置成 None，因为我们不希望点击按钮有过渡动画。对于信息 Text，就自己设置样式了，不过这里是支持 <strong>Rich Text</strong> 的，所以可以做出各种样式的文本。下面是 Rich Text 的部分常用表达式：</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -418,7 +426,7 @@
 </thead>
 <tbody>
 <tr>
-<td>\<color=#ff0000ff>text\</color=#ff0000ff></td>
+<td>\&lt;color=#ff0000ff&gt;text\</td>
 <td>字体颜色，前6个十六进制符号表示 RGB，后六个表示 alpha</td>
 <td><font color="ff0000">text</font></td>
 </tr>
@@ -428,13 +436,12 @@
 <td><b>text</b></td>
 </tr>
 <tr>
-<td>\<size=20>text\</size=20></td>
+<td>\&lt;size=20&gt;text\</td>
 <td>字体大小</td>
 <td><font size="20">text</font></td>
 </tr>
 </tbody>
 </table>
-</div>
 <p>至此，运行结果应该是所有信息可以正常展示，如果滚动条或信息无法正常展示，可以调整 Text 和 Content 的 Height 让其显示完全。</p>
 <h3 id="信息展开动画"><a href="#信息展开动画" class="headerlink" title="信息展开动画"></a>信息展开动画</h3><p>UGUI 也可以完成这个动画设置，使用 animator 进行动画设置，这里我选择使用代码完成。</p>
 <p>我们使用<a href="https://blog.csdn.net/fdyshlk/article/details/72667814?locationNum=8&amp;fps=1" target="_blank" rel="noopener">协程技术</a>来完成这个动画效果(模仿帧动画)。</p>
@@ -456,6 +463,24 @@
 
     
 
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Xu Weiyuan
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yoursite.com/Unity-3d/UI-BulletinBoard/" title="Unity-BulletinBoard">http://yoursite.com/Unity-3d/UI-BulletinBoard/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
     
 
     <footer class="post-footer">
@@ -773,24 +798,7 @@
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
 
 
 
@@ -834,6 +842,130 @@
 
 
   
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("AXyOmWOY3qILaFpeeQPwS83i-gzGzoHsz", "Buu4V6fdYjFx9e0tUByQ8bE2");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
 
   
 
