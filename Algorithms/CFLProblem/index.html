@@ -88,7 +88,7 @@
 <meta property="og:description" content="CFL-ProblemCapacitated Facilities Location Problem - the project for Algorithm Course.">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/Algorithms/CFLProblem/GA.png">
-<meta property="og:updated_time" content="2018-12-21T13:05:00.165Z">
+<meta property="og:updated_time" content="2018-12-21T13:09:46.086Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CFLProblem">
 <meta name="twitter:description" content="CFL-ProblemCapacitated Facilities Location Problem - the project for Algorithm Course.">
@@ -431,13 +431,18 @@
 <p>但是在后面较为复杂的例子(可以比对算例33-37)，HC 的运算速度较 GA 快，但是结果却十分的差，GA 运行时间几乎是 HC 的3 倍，但是解的优化是 HC 的两倍。</p>
 <p>表格更明显的一个地方：工厂的开关状态，对于 HC 来说，它的选择基本是开设全部工厂，然后调整分配成本，来达到最优，这又是局部的一种体现，它并没有考察到开设成本。而对于 GA 来说，它开设工厂是有选择的。</p>
 <h3 id="Result-for-Genetic-Algorithm"><a href="#Result-for-Genetic-Algorithm" class="headerlink" title="Result for Genetic Algorithm"></a>Result for Genetic Algorithm</h3><style>
-    table th:nth-of-type(1),
-    table th:nth-of-type(2),
-    table th:nth-of-type(3) {
-        width: 100px;
-    }
+table th:nth-of-type(1),
+table th:nth-of-type(2),
+table th:nth-of-type(3) {
+    width: 50px;
+}
+
+table th:nth-of-type(4) {
+    width: 120px;
+}
 </style>
 
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -500,7 +505,9 @@
 </tr>
 </tbody>
 </table>
-<h3 id="Result-for-Hill-Climbing-Algorithm"><a href="#Result-for-Hill-Climbing-Algorithm" class="headerlink" title="Result for Hill Climbing Algorithm"></a>Result for Hill Climbing Algorithm</h3><table>
+</div>
+<h3 id="Result-for-Hill-Climbing-Algorithm"><a href="#Result-for-Hill-Climbing-Algorithm" class="headerlink" title="Result for Hill Climbing Algorithm"></a>Result for Hill Climbing Algorithm</h3><div class="table-container">
+<table>
 <thead>
 <tr>
 <th style="text-align:center">Instance</th>
@@ -562,6 +569,7 @@
 </tr>
 </tbody>
 </table>
+</div>
 
       
     </div>
