@@ -88,7 +88,7 @@
 <meta property="og:description" content="CFL-ProblemCapacitated Facilities Location Problem - the project for Algorithm Course.">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/Algorithms/CFLProblem/GA.png">
-<meta property="og:updated_time" content="2018-12-21T08:34:47.979Z">
+<meta property="og:updated_time" content="2018-12-21T13:05:00.165Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CFLProblem">
 <meta name="twitter:description" content="CFL-ProblemCapacitated Facilities Location Problem - the project for Algorithm Course.">
@@ -430,7 +430,14 @@
 <p>可以很明显的看出，在较为简单的算例(前3个)，GA 和 HC 的运行时间相近，但是 GA 得到的结果比 HC 要好得多，这也能验证 HC 的缺点，很难跳出局部最优解。</p>
 <p>但是在后面较为复杂的例子(可以比对算例33-37)，HC 的运算速度较 GA 快，但是结果却十分的差，GA 运行时间几乎是 HC 的3 倍，但是解的优化是 HC 的两倍。</p>
 <p>表格更明显的一个地方：工厂的开关状态，对于 HC 来说，它的选择基本是开设全部工厂，然后调整分配成本，来达到最优，这又是局部的一种体现，它并没有考察到开设成本。而对于 GA 来说，它开设工厂是有选择的。</p>
-<h3 id="Result-for-Genetic-Algorithm"><a href="#Result-for-Genetic-Algorithm" class="headerlink" title="Result for Genetic Algorithm"></a>Result for Genetic Algorithm</h3><div class="table-container">
+<h3 id="Result-for-Genetic-Algorithm"><a href="#Result-for-Genetic-Algorithm" class="headerlink" title="Result for Genetic Algorithm"></a>Result for Genetic Algorithm</h3><style>
+    table th:nth-of-type(1),
+    table th:nth-of-type(2),
+    table th:nth-of-type(3) {
+        width: 100px;
+    }
+</style>
+
 <table>
 <thead>
 <tr>
@@ -493,9 +500,7 @@
 </tr>
 </tbody>
 </table>
-</div>
-<h3 id="Result-for-Hill-Climbing-Algorithm"><a href="#Result-for-Hill-Climbing-Algorithm" class="headerlink" title="Result for Hill Climbing Algorithm"></a>Result for Hill Climbing Algorithm</h3><div class="table-container">
-<table>
+<h3 id="Result-for-Hill-Climbing-Algorithm"><a href="#Result-for-Hill-Climbing-Algorithm" class="headerlink" title="Result for Hill Climbing Algorithm"></a>Result for Hill Climbing Algorithm</h3><table>
 <thead>
 <tr>
 <th style="text-align:center">Instance</th>
@@ -557,7 +562,6 @@
 </tr>
 </tbody>
 </table>
-</div>
 
       
     </div>
@@ -599,6 +603,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Web/MPA-Vue/" rel="prev" title="MPA-Vue">
+                MPA-Vue <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -675,7 +683,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">48</span>
+                  <span class="site-state-item-count">49</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -686,7 +694,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -697,7 +705,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
