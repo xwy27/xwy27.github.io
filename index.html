@@ -249,6 +249,215 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Service-Computing/grpc/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Xu Weiyuan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Xuwy Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/Service-Computing/grpc/" itemprop="url">gRPC</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-19T18:14:31+08:00">
+                2019-01-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Service-Computing/" itemprop="url" rel="index">
+                    <span itemprop="name">Service-Computing</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/Service-Computing/grpc/" class="leancloud_visitors" data-flag-title="gRPC">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="gRPC-体验"><a href="#gRPC-体验" class="headerlink" title="gRPC 体验"></a>gRPC 体验</h1><h2 id="gRPC"><a href="#gRPC" class="headerlink" title="gRPC"></a>gRPC</h2><p>gRPC 是什么呢？它起源于 RPC(Remote Procedure Call)，远程过程调用。它帮助应用开发者从远程服务端直接获取服务而无需关心底层架构。官方介绍：</p>
+<blockquote>
+<p>在 gRPC 里客户端应用可以像调用本地对象一样直接调用另一台不同的机器上服务端应用的方法，使得您能够更容易地创建分布式应用和服务。与许多 RPC 系统类似，gRPC 也是基于以下理念：定义一个服务，指定其能够被远程调用的方法（包含参数和返回类型）。在服务端实现这个接口，并运行一个 gRPC 服务器来处理客户端调用。在客户端拥有一个存根能够像服务端一样的方法。</p>
+</blockquote>
+<p>综合来说，GRPC 是 Google 基于 RPC 而开发的通用 RPC 框架。为何会自称通用呢？因为它可以支持跨语言的客户端和服务端交互。</p>
+<p><img src="/Service-Computing/grpc/grpc.png" alt="gRPC"></p>
+<p>这是一个十分具有诱惑力的功能，它的存在和 Docker 一样，解决的就是一个”交叉”问题。那么它如何解决这个问题呢？答案就是 Protocol Buffer</p>
+<h2 id="Protocol-Buffer"><a href="#Protocol-Buffer" class="headerlink" title="Protocol Buffer"></a>Protocol Buffer</h2><p>Protocol Buffer 是 Google 开源的一套成熟的结构数据序列化机制。在 gRPC 中，使用 proto files 创建 gRPC 服务，用 protocol buffers 消息类型来定义方法参数和返回类型。更多的资料参阅 Protocol Buffers 的<a href="http://doc.oschina.net/https：/developers.google.com/protocol-buffers/docs/overview" target="_blank" rel="noopener">官方文档</a>。</p>
+<h2 id="开始使用-gRPC"><a href="#开始使用-gRPC" class="headerlink" title="开始使用 gRPC"></a>开始使用 gRPC</h2><h3 id="安装-gRPC-和-protocol-buffers"><a href="#安装-gRPC-和-protocol-buffers" class="headerlink" title="安装 gRPC 和 protocol buffers"></a>安装 gRPC 和 protocol buffers</h3><p>通过以下两条 Go 命令，我们可以把 Go语言版本的 protocol buffers 和 gRPC 下载到本地。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">go get -u google.golang.org/grpc</span><br><span class="line">go get -u github.com/golang/protobuf/protoc-gen-go</span><br></pre></td></tr></table></figure>
+<p>当然，go get 是很多问题的(对，我就是那个有问题的)，那么我们”曲线救国”:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/grpc/grpc-go.git $GOPATH/src/google.golang.org/grpc</span><br><span class="line">git clone https://github.com/golang/net.git $GOPATH/src/golang.org/x/net</span><br><span class="line">git clone https://github.com/golang/text.git $GOPATH/src/golang.org/x/text</span><br><span class="line">go get -u github.com/golang/protobuf/protoc-gen-go</span><br><span class="line">git clone https://github.com/google/go-genproto.git $GOPATH/src/google.golang.org/genproto</span><br><span class="line"></span><br><span class="line">cd $GOPATH/src/</span><br><span class="line">go install google.golang.org/grpc</span><br></pre></td></tr></table></figure>
+<h3 id="运行-HelloWorld"><a href="#运行-HelloWorld" class="headerlink" title="运行 HelloWorld"></a>运行 HelloWorld</h3><p>这个代码就在下载的 gRPC 中，我们先进入 examples 目录。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd $GOPATH/src/google.golang.org/grpc/examples</span><br></pre></td></tr></table></figure>
+<ol>
+<li>启动 Server</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> go run greeter_server/main.go</span><br></pre></td></tr></table></figure>
+<ol>
+<li>启动 Client</li>
+</ol>
+<p>另启终端：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> go run greeter_client/main.go</span><br></pre></td></tr></table></figure>
+<p>这时，就能在客户端看到 Hello World了。服务端也有了访问记录。</p>
+<p><img src="/Service-Computing/grpc/helloworld.jpg" alt="HelloWorld"></p>
+<h2 id="阅读源码"><a href="#阅读源码" class="headerlink" title="阅读源码"></a>阅读源码</h2><p>gRPC 的代码，更新 proto 文件，然后实现其中的接口。我们来看看它里面的代码。</p>
+<ol>
+<li>proto</li>
+</ol>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// The greeting service definition.</span></span><br><span class="line">service Greeter &#123;</span><br><span class="line">  <span class="comment">// Sends a greeting</span></span><br><span class="line">  rpc SayHello (HelloRequest) returns (HelloReply) &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// The request message containing the user's name.</span></span><br><span class="line">message HelloRequest &#123;</span><br><span class="line">  <span class="keyword">string</span> name = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// The response message containing the greetings</span></span><br><span class="line">message HelloReply &#123;</span><br><span class="line">  <span class="keyword">string</span> message = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>通俗易懂，它定义了一个 service，当收到 HelloRequest 的时候，回复一个 HelloReply。</p>
+<ol>
+<li>service</li>
+</ol>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// SayHello implements helloworld.GreeterServer</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(s *server)</span> <span class="title">SayHello</span><span class="params">(ctx context.Context, in *pb.HelloRequest)</span> <span class="params">(*pb.HelloReply, error)</span></span> &#123;</span><br><span class="line">	log.Printf(<span class="string">"Received: %v"</span>, in.Name)</span><br><span class="line">	<span class="keyword">return</span> &amp;pb.HelloReply&#123;Message: <span class="string">"Hello "</span> + in.Name&#125;, <span class="literal">nil</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在 service 的 main.go 中，实现 SayHello 接口，这样就完成了接口的实现了。</p>
+<h3 id="再次-Hello"><a href="#再次-Hello" class="headerlink" title="再次 Hello"></a>再次 Hello</h3><p>那么我们来改改代码，熟悉一下。</p>
+<ol>
+<li>proto</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">// The greeting service definition.</span><br><span class="line">service Greeter &#123;</span><br><span class="line">  // Sends a greeting</span><br><span class="line">  rpc SayHello (HelloRequest) returns (HelloReply) &#123;&#125;</span><br><span class="line">  // Sends another greeting</span><br><span class="line">  rpc SayHelloAgain (HelloRequest) returns (HelloReply) &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// The request message containing the user's name.</span><br><span class="line">message HelloRequest &#123;</span><br><span class="line">  string name = 1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// The response message containing the greetings</span><br><span class="line">message HelloReply &#123;</span><br><span class="line">  string message = 1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们增加了一个重新 helloworld 的接口。重新生成一下 proto 代码：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">protoc -I helloworld/ helloworld/helloworld.proto --go_out=plugins=grpc:helloworld</span><br></pre></td></tr></table></figure></p>
+<ol>
+<li>service</li>
+</ol>
+<p>新增了接口，我们要完成接口的定义：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">func (s *server) SayHelloAgain(ctx context.Context, in *pb.HelloRequest) (*pb.HelloReply, error) &#123;</span><br><span class="line">        return &amp;pb.HelloReply&#123;Message: "Hello again " + in.Name&#125;, nil</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>client</li>
+</ol>
+<p>在服务端调用一下，测试新接口：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">r, err = c.SayHelloAgain(ctx, &amp;pb.HelloRequest&#123;Name: name&#125;)</span><br><span class="line">if err != nil &#123;</span><br><span class="line">        log.Fatalf("could not greet: %v", err)</span><br><span class="line">&#125;</span><br><span class="line">log.Printf("Greeting: %s", r.Message)</span><br></pre></td></tr></table></figure>
+<ol>
+<li>测试</li>
+</ol>
+<p>全部完成，重新运行服务端和客户端。我们可以看到，客户端会输出：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Greeting: Hello world</span><br><span class="line">Greeting: Hello again world</span><br></pre></td></tr></table></figure></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这个只是 gRPC 的一个小例子。gRPC 还是很强大的。日后有需要，还要进一步学习。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/Web/MPA-Vue/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1775,181 +1984,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Algorithms/SumofSubsequenceWidth/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Xu Weiyuan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Xuwy Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/Algorithms/SumofSubsequenceWidth/" itemprop="url">Leetcode-EIGHT-SumofSubsequenceWidth</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-25T04:52:30+08:00">
-                2018-10-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Algorithms/" itemprop="url" rel="index">
-                    <span itemprop="name">Algorithms</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/Algorithms/SumofSubsequenceWidth/" class="leancloud_visitors" data-flag-title="Leetcode-EIGHT-SumofSubsequenceWidth">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="Leetcode-EIGHT-Mathematic"><a href="#Leetcode-EIGHT-Mathematic" class="headerlink" title="Leetcode-EIGHT-Mathematic"></a>Leetcode-EIGHT-Mathematic</h1><!-- TOC -->
-<ul>
-<li><a href="#leetcode-eight-mathematic">Leetcode-EIGHT-Mathematic</a><ul>
-<li><a href="#sumofsubsequencewidths-httpsleetcodecomproblemssum-of-subsequence-widths">SumofSubsequenceWidths</a><ul>
-<li><a href="#description">Description</a></li>
-<li><a href="#example">Example</a></li>
-<li><a href="#analysis">Analysis</a></li>
-<li><a href="#code">Code</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<!-- /TOC -->
-<h2 id="SumofSubsequenceWidths"><a href="#SumofSubsequenceWidths" class="headerlink" title="SumofSubsequenceWidths"></a><a href="https://leetcode.com/problems/sum-of-subsequence-widths" target="_blank" rel="noopener">SumofSubsequenceWidths</a></h2><h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>Given an array of integers A, consider all non-empty subsequences of A.</p>
-<p>For any sequence S, let the width of S be the difference between the maximum and minimum element of S.</p>
-<p>Return the sum of the widths of all subsequences of A.</p>
-<p>As the answer may be very large, return the answer modulo 10^9 + 7.</p>
-<p>Note:<br>1 &lt;= A.length &lt;= 20000<br>1 &lt;= A[i] &lt;= 20000</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/Algorithms/SumofSubsequenceWidth/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2000,7 +2034,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">49</span>
+                  <span class="site-state-item-count">50</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2059,7 +2093,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
