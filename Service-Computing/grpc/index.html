@@ -79,21 +79,21 @@
 
 
 
-<meta name="description" content="gRPC 体验gRPCgRPC 是什么呢？它起源于 RPC(Remote Procedure Call)，远程过程调用。它帮助应用开发者从远程服务端直接获取服务而无需关心底层架构。官方介绍：  在 gRPC 里客户端应用可以像调用本地对象一样直接调用另一台不同的机器上服务端应用的方法，使得您能够更容易地创建分布式应用和服务。与许多 RPC 系统类似，gRPC 也是基于以下理念：定义一个服务，指定其">
+<meta name="description" content="gRPC 体验">
 <meta name="keywords" content="Service-Computing">
 <meta property="og:type" content="article">
 <meta property="og:title" content="gRPC">
-<meta property="og:url" content="http://yoursite.com/Service-Computing/grpc/index.html">
+<meta property="og:url" content="http://xwy27.github.io/Service-Computing/grpc/index.html">
 <meta property="og:site_name" content="Xuwy Blog">
-<meta property="og:description" content="gRPC 体验gRPCgRPC 是什么呢？它起源于 RPC(Remote Procedure Call)，远程过程调用。它帮助应用开发者从远程服务端直接获取服务而无需关心底层架构。官方介绍：  在 gRPC 里客户端应用可以像调用本地对象一样直接调用另一台不同的机器上服务端应用的方法，使得您能够更容易地创建分布式应用和服务。与许多 RPC 系统类似，gRPC 也是基于以下理念：定义一个服务，指定其">
+<meta property="og:description" content="gRPC 体验">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/Service-Computing/grpc/grpc.png">
-<meta property="og:image" content="http://yoursite.com/Service-Computing/grpc/helloworld.jpg">
-<meta property="og:updated_time" content="2019-01-19T10:50:17.049Z">
+<meta property="og:image" content="http://xwy27.github.io/Service-Computing/grpc/grpc.png">
+<meta property="og:image" content="http://xwy27.github.io/Service-Computing/grpc/helloworld.jpg">
+<meta property="og:updated_time" content="2019-03-13T08:38:55.357Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="gRPC">
-<meta name="twitter:description" content="gRPC 体验gRPCgRPC 是什么呢？它起源于 RPC(Remote Procedure Call)，远程过程调用。它帮助应用开发者从远程服务端直接获取服务而无需关心底层架构。官方介绍：  在 gRPC 里客户端应用可以像调用本地对象一样直接调用另一台不同的机器上服务端应用的方法，使得您能够更容易地创建分布式应用和服务。与许多 RPC 系统类似，gRPC 也是基于以下理念：定义一个服务，指定其">
-<meta name="twitter:image" content="http://yoursite.com/Service-Computing/grpc/grpc.png">
+<meta name="twitter:description" content="gRPC 体验">
+<meta name="twitter:image" content="http://xwy27.github.io/Service-Computing/grpc/grpc.png">
 
 
 
@@ -123,7 +123,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/Service-Computing/grpc/"/>
+  <link rel="canonical" href="http://xwy27.github.io/Service-Computing/grpc/"/>
 
 
 
@@ -256,7 +256,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Service-Computing/grpc/">
+    <link itemprop="mainEntityOfPage" href="http://xwy27.github.io/Service-Computing/grpc/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Xu Weiyuan">
@@ -356,7 +356,8 @@
       
 
       
-        <h1 id="gRPC-体验"><a href="#gRPC-体验" class="headerlink" title="gRPC 体验"></a>gRPC 体验</h1><h2 id="gRPC"><a href="#gRPC" class="headerlink" title="gRPC"></a>gRPC</h2><p>gRPC 是什么呢？它起源于 RPC(Remote Procedure Call)，远程过程调用。它帮助应用开发者从远程服务端直接获取服务而无需关心底层架构。官方介绍：</p>
+        <h1 id="gRPC-体验"><a href="#gRPC-体验" class="headerlink" title="gRPC 体验"></a>gRPC 体验</h1><a id="more"></a>
+<h2 id="gRPC"><a href="#gRPC" class="headerlink" title="gRPC"></a>gRPC</h2><p>gRPC 是什么呢？它起源于 RPC(Remote Procedure Call)，远程过程调用。它帮助应用开发者从远程服务端直接获取服务而无需关心底层架构。官方介绍：</p>
 <blockquote>
 <p>在 gRPC 里客户端应用可以像调用本地对象一样直接调用另一台不同的机器上服务端应用的方法，使得您能够更容易地创建分布式应用和服务。与许多 RPC 系统类似，gRPC 也是基于以下理念：定义一个服务，指定其能够被远程调用的方法（包含参数和返回类型）。在服务端实现这个接口，并运行一个 gRPC 服务器来处理客户端调用。在客户端拥有一个存根能够像服务端一样的方法。</p>
 </blockquote>
@@ -373,12 +374,12 @@
 <ol>
 <li>启动 Server</li>
 </ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> go run greeter_server/main.go</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> go run greeter_server/main.go</span></span><br></pre></td></tr></table></figure>
 <ol>
 <li>启动 Client</li>
 </ol>
 <p>另启终端：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> go run greeter_client/main.go</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> go run greeter_client/main.go</span></span><br></pre></td></tr></table></figure>
 <p>这时，就能在客户端看到 Hello World了。服务端也有了访问记录。</p>
 <p><img src="/Service-Computing/grpc/helloworld.jpg" alt="HelloWorld"></p>
 <h2 id="阅读源码"><a href="#阅读源码" class="headerlink" title="阅读源码"></a>阅读源码</h2><p>gRPC 的代码，更新 proto 文件，然后实现其中的接口。我们来看看它里面的代码。</p>
@@ -433,7 +434,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://yoursite.com/Service-Computing/grpc/" title="gRPC">http://yoursite.com/Service-Computing/grpc/</a>
+    <a href="http://xwy27.github.io/Service-Computing/grpc/" title="gRPC">http://xwy27.github.io/Service-Computing/grpc/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -470,6 +471,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Software-Analysis-and-Design/software-analysis-hw-1/" rel="prev" title="software_analysis_hw_1">
+                software_analysis_hw_1 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -546,7 +551,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-count">51</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -557,7 +562,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -568,7 +573,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

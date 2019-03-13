@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Software Analysis and Design," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Software Analysis and Design Homework - 1">
+<meta name="keywords" content="Software Analysis and Design">
+<meta property="og:type" content="article">
+<meta property="og:title" content="software_analysis_hw_1">
+<meta property="og:url" content="http://xwy27.github.io/Software-Analysis-and-Design/software-analysis-hw-1/index.html">
+<meta property="og:site_name" content="Xuwy Blog">
+<meta property="og:description" content="Software Analysis and Design Homework - 1">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-03-13T08:38:07.682Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="software_analysis_hw_1">
+<meta name="twitter:description" content="Software Analysis and Design Homework - 1">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://xwy27.github.io/Software-Analysis-and-Design/software-analysis-hw-1/"/>
+
+
+
+
+
+  <title>software_analysis_hw_1 | Xuwy Blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/xwy27"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png" alt="Fork me on GitHub"></a>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Xuwy Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Learning Blog</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://xwy27.github.io/Software-Analysis-and-Design/software-analysis-hw-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Xu Weiyuan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Xuwy Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">software_analysis_hw_1</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-13T16:36:56+08:00">
+                2019-03-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Software-Analysis-and-Design/" itemprop="url" rel="index">
+                    <span itemprop="name">Software Analysis and Design</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/Software-Analysis-and-Design/software-analysis-hw-1/" class="leancloud_visitors" data-flag-title="software_analysis_hw_1">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Software-Analysis-and-Design-Homework-1"><a href="#Software-Analysis-and-Design-Homework-1" class="headerlink" title="Software Analysis and Design Homework - 1"></a>Software Analysis and Design Homework - 1</h1><a id="more"></a>
+<p>16340261 徐伟元</p>
+<h2 id="软件工程"><a href="#软件工程" class="headerlink" title="软件工程"></a>软件工程</h2><p>软件工程是将工程应用于软件设计，开发，实现，测试和维护的一种系统方法，同时，它也包含对于这种方法的研究。</p>
+<h2 id="导致-software-crisis-的本质原因、表现，述说克服软件危机的方法"><a href="#导致-software-crisis-的本质原因、表现，述说克服软件危机的方法" class="headerlink" title="导致 software crisis 的本质原因、表现，述说克服软件危机的方法"></a>导致 software crisis 的本质原因、表现，述说克服软件危机的方法</h2><ul>
+<li>本质原因<br>硬件快速发展带来的强大计算能力超过了开发软件有效利用它的能力。可以归结为以下两个方面：<ol>
+<li>软件的大量需求和软件生产力效率的矛盾</li>
+<li>软件系统的复杂性和软件开发方法的矛盾(没有一种通用的方法可以解决软件开发问题)</li>
+</ol>
+</li>
+<li>表现<ul>
+<li>软件超出预算</li>
+<li>软件运行时间过长</li>
+<li>软件效率低</li>
+<li>软件质量低</li>
+<li>软件无法达到预期要求</li>
+<li>软件难以管理且代码难以维护</li>
+<li>软件没有交付</li>
+</ul>
+</li>
+<li>克服方法<br>导致问题的根源有两个，第二条是无法解决的，因为软件开发没有通用适配的方法，所以从第一条原因下手，我们可以提高软件生成效率:<ol>
+<li>采用工程项目管理方法实施软件开发的组织管理</li>
+<li>采用成熟的软件开发技术和方法，开发和使用适当的软件工具</li>
+</ol>
+</li>
+</ul>
+<h2 id="软件生命周期"><a href="#软件生命周期" class="headerlink" title="软件生命周期"></a>软件生命周期</h2><p>软件生命周期，又可称为软件开发过程，它抽象地描述了软件从需求分析至废弃使用的所有阶段。其各个阶段实现了软件的需求定义与分析、设计、实现、测试、交付和维护，是软件开发时应该遵循的步骤。</p>
+<h2 id="SWEBoK-的-15-个知识域"><a href="#SWEBoK-的-15-个知识域" class="headerlink" title="SWEBoK 的 15 个知识域"></a>SWEBoK 的 15 个知识域</h2><ul>
+<li><p>软件需求<br>软件需求知识领域关注自身的启发，协商，分析，规范和认证。大家都认同的是，当这些方面表现不佳时，软件工程项目将十分容易受到攻击。软件需求表达了解决现实问题的软件产品的需求与约束，</p>
+</li>
+<li><p>软件设计<br>设计包含了定义架构，组件，接口和其他系统组件特征的过程和这些过程的结果。软件设计知识领域涵盖设计过程最终产品。软件设计过程是软件工程生命周期活动中的一个阶段。这个阶段中，对软件需求进行分析并完成将来作为基础架构的软件内部结构的描述和性能要求。软件设计的记过必须描述软件架构，也就是软件如何被分解为不同的组件且组件间的接口。它还必须描述组件的细节以便能够构建这些组件。</p>
+</li>
+<li><p>软件架构<br>软件架构指通过细节设计，编码，单元测试，集成测试，调试和验证的结合创建软件的详细过程。软件架构知识领域包括可以满足需求和设计约束的软件开发的相关主题。它涵盖软件架构基础，管理软件架构，架构技术，实际考虑和软件架构工具。</p>
+</li>
+<li><p>软件测试<br>测试是一项评估产品质量和通过识别缺陷来改进产品的活动。软件测试涉及在有限测试集上动态认证程序的预期行为。这些测试集是从(通常很大的)执行域中选择的。软件测试知识领域包含其基础知识，测试技巧，人机交互测试和评估，测试方法和实际考虑。</p>
+</li>
+<li><p>软件维护<br>软件维护包含增强现有功能，调整软件已使其可以运行在新的和改动过的环境中和改正缺陷。这些类别指完善，自适应和纠正性软件维护。软件维护知识领域包含软件维护基础(维护的性质和需求，维护类别，维护成本)，软件维护的关键问题(技术问题，管理问题，维护成本评估，软件维护测量)，维护过程，软件维护技术(程序理解，重新设计，逆向工程，重构，软件退役)，灾难恢复技术和软件维护工具。</p>
+</li>
+<li><p>软件配置管理<br>系统的配置是硬件，固件，软件的功能和/或物理特征或者这些的组合。它也可以被认为是为了满足特定的目的而根据特定构建流程组合的确定版本的硬件，固件或软件。软件配置管理因此是及时在不同点认证系统配置的原则，用于系统地控制配置变化和在整个软件生命周期维护完整性和可追溯性。软件配置管理知识领域涵盖软件配置管理的管理过程，软件配置识别，控制，状态核算，审计，软件发布管理与交付和软件配置管理工具。</p>
+</li>
+<li><p>软件工程管理<br>软件工程管理涉及规划，协调，测量，报告和项目/程序控制，以确保开发和维护软件是系统的，规范化的且量化的。软件工程管理知识领域涵盖启动和范围定义(确定和协商需求，可行性分析和需求的审查和修订)，软件项目规划(进度规划，工作量评估，成本，进度，资源分配，风险评估，质量计划)，软件项目制定(计量，报告，控制，收购和供应商合同管理)，产品验收，项目绩效审查和分析，项目结束和软件管理工具。</p>
+</li>
+<li><p>软件工程过程<br>软件工程知识领域关注软件生命周期过程的定义，实现，评估，测量，管理和改进。主题包括过程实现和改变(过程基础设施，过程实现和改变模型，和软件过程管理)，过程定义(软件生命周期模型和过程，过程定义，过程适应和自动化过程的符号)，过程评估模型和方法，测量(过程测量，产品测量，技术测量和测量结果质量)和软件过程工具。</p>
+</li>
+<li><p>软件工程模型和方法<br>软件工程模型和方法知识领域包含了解决多个生命周期状态的方法，其他知识领域包含确定生命周期的特定方法。涵盖的主题包括建模(软件工程模型原理和属性，语法 vs 语义 vs 不变量，前置条件，后置条件和不变量)，模型类别(信息，结构和行为模型)，分析(正确性分析，完整性，一致性，质量和相互作用，可追溯性和权衡分析)和软件开发方法(启发式方法，形式方法，原型方法和敏捷方法)。</p>
+</li>
+<li><p>软件质量<br>软件质量是软件生命周期普遍关注的，存在于许多 SWEBOK V3 知识领域中。此外，软件质量知识领域包括软件质量基础(软件工程文化，软件质量特征，软件质量价值和成本和软件质量改进)，软件质量管理过程(软件质量保证，认证和确认，审核和审计)和实际考量(缺陷特征，软件质量测量和软件质量工具)。</p>
+</li>
+<li><p>软件工程专业实践<br>软件工程专业实践关注软件工程师必须具备的知识，技巧和态度，以用一种专业，负责和正直的态度来时间软件工程。软件工程专业实践知识领域涵盖专业性(专业行为，专业协会，软件工程标准，雇佣合同和法律问题)，道德准则，动态小组(团队合作，认知问题复杂性，与利益相关者交互，不确定性和模糊性的处理，多元环境处理)和交流技巧。</p>
+</li>
+<li><p>软件工程经济学<br>软件工程经济学知识领域关注在商业环境中做出决策，以使技术决策和商业目标达成一致。涵盖主题包括软件工程经济学基础(提案，现金流，货币时间价值，计划事业，通货膨胀，货币贬值，替代和退休决策)，非营利性决策(成本效益分析，优化分析)，经济风险和不确定性评估(评估技术，基于风险和不确定性的决策)和多属性决策(价值和衡量尺度，补偿和非补偿技术)。</p>
+</li>
+<li><p>计算基础<br>计算基础知识领域涵盖对于软件工程实践必须的计算背景的基础主题。涵盖主题包括问题解决技术，抽象，算法和复杂度，编程基础，并行和分布式计算基础，计算机组成，操作系统和网络通信。</p>
+</li>
+<li><p>数学基础<br>数学基础知识领域涵盖对于软件工程实践必须的数学背景的基础主题。涵盖的主题包括集合，关系和函数，基础命题和谓词逻辑，证明技术，图和树，离散概率，语法和有限状态机，数论。</p>
+</li>
+<li><p>工程基础<br>工程基础知识领域涵盖对于软件工程实践必须的工程背景的基础主题。涵盖的主题包括经验方法和实验技术，统计分析，测量和指标，工程设计，模拟和建模，根本原因分析。</p>
+</li>
+</ul>
+<h2 id="简单解释-CMMI-的五个级别"><a href="#简单解释-CMMI-的五个级别" class="headerlink" title="简单解释 CMMI 的五个级别"></a>简单解释 CMMI 的五个级别</h2><ul>
+<li><p>Level 1 Initial<br>无序，过程无法预测，缺少管理，被动</p>
+</li>
+<li><p>Level 2 Managed<br>项目过程特征化，仍旧被动</p>
+</li>
+<li><p>Level 3 Defined<br>组织过程特征化，存储与主动(项目根据组织标准裁剪过程)</p>
+</li>
+<li><p>Level 4 Quantitatively Managed<br>过程经过测量和控制</p>
+</li>
+<li><p>Level 5 Optimizing<br>关注过程改进</p>
+</li>
+</ul>
+<h2 id="用自己语言简述-CMMI"><a href="#用自己语言简述-CMMI" class="headerlink" title="用自己语言简述 CMMI"></a>用自己语言简述 CMMI</h2><p>CMMI：Capability Maturity Model Integration，即能力成熟度模型集成，旨在帮助软件企业对软件工程过程进行管理和改进，增强开发与改进能力，从而能按时地、不超预算地开发出高质量的软件。其想法依据是：只要集中精力持续地建立有效的软件工程过程的基础结构，不断进行管理的实践和过程的改进，就可以克服软件开发中的困难。CMMI 为改进一个组织的各种过程提供了一个单一的集成化框架，新的集成模型框架消除了各个模型的不一致性，减少了模型间的重复，增加透明度和理解，建立了一个自动的、可扩展的框架，从总体上改进组织的质量和效率。CMMI 主要关注成本效益、明确重点、过程集中和灵活性四个方面。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Xu Weiyuan
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://xwy27.github.io/Software-Analysis-and-Design/software-analysis-hw-1/" title="software_analysis_hw_1">http://xwy27.github.io/Software-Analysis-and-Design/software-analysis-hw-1/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Software-Analysis-and-Design/" rel="tag"># Software Analysis and Design</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Service-Computing/grpc/" rel="next" title="gRPC">
+                <i class="fa fa-chevron-left"></i> gRPC
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Xu Weiyuan</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">51</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Software-Analysis-and-Design-Homework-1"><span class="nav-number">1.</span> <span class="nav-text">Software Analysis and Design Homework - 1</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#软件工程"><span class="nav-number">1.1.</span> <span class="nav-text">软件工程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#导致-software-crisis-的本质原因、表现，述说克服软件危机的方法"><span class="nav-number">1.2.</span> <span class="nav-text">导致 software crisis 的本质原因、表现，述说克服软件危机的方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#软件生命周期"><span class="nav-number">1.3.</span> <span class="nav-text">软件生命周期</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SWEBoK-的-15-个知识域"><span class="nav-number">1.4.</span> <span class="nav-text">SWEBoK 的 15 个知识域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简单解释-CMMI-的五个级别"><span class="nav-number">1.5.</span> <span class="nav-text">简单解释 CMMI 的五个级别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用自己语言简述-CMMI"><span class="nav-number">1.6.</span> <span class="nav-text">用自己语言简述 CMMI</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Xu Weiyuan</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+  
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("AXyOmWOY3qILaFpeeQPwS83i-gzGzoHsz", "Buu4V6fdYjFx9e0tUByQ8bE2");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>
