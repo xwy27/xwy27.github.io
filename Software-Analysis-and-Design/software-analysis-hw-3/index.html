@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="MOSAD,UWP," />
+  <meta name="keywords" content="Software Analysis and Design," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="Week 1啊，基础的事情都做完了，页面跳转这事情，很简单的，就是一个 Navigation，上一篇博客的时候就做完啦。但是，导航到了新页面，怎么回到原来的页面呢？这次就学习一下后退键把。">
-<meta name="keywords" content="MOSAD,UWP">
+<meta name="description" content="Software Analysis and Design Homework - 3">
+<meta name="keywords" content="Software Analysis and Design">
 <meta property="og:type" content="article">
-<meta property="og:title" content="UWP-BackRequest">
-<meta property="og:url" content="http://xwy27.github.io/UWP/backRequest/index.html">
+<meta property="og:title" content="software-analysis-hw-3">
+<meta property="og:url" content="http://xwy27.github.io/Software-Analysis-and-Design/software-analysis-hw-3/index.html">
 <meta property="og:site_name" content="Xuwy Blog">
-<meta property="og:description" content="Week 1啊，基础的事情都做完了，页面跳转这事情，很简单的，就是一个 Navigation，上一篇博客的时候就做完啦。但是，导航到了新页面，怎么回到原来的页面呢？这次就学习一下后退键把。">
+<meta property="og:description" content="Software Analysis and Design Homework - 3">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-25T16:07:50.535Z">
+<meta property="og:updated_time" content="2019-04-17T04:49:22.386Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="UWP-BackRequest">
-<meta name="twitter:description" content="Week 1啊，基础的事情都做完了，页面跳转这事情，很简单的，就是一个 Navigation，上一篇博客的时候就做完啦。但是，导航到了新页面，怎么回到原来的页面呢？这次就学习一下后退键把。">
+<meta name="twitter:title" content="software-analysis-hw-3">
+<meta name="twitter:description" content="Software Analysis and Design Homework - 3">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://xwy27.github.io/UWP/backRequest/"/>
+  <link rel="canonical" href="http://xwy27.github.io/Software-Analysis-and-Design/software-analysis-hw-3/"/>
 
 
 
 
 
-  <title>UWP-BackRequest | Xuwy Blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>software-analysis-hw-3 | Xuwy Blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -253,7 +253,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://xwy27.github.io/UWP/backRequest/">
+    <link itemprop="mainEntityOfPage" href="http://xwy27.github.io/Software-Analysis-and-Design/software-analysis-hw-3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Xu Weiyuan">
@@ -270,7 +270,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">UWP-BackRequest</h1>
+          <h1 class="post-title" itemprop="name headline">software-analysis-hw-3</h1>
         
 
         <div class="post-meta">
@@ -282,8 +282,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-18T12:03:16+08:00">
-                2018-03-18
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-17T08:56:42+08:00">
+                2019-04-17
               </time>
             
 
@@ -305,8 +305,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/UWP/" itemprop="url" rel="index">
-                    <span itemprop="name">UWP</span>
+                  <a href="/categories/Software-Analysis-and-Design/" itemprop="url" rel="index">
+                    <span itemprop="name">Software Analysis and Design</span>
                   </a>
                 </span>
 
@@ -322,7 +322,7 @@
 
           
           
-             <span id="/UWP/backRequest/" class="leancloud_visitors" data-flag-title="UWP-BackRequest">
+             <span id="/Software-Analysis-and-Design/software-analysis-hw-3/" class="leancloud_visitors" data-flag-title="software-analysis-hw-3">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -353,21 +353,133 @@
       
 
       
-        <h1 id="Week-1"><a href="#Week-1" class="headerlink" title="Week 1"></a>Week 1</h1><p>啊，基础的事情都做完了，页面跳转这事情，很简单的，就是一个 Navigation，上一篇博客的时候就做完啦。但是，导航到了新页面，怎么回到原来的页面呢？这次就学习一下<strong>后退键</strong>把。</p>
-<a id="more"></a>
-<h2 id="返回事件"><a href="#返回事件" class="headerlink" title="返回事件"></a>返回事件</h2><blockquote>
-<p>说到后退事件，先不要着急动手。假设，我们的程序有上百个页面，各自之间可以灵活的跳转。那每一个页面都有后退事件，额，又回到了无人车事件了吗？可恶。不过，怎么会有这么蠢的事情嘛。仔细看看自己的UWP项目架构，我们可以发现 app.xaml.cs 文件。这个文件包含了重要的应用程序事件的事件处理程序，如启动、挂起和其他一些，且可被所有page共有。所以，这次回退事件的完成，我们要在 app.xaml.cs 文件中完成。</p>
-<p>我们需要在文件中的 OnLaunched 函数加入如下语句：</p>
-</blockquote>
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">...</span><br><span class="line"><span class="comment">//Add after rootFrame is defined</span></span><br><span class="line">rootFrame.Navigated += OnNavigated;</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="comment">//Add at the trail of the function</span></span><br><span class="line">SystemNavigationManager.GetForCurrentView().BackRequested += BackRequested;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>第一个语句注册导航事件，第二个语句注册后退事件。注册了事件，那么我们就需要定义事件:</p>
-</blockquote>
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">OnNavigated</span>(<span class="params"><span class="keyword">object</span> sender, NavigationEventArgs e</span>) </span>&#123;</span><br><span class="line">    <span class="comment">//根据页面是否可以返回，在窗口显示返回按钮</span></span><br><span class="line">    SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = ((Frame)sender).CanGoBack ? AppViewBackButtonVisibility.Visible : AppViewBackButtonVisibility.Collapsed;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">BackRequested</span>(<span class="params"><span class="keyword">object</span> sender, BackRequestedEventArgs e</span>) </span>&#123;</span><br><span class="line">    Frame rootFrame = Window.Current.Content <span class="keyword">as</span> Frame;</span><br><span class="line">    <span class="keyword">if</span> (rootFrame == <span class="literal">null</span>)  <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//Navigate back if possible, and if the event has not already been handled .</span></span><br><span class="line">    <span class="keyword">if</span> (!e.Handled &amp;&amp; rootFrame.CanGoBack) &#123;</span><br><span class="line">        e.Handled = <span class="literal">true</span>;</span><br><span class="line">        rootFrame.GoBack();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>这样一来，程序就会在可以返回的时候，显示后退按钮并且返回上一个页面啦。</p>
-<p><em>题外话：程序怎么知道返回哪个界面？A:程序页面跳转信息在堆栈中存储</em></p>
-</blockquote>
+        <h1 id="Software-Analysis-and-Design-Homework-3"><a href="#Software-Analysis-and-Design-Homework-3" class="headerlink" title="Software Analysis and Design Homework - 3"></a>Software Analysis and Design Homework - 3</h1><a id="more"></a>
+<p>16340261 徐伟元</p>
+<h2 id="简答题"><a href="#简答题" class="headerlink" title="简答题"></a>简答题</h2><h3 id="瀑布模型、增量模型、螺旋模型与其优缺点"><a href="#瀑布模型、增量模型、螺旋模型与其优缺点" class="headerlink" title="瀑布模型、增量模型、螺旋模型与其优缺点"></a>瀑布模型、增量模型、螺旋模型与其优缺点</h3><ul>
+<li><p>瀑布模型</p>
+<p>从系统需求分析开始直到产品发布和维护，设计一系列阶段。每个阶段的输入来自于上一阶段的输出；每个阶段经过评审后进入下一个阶段；如果当前阶段出现问题，可以回退到上一阶段进行改进。这样的阶段工作如同瀑布不断往下流。</p>
+<ul>
+<li><p>优点</p>
+<ul>
+<li>将软件开发划分阶段，降低软件开发复杂度</li>
+<li>相较于直接写代码实现，更强调软件分析与设计工作</li>
+<li>阶段性评审可以及时发现并纠正软件开发中的错误</li>
+</ul>
+</li>
+<li><p>缺点</p>
+<ul>
+<li>缺乏灵活性，强调阶段执行的线性顺序</li>
+<li>容错性不高，在后期阶段发现前期阶段的问题，解决问题的工作量十分庞大(需要重新从早期阶段开始)</li>
+<li>通过文档审查的方式，项目进度容易被错误评估</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>增量模型</p>
+<p>对系统最核心/最清晰的需求进行分析，设计，实现，测试并集成到系统中，再按照优先级逐步实现后续需求。</p>
+<ul>
+<li><p>优点</p>
+<ul>
+<li>增强客户对系统信心，可以较早看到部分成果</li>
+<li>降低系统失败风险，拥有前期基础，不会造成前期系统崩溃</li>
+<li>提高系统稳定性和可维护性，出现问题可以快速定位增量位置，从而便于维护</li>
+</ul>
+</li>
+<li><p>缺点</p>
+<ul>
+<li>初期增量业务难以确定</li>
+<li>每次增量粒度难以选择</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>螺旋模型</p>
+<p>螺旋模型结合了瀑布模型与快速原型方法的特点，将软件开发分为四个阶段：制定计划，风险分析，工程实现和评审，其中风险分析阶段是螺旋模型的特点。它将软件项目划分成一个个更小的项目，对每个小项目，都进行风险分析与评估，从而达到控制系统风险的目的。</p>
+<ul>
+<li><p>优点</p>
+<ul>
+<li>灵活性，可以在项目的各个阶段进行变更</li>
+<li>分解小项目，成本控制更可行</li>
+<li>项目可控，客户始终参与每一次迭代，保证项目符合要求</li>
+</ul>
+</li>
+<li><p>缺点</p>
+<ul>
+<li>强调风险分析并要求客户接受</li>
+<li>风险的确定，分析与评估</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="统一过程三大特点以及与面向对象的方法的关系"><a href="#统一过程三大特点以及与面向对象的方法的关系" class="headerlink" title="统一过程三大特点以及与面向对象的方法的关系"></a>统一过程三大特点以及与面向对象的方法的关系</h3><ul>
+<li><p>三大特点</p>
+<ul>
+<li><p>风险驱动</p>
+<p>统一过程需要项目团队定位项目早期生命周期最严重的风险，且必须选择每次迭代的可交付成果，特别是在精化阶段，以确保首先解决最大的风险。</p>
+</li>
+<li><p>以体系结构为核心</p>
+<p>统一过程将系统架构视为项目团队开发项目的核心。因为没有一个单独的模型可以覆盖一个系统的各个方面，所以统一过程支持多架构模型。</p>
+</li>
+<li><p>迭代与增量</p>
+<p>统一过程是一个迭代增量开发过程。精化，构建，产品化阶段被分为一些列迭代过程。每一次迭代都会产生一个增量，它比之前的版本有着功能的改进或增加。</p>
+</li>
+</ul>
+</li>
+<li><p>与面向对象方法的关系</p>
+<p>统一过程是一种以用例驱动，以体系结构为核心的迭代增量过程。它由 UML 方法和工具支持，是一个面向对象的程序开发方法论。</p>
+</li>
+</ul>
+<h3 id="统一过程四个阶段的划分准则与每个阶段关键的里程碑"><a href="#统一过程四个阶段的划分准则与每个阶段关键的里程碑" class="headerlink" title="统一过程四个阶段的划分准则与每个阶段关键的里程碑"></a>统一过程四个阶段的划分准则与每个阶段关键的里程碑</h3><p>统一过程的四个阶段：初始阶段(Inception Phase)，精化阶段(Elaboration Phase)，构建阶段(Construction Phase)和交付阶段(Transition Phase)。</p>
+<h4 id="初始阶段-Inception-Phase"><a href="#初始阶段-Inception-Phase" class="headerlink" title="初始阶段(Inception Phase)"></a>初始阶段(Inception Phase)</h4><ul>
+<li><p>划分准则</p>
+<p>初始阶段是项目中最小的阶段，在这个阶段为系统建立业务案例(希姆验收规范，风险评估，所需资源估计和阶段计划等)，确定项目边界。</p>
+</li>
+<li><p>里程碑</p>
+<p>生命周期目标里程碑，包括一些重要的文档：项目构想，原始用例模型，原始业务风险评估等。</p>
+</li>
+</ul>
+<h4 id="精化阶段-Elaboration-Phase"><a href="#精化阶段-Elaboration-Phase" class="headerlink" title="精化阶段(Elaboration Phase)"></a>精化阶段(Elaboration Phase)</h4><ul>
+<li><p>划分准则</p>
+<p>分析问题领域，健全体系结构基础，定位已知风险因素，编制项目计划，创建用例图，概念图和架构图。</p>
+</li>
+<li><p>里程碑</p>
+<p>生命周期体系结构里程碑，包括风险分析文档，软件体系结构基线，项目计划，可执行的进化原型等。</p>
+</li>
+</ul>
+<h4 id="构建阶段-Construction-Phase"><a href="#构建阶段-Construction-Phase" class="headerlink" title="构建阶段(Construction Phase"></a>构建阶段(Construction Phase</h4><ul>
+<li><p>划分准则</p>
+<p>完成所有剩余家属构建和稳定业务需求功能的开发并测试，集成为产品。</p>
+</li>
+<li><p>里程碑</p>
+<p>初始运行能力里程碑，包括可运行的软件产品，用户手册等，它决定了产品是否可以在测试环境中进行部署。</p>
+</li>
+</ul>
+<h4 id="交付阶段-Transition-Phase"><a href="#交付阶段-Transition-Phase" class="headerlink" title="交付阶段(Transition Phase)"></a>交付阶段(Transition Phase)</h4><ul>
+<li><p>划分准则</p>
+<p>确保软件对用户可用，包括为发布做准备的产品测试，基于用户反馈的少量调整。</p>
+</li>
+<li><p>里程碑</p>
+<p>产品发布里程碑，确定最终目标是否实现，是否可以开始产品下一个版本的另一个开发周期。</p>
+</li>
+</ul>
+<h3 id="软件企业为什么能按固定节奏生产、固定周期发布软件产品？它给企业项目管理带来哪些好处？"><a href="#软件企业为什么能按固定节奏生产、固定周期发布软件产品？它给企业项目管理带来哪些好处？" class="headerlink" title="软件企业为什么能按固定节奏生产、固定周期发布软件产品？它给企业项目管理带来哪些好处？"></a>软件企业为什么能按固定节奏生产、固定周期发布软件产品？它给企业项目管理带来哪些好处？</h3><ul>
+<li><p>原因</p>
+<ol>
+<li>企业规范化管理</li>
+<li>基于统一过程的软件项目规划</li>
+<li>利用软件产品范围的弹性</li>
+<li>合理规划范围(20%业务决定80%满意度)</li>
+</ol>
+</li>
+<li><p>好处</p>
+<ol>
+<li>规范管理使得企业可以将复杂问题简单化，简单问题流程化，流程问题标准化，标准问题自动化</li>
+<li>统一过程项目规划帮助企业及时交付产品，量化生产效益</li>
+<li>固定节奏生产，固定周期发布软件产品可以帮助企业更好把控产品开发，及时调整企业资源(人力/物力)，获取最大收益</li>
+</ol>
+</li>
+</ul>
 
       
     </div>
@@ -388,7 +500,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://xwy27.github.io/UWP/backRequest/" title="UWP-BackRequest">http://xwy27.github.io/UWP/backRequest/</a>
+    <a href="http://xwy27.github.io/Software-Analysis-and-Design/software-analysis-hw-3/" title="software-analysis-hw-3">http://xwy27.github.io/Software-Analysis-and-Design/software-analysis-hw-3/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -403,9 +515,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/MOSAD/" rel="tag"># MOSAD</a>
-          
-            <a href="/tags/UWP/" rel="tag"># UWP</a>
+            <a href="/tags/Software-Analysis-and-Design/" rel="tag"># Software Analysis and Design</a>
           
         </div>
       
@@ -418,8 +528,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/UWP/bind/" rel="next" title="UWP-x:Bind">
-                <i class="fa fa-chevron-left"></i> UWP-x:Bind
+              <a href="/Software-Analysis-and-Design/software-analysis-hw-2/" rel="next" title="software_analysis_hw_2">
+                <i class="fa fa-chevron-left"></i> software_analysis_hw_2
               </a>
             
           </div>
@@ -427,10 +537,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/UWP/adaptiveUI/" rel="prev" title="UWP-AdaptiveUI">
-                UWP-AdaptiveUI <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -562,7 +668,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Week-1"><span class="nav-number">1.</span> <span class="nav-text">Week 1</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#返回事件"><span class="nav-number">1.1.</span> <span class="nav-text">返回事件</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Software-Analysis-and-Design-Homework-3"><span class="nav-number">1.</span> <span class="nav-text">Software Analysis and Design Homework - 3</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#简答题"><span class="nav-number">1.1.</span> <span class="nav-text">简答题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#瀑布模型、增量模型、螺旋模型与其优缺点"><span class="nav-number">1.1.1.</span> <span class="nav-text">瀑布模型、增量模型、螺旋模型与其优缺点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#统一过程三大特点以及与面向对象的方法的关系"><span class="nav-number">1.1.2.</span> <span class="nav-text">统一过程三大特点以及与面向对象的方法的关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#统一过程四个阶段的划分准则与每个阶段关键的里程碑"><span class="nav-number">1.1.3.</span> <span class="nav-text">统一过程四个阶段的划分准则与每个阶段关键的里程碑</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#初始阶段-Inception-Phase"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">初始阶段(Inception Phase)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#精化阶段-Elaboration-Phase"><span class="nav-number">1.1.3.2.</span> <span class="nav-text">精化阶段(Elaboration Phase)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#构建阶段-Construction-Phase"><span class="nav-number">1.1.3.3.</span> <span class="nav-text">构建阶段(Construction Phase</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#交付阶段-Transition-Phase"><span class="nav-number">1.1.3.4.</span> <span class="nav-text">交付阶段(Transition Phase)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#软件企业为什么能按固定节奏生产、固定周期发布软件产品？它给企业项目管理带来哪些好处？"><span class="nav-number">1.1.4.</span> <span class="nav-text">软件企业为什么能按固定节奏生产、固定周期发布软件产品？它给企业项目管理带来哪些好处？</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -864,7 +970,38 @@
         showTime(Counter);
       }
     });
-  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
 </script>
@@ -882,17 +1019,6 @@
 </script>
 <!-- End: Injected MathJax -->
 <!-- hexo-inject:end -->
-
-
-
-  
-
-  
-
-  
-  
-
-  
   
 
 
