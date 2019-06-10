@@ -374,12 +374,12 @@
 <ol>
 <li>启动 Server</li>
 </ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> go run greeter_server/main.go</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> go run greeter_server/main.go</span></span><br></pre></td></tr></table></figure>
 <ol>
 <li>启动 Client</li>
 </ol>
 <p>另启终端：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> go run greeter_client/main.go</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> go run greeter_client/main.go</span></span><br></pre></td></tr></table></figure>
 <p>这时，就能在客户端看到 Hello World了。服务端也有了访问记录。</p>
 <p><img src="/Service-Computing/grpc/helloworld.jpg" alt="HelloWorld"></p>
 <h2 id="阅读源码"><a href="#阅读源码" class="headerlink" title="阅读源码"></a>阅读源码</h2><p>gRPC 的代码，更新 proto 文件，然后实现其中的接口。我们来看看它里面的代码。</p>
